@@ -7,10 +7,10 @@ in {
   # Install Packages For The User
   home.packages = with pkgs; [
     pkgs."${browser}" discord libvirt swww grim slurp gnome.file-roller
-    swaynotificationcenter rofi-wayland imv transmission-gtk mpv
+    swaynotificationcenter rofi-wayland rofi-power-menu rofi-calc imv transmission-gtk mpv
     obs-studio rustup audacity pavucontrol
     libreoffice-qt inkscape-with-extensions gimp-with-plugins
-    tdesktop rustdesk syncthing
+    tdesktop rustdesk syncthing lunarvim
     font-awesome spotify swayidle neovide element-desktop swaylock
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     # Import Scripts

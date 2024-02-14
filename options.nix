@@ -7,14 +7,14 @@ let
   hostname = "hyprnix";
   userHome = "/home/${username}";
   flakeDir = "${userHome}/zaneyos";
-  waybarStyle = "default"; # simplebar, slickbar, or default
+  waybarStyle = "slickbar"; # simplebar, slickbar, or default
 in {
   # User Variables
   username = "${username}";
   hostname = "${hostname}";
   gitUsername = "nandarmath";
   gitEmail = "nandarsigma06@gmail.com";
-  theme = "ayu-dark";
+  theme = "gruvbox-material-dark-hard";
   slickbar = if waybarStyle == "slickbar" then true else false;
   simplebar = if waybarStyle == "simplebar" then true else false;
   borderAnim = true;

@@ -26,5 +26,6 @@
     ./services.nix
     ./steam.nix
     ./vm.nix
+    ./rstudio.nix
   ];
 }

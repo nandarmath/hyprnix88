@@ -15,8 +15,7 @@
             lv = "lvim";
 
 	    cat ="bat";
-	    nf = "cd ~/.dotfiles";
-	    cw = "swww img ~/.dotfiles/user/wm/Frosted-Glass/";
+	    nf = "cd ~/zaneyos";
             cp = "cp -rv";
             ll = "eza -lah";
 	    ls = "eza";
@@ -24,10 +23,10 @@
             rm = "rm -rfv";
             lsf = "lsblk -o name,fstype,fsavail,fsused,size,mountpoint";
 
-            scs = "doas systemctl start";
-            sct = "doas systemctl stop";
-            scr = "doas systemctl restart";
-            scu = "doas systemctl status";
+            scs = "sudo systemctl start";
+            sct = "sudo systemctl stop";
+            scr = "sudo systemctl restart";
+            scu = "sudo systemctl status";
 
             qup = "quarto publish netlify --no-browser";
             quv = "quarto preview";
@@ -35,21 +34,21 @@
 
             neq = "nix-env -qaP";
             nim = "nix-shell -p nix-info --run 'nix-info -m'";
-            nei = "doas nix-env -iA";
-            neu = "doas nix-env --uninstall";
-            nel = "doas nix-env -p /nix/var/nix/profiles/system --list-generations";
-            ned = "doas nix-env -p /nix/var/nix/profiles/system --delete-generations old";
+            nei = "sudo nix-env -iA";
+            neu = "sudo nix-env --uninstall";
+            nel = "sudo nix-env -p /nix/var/nix/profiles/system --list-generations";
+            ned = "sudo nix-env -p /nix/var/nix/profiles/system --delete-generations old";
 
-            ncl = "doas nix-channel --list";
-            ncu = "doas nix-channel --update";
-            nrd = "doas nixos-rebuild dry-build";
-            nrs = "cd ~/.dotfiles && doas nixos-rebuild switch --flake .#system";
-            nru = "cd ~/.dotfiles && doas nixos-rebuild switch --upgrade --flake .#system";
-            ngc = "doas nix-store --gc";
-            ngd = "doas nix-collect-garbage -d";
+            ncl = "sudo nix-channel --list";
+            ncu = "sudo nix-channel --update";
+            nrd = "sudo nixos-rebuild dry-build";
+            nrs = "cd ~/zaneyos && sudo nixos-rebuild switch --flake .";
+            nru = "cd ~/zaneyos && sudo nixos-rebuild switch --upgrade --flake .";
+            ngc = "sudo nix-store --gc";
+            ngd = "sudo nix-collect-garbage -d";
 
-            hms = "cd ~/.dotfiles && home-manager switch --flake .#user";
-            hmu = "cd ~/.dotfiles && home-manager switch --upgrade --flake .#user";
+            hms = "cd ~/zaneyos/ && home-manager switch --flake .#user";
+            hmu = "cd ~/zaneyos/ && home-manager switch --upgrade --flake .#user";
 
             ga = "git add";
             gaa = "git add --all";

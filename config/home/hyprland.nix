@@ -55,7 +55,7 @@ in with lib; {
       env = SDL_VIDEODRIVER, ${sdl-videodriver}
       env = XCURSOR_SIZE, 24
       env = XCURSOR_THEME, Bibata-Modern-Ice
-      env = QT_QPA_PLATFORM, wayland
+      env = QT_QPA_PLATFORM, wayland;xcb
       env = QT_WAYLAND_DISABLE_WINDOWDECORATION, 1
       env = QT_AUTO_SCREEN_SCALE_FACTOR, 1
       env = MOZ_ENABLE_WAYLAND, 1
@@ -127,7 +127,7 @@ in with lib; {
       master {
         new_is_master = true
       }
-      bind = ${modifier},Q,exec,${terminal}
+      bind = ${modifier},Q,exec,${terminal} -e fish
       bind = ${modifier},A,exec,rofi-launcher
       bind = ${modifier}SHIFT,W,exec,web-search
       bind = ${modifier}SHIFT,S,exec,swaync-client -rs
@@ -146,6 +146,7 @@ in with lib; {
       bind = ${modifier},Y,exec,spotify
       bind = ${modifier},X,killactive,
       bind = ${modifier},P,pseudo,
+      bind = ${modifier},Z,exec, rofi -show power-menu -modi power-menu:rofi-power-menu
       bind = ${modifier}SHIFT,I,togglesplit,
       bind = ${modifier},F,fullscreen,
       bind = ${modifier},Space,togglefloating,
