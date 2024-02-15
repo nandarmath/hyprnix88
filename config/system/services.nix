@@ -21,6 +21,8 @@
     pulse.enable = true;
     jack.enable = true;
   };
+  networking.firewall.enable = true;
+  networking.firewall.allowedUDPPorts = [49152];
   hardware.pulseaudio.enable = false;
   sound.enable = true;
   security.rtkit.enable = true;

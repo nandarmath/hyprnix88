@@ -16,4 +16,5 @@
     source = ./files/obs-studio;
     recursive = true;
   };
+  home.file.".config/pulse/default.pa".source = ./files/default.pa;
 }
