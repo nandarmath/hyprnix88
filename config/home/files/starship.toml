@@ -3,15 +3,15 @@
 [username]
 format = " [╭─$user]($style)@"
 show_always = true
-style_root = "bold gold"
-style_user = "bold gold"
+style_root = "bold yellow"
+style_user = "bold yellow"
 
 # Second param
 [hostname]
 disabled = false
 format = "[$hostname]($style) in "
 ssh_only = false
-style = "bold dimmed gold"
+style = "bold dimmed yellow"
 # If enabled hostnames with dashes will be cut off  ##
 #trim_at = "-"
 
@@ -74,7 +74,7 @@ time_format = "%T"
 # Prompt: param 2
 [character]
 error_symbol = " [×](bold red)"
-success_symbol = " [╰─](bold gold)"
+success_symbol = " [╰─](bold green)"
 
 # SYMBOLS
 [status]

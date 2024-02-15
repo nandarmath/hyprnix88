@@ -10,6 +10,11 @@ let
     scipy
     spyder
     matplotlib
+    statsmodels
+    seaborn
+    pyreadstat
+
+
 
   ];
 in lib.mkIf (python == true) {

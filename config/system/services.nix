@@ -37,4 +37,8 @@
       auth include login
     '';
   };
+  services.earlyoom = {
+    enable = true;
+    freeMemThreshold = 5;
+  };
 }

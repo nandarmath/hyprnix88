@@ -10,4 +10,4 @@ load-module module-null-sink sink_name=Source
 .ifexists module-virtual-source.so
 load-module module-virtual-source source_name=VirtualMic master=Source.monitor
 .endif
-
+ load-module module-alsa-source source_name=android device=hw:2,1

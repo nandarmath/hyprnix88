@@ -67,6 +67,10 @@
       polynom
       prabclus
       pracma
+      # Tamabahan
+      r2spss
+      MultivariateAnalysis
+      RVAideMemoire
 
   ];
       r-with-packages =
