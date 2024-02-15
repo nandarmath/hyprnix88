@@ -50,7 +50,7 @@ in with lib; {
       env = XDG_CURRENT_DESKTOP, Hyprland
       env = XDG_SESSION_TYPE, wayland
       env = XDG_SESSION_DESKTOP, Hyprland
-      env = GDK_BACKEND, wayland
+      env = GDK_BACKEND, wayland,x11
       env = CLUTTER_BACKEND, wayland
       env = SDL_VIDEODRIVER, ${sdl-videodriver}
       env = XCURSOR_SIZE, 24

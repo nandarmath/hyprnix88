@@ -8,7 +8,7 @@ in {
   home.packages = with pkgs; [
     pkgs."${browser}" discord libvirt swww grim slurp gnome.file-roller
     swaynotificationcenter rofi-wayland rofi-power-menu rofi-calc imv transmission-gtk mpv
-    obs-studio rustup audacity pavucontrol rofi-bluetooth pdfarranger chromium tgpt
+    obs-studio rustup audacity pavucontrol rofi-bluetooth pdfarranger chromium tgpt bat
     libreoffice-qt inkscape-with-extensions gimp-with-plugins ytfzf kitty ueberzugpp gImageReader tesseract hunspell hunspellDicts.en_US
     tdesktop rustdesk syncthing lunarvim yt-dlp pspp okular goldendict-ng scribus handbrake 
     font-awesome spotify swayidle neovide element-desktop swaylock hyprpicker cliphist zotero geogebra
