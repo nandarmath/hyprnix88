@@ -13,6 +13,7 @@ let
     statsmodels
     seaborn
     pyreadstat
+    markdown
 
 
 

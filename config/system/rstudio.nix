@@ -71,6 +71,12 @@
       r2spss
       MultivariateAnalysis
       RVAideMemoire
+      mvnormtest
+      BART
+      factoextra
+      pandoc
+      markdown
+
 
   ];
       r-with-packages =

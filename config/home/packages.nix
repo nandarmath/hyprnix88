@@ -11,7 +11,7 @@ in {
     obs-studio rustup audacity pavucontrol rofi-bluetooth pdfarranger chromium tgpt bat
     libreoffice-qt inkscape-with-extensions gimp-with-plugins ytfzf kitty ueberzugpp gImageReader tesseract hunspell hunspellDicts.en_US
     tdesktop rustdesk syncthing lunarvim yt-dlp pspp okular goldendict-ng scribus handbrake 
-    font-awesome spotify swayidle neovide element-desktop swaylock hyprpicker cliphist zotero geogebra
+    font-awesome spotify swayidle neovide element-desktop swaylock hyprpicker cliphist zotero geogebra joplin-desktop
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     # Import Scripts
     (import ./../scripts/emopicker9000.nix { inherit pkgs; })
