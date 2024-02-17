@@ -41,4 +41,10 @@
     enable = true;
     freeMemThreshold = 5;
   };
+
+  services.cloudflared = {
+    enable = true;
+    user = "cloudflared";
+    package = pkgs.cloudflared;
+  }
 }

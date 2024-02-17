@@ -14,6 +14,7 @@ let
     seaborn
     pyreadstat
     markdown
+    pulp
 
 
 
