@@ -46,5 +46,5 @@
     enable = true;
     user = "cloudflared";
     package = pkgs.cloudflared;
-  }
+  };
 }
