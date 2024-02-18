@@ -14,15 +14,17 @@
             z = "zellij";
             lv = "lvim";
 
-	    cat ="bat";
-	    nf = "cd ~/zaneyos";
+	          cat ="bat";
+	          nf = "cd ~/zaneyos";
             cp = "cp -rv";
             ll = "eza -lah";
-	    ls = "eza";
+	          ls = "eza";
             mv = "mv -v";
             rm = "rm -rfv";
             lsf = "lsblk -o name,fstype,fsavail,fsused,size,mountpoint";
-
+            ns = "nix-search";
+            yt = "yt-dlp";
+            f  = "fzf";
             scs = "sudo systemctl start";
             sct = "sudo systemctl stop";
             scr = "sudo systemctl restart";
