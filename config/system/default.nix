@@ -27,6 +27,7 @@
     ./steam.nix
     ./vm.nix
     ./rstudio.nix
-    #./docker.nix
+    ./docker.nix
+    ./obs.nix
   ];
 }

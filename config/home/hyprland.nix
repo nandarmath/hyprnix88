@@ -112,7 +112,9 @@ in with lib; {
         }
       }
       exec-once = $POLKIT_BIN
-      exec-once = dbus-update-activation-environment --systemd --all
+      #exec-once = dbus-update-activation-environment --systemd --all
+      exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+      exec-once=xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2
       exec-once = systemctl --user import-environment QT_QPA_PLATFORMTHEME WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
       exec-once = hyprctl setcursor Bibata-Modern-Ice 24
       exec-once = swww init
