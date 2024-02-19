@@ -28,5 +28,6 @@
     ./vm.nix
     ./rstudio.nix
     #./docker.nix
+    ./obs.nix
   ];
 }

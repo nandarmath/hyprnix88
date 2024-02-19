@@ -112,8 +112,9 @@ in with lib; {
         }
       }
       exec-once = $POLKIT_BIN
-      exec-once = dbus-update-activation-environment --systemd --all
+      exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
       exec-once = systemctl --user import-environment QT_QPA_PLATFORMTHEME WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+      exec-once = xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2
       exec-once = hyprctl setcursor Bibata-Modern-Ice 24
       exec-once = swww init
       exec-once = waybar
@@ -179,8 +180,8 @@ in with lib; {
       bind = ${modifier}SHIFT,M,exec,rofi-mpd
       bind = ${modifier}SHIFT,S,exec,rofi-pulse-select sink
       bind = ${modifier}ALT,S,exec,rofi-pulse-select source
-      bind = ${modifier}ALT,R,exec,wf-recorder --audio --file=$HOME/videos/$(date +%Y%m%d_%Hh%Mm%Ss.mp4)
-      bind = ${modifier}CTRL,R,exec,wf-recorder -g "$(slurp)" --audio --file=$HOME/Videos/$(date +%Y%m%d_%Hh%Mm%Ss.mp4)
+      bind = ${modifier}ALT,R,exec,wf-recorder --audio --file=$HOME/videos/$(date +Rec%Y%m%d_%Hh%Mm%Ss.mp4)
+      bind = ${modifier}CONTROL,R,exec,wf-recorder -g "$(slurp)" --audio --file=$HOME/Videos/$(date +Rec%Y%m%d_%Hh%Mm%Ss.mp4)
       bind = ${modifier},left,movefocus,l
       bind = ${modifier},right,movefocus,r
       bind = ${modifier},up,movefocus,u
