@@ -76,6 +76,8 @@
       factoextra
       pandoc
       markdown
+      FactoMineR
+
 
 
   ];

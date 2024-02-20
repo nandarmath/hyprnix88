@@ -55,7 +55,8 @@ in with lib; {
       env = SDL_VIDEODRIVER,${sdl-videodriver}
       env = XCURSOR_SIZE, 24
       env = XCURSOR_THEME,Bibata-Modern-Ice
-      env = QT_QPA_PLATFORM,wayland;xcb
+      #env = QT_QPA_PLATFORM,wayland;xcb
+      env = QT_QPA_PLATFORM,xcb
       env = QT_WAYLAND_DISABLE_WINDOWDECORATION,1
       env = QT_AUTO_SCREEN_SCALE_FACTOR,1
       env = MOZ_ENABLE_WAYLAND,1
@@ -223,6 +224,50 @@ in with lib; {
       binde = ,XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
       bind = ,XF86MonBrightnessDown,exec,brightnessctl set 5%-
       bind = ,XF86MonBrightnessUp,exec,brightnessctl set +5%
+      
+      bind = SUPER,F10,pass,^(com\.obsproject\.Studio)$
+      bind = SUPER,F9,pass,^(com\.obsproject\.Studio)$
+      bind = SUPER,RBRACKET,pass,^(com\.obsproject\.Studio)$
+      bind = SUPER,APOSTROPHE,pass,^(com\.obsproject\.Studio)$
+      bind = SUPER,LBRACKET,pass,^(com\.obsproject\.Studio)$
+      bind = SUPER,SEMICOLON,pass,^(com\.obsproject\.Studio)$
+
+
+      windowrulev2 = float,class:^(file-roller)$
+      windowrulev2 = float,class:^(timeshift-gtk)$
+      windowrulev2 = float,class:^(GParted)$
+      #windowrulev2 = float,class:^(com.obsproject.Studio)$
+      #windowrule = float, ^(totem)$
+      #windowrule = float, ^(lollypop)$
+      windowrulev2 = float,class:^(nwg-look)$
+      windowrulev2 = float,class:^(ristretto)$
+      #windowrule = float, ^(io.github.celluloid_player.Celluloid)$
+      windowrulev2 = float,class:^(pavucontrol)$
+      windowrulev2 = float,title:^(Media viewer)$
+      windowrulev2 = float,title:^(Volume Control)$
+      windowrulev2 = float,title:^(Picture-in-Picture)$
+      windowrulev2 = float,class:^(file_progress)$
+      windowrulev2 = float,class:^(confirm)$
+      windowrulev2 = float,class:^(dialog)$
+      windowrulev2 = float,class:^(download)$
+      windowrulev2 = float,class:^(notification)$
+      windowrulev2 = float,class:^(error)$
+      windowrulev2 = float,class:^(confirmreset)$
+      windowrulev2 = float,title:^(Open File)$
+      windowrulev2 = float,title:^(branchdialog)$
+      windowrulev2 = float,title:^(Confirm to replace files)
+      windowrulev2 = float,title:^(File Operation Progress)
+
+
+
+
+
+
+
+
+
+
+
     '' ];
   };
 }
