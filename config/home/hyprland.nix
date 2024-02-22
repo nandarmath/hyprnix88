@@ -158,7 +158,8 @@ in with lib; {
       #bind = ${modifier}SHIFT,G,exec,godot4
       bind = ${modifier}SHIFT,G,exec,${terminal} -e tgpt
       bind = ${modifier},E,exec,thunar
-      bind = ${modifier},TAB,exec,rofi -show window
+      #bind = ${modifier},TAB,exec,rofi -show window
+      bind = ${modifier},TAB,exec,sh ~/zaneyos/config/home/files/cwindows.sh
       bind = ${modifier}SHIFT,Y,exec,spotify
       bind = ${modifier},X,killactive,
       bind = ${modifier},P,pseudo,
@@ -224,13 +225,27 @@ in with lib; {
       binde = ,XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
       bind = ,XF86MonBrightnessDown,exec,brightnessctl set 5%-
       bind = ,XF86MonBrightnessUp,exec,brightnessctl set +5%
-      
-      bind = SUPER,F10,pass,^(com\.obsproject\.Studio)$
-      bind = SUPER,F9,pass,^(com\.obsproject\.Studio)$
-      bind = SUPER,RBRACKET,pass,^(com\.obsproject\.Studio)$
-      bind = SUPER,APOSTROPHE,pass,^(com\.obsproject\.Studio)$
-      bind = SUPER,LBRACKET,pass,^(com\.obsproject\.Studio)$
-      bind = SUPER,SEMICOLON,pass,^(com\.obsproject\.Studio)$
+
+      # Multi Monitor
+      bind = SUPERCONTROL,PERIOD,exec, hyprctl --batch 'keyword monitor eDP-1,highres,0x0,1; keyword monitor HDMI-A-1,1920x1080,1920x0,1'
+      bind = SUPERCONTROL,COMMA, exec, hyprctl --batch 'keyword monitor HDMI-A-1,1920x1080,0x0,1; keyword monitor eDP-1,highres,1920x0,1'
+      bind = SUPERCONTROL,m, exec, hyprctl --batch 'keyword monitor eDP-1,highres,0x0,1;keyword monitor HDMI-A-1,1920x1080,0x0,1,mirror,eDP-1'
+      bind = SUPERCONTROL,d, exec, hyprctl --batch 'keyword monitor HDMI-A-1,1920x1080,1920x0,1;' && sleep 1 && hyprctl --batch 'keyword monitor eDP-1,disable'
+      bind = SUPERCONTROL,SPACE, exec, hyprctl --batch 'keyword monitor eDP-1,highres,0x0,1; keyword monitor HDMI-A-1,disable'
+
+
+
+
+
+      bind = SUPERCONTROL,F6,pass,^(com\.obsproject\.Studio)$
+      bind = SUPERCONTROL,F7,pass,^(com\.obsproject\.Studio)$
+      bind = SUPERCONTROL,F10,pass,^(com\.obsproject\.Studio)$
+      bind = SUPERCONTROL,F8,pass,^(com\.obsproject\.Studio)$
+      bind = SUPERCONTROL,F9,pass,^(com\.obsproject\.Studio)$
+      bind = CONTROLSHIFT,RBRACKET,pass,^(com\.obsproject\.Studio)$
+      bind = CONTROLSHIFT,APOSTROPHE,pass,^(com\.obsproject\.Studio)$
+      bind = CONTROLSHIFT,LBRACKET,pass,^(com\.obsproject\.Studio)$
+      bind = CONTROLSHIFT,SEMICOLON,pass,^(com\.obsproject\.Studio)$
 
 
       windowrulev2 = float,class:^(file-roller)$
