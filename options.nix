@@ -14,12 +14,12 @@ in {
   hostname = "${hostname}";
   gitUsername = "nandarmath";
   gitEmail = "nandarsigma06@gmail.com";
-  theme = "gruvbox-material-dark-hard";
+  theme = "equilibrium-light";
   slickbar = if waybarStyle == "slickbar" then true else false;
   simplebar = if waybarStyle == "simplebar" then true else false;
   borderAnim = true;
   browser = "firefox";
-  wallpaperGit = "https://gitlab.com/Zaney/my-wallpapers.git"; # This will give you my wallpapers
+  wallpaperGit = "https://gitlab.com/nandarsigma06/Wallpaper.git"; # This will give you my wallpapers
   # ^ (use as is or replace with your own repo - removing will break the wallsetter script) 
   wallpaperDir = "${userHome}/Pictures/Wallpapers";
   screenshotDir = "${userHome}/Pictures/Screenshots";
@@ -35,7 +35,7 @@ in {
   theLCVariables = "id_ID.UTF-8";
   theTimezone = "Asia/Jakarta";
   theShell = "zsh"; # Possible options: bash, zsh
-  theKernel = "default"; # Possible options: default, latest, lqx, xanmod, zen
+  theKernel = "zen"; # Possible options: default, latest, lqx, xanmod, zen
   # This is for running NixOS
   # On a tmpfs or root on RAM
   # You Most Like Want This -> false

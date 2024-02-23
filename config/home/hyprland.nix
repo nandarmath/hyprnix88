@@ -55,7 +55,8 @@ in with lib; {
       env = SDL_VIDEODRIVER,${sdl-videodriver}
       env = XCURSOR_SIZE, 24
       env = XCURSOR_THEME,Bibata-Modern-Ice
-      env = QT_QPA_PLATFORM,wayland;xcb
+      #env = QT_QPA_PLATFORM,wayland;xcb
+      env = QT_QPA_PLATFORM,xcb
       env = QT_WAYLAND_DISABLE_WINDOWDECORATION,1
       env = QT_AUTO_SCREEN_SCALE_FACTOR,1
       env = MOZ_ENABLE_WAYLAND,1
@@ -112,10 +113,9 @@ in with lib; {
         }
       }
       exec-once = $POLKIT_BIN
-      #exec-once = dbus-update-activation-environment --systemd --all
       exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-      exec-once=xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2
       exec-once = systemctl --user import-environment QT_QPA_PLATFORMTHEME WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+      exec-once = xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2
       exec-once = hyprctl setcursor Bibata-Modern-Ice 24
       exec-once = swww init
       exec-once = waybar
@@ -158,7 +158,8 @@ in with lib; {
       #bind = ${modifier}SHIFT,G,exec,godot4
       bind = ${modifier}SHIFT,G,exec,${terminal} -e tgpt
       bind = ${modifier},E,exec,thunar
-      bind = ${modifier},TAB,exec,rofi -show window
+      #bind = ${modifier},TAB,exec,rofi -show window
+      bind = ${modifier},TAB,exec,sh ~/zaneyos/config/home/files/cwindows.sh
       bind = ${modifier}SHIFT,Y,exec,spotify
       bind = ${modifier},X,killactive,
       bind = ${modifier},P,pseudo,
@@ -181,16 +182,20 @@ in with lib; {
       bind = ${modifier}SHIFT,M,exec,rofi-mpd
       bind = ${modifier}SHIFT,S,exec,rofi-pulse-select sink
       bind = ${modifier}ALT,S,exec,rofi-pulse-select source
-      bind = ${modifier}ALT,R,exec,wf-recorder --audio --file=$HOME/videos/$(date +%Y%m%d_%Hh%Mm%Ss.mp4)
-      bind = ${modifier}CTRL,R,exec,wf-recorder -g "$(slurp)" --audio --file=$HOME/Videos/$(date +%Y%m%d_%Hh%Mm%Ss.mp4)
+      bind = ${modifier}ALT,R,exec,wf-recorder --audio --file=$HOME/videos/$(date +Rec%Y%m%d_%Hh%Mm%Ss.mp4)
+      bind = ${modifier}CONTROL,R,exec,wf-recorder -g "$(slurp)" --audio --file=$HOME/Videos/$(date +Rec%Y%m%d_%Hh%Mm%Ss.mp4)
       bind = ${modifier},left,movefocus,l
       bind = ${modifier},right,movefocus,r
       bind = ${modifier},up,movefocus,u
       bind = ${modifier},down,movefocus,d
-      bind = ${modifier},h,movefocus,l
-      bind = ${modifier},l,movefocus,r
-      bind = ${modifier},k,movefocus,u
-      bind = ${modifier},j,movefocus,d
+      bind = ${modifier},H,togglespecialworkspace, magic
+      bind = ${modifier},J,movetoworkspace, special:magic
+
+
+     #bind = ${modifier},h,movefocus,l
+     #bind = ${modifier},l,movefocus,r
+     #bind = ${modifier},k,movefocus,u
+     #bind = ${modifier},j,movefocus,d
       bind = ${modifier},1,workspace,1
       bind = ${modifier},2,workspace,2
       bind = ${modifier},3,workspace,3
@@ -224,6 +229,65 @@ in with lib; {
       binde = ,XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
       bind = ,XF86MonBrightnessDown,exec,brightnessctl set 5%-
       bind = ,XF86MonBrightnessUp,exec,brightnessctl set +5%
+
+      # Multi Monitor
+      bind = SUPERCONTROL,PERIOD,exec, hyprctl --batch 'keyword monitor eDP-1,highres,0x0,1; keyword monitor HDMI-A-1,1920x1080,1920x0,1'
+      bind = SUPERCONTROL,COMMA, exec, hyprctl --batch 'keyword monitor HDMI-A-1,1920x1080,0x0,1; keyword monitor eDP-1,highres,1920x0,1'
+      bind = SUPERCONTROL,m, exec, hyprctl --batch 'keyword monitor eDP-1,highres,0x0,1;keyword monitor HDMI-A-1,1920x1080,0x0,1,mirror,eDP-1'
+      bind = SUPERCONTROL,d, exec, hyprctl --batch 'keyword monitor HDMI-A-1,1920x1080,1920x0,1;' && sleep 1 && hyprctl --batch 'keyword monitor eDP-1,disable'
+      bind = SUPERCONTROL,SPACE, exec, hyprctl --batch 'keyword monitor eDP-1,highres,0x0,1; keyword monitor HDMI-A-1,disable'
+
+
+
+
+
+      bind = SUPERCONTROL,F6,pass,^(com\.obsproject\.Studio)$
+      bind = SUPERCONTROL,F7,pass,^(com\.obsproject\.Studio)$
+      bind = SUPERCONTROL,F10,pass,^(com\.obsproject\.Studio)$
+      bind = SUPERCONTROL,F8,pass,^(com\.obsproject\.Studio)$
+      bind = SUPERCONTROL,F9,pass,^(com\.obsproject\.Studio)$
+      bind = CONTROLSHIFT,RBRACKET,pass,^(com\.obsproject\.Studio)$
+      bind = CONTROLSHIFT,APOSTROPHE,pass,^(com\.obsproject\.Studio)$
+      bind = CONTROLSHIFT,LBRACKET,pass,^(com\.obsproject\.Studio)$
+      bind = CONTROLSHIFT,SEMICOLON,pass,^(com\.obsproject\.Studio)$
+
+
+      windowrulev2 = float,class:^(file-roller)$
+      windowrulev2 = float,class:^(timeshift-gtk)$
+      windowrulev2 = float,class:^(GoldenDict-ng)$
+      windowrulev2 = float,class:^(GParted)$
+      #windowrulev2 = float,class:^(com.obsproject.Studio)$
+      #windowrule = float, ^(totem)$
+      #windowrule = float, ^(lollypop)$
+      windowrulev2 = float,class:^(nwg-look)$
+      windowrulev2 = float,class:^(ristretto)$
+      #windowrule = float, ^(io.github.celluloid_player.Celluloid)$
+      windowrulev2 = float,class:^(pavucontrol)$
+      windowrulev2 = float,title:^(Media viewer)$
+      windowrulev2 = float,title:^(Volume Control)$
+      windowrulev2 = float,title:^(Picture-in-Picture)$
+      windowrulev2 = float,class:^(file_progress)$
+      windowrulev2 = float,class:^(confirm)$
+      windowrulev2 = float,class:^(dialog)$
+      windowrulev2 = float,class:^(download)$
+      windowrulev2 = float,class:^(notification)$
+      windowrulev2 = float,class:^(error)$
+      windowrulev2 = float,class:^(confirmreset)$
+      windowrulev2 = float,title:^(Open File)$
+      windowrulev2 = float,title:^(branchdialog)$
+      windowrulev2 = float,title:^(Confirm to replace files)
+      windowrulev2 = float,title:^(File Operation Progress)
+
+
+
+
+
+
+
+
+
+
+
     '' ];
   };
 }

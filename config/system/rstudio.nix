@@ -76,6 +76,11 @@
       factoextra
       pandoc
       markdown
+      FactoMineR
+      tidyverse
+      ggimage
+
+
 
 
   ];
