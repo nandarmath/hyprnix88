@@ -188,10 +188,14 @@ in with lib; {
       bind = ${modifier},right,movefocus,r
       bind = ${modifier},up,movefocus,u
       bind = ${modifier},down,movefocus,d
-      bind = ${modifier},h,movefocus,l
-      bind = ${modifier},l,movefocus,r
-      bind = ${modifier},k,movefocus,u
-      bind = ${modifier},j,movefocus,d
+      bind = ${modifier},H,togglespecialworkspace, magic
+      bind = ${modifier},J,movetoworkspace, special:magic
+
+
+     #bind = ${modifier},h,movefocus,l
+     #bind = ${modifier},l,movefocus,r
+     #bind = ${modifier},k,movefocus,u
+     #bind = ${modifier},j,movefocus,d
       bind = ${modifier},1,workspace,1
       bind = ${modifier},2,workspace,2
       bind = ${modifier},3,workspace,3
@@ -250,6 +254,7 @@ in with lib; {
 
       windowrulev2 = float,class:^(file-roller)$
       windowrulev2 = float,class:^(timeshift-gtk)$
+      windowrulev2 = float,class:^(GoldenDict-ng)$
       windowrulev2 = float,class:^(GParted)$
       #windowrulev2 = float,class:^(com.obsproject.Studio)$
       #windowrule = float, ^(totem)$
