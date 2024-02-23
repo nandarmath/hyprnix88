@@ -77,6 +77,9 @@
       pandoc
       markdown
       FactoMineR
+      tidyverse
+      ggimage
+
 
 
 
