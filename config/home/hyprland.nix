@@ -264,6 +264,7 @@ in with lib; {
       #windowrule = float, ^(io.github.celluloid_player.Celluloid)$
       windowrulev2 = float,class:^(pavucontrol)$
       windowrulev2 = float,title:^(Media viewer)$
+      windowrulev2 = float,title:^(Add/Edit Citation)$
       windowrulev2 = float,title:^(Volume Control)$
       windowrulev2 = float,title:^(Picture-in-Picture)$
       windowrulev2 = float,class:^(file_progress)$
