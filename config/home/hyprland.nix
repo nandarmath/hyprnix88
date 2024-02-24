@@ -57,6 +57,7 @@ in with lib; {
       env = XCURSOR_THEME,Bibata-Modern-Ice
       #env = QT_QPA_PLATFORM,wayland;xcb
       env = QT_QPA_PLATFORM,xcb
+      env = QT_QPA_PLATFORMTHEME,qt6ct
       env = QT_WAYLAND_DISABLE_WINDOWDECORATION,1
       env = QT_AUTO_SCREEN_SCALE_FACTOR,1
       env = MOZ_ENABLE_WAYLAND,1
@@ -265,6 +266,7 @@ in with lib; {
       windowrulev2 = float,class:^(pavucontrol)$
       windowrulev2 = float,title:^(Media viewer)$
       windowrulev2 = float,title:^(Add/Edit Citation)$
+      windowrule = size 600 450, ^(Add/Edit Citation)$
       windowrulev2 = float,title:^(Volume Control)$
       windowrulev2 = float,title:^(Picture-in-Picture)$
       windowrulev2 = float,class:^(file_progress)$
