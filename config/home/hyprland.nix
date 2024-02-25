@@ -25,8 +25,8 @@ in with lib; {
       windowrule = size 1080 900, ^(steam)$
       windowrule = center, ^(steam)$
       general {
-        gaps_in = 6
-        gaps_out = 8
+        gaps_in = 2
+        gaps_out = 4
         border_size = 2
         col.active_border = rgba(${theme.base0C}ff) rgba(${theme.base0D}ff) rgba(${theme.base0B}ff) rgba(${theme.base0E}ff) 45deg
         col.inactive_border = rgba(${theme.base00}cc) rgba(${theme.base01}cc) 45deg
@@ -55,8 +55,8 @@ in with lib; {
       env = SDL_VIDEODRIVER,${sdl-videodriver}
       env = XCURSOR_SIZE, 24
       env = XCURSOR_THEME,Bibata-Modern-Ice
-      #env = QT_QPA_PLATFORM,wayland;xcb
-      env = QT_QPA_PLATFORM,xcb
+      env = QT_QPA_PLATFORM,wayland;xcb
+      #env = QT_QPA_PLATFORM,xcb
       env = QT_QPA_PLATFORMTHEME,qt6ct
       env = QT_WAYLAND_DISABLE_WINDOWDECORATION,1
       env = QT_AUTO_SCREEN_SCALE_FACTOR,1
@@ -217,6 +217,16 @@ in with lib; {
       bind = ALT,8,movetoworkspace,8
       bind = ALT,9,movetoworkspace,9
       bind = ALT,0,movetoworkspace,10
+      bind = ${modifier}SHIFT,1,movetoworkspacesilent,1
+      bind = ${modifier}SHIFT,2,movetoworkspacesilent,2
+      bind = ${modifier}SHIFT,3,movetoworkspacesilent,3
+      bind = ${modifier}SHIFT,4,movetoworkspacesilent,4
+      bind = ${modifier}SHIFT,5,movetoworkspacesilent,5
+      bind = ${modifier}SHIFT,6,movetoworkspacesilent,6
+      bind = ${modifier}SHIFT,7,movetoworkspacesilent,7
+      bind = ${modifier}SHIFT,8,movetoworkspacesilent,8
+      bind = ${modifier}SHIFT,9,movetoworkspacesilent,9
+      bind = ${modifier}SHIFT,0,movetoworkspacesilent,10
       bind = ${modifier}CONTROL,right,workspace,e+1
       bind = ${modifier}CONTROL,left,workspace,e-1
       bind = ${modifier},mouse_down,workspace, e+1
@@ -242,17 +252,23 @@ in with lib; {
 
 
 
-      bind = SUPERCONTROL,F6,pass,^(com\.obsproject\.Studio)$
-      bind = SUPERCONTROL,F7,pass,^(com\.obsproject\.Studio)$
-      bind = SUPERCONTROL,F10,pass,^(com\.obsproject\.Studio)$
-      bind = SUPERCONTROL,F8,pass,^(com\.obsproject\.Studio)$
-      bind = SUPERCONTROL,F9,pass,^(com\.obsproject\.Studio)$
-      bind = CONTROLSHIFT,RBRACKET,pass,^(com\.obsproject\.Studio)$
-      bind = CONTROLSHIFT,APOSTROPHE,pass,^(com\.obsproject\.Studio)$
-      bind = CONTROLSHIFT,LBRACKET,pass,^(com\.obsproject\.Studio)$
-      bind = CONTROLSHIFT,SEMICOLON,pass,^(com\.obsproject\.Studio)$
+      bind = SUPER,F4,pass,^(com\.obsproject\.Studio)$
+      bind = SUPER,F5,pass,^(com\.obsproject\.Studio)$
+      bind = SUPER,F6,pass,^(com\.obsproject\.Studio)$
+      bind = SUPER,F7,pass,^(com\.obsproject\.Studio)$
+      bind = SUPER,F10,pass,^(com\.obsproject\.Studio)$
+      bind = SUPER,F8,pass,^(com\.obsproject\.Studio)$
+      bind = SUPER,F9,pass,^(com\.obsproject\.Studio)$
+      bind = SUPER,RBRACKET,pass,^(com\.obsproject\.Studio)$
+      bind = SUPER,APOSTROPHE,pass,^(com\.obsproject\.Studio)$
+      bind = SUPER,LBRACKET,pass,^(com\.obsproject\.Studio)$
+      bind = SUPER,SEMICOLON,pass,^(com\.obsproject\.Studio)$
 
 
+      windowrulev2 = opacity 0.7 0.7,floating:1
+      windowrulev2 = opacity 0.7 0.7,class:^(Alacritty)$
+      windowrule = size 700 550,class:^(Alacritty)$
+      windowrulev2 = float,class:^(Alacritty)$
       windowrulev2 = float,class:^(file-roller)$
       windowrulev2 = float,class:^(timeshift-gtk)$
       windowrulev2 = float,class:^(GoldenDict-ng)$
@@ -266,7 +282,9 @@ in with lib; {
       windowrulev2 = float,class:^(pavucontrol)$
       windowrulev2 = float,title:^(Media viewer)$
       windowrulev2 = float,title:^(Add/Edit Citation)$
-      windowrule = size 600 450, ^(Add/Edit Citation)$
+      windowrulev2 = float,title:^(TelegramDesktop)$
+      windowrule = size 600 450,class:^(Add/Edit Citation)$
+      windowrule = size 700 550,class:^(TelegramDesktop)$
       windowrulev2 = float,title:^(Volume Control)$
       windowrulev2 = float,title:^(Picture-in-Picture)$
       windowrulev2 = float,class:^(file_progress)$
