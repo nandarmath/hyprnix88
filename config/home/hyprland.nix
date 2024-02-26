@@ -161,7 +161,7 @@ in with lib; {
       bind = ${modifier},E,exec,thunar
       #bind = ${modifier},TAB,exec,rofi -show window
       bind = ${modifier},TAB,exec,window-selector
-      bind = ${modifier}SHIFT,E,exec,jo
+      bind = ${modifier}SHIFT,E,exec,${terminal} -e jo
       bind = ${modifier}SHIFT,Y,exec,spotify
       bind = ${modifier},X,killactive,
       bind = ${modifier},P,pseudo,
@@ -183,7 +183,7 @@ in with lib; {
       bind = ${modifier}SHIFT,k,movewindow,u
       bind = ${modifier}SHIFT,j,movewindow,d
       bind = ${modifier}SHIFT,R,exec,pkill wf-recorder
-      bind = ${modifier}SHIFT,M,exec,rofi-mpd
+      bind = ${modifier}SHIFT,M,exec,dmenu-mager
       bind = ${modifier}SHIFT,S,exec,rofi-pulse-select sink
       bind = ${modifier}ALT,S,exec,rofi-pulse-select source
       bind = ${modifier}ALT,R,exec,wf-recorder --audio --file=$HOME/videos/$(date +Rec%Y%m%d_%Hh%Mm%Ss.mp4)

@@ -26,6 +26,9 @@ in {
     (import ./../scripts/rofi-launcher.nix { inherit pkgs; })
     (import ./../scripts/screenshootin.nix { inherit pkgs; })
     (import ./../scripts/zcc.nix { inherit pkgs; })
+    (import ./../scripts/dmenu-mager.nix { inherit pkgs; })
+    (import ./../scripts/window-selector.nix { inherit pkgs; })
+    (import ./../scripts/joshuto-wrapper.nix { inherit pkgs; })
   ];
 
   programs.gh.enable = true;
