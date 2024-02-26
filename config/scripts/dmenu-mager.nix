@@ -49,35 +49,3 @@ label=$(echo $OPTIONS | jq -r "sort | .[][0]" | $DMENU)
 exec $(echo $OPTIONS | jq -r ".[] | select(.[0] == \"$label\") | .[1]")
 
 ''
-pkgs.writeShellScriptBin "dmenu-docker" ''
-DMENU="rofi -dmenu -i -p Docker"
-
-function get_container() {
-    docker ps -a --format "table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}" | $DMENU -selected-row 1 -theme-str "window {width: 55%;}"
-}
-
-function menu() {
-    OPTIONS='["Start", "Stop", "Restart"]'
-    select=$(echo $OPTIONS | jq -r ".[]" | $DMENU -mesg "Container Name : $1" -theme-str 'window {width: 30%;} listview {lines: 1; columns:3;} element-text {horizontal-align: 0.5;}')
-    if [ "$select" = "Stop" ]; then
-        docker container stop $1 && notify-send "Docker" "Stop : $1"
-    elif [ "$select" = "Restart" ]; then
-        docker container restart $1 && notify-send "Docker" "Restart : $1"
-    elif [ "$select" = "Start" ]; then
-        docker container start $1 && notify-send "Docker" "Start : $1"
-    fi
-}
-
-if [ -f "/run/docker.pid" ]; then
-    container=$(get_container)
-    if [ "$container" != "" ]; then
-        container_name=$(echo $container | cut -d " " -f 2)
-        menu $container_name
-    fi
-else
-    notify-send "Docker" "Docker is not running"
-fi
-''
-
-
-
