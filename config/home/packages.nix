@@ -10,8 +10,8 @@ in {
     swaynotificationcenter rofi-wayland rofi-power-menu rofi-calc imv transmission-gtk mpv rofi-pulse-select rofi-mpd gitg joshuto
     rustup tenacity pavucontrol rofi-bluetooth pdfarranger chromium tgpt bat scrcpy mpd nodejs_21 jq drawio ferdium rclone rclone-browser 
     libreoffice-qt jdk inkscape-with-extensions gimp-with-plugins ytfzf kitty ueberzugpp gImageReader tesseract hunspell hunspellDicts.en_US
-    tdesktop rustdesk syncthing lunarvim yt-dlp pspp okular goldendict-ng scribus handbrake zotero joplin
-    font-awesome spotify swayidle neovide element-desktop swaylock hyprpicker cliphist geogebra joplin-desktop
+    tdesktop rustdesk syncthing lunarvim yt-dlp pspp okular goldendict-ng scribus handbrake zotero joplin noto-fonts-cjk-sans
+    font-awesome open-sans noto-fons spotify swayidle neovide element-desktop swaylock hyprpicker cliphist geogebra joplin-desktop
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     # Import Scripts
     (import ./../scripts/emopicker9000.nix { inherit pkgs; })
@@ -28,6 +28,8 @@ in {
     (import ./../scripts/zcc.nix { inherit pkgs; })
     (import ./../scripts/dmenu-mager.nix { inherit pkgs; })
     (import ./../scripts/window-selector.nix { inherit pkgs; })
+    (import ./../scripts/dmenu_dns.nix { inherit pkgs; })
+    (import ./../scripts/dmenu_translate.nix { inherit pkgs; })
     (import ./../scripts/joshuto-wrapper.nix { inherit pkgs; })
   ];
 
