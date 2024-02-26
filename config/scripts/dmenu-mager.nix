@@ -43,13 +43,13 @@ OPTIONS='''
   [ "dns switcher",           "dmenu_dns"],
   [ "adb clipoard",           "adbclip"]
 ]
-'''
+  '''
 
 label=$(echo $OPTIONS | jq -r "sort | .[][0]" | $DMENU)
 exec $(echo $OPTIONS | jq -r ".[] | select(.[0] == \"$label\") | .[1]")
 
 ''
-pkgs.writeShellScriptBin "dmenu-mager" ''
+pkgs.writeShellScriptBin "dmenu-docker" ''
 DMENU="rofi -dmenu -i -p Docker"
 
 function get_container() {
