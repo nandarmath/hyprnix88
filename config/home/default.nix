@@ -21,6 +21,7 @@
     ./zsh.nix
     ./fish.nix
     ./tex.nix
+    ./fonts.nix
 
     # Place Home Files Like Pictures
     ./files.nix

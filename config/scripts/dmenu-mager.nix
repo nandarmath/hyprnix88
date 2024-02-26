@@ -43,7 +43,7 @@ pkgs.writeShellScriptBin "dmenu-mager" ''
     [ "PMM",                    "chromium --new-window --app=https://www.guru.kemdikbud.go.id/" ],
     [ "E-Monev",                "chromium --new-window --app=https://www.beasiswa.kemdikbud.go.id/monev" ],
     [ "Siakad UNY",             "chromium --new-window --app=https://www.siakad.uny.ac.id/" ],
-    [ "BeSmart UNY",            "chromium --new-window --app=https://www.besmart.uny.ac.id/" ],
+    [ "BeSmart UNY",            "chromium --new-window --app=https://www.beesmart.uny.ac.id/" ],
     [ "E-Service UNY",          "chromium --new-window --app=https://www.service.uny.ac.id/" ],
     [ "Pusdapendik",            "chromium --new-window --app=https://www.pusdapendik.sultengprov.go.id/" ],
     [ "trello",                 "chromium --new-window --app=https://trello.com/" ],
