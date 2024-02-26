@@ -16,9 +16,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     impermanence.url = "github:nix-community/impermanence";
+    joshuto.url = "github:kamiyaa/joshuto";
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, impermanence, ... }:
+  outputs = inputs@{ nixpkgs, home-manager, impermanence, joshuto, ... }:
   let
     system = "x86_64-linux";
     inherit (import ./options.nix) username hostname;

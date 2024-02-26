@@ -45,13 +45,9 @@ let inherit (import ../../options.nix) flakeDir theShell; in
             ncl = "sudo nix-channel --list";
             ncu = "sudo nix-channel --update";
             nrd = "sudo nixos-rebuild dry-build";
-            nrs = "cd ~/zaneyos && sudo nixos-rebuild switch --flake .";
-            nru = "cd ~/zaneyos && sudo nixos-rebuild switch --upgrade --flake .";
             ngc = "sudo nix-store --gc";
             ngd = "sudo nix-collect-garbage -d";
 
-            hms = "cd ~/zaneyos/ && home-manager switch --flake .#user";
-            hmu = "cd ~/zaneyos/ && home-manager switch --upgrade --flake .#user";
 
             ga = "git add";
             gaa = "git add --all";

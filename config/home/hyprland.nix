@@ -160,7 +160,8 @@ in with lib; {
       bind = ${modifier}SHIFT,G,exec,${terminal} -e tgpt
       bind = ${modifier},E,exec,thunar
       #bind = ${modifier},TAB,exec,rofi -show window
-      bind = ${modifier},TAB,exec,sh ~/zaneyos/config/home/files/cwindows.sh
+      bind = ${modifier},TAB,exec,window-selector
+      bind = ${modifier}SHIFT,E,exec,jo
       bind = ${modifier}SHIFT,Y,exec,spotify
       bind = ${modifier},X,killactive,
       bind = ${modifier},P,pseudo,
@@ -171,6 +172,8 @@ in with lib; {
       bind = ${modifier},Space,togglefloating,
       bind = ${modifier}SHIFT,P,exec, hyprpicker --autocopy
       bind = ${modifier}SHIFT,C,exit,
+
+      bind = ${modifier}SHIFT,N,exec, sh ~/zaneyos/config/home/files/dmenu_iptv
       bind = ${modifier}SHIFT,left,movewindow,l
       bind = ${modifier}SHIFT,right,movewindow,r
       bind = ${modifier}SHIFT,up,movewindow,u
@@ -248,7 +251,9 @@ in with lib; {
       bind = SUPERCONTROL,d, exec, hyprctl --batch 'keyword monitor HDMI-A-1,1920x1080,1920x0,1;' && sleep 1 && hyprctl --batch 'keyword monitor eDP-1,disable'
       bind = SUPERCONTROL,SPACE, exec, hyprctl --batch 'keyword monitor eDP-1,highres,0x0,1; keyword monitor HDMI-A-1,disable'
 
-
+      # set layout
+      bind = ${modifier}ALT, m, exec, hyprctl --batch 'keyword general:layout master'
+      bind = ${modifier}ALT, d, exec, hyprctl --batch 'keyword general:layout dwindle'
 
 
 
