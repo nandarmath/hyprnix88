@@ -79,6 +79,8 @@
       FactoMineR
       tidyverse
       ggimage
+      Hotelling
+
 
 
 
