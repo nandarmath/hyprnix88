@@ -49,6 +49,7 @@
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension = "backup";
 	    home-manager.users.${username} = import ./home.nix;
+	   # home-manager.users.${username}.initialPassword = "1988";
 	  }
 	];
       };

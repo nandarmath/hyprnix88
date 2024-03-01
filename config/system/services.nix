@@ -53,4 +53,18 @@
     user = "cloudflared";
     package = pkgs.cloudflared;
   };
+  # For thinkpad
+  services.tlp.enable = true;
+
+  # Battery power management
+  services.upower.enable = true;
+
+
+  # Enable NGINX
+ #services.nginx = {
+ #  enable = true;
+ #  virtualHosts."localhost" = {
+ #      root = "/home/vmandela/code/gh-blog/_site";
+ #  };
+ #};
 }

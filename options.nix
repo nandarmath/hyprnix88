@@ -3,8 +3,8 @@
 # https://gitlab.com/Zaney/zaneyos/-/wikis/Setting-Options
 
 let
-  username = "riastri";
-  hostname = "hyprnix";
+  username = "nandar";
+  hostname = "nixos";
   userHome = "/home/${username}";
   flakeDir = "${userHome}/zaneyos";
   waybarStyle = "slickbar"; # simplebar, slickbar, or default
@@ -12,7 +12,7 @@ in {
   # User Variables
   username = "${username}";
   hostname = "${hostname}";
-  gitUsername = "nandarmath";
+  gitUsername = "nandarsigma06";
   gitEmail = "nandarsigma06@gmail.com";
   theme = "google-light";
   slickbar = if waybarStyle == "slickbar" then true else false;
@@ -27,7 +27,7 @@ in {
   terminal = "alacritty";
 
   # System Settings
-  clock24h = false;
+  clock24h = true;
   theLocale = "en_US.UTF-8";
   theKBDLayout = "us";
   theSecondKBDLayout = "us";
@@ -43,8 +43,8 @@ in {
   sdl-videodriver = "x11"; # Either x11 or wayland ONLY. Games might require x11 set here
   # For Hybrid Systems intel-nvidia
   # Should Be Used As gpuType
-  cpuType = "amd";
-  gpuType = "amd";
+  cpuType = "intel";
+  gpuType = "intel";
 
   # Nvidia Hybrid Devices
   # ONLY NEEDED FOR HYBRID
@@ -67,7 +67,7 @@ in {
   # Enable Flatpak & Larger Programs
   flatpak = true;
   kdenlive = true;
-  blender = false;
+  blender = true;
 
   # Enable Support For
   # Logitech Devices

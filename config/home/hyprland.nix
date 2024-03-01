@@ -171,7 +171,8 @@ in with lib; {
       bind = ${modifier},V,exec,cliphist list | rofi -dmenu | cliphist decode | wl-copy
       bind = ${modifier},Space,togglefloating,
       bind = ${modifier}SHIFT,P,exec, hyprpicker --autocopy
-      bind = ${modifier}SHIFT,C,exit,
+      bind = ${modifier}SHIFT,C,exec,${terminal} -e kalker
+      bind = ${modifier}SHIFT,Z,exec, pypr zoom
 
       bind = ${modifier}SHIFT,N,exec, sh ~/zaneyos/config/home/files/dmenu_iptv
       bind = ${modifier}SHIFT,left,movewindow,l

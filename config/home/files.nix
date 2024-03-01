@@ -34,4 +34,6 @@
     source = ./files/joshuto/preview_file.sh;
     executable = true;
   };
+  home.file.".config/hypr/pyprland.toml".source = ./files/pyprland.toml;
+
 }
