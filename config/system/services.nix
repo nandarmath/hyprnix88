@@ -57,7 +57,7 @@
   services.tlp.enable = true;
 
   # Battery power management
-  services.upower.enable = true;
+  services.upower.enable = false;
 
 
   # Enable NGINX
