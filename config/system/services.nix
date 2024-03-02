@@ -54,8 +54,14 @@
     package = pkgs.cloudflared;
   };
   # For thinkpad
-  services.tlp.enable = true;
+  services.tlp ={ 
+    enable = true;
+    settings = {
+      START_CHARGE_THRESH_BAT0=75;
+      STOP_CHARGE_THRESH_BAT0=90;
 
+    };
+  };
   # Battery power management
   services.upower.enable = false;
 
