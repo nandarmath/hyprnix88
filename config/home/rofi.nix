@@ -1,5 +1,10 @@
 { pkgs, config, ... }:
 
+
+programs.rofi ={
+  enable = true;
+  plugins = [pkgs.rofi-calc];
+};
 let
   palette = config.colorScheme.palette;
 in {

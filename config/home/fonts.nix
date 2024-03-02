@@ -22,6 +22,7 @@
     jetbrains-mono
     meslo-lg
     ubuntu_font_family
+    helvetica-neue-lt-std
   ];
 }
 
