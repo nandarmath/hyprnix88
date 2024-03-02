@@ -1,13 +1,13 @@
 { pkgs, config, ... }:
 
 
-programs.rofi ={
-  enable = true;
-  plugins = [pkgs.rofi-calc];
-};
 let
   palette = config.colorScheme.palette;
 in {
+  programs.rofi = {
+      enable = true;
+      plugins = [pkgs.rofi-calc];
+    };
   home.file.".config/rofi/config.rasi".text = ''
     @theme "/dev/null"
 
