@@ -23,7 +23,7 @@
       fsType = "vfat";
     };
 
-  fileSystems."~/Data" =
+  fileSystems."/home/nandar/Data" =
     { device = "/dev/disk/by-uuid/822EACDE2EACCD0B";
       fsType = "ntfs";
     };
