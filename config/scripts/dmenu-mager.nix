@@ -49,6 +49,7 @@ pkgs.writeShellScriptBin "dmenu-mager" ''
     [ "Registrasi UNY",         "firefox --new-window --app=https://registrasi.uny.ac.id/" ],
     [ "BeSmart UNY",            "firefox --new-window --app=https://besmart.uny.ac.id/" ],
     [ "E-Service UNY",          "firefox --new-window --app=https://eservice.uny.ac.id/" ],
+    [ "YouTube",                "chromium --app=https://youtube.com/" ],
     [ "Pusdapendik",            "firefox --new-window --app=https://pusdapendik.sultengprov.go.id/" ],
     [ "Gitlab",                 "firefox --new-window --app=https://gitlab.com/" ],
     [ "trello",                 "firefox --new-window --app=https://trello.com/" ],
