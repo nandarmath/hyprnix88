@@ -80,6 +80,11 @@
       tidyverse
       ggimage
       Hotelling
+      psych
+      MCMCpack
+      pastecs
+      doBy
+      ICSNP
 
 
 

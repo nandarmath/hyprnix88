@@ -15,6 +15,7 @@ let
     pyreadstat
     markdown
     pulp
+    pip
 
 
 

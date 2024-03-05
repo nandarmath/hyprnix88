@@ -64,6 +64,7 @@
   };
   # Battery power management
   services.upower.enable = false;
+  
 
 
   # Enable NGINX

@@ -119,6 +119,7 @@ in with lib; {
       exec-once = xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2
       exec-once = hyprctl setcursor Bibata-Modern-Ice 24
       exec-once = swww init
+      exec-once = pyprland
       exec-once = waybar
       exec-once = wl-paste --type text --watch cliphist store #Stores only text data
       exec-once = wl-paste --type image --watch cliphist store #Stores only image data

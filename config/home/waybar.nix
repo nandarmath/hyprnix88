@@ -16,8 +16,8 @@ in with lib; {
       else [ "network" "pulseaudio" "cpu" "hyprland/workspaces" "memory" "disk" "clock" ];
       modules-left = if simplebar == true then ["custom/startmenu" "hyprland/workspaces" "cpu" "memory" "network"  ]
       else [ "custom/startmenu" "hyprland/window" ];
-      modules-right = if simplebar == true then [ "idle_inhibitor" "custom/themeselector" "custom/notification" "pulseaudio" "clock"  "tray" ]
-      else [ "idle_inhibitor" "custom/themeselector" "custom/notification" "battery" "tray" ];
+      modules-right = if simplebar == true then [ "custom/keyboard" "idle_inhibitor" "custom/themeselector"  "custom/notification" "pulseaudio" "clock"  "tray" ]
+      else ["custom/keyboard" "idle_inhibitor" "custom/themeselector" "custom/notification" "battery" "tray" ];
 
       "hyprland/workspaces" = {
       	format = if simplebar == true then "{name}" else "{icon}";
@@ -86,6 +86,12 @@ in with lib; {
         format = "";
         # exec = "theme-selector";
         on-click = "sleep 0.1 && theme-selector";
+      };
+      "custom/keyboard" = {
+        tooltip = false;
+        format = "⌨️;
+        # exec = "wvkbd_sh";
+        on-click = "wvkbd_sh";
       };
       "custom/startmenu" = {
         tooltip = false;
@@ -465,6 +471,24 @@ in with lib; {
 	''}
       }
       #custom-themeselector {
+    	color: #${palette.base0D};
+	${if slickbar == true then ''
+	  background: #${palette.base00};
+	  border-radius: 15px 50px 15px 50px;
+	  margin: 5px;
+	  padding: 2px 20px;
+	'' else if simplebar == true then ''
+	  color: #${config.colorScheme.colors.base05};
+          background: transparent;   
+	  margin: 4px;
+	'' else ''
+	  background: #${palette.base01};
+	  margin: 4px;
+	  padding: 2px 10px;
+	  border-radius: 10px;
+	''}
+      }
+      #custom-keyboard {
     	color: #${palette.base0D};
 	${if slickbar == true then ''
 	  background: #${palette.base00};
