@@ -1,6 +1,4 @@
-{pkgs}:
-pkgs.writeShellScriptBin "wvkbd_sh" ''
-
+#!bin/bash
 # This script causes the Waybar custom/keyboard module to check if wvkbd-mobintl process is running.  If it is running, then kill it. If it isn't running execute. Otherwise do nothing.
 
 # Store output of command
@@ -13,6 +11,3 @@ case $OUTPUT in
 esac
 
 echo 'f'
-
-
-''

@@ -91,7 +91,7 @@ in with lib; {
         tooltip = false;
         format = "⌨️";
         # exec = "wvkbd_sh";
-        on-click = "wvkbd_sh";
+        on-click = "exec sh /home/nandar/zaneyos/config/home/files/wvkbd.sh";
       };
       "custom/startmenu" = {
         tooltip = false;
