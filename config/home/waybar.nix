@@ -89,7 +89,7 @@ in with lib; {
       };
       "custom/keyboard" = {
         tooltip = false;
-        format = "⌨️;
+        format = "⌨️";
         # exec = "wvkbd_sh";
         on-click = "wvkbd_sh";
       };
