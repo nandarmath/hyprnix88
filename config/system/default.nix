@@ -29,5 +29,6 @@
     ./rstudio.nix
     ./docker.nix
     ./obs.nix
+    ./power.nix
   ];
 }
