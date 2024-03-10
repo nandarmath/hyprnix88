@@ -11,7 +11,7 @@
 #
 {
   virtualisation.docker = {
-    enable = true;
+    enable = false;
     enableOnBoot = true;
     #inherit storageDriver;
     autoPrune.enable = true;

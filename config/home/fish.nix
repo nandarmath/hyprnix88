@@ -122,7 +122,6 @@ let inherit (import ../../options.nix) flakeDir theShell; in
           #lal="lsd -al";
           #".."="cd ..";
           };
-
         };
       };
 

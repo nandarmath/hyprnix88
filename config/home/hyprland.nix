@@ -27,7 +27,7 @@ in with lib; {
       general {
         gaps_in = 2
         gaps_out = 4
-        border_size = 2
+        border_size = 4
         col.active_border = rgba(${theme.base0C}ff) rgba(${theme.base0D}ff) rgba(${theme.base0B}ff) rgba(${theme.base0E}ff) 45deg
         col.inactive_border = rgba(${theme.base00}cc) rgba(${theme.base01}cc) 45deg
         layout = dwindle
@@ -48,6 +48,7 @@ in with lib; {
       env = NIXOS_OZONE_WL, 1
       env = NIXPKGS_ALLOW_UNFREE, 1
       env = XDG_CURRENT_DESKTOP,Hyprland
+      env = XDG_CURRENT_DESKTOP,sway
       env = XDG_SESSION_TYPE,wayland
       env = XDG_SESSION_DESKTOP,Hyprland
       env = GDK_BACKEND,wayland,x11
@@ -119,7 +120,7 @@ in with lib; {
       exec-once = xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2
       exec-once = hyprctl setcursor Bibata-Modern-Ice 24
       exec-once = swww init
-      exec-once = pyprland
+      exec-once = pypr
       exec-once = waybar
       exec-once = wl-paste --type text --watch cliphist store #Stores only text data
       exec-once = wl-paste --type image --watch cliphist store #Stores only image data
@@ -174,6 +175,7 @@ in with lib; {
       bind = ${modifier}SHIFT,P,exec, hyprpicker --autocopy
       bind = ${modifier}SHIFT,C,exec,${terminal} -e kalker
       bind = ${modifier}SHIFT,Z,exec, pypr zoom
+      bind = ${modifier}SHIFT,A,exec, pypr expose
 
       bind = ${modifier}SHIFT,N,exec, sh ~/zaneyos/config/home/files/dmenu_iptv
       bind = ${modifier}SHIFT,left,movewindow,l
@@ -307,7 +309,8 @@ in with lib; {
       windowrulev2 = float,title:^(branchdialog)$
       windowrulev2 = float,title:^(Confirm to replace files)
       windowrulev2 = float,title:^(File Operation Progress)
-
+      windowrulev2=move 0 0,title:^(flameshot)
+      windowrulev2=nofullscreenrequest,title:^(flameshot)
 
 
 

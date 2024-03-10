@@ -6,14 +6,14 @@
   services.tlp = {
     enable = true;
     settings = {
-      TLP_WARN_LEVEL = 0;
+      TLP_WARN_LEVEL = 10;
       # Audio
       SOUND_POWER_SAVE_ON_AC = 0;
       SOUND_POWER_SAVE_ON_BAT = 1;
       SOUND_POWER_SAVE_CONTROLLER = "Y";
       # Battery Care
-      START_CHARGE_THRESH_BAT1 = 3;
-      STOP_CHARGE_THRESH_BAT1 = 95;
+      START_CHARGE_THRESH_BAT0 = 75;
+      STOP_CHARGE_THRESH_BAT0 = 95;
       RESTORE_THRESHOLDS_ON_BAT = 1;
       NATACPI_ENABLE = 1;
       # Drive Bay - don't have one so all features on
