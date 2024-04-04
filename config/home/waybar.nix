@@ -10,7 +10,7 @@ in with lib; {
     package = pkgs.waybar;
     settings = [{
       layer = "top";
-      position = "bottom";
+      position = "top";
 
       modules-center = if simplebar == true then [ "hyprland/window" ] 
       else [ "network" "pulseaudio" "cpu" "hyprland/workspaces" "memory" "disk" "clock" ];

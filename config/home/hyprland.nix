@@ -115,12 +115,14 @@ in with lib; {
         }
       }
       exec-once = $POLKIT_BIN
+      #exec-once = xdg_sh
       exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
       exec-once = systemctl --user import-environment QT_QPA_PLATFORMTHEME WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
       exec-once = xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2
       exec-once = hyprctl setcursor Bibata-Modern-Ice 24
       exec-once = swww init
       exec-once = pypr
+      exec-once = nwg-dock-hyprland -d
       exec-once = waybar
       exec-once = wl-paste --type text --watch cliphist store #Stores only text data
       exec-once = wl-paste --type image --watch cliphist store #Stores only image data
@@ -146,6 +148,7 @@ in with lib; {
 	bind = ${modifier},W,exec,${browser}
       ''}
       bind = ${modifier},M,exec,emopicker9000
+      bind = ${modifier},N,exec,joplin-desktop
       bind = ${modifier},S,exec,screenshootin
       #bind = ${modifier}SHIFT,exec, ~/zaneyos/config/home/files/womic.sh
       bind = ${modifier},D,exec,discord

@@ -1,0 +1,25 @@
+{ pkgs, lib, config, ... }:
+{
+services.xserver.desktopManager.plasma6 = {
+  enable = true;
+  enableQt5Integration = true;
+  };
+
+environment.plasma6.excludePackages = with pkgs; [
+  gwenview
+  elisa
+  konsole
+  dolphin
+  okular
+  spectacle
+  ark
+  orca
+
+  ];
+
+
+
+
+
+
+}

@@ -85,6 +85,7 @@
       pastecs
       doBy
       ICSNP
+      quarto
 
 
 

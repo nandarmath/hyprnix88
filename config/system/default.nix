@@ -30,6 +30,7 @@
     ./docker.nix
     ./obs.nix
     ./power.nix
-    ./moodle.nix
+    #./moodle.nix
+    #./kde.nix
   ];
 }

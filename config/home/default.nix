@@ -22,6 +22,7 @@
     ./fish.nix
     ./tex.nix
     ./fonts.nix
+    #./kde.nix
 
     # Place Home Files Like Pictures
     ./files.nix
