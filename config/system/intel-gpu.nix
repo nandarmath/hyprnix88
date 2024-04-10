@@ -13,9 +13,11 @@ lib.mkIf ("${gpuType}" == "intel") {
   hardware.opengl = {
     extraPackages = with pkgs; [
       intel-media-driver
-      vaapiIntel
+      intel-vaapi-driver
+      #vaapiIntel
       vaapiVdpau
       libvdpau-va-gl
     ];
   };
+  environment.sessionVariables ={ LIBVA_DRIVER_NAME = "iHD";};
 }

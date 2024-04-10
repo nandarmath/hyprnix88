@@ -2,7 +2,7 @@
 {
   environment.systemPackages = with pkgs;let
     list-packages = with rPackages;[
-      quarto
+       quarto
        AER
        Amelia
        AmesHousing
@@ -85,7 +85,10 @@
       pastecs
       doBy
       ICSNP
-      quarto
+      scales
+      gt
+      webr
+
 
 
 

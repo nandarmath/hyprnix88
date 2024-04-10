@@ -14,7 +14,7 @@ in {
   hostname = "${hostname}";
   gitUsername = "nandarsigma06";
   gitEmail = "nandarsigma06@gmail.com";
-  theme = "espresso";
+  theme = "ayu-light";
   slickbar = if waybarStyle == "slickbar" then true else false;
   simplebar = if waybarStyle == "simplebar" then true else false;
   borderAnim = true;
