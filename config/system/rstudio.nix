@@ -88,6 +88,26 @@
       scales
       gt
       webr
+      Morpho
+      MVN
+      agricolae
+      here
+      knitr
+      tidytext
+      kableExtra
+      ggthemes
+      ggdag
+      textclean
+      wordcloud
+      colourpicker
+      esquisse
+      httr2
+      sf
+      leaflet
+      
+
+
+
 
 
 
