@@ -14,10 +14,12 @@ in {
   hostname = "${hostname}";
   gitUsername = "nandarsigma06";
   gitEmail = "nandarsigma06@gmail.com";
-  theme = "ayu-light";
-  slickbar = if waybarStyle == "slickbar" then true else false;
-  simplebar = if waybarStyle == "simplebar" then true else false;
+  theme = "atelier-heath-light";
+# slickbar = if waybarStyle == "slickbar" then true else false;
+# simplebar = if waybarStyle == "simplebar" then true else false;
   borderAnim = true;
+  bar-number = true;
+  waybarAnim = true;
   browser = "firefox";
   wallpaperGit = "https://gitlab.com/nandarsigma06/Wallpaper.git"; # This will give you my wallpapers
   # ^ (use as is or replace with your own repo - removing will break the wallsetter script) 

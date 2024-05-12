@@ -31,6 +31,7 @@ in {
     (import ./../scripts/dmenu_dns.nix { inherit pkgs; })
     (import ./../scripts/dmenu_translate.nix { inherit pkgs; })
     (import ./../scripts/joshuto-wrapper.nix { inherit pkgs; })
+    (import ./../scripts/list-hypr-bindings.nix { inherit pkgs; })
     #(import ./../scripts/wvkbd.nix { inherit pkgs; })
   ];
 

@@ -9,7 +9,7 @@
     wget curl git cmatrix lolcat neofetch htop btop libvirt
     polkit_gnome ntfs3g lm_sensors unzip unrar libnotify eza pipewire wireplumber qt6.qtwayland qt5.qtwayland
     v4l-utils ydotool wl-clipboard socat cowsay lsd lshw
-    pkg-config meson hugo gnumake ninja go nodejs symbola
+    pkg-config meson protonvpn-cli hugo gnumake ninja go nodejs symbola
     noto-fonts-color-emoji material-icons brightnessctl
     toybox virt-viewer swappy ripgrep appimage-run pdftk poppler_utils
     networkmanagerapplet yad bluez pulseaudio wayland-utils xdg-utils

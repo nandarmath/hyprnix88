@@ -1,8 +1,9 @@
-{ pkgs, config, lib, ... }:
+{ pkgs, config, lib, host, ... }:
 
 let
   palette = config.colorScheme.palette;
-  inherit (import ../../options.nix) slickbar simplebar clock24h;
+  betterTransition = "all 0.3s cubic-bezier(.55,-0.68,.48,1.682)";
+  inherit (import ../../options.nix) bar-number clock24h waybarAnim;
 in with lib; {
   # Configure & Theme Waybar
   programs.waybar = {
@@ -12,15 +13,12 @@ in with lib; {
       layer = "top";
       position = "top";
 
-      modules-center = if simplebar == true then [ "hyprland/window" ] 
-      else [ "network" "pulseaudio" "cpu" "hyprland/workspaces" "memory" "disk" "clock" ];
-      modules-left = if simplebar == true then ["custom/startmenu" "hyprland/workspaces" "cpu" "memory" "network"  ]
-      else [ "custom/startmenu" "hyprland/window" ];
-      modules-right = if simplebar == true then [ "custom/keyboard" "idle_inhibitor" "custom/themeselector"  "custom/notification" "pulseaudio" "clock"  "tray" ]
-      else ["custom/keyboard" "idle_inhibitor" "custom/themeselector" "custom/notification" "battery" "tray" ];
+      modules-center = [ "hyprland/workspaces" ] ;
+      modules-left = [ "custom/startmenu" "hyprland/window" "pulseaudio" "cpu" "memory"];
+      modules-right = [ "custom/hyprbindings" "custom/exit" "idle_inhibitor" "custom/themeselector" "custom/notification" "battery" "clock" "tray" ];
 
       "hyprland/workspaces" = {
-      	format = if simplebar == true then "{name}" else "{icon}";
+      	format = if bar-number == true then "{name}" else "{icon}";
       	format-icons = {
           default = " ";
           active = " ";
@@ -30,14 +28,15 @@ in with lib; {
       	on-scroll-down = "hyprctl dispatch workspace e-1";
       };
       "clock" = {
-	format = if clock24h == true then ''{: %H:%M}'' 
-	else ''{: %I:%M %p}'';
+	format = if clock24h == true then '' {:L%H:%M}'' 
+	else '' {:L%I:%M %p}'';
       	tooltip = true;
 	tooltip-format = "<big>{:%A, %d.%B %Y }</big><tt><small>{calendar}</small></tt>";
       };
       "hyprland/window" = {
       	max-length = 25;
-      	separate-outputs = false;
+        separate-outputs = false;
+        rewrite = { "" = " 🙈 No Windows? "; };
       };
       "memory" = {
       	interval = 5;
@@ -79,31 +78,34 @@ in with lib; {
           car = "";
           default = ["" "" ""];
         };
-        on-click = "pavucontrol";
+        on-click = "sleep 0.1 && pavucontrol";
       };
       "custom/themeselector" = {
         tooltip = false;
         format = "";
-        # exec = "theme-selector";
         on-click = "sleep 0.1 && theme-selector";
       };
-      "custom/keyboard" = {
+      "custom/exit" = {
         tooltip = false;
-        format = "⌨️";
-        # exec = "wvkbd_sh";
-        on-click = "exec sh /home/nandar/zaneyos/config/home/files/wvkbd.sh";
+        format = "";
+        on-click = "sleep 0.1 && wlogout";
       };
       "custom/startmenu" = {
         tooltip = false;
         format = " ";
         # exec = "rofi -show drun";
-        on-click = "rofi-launcher";
+        on-click = "sleep 0.1 && rofi-launcher";
+      };
+      "custom/hyprbindings" = {
+        tooltip = false;
+        format = " Bindings";
+        on-click = "sleep 0.1 && list-hypr-bindings";
       };
       "idle_inhibitor" = {
         format = "{icon}";
         format-icons = {
-            activated = " ";
-            deactivated = " ";
+            activated = "";
+            deactivated = "";
         };
         tooltip = "true";
       };
@@ -123,7 +125,7 @@ in with lib; {
         return-type = "json";
         exec-if = "which swaync-client";
         exec = "swaync-client -swb";
-        on-click = "task-waybar";
+        on-click = "sleep 0.1 && task-waybar";
         escape = true;
       };
       "battery" = {
@@ -146,122 +148,81 @@ in with lib; {
     	font-weight: bold;
       }
       window#waybar {
-	${if slickbar == true then ''
-	  background-color: rgba(26,27,38,0);
-	  border-bottom: 1px solid rgba(26,27,38,0);
-	  border-radius: 0px;
-	  color: #${palette.base0F};
-	'' else if simplebar == true then ''
-	  color: #${config.colorScheme.colors.base05};
-	  background-color: #${palette.base00};
-	  border-radius: 0px;
-	  border-bottom: 1px solid rgba(26,27,38,0);
-	'' else ''
-	  background-color: #${palette.base00};
-	  border-bottom: 1px solid #${palette.base00};
-	  border-radius: 0px;
-	  color: #${palette.base0F};
-	''}
+	background-color: #${palette.base00};
+	border-bottom: 1px solid rgba(26,27,38,0);
+	border-radius: 0px;
+	color: #${palette.base0F};
       }
       #workspaces {
-	${if slickbar == true then ''
-	  background: linear-gradient(180deg, #${palette.base00}, #${palette.base01});
-	  margin: 5px;
-	  padding: 0px 1px;
-	  border-radius: 15px;
-	  border: 0px;
-	  font-style: normal;
-	  color: #${palette.base00};
-	'' else if simplebar == true then ''
-	  color: #${config.colorScheme.colors.base05};
-          background: transparent;   
-	  border-radius: 0px;
-	  border: 0px;
-	  font-style: normal;
-	'' else ''
-	  background: linear-gradient(45deg, #${palette.base01}, #${palette.base01});
-	  margin: 4px;
-	  padding: 0px 1px;
-	  border-radius: 10px;
-	  border: 0px;
-	  font-style: normal;
-	  color: #${palette.base00};
-	''}
+	background: #${palette.base01};
+	margin: 2px;
+	padding: 0px 1px;
+	border-radius: 15px;
+	border: 0px;
+	font-style: normal;
+	color: #${palette.base00};
       }
       #workspaces button {
-	${if slickbar == true then ''
-	  padding: 0px 5px;
-	  margin: 4px 3px;
-	  border-radius: 15px;
-	  border: 0px;
-	  color: #${palette.base00};
-	  background: linear-gradient(45deg, #${palette.base0D}, #${palette.base0E});
-	  opacity: 0.5;
-	  transition: all 0.3s ease-in-out;
-	'' else if simplebar == true then ''
-	  color: #${config.colorScheme.colors.base05};
-          background: transparent;   
-	  opacity: 0.3;
-	  border: 0px;
-	  transition: all 0.3s ease-in-out;
-	'' else ''
 	  padding: 0px 5px;
 	  margin: 4px 3px;
 	  border-radius: 10px;
 	  border: 0px;
 	  color: #${palette.base00};
-	  background: linear-gradient(45deg, #${palette.base06}, #${palette.base0E});
+          background: linear-gradient(45deg, #${palette.base0E}, #${palette.base0F}, #${palette.base0D}, #${palette.base09});
+          background-size: 300% 300%;
+          ${if waybarAnim == true then ''
+            animation: gradient_horizontal 15s ease infinite;
+          '' else '' 
+          ''}
 	  opacity: 0.5;
-	  transition: all 0.3s ease-in-out;
-	''}
+          transition: ${betterTransition};
       }
       #workspaces button.active {
-	${if slickbar == true then ''
-	  padding: 0px 5px;
-	  margin: 4px 3px;
-	  border-radius: 15px;
-	  border: 0px;
-	  color: #${palette.base00};
-	  background: linear-gradient(45deg, #${palette.base0D}, #${palette.base0E});
-	  opacity: 1.0;
-	  min-width: 40px;
-	  transition: all 0.3s ease-in-out;
-	'' else if simplebar == true then ''
-	  color: #${config.colorScheme.colors.base05};
-          background: transparent;   
-	  opacity: 1.0;
-	  border: 0px;
-	  transition: all 0.3s ease-in-out;
-	'' else ''
 	  padding: 0px 5px;
 	  margin: 4px 3px;
 	  border-radius: 10px;
 	  border: 0px;
 	  color: #${palette.base00};
-	  background: linear-gradient(45deg, #${palette.base06}, #${palette.base0E});
+          background: linear-gradient(45deg, #${palette.base0E}, #${palette.base0F}, #${palette.base0D}, #${palette.base09});
+          background-size: 300% 300%;
+          ${if waybarAnim == true then ''
+            animation: gradient_horizontal 15s ease infinite;
+          '' else '' 
+          ''}
+          transition: ${betterTransition};
 	  opacity: 1.0;
 	  min-width: 40px;
-	  transition: all 0.3s ease-in-out;
-	''}
       }
       #workspaces button:hover {
-	${if slickbar == true then ''
-	  border-radius: 15px;
-	  color: #${palette.base00};
-	  background: linear-gradient(45deg, #${palette.base0D}, #${palette.base0E});
-	  opacity: 0.8;
-	'' else if simplebar == true then ''
-	  color: #${config.colorScheme.colors.base05};
-          background: transparent;   
-	  opacity: 0.8;
-	  border: 0px;
-	  transition: all 0.3s ease-in-out;
-	'' else ''
 	  border-radius: 10px;
 	  color: #${palette.base00};
-	  background: linear-gradient(45deg, #${palette.base06}, #${palette.base0E});
+          background: linear-gradient(45deg, #${palette.base0E}, #${palette.base0F}, #${palette.base0D}, #${palette.base09});
+          background-size: 300% 300%;
+          ${if waybarAnim == true then ''
+            animation: gradient_horizontal 15s ease infinite;
+          '' else '' 
+          ''}
 	  opacity: 0.8;
-	''}
+          transition: ${betterTransition};
+      }
+      @keyframes gradient_horizontal {
+	0% {
+	  background-position: 0% 50%;
+	}
+	50% {
+	  background-position: 100% 50%;
+	}
+	100% {
+	  background-position: 0% 50%;
+	}
+      }
+      @keyframes swiping {
+        0% {
+	  background-position: 0% 200%;
+	}
+	100% {
+	  background-position: 200% 200%;
+	}
       }
       tooltip {
 	background: #${palette.base00};
@@ -272,275 +233,119 @@ in with lib; {
 	color: #${palette.base07};
       }
       #window {
-	${if slickbar == true then ''
-	  color: #${palette.base05};
-	  background: #${palette.base00};
-	  border-radius: 50px 15px 50px 15px;
-	  margin: 5px;
-	  padding: 2px 20px;
-	'' else if simplebar == true then ''
-	  color: #${config.colorScheme.colors.base05};
-          background: transparent;   
-	  margin: 4px;
-	'' else ''
 	  margin: 4px;
 	  padding: 2px 10px;
 	  color: #${palette.base05};
 	  background: #${palette.base01};
 	  border-radius: 10px;
-	''}
       }
       #memory {
    	color: #${palette.base0F};
-	${if slickbar == true then ''
-	  background: #${palette.base00};
-	  border-radius: 15px 50px 15px 50px;
-	  margin: 5px;
-	  padding: 2px 20px;
-	'' else if simplebar == true then ''
-	  color: #${config.colorScheme.colors.base05};
-          background: transparent;   
-	  margin: 4px;
-	'' else ''
-	  background: #${palette.base01};
-	  margin: 4px;
-	  padding: 2px 10px;
-	  border-radius: 10px;
-	''}
+	background: #${palette.base01};
+	margin: 4px;
+	padding: 2px 10px;
+	border-radius: 10px;
       }
       #clock {
-    	color: #${palette.base0B};
-	${if slickbar == true then ''
-	  background: #${palette.base00};
-	  border-radius: 15px 50px 15px 50px;
-	  margin: 5px;
-	  padding: 2px 20px;
-	'' else if simplebar == true then ''
-	  color: #${config.colorScheme.colors.base05};
-          background: transparent;   
-	  margin: 4px;
-	'' else ''
-	  background: #${palette.base01};
-	  margin: 4px;
-	  padding: 2px 10px;
-	  border-radius: 10px;
-	''}
-      }
-      #idle_inhibitor {
-    	color: #${palette.base0A};
-	${if slickbar == true then ''
-	  background: #${palette.base00};
-	  border-radius: 50px 15px 50px 15px;
-	  margin: 5px;
-	  padding: 2px 20px;
-	'' else if simplebar == true then ''
-	  color: #${config.colorScheme.colors.base05};
-          background: transparent;   
-	  margin: 4px;
-	'' else ''
-	  background: #${palette.base01};
-	  margin: 4px;
-	  padding: 2px 10px;
-	  border-radius: 10px;
-	''}
+    	color: #${palette.base01};
+        background: linear-gradient(45deg, #${palette.base0C}, #${palette.base0F}, #${palette.base0B}, #${palette.base08});
+        background-size: 300% 300%;
+        ${if waybarAnim == true then ''
+          animation: gradient_horizontal 15s ease infinite;
+        '' else '' 
+        ''}
+	margin: 4px;
+	padding: 2px 10px;
+	border-radius: 10px;
       }
       #cpu {
     	color: #${palette.base07};
-	${if slickbar == true then ''
-	  background: #${palette.base00};
-	  border-radius: 50px 15px 50px 15px;
-	  margin: 5px;
-	  padding: 2px 20px;
-	'' else if simplebar == true then ''
-	  color: #${config.colorScheme.colors.base05};
-          background: transparent;   
-	  margin: 4px;
-	'' else ''
-	  background: #${palette.base01};
-	  margin: 4px;
-	  padding: 2px 10px;
-	  border-radius: 10px;
-	''}
+	background: #${palette.base01};
+	margin: 4px;
+	padding: 2px 10px;
+	border-radius: 10px;
       }
       #disk {
     	color: #${palette.base03};
-	${if slickbar == true then ''
-	  background: #${palette.base00};
-	  border-radius: 15px 50px 15px 50px;
-	  margin: 5px;
-	  padding: 2px 20px;
-	'' else if simplebar == true then ''
-	  color: #${config.colorScheme.colors.base05};
-          background: transparent;   
-	  margin: 4px;
-	'' else ''
-	  background: #${palette.base01};
-	  margin: 4px;
-	  padding: 2px 10px;
-	  border-radius: 10px;
-	''}
+	background: #${palette.base01};
+	margin: 4px;
+	padding: 2px 10px;
+	border-radius: 10px;
       }
       #battery {
     	color: #${palette.base08};
-	${if slickbar == true then ''
-	  background: #${palette.base00};
-	  border-radius: 15px 50px 15px 50px;
-	  margin: 5px;
-	  padding: 2px 20px;
-	'' else if simplebar == true then ''
-	  color: #${config.colorScheme.colors.base05};
-          background: transparent;   
-	  margin: 4px;
-	'' else ''
-	  background: #${palette.base01};
-	  margin: 4px;
-	  padding: 2px 10px;
-	  border-radius: 10px;
-	''}
+	background: #${palette.base01};
+	margin: 4px;
+	padding: 2px 10px;
+	border-radius: 10px;
       }
       #network {
     	color: #${palette.base09};
-	${if slickbar == true then ''
-	  background: #${palette.base00};
-	  border-radius: 50px 15px 50px 15px;
-	  margin: 5px;
-	  padding: 2px 20px;
-	'' else if simplebar == true then ''
-	  color: #${config.colorScheme.colors.base05};
-          background: transparent;   
-	  margin: 4px;
-	'' else ''
-	  background: #${palette.base01};
-	  margin: 4px;
-	  padding: 2px 10px;
-	  border-radius: 10px;
-	''}
+	background: #${palette.base01};
+	margin: 4px;
+	padding: 2px 10px;
+	border-radius: 10px;
+      }
+      #custom-hyprbindings {
+    	color: #${palette.base0E};
+	background: #${palette.base01};
+	margin: 4px;
+	padding: 2px 10px;
+	border-radius: 10px;
       }
       #tray {
     	color: #${palette.base05};
-	${if slickbar == true then ''
-	  background: #${palette.base00};
-	  border-radius: 15px 0px 0px 50px;
-	  margin: 5px 0px 5px 5px;
-	  padding: 2px 20px;
-	'' else if simplebar == true then ''
-	  color: #${config.colorScheme.colors.base05};
-          background: transparent;   
-	  margin: 4px;
-	'' else ''
-	  background: #${palette.base01};
-	  margin: 4px;
-	  padding: 2px 10px;
-	  border-radius: 10px;
-	''}
+	background: #${palette.base01};
+	margin: 4px;
+	padding: 2px 10px;
+	border-radius: 10px;
       }
       #pulseaudio {
     	color: #${palette.base0D};
-	${if slickbar == true then ''
-	  background: #${palette.base00};
-	  border-radius: 50px 15px 50px 15px;
-	  margin: 5px;
-	  padding: 2px 20px;
-	'' else if simplebar == true then ''
-	  color: #${config.colorScheme.colors.base05};
-          background: transparent;   
-	  margin: 4px;
-	'' else ''
-	  background: #${palette.base01};
-	  margin: 4px;
-	  padding: 2px 10px;
-	  border-radius: 10px;
-	''}
+	background: #${palette.base01};
+	margin: 4px;
+	padding: 2px 10px;
+	border-radius: 10px;
       }
       #custom-notification {
     	color: #${palette.base0C};
-	${if slickbar == true then ''
-	  background: #${palette.base00};
-	  border-radius: 15px 50px 15px 50px;
-	  margin: 5px;
-	  padding: 2px 20px;
-	'' else if simplebar == true then ''
-	  color: #${config.colorScheme.colors.base05};
-          background: transparent;   
-	  margin: 4px;
-	'' else ''
-	  background: #${palette.base01};
-	  margin: 4px;
-	  padding: 2px 10px;
-	  border-radius: 10px;
-	''}
+	background: #${palette.base01};
+	margin: 4px;
+	padding: 2px 10px;
+	border-radius: 10px;
       }
       #custom-themeselector {
     	color: #${palette.base0D};
-	${if slickbar == true then ''
-	  background: #${palette.base00};
-	  border-radius: 15px 50px 15px 50px;
-	  margin: 5px;
-	  padding: 2px 20px;
-	'' else if simplebar == true then ''
-	  color: #${config.colorScheme.colors.base05};
-          background: transparent;   
-	  margin: 4px;
-	'' else ''
-	  background: #${palette.base01};
-	  margin: 4px;
-	  padding: 2px 10px;
-	  border-radius: 10px;
-	''}
-      }
-      #custom-keyboard {
-    	color: #${palette.base0D};
-	${if slickbar == true then ''
-	  background: #${palette.base00};
-	  border-radius: 15px 50px 15px 50px;
-	  margin: 5px;
-	  padding: 2px 20px;
-	'' else if simplebar == true then ''
-	  color: #${config.colorScheme.colors.base05};
-          background: transparent;   
-	  margin: 4px;
-	'' else ''
-	  background: #${palette.base01};
-	  margin: 4px;
-	  padding: 2px 10px;
-	  border-radius: 10px;
-	''}
+	background: #${palette.base01};
+	margin: 4px 0px;
+	padding: 2px 10px 2px 5px;
+	border-radius: 0px 10px 10px 0px;
       }
       #custom-startmenu {
-    	color: #${palette.base03};
-	${if slickbar == true then ''
-	  background: #${palette.base00};
-	  border-radius: 0px 15px 50px 0px;
-	  margin: 5px 5px 5px 0px;
-	  padding: 2px 20px;
-	'' else if simplebar == true then ''
-	  color: #${config.colorScheme.colors.base05};
-          background: transparent;   
-	  margin: 4px;
-	'' else ''
-	  background: #${palette.base01};
-	  margin: 4px;
-	  padding: 2px 10px;
-	  border-radius: 10px;
-	''}
+    	color: #${palette.base00};
+        background: linear-gradient(45deg, #${palette.base09}, #${palette.base03}, #${palette.base0C}, #${palette.base07});
+        background-size: 300% 300%;
+        ${if waybarAnim == true then ''
+          animation: gradient_horizontal 15s ease infinite;
+        '' else '' 
+        ''}
+	margin: 4px;
+	padding: 2px 10px;
+	border-radius: 10px;
       }
       #idle_inhibitor {
     	color: #${palette.base09};
-	${if slickbar == true then ''
-	  background: #${palette.base00};
-	  border-radius: 15px 50px 15px 50px;
-	  margin: 5px;
-	  padding: 2px 20px;
-	'' else if simplebar == true then ''
-	  color: #${config.colorScheme.colors.base05};
-          background: transparent;   
-	  margin: 4px;
-	'' else ''
-	  background: #${palette.base01};
-	  margin: 4px;
-	  padding: 2px 10px;
-	  border-radius: 10px;
-	''}
+	background: #${palette.base01};
+	margin: 4px 0px;
+	padding: 2px 14px;
+	border-radius: 0px;
+      }
+      #custom-exit {
+    	color: #${palette.base0E};
+	background: #${palette.base01};
+	border-radius: 10px 0px 0px 10px;
+	margin: 4px 0px;
+	padding: 2px 5px 2px 15px;
       } ''
     ];
   };

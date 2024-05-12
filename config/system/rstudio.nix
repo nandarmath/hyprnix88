@@ -104,6 +104,8 @@
       httr2
       sf
       leaflet
+      rvest
+
       
 
 

@@ -193,8 +193,8 @@ in with lib; {
       bind = ${modifier}SHIFT,M,exec,dmenu-mager
       bind = ${modifier}SHIFT,S,exec,rofi-pulse-select sink
       bind = ${modifier}ALT,S,exec,rofi-pulse-select source
-      bind = ${modifier}ALT,R,exec,wf-recorder --audio --file=$HOME/videos/$(date +Rec%Y%m%d_%Hh%Mm%Ss.mp4)
-      bind = ${modifier}CONTROL,R,exec,wf-recorder -g "$(slurp)" --audio --file=$HOME/Videos/$(date +Rec%Y%m%d_%Hh%Mm%Ss.mp4)
+      bind = ${modifier}ALT,R,exec,wf-recorder --audio --file=$HOME/videos/$(date +Rec%d%m%Y_%Hh%Mm%Ss.mp4)
+      bind = ${modifier}CONTROL,R,exec,wf-recorder -g "$(slurp)" --audio --file=$HOME/Videos/$(date +Rec%d%m%Y_%Hh%Mm%Ss.mp4)
       bind = ${modifier},left,movefocus,l
       bind = ${modifier},right,movefocus,r
       bind = ${modifier},up,movefocus,u
@@ -283,6 +283,7 @@ in with lib; {
       windowrulev2 = opacity 0.7 0.7,class:^(Alacritty)$
       windowrule = size 700 550,class:^(Alacritty)$
       windowrulev2 = float,class:^(Alacritty)$
+      windowrulev2 = float,class:^("Quick Format Citation")$
       windowrulev2 = float,class:^(file-roller)$
       windowrulev2 = float,class:^(timeshift-gtk)$
       windowrulev2 = float,class:^(GoldenDict-ng)$
