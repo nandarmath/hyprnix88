@@ -20,7 +20,7 @@ pkgs.writeShellScriptBin "list-hypr-bindings" ''
   " + A" "Rofi App Launcher" "rofi -show drun" \
   " + X" "Kill Focused Window" "killactive" \
   " + SHIFT + W" "Search Websites Like Nix Packages" "web-search" \
-  " + SHIFT + N" "Watch TV" \
+  " + SHIFT + N" "Watch TV" "TV" \
   " + W" "Launch Web Browser" "${browser}" \
   " + M " "Launch Emoji Selector" "emopicker9000" \
   " + S" "Take Screenshot" "screenshootin" \

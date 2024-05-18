@@ -143,9 +143,9 @@ in with lib; {
       bind = ${modifier}SHIFT,W,exec,web-search
       bind = ${modifier}SHIFT,S,exec,swaync-client -rs
       ${if browser == "google-chrome" then ''
-	bind = ${modifier},W,exec,google-chrome-stable
+    	bind = ${modifier},W,exec,google-chrome-stable
       '' else ''
-	bind = ${modifier},W,exec,${browser}
+	    bind = ${modifier},W,exec,${browser}
       ''}
       bind = ${modifier},M,exec,emopicker9000
       bind = ${modifier},N,exec,joplin-desktop
@@ -154,7 +154,7 @@ in with lib; {
       bind = ${modifier},D,exec,discord
       bind = ${modifier},R,exec,libreoffice --writer
       bind = ${modifier},C,exec,libreoffice --calc
-      bind = ${modifier},T,exec,telegram-desktop
+      bind = ${modifier},T,exec,[workspace 9 silent] telegram-desktop
       bind = ${modifier},K,exec, rofi -show calc -modi calc -no-show-match -no-sort
       bind = ${modifier},B,exec, rofi-bluetooth
       bind = ${modifier},Y,exec,kitty -e ytfzf -t
@@ -199,14 +199,16 @@ in with lib; {
       bind = ${modifier},right,movefocus,r
       bind = ${modifier},up,movefocus,u
       bind = ${modifier},down,movefocus,d
-      bind = ${modifier},H,togglespecialworkspace, magic
-      bind = ${modifier},J,movetoworkspace, special:magic
+      #bind = ${modifier},H,togglespecialworkspace, magic
+      #bind = ${modifier},J,movetoworkspace, special:magic
+      bind = ,Print,exec,grim
+      bind = ${modifier},Print,exec, grim | wl-copy
 
 
-     #bind = ${modifier},h,movefocus,l
-     #bind = ${modifier},l,movefocus,r
-     #bind = ${modifier},k,movefocus,u
-     #bind = ${modifier},j,movefocus,d
+      bind = ${modifier},h,movefocus,l
+      bind = ${modifier},l,movefocus,r
+      bind = ${modifier},k,movefocus,u
+      bind = ${modifier},j,movefocus,d
       bind = ${modifier},1,workspace,1
       bind = ${modifier},2,workspace,2
       bind = ${modifier},3,workspace,3
@@ -316,7 +318,12 @@ in with lib; {
       windowrulev2=move 0 0,title:^(flameshot)
       windowrulev2=nofullscreenrequest,title:^(flameshot)
 
-
+      windowrulev2 = workspace 9 silent,class:^(brave-m.facebook.com__-Default)
+      windowrulev2 = workspace 9 silent,title:^(web.whatsapp.com)
+      windowrulev2 = workspace 8 silent,title:^(brave-youtube.com__-Default)
+      windowrulev2 = workspace 7 silent,class:^(libreoffice-calc)
+      windowrulev2 = workspace 6 silent,class:^(libreoffice-writer)
+      windowrulev2 = workspace 5 silent,class:^(libreoffice-impress)
 
 
 

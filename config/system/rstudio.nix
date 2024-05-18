@@ -105,6 +105,13 @@
       sf
       leaflet
       rvest
+      forcats
+      stringr
+      purrr
+      meta
+      metafor
+      tidyr
+      devtools
 
       
 

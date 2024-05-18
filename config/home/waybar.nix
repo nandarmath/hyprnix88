@@ -14,7 +14,7 @@ in with lib; {
       position = "top";
 
       modules-center = [ "hyprland/workspaces" ] ;
-      modules-left = [ "custom/startmenu" "hyprland/window" "pulseaudio" "cpu" "memory"];
+      modules-left = [ "custom/startmenu" "hyprland/window" "pulseaudio" "cpu" "memory" "disk"];
       modules-right = [ "custom/hyprbindings" "custom/exit" "idle_inhibitor" "custom/themeselector" "custom/notification" "battery" "clock" "tray" ];
 
       "hyprland/workspaces" = {

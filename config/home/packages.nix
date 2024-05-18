@@ -9,7 +9,7 @@ in {
     pkgs."${browser}" discord libvirt swww grim slurp gnome.file-roller ffmpeg wf-recorder tree zoxide android-tools libsForQt5.kdeconnect-kde
     swaynotificationcenter nwg-dock-hyprland pyprland pandoc pistol rofi-wayland rofi-power-menu imv transmission-gtk mpv rofi-pulse-select rofi-mpd gitg joshuto vlc xournalpp openboard blender
     rustup wvkbd gparted droidcam thinkpad-scripts cpu-x tenacity pavucontrol rofi-bluetooth pdfarranger chromium tgpt bat scrcpy mpd nodejs_21 jq drawio ferdium rclone rclone-browser krita sweethome3d.application sweethome3d.furniture-editor
-    libreoffice-qt glab webcamoid calibre brave kalker onlyoffice-bin_7_5 jdk inkscape-with-extensions gimp-with-plugins ytfzf kitty ueberzugpp gImageReader tesseract hunspell hunspellDicts.en_US
+    libreoffice-qt onboard glab webcamoid calibre brave kalker onlyoffice-bin_7_5 jdk inkscape-with-extensions gimp-with-plugins ytfzf kitty ueberzugpp gImageReader tesseract hunspell hunspellDicts.en_US
     tdesktop zoom-us rnote pfetch libsForQt5.kget syncthing lunarvim yt-dlp pspp okular goldendict-ng scribus handbrake zotero joplin keepassxc
     spotify swayidle neovide element-desktop swaylock hyprpicker cliphist joplin-desktop
     #(nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
