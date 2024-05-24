@@ -14,7 +14,7 @@
     ./intel-nvidia.nix
     ./kernel.nix
     ./logitech.nix
-    ./neovim.nix
+   # ./neovim.nix
     ./nfs.nix
     ./ntp.nix
     ./nvidia.nix

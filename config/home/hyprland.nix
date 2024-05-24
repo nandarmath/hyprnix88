@@ -15,7 +15,8 @@ in with lib; {
     xwayland.enable = true;
     systemd.enable = true;
     plugins = [
-      # hyprplugins.hyprtrails
+#    hyprplugins.hyprtrails
+#    hyprplugins.hyprbars
     ];
     extraConfig = let
       modifier = "SUPER";
@@ -110,9 +111,15 @@ in with lib; {
         }
       }
       plugin {
-        hyprtrails {
-          color = rgba(${theme.base0A}ff)
-        }
+     #  hyprtrails {
+     #    color = rgba(${theme.base0A}ff)
+     #  }
+     #  hyprbars {
+     #    bar_height = 17
+     #    hyprbars-button = rgba(${theme.base0A}ff), 10, 󰖭, hyprctl dispatch killactive
+     #    hyprbars-button = rgb(eeee11), 10, ,, hyprctl dispatch fullscreen 1
+     #    bar_buttons_alignment = left
+     #  }
       }
       exec-once = $POLKIT_BIN
       #exec-once = xdg_sh
@@ -122,6 +129,7 @@ in with lib; {
       exec-once = hyprctl setcursor Bibata-Modern-Ice 24
       exec-once = swww init
       exec-once = pypr
+      #exec-once = hyprbars
       exec-once = nwg-dock-hyprland -d
       exec-once = waybar
       exec-once = wl-paste --type text --watch cliphist store #Stores only text data
@@ -199,12 +207,12 @@ in with lib; {
       bind = ${modifier},right,movefocus,r
       bind = ${modifier},up,movefocus,u
       bind = ${modifier},down,movefocus,d
-      #bind = ${modifier},H,togglespecialworkspace, magic
-      #bind = ${modifier},J,movetoworkspace, special:magic
+      bind = ${modifier},U,togglespecialworkspace
+      bind = ${modifier}SHIFT,U,movetoworkspace, special
       bind = ,Print,exec,grim
       bind = ${modifier},Print,exec, grim | wl-copy
-
-
+      bind = ${modifier}SHIFT,O,exec,grim -g "$(slurp $SLURP_ARGS)" "tmp.png" && tesseract "tmp.png" - | wl-copy && rm "tmp.png"
+      bind = ${modifier}SHIFT,T,exec,grim -g "$(slurp $SLURP_ARGS)" "tmp.png" && tesseract --oem 3 -l ind "tmp.png" - | wl-copy && rm "tmp.png" 
       bind = ${modifier},h,movefocus,l
       bind = ${modifier},l,movefocus,r
       bind = ${modifier},k,movefocus,u
@@ -247,6 +255,7 @@ in with lib; {
       bindm = ${modifier},mouse:273,resizewindow
       bind = ${modifier}ALT,right, resizeactive, 15 0
       bind = ${modifier}ALT,left, resizeactive, -15 0
+      bind = ${modifier}ALT,N, exec, sticky
       bind = ALT,Tab,cyclenext
       bind = ALT,Tab,bringactivetotop
       bind = ,XF86AudioRaiseVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
@@ -265,7 +274,7 @@ in with lib; {
       # set layout
       bind = ${modifier}ALT, m, exec, hyprctl --batch 'keyword general:layout master'
       bind = ${modifier}ALT, d, exec, hyprctl --batch 'keyword general:layout dwindle'
-
+      bind = ${modifier}SHIFT, B, exec, hyprctl getoption plugin:hyprbars:nobar
 
 
       bind = SUPER,F4,pass,^(com\.obsproject\.Studio)$
@@ -288,6 +297,7 @@ in with lib; {
       windowrulev2 = float,class:^("Quick Format Citation")$
       windowrulev2 = float,class:^(file-roller)$
       windowrulev2 = float,class:^(timeshift-gtk)$
+      windowrulev2 = float,class:^(sticky.py)$
       windowrulev2 = float,class:^(GoldenDict-ng)$
       windowrulev2 = float,class:^(GParted)$
       #windowrulev2 = float,class:^(com.obsproject.Studio)$
@@ -316,7 +326,7 @@ in with lib; {
       windowrulev2 = float,title:^(Confirm to replace files)
       windowrulev2 = float,title:^(File Operation Progress)
       windowrulev2=move 0 0,title:^(flameshot)
-      windowrulev2=nofullscreenrequest,title:^(flameshot)
+      #windowrulev2=nofullscreenrequest,title:^(flameshot)
 
       windowrulev2 = workspace 9 silent,class:^(brave-m.facebook.com__-Default)
       windowrulev2 = workspace 9 silent,title:^(web.whatsapp.com)
