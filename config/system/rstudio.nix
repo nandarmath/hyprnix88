@@ -112,6 +112,21 @@
       metafor
       tidyr
       devtools
+      jmv
+      shiny
+      RColorBrewer
+      raster
+      sf
+      sp
+      #ggsn
+      dbscan
+      #rgdal
+      spatialreg
+      spatial
+      mapview
+      tidyselect
+      
+      
 
       
 

@@ -23,6 +23,7 @@
     ./tex.nix
     ./fonts.nix
     ./wlogout.nix
+    ./yazi.nix
     #./kde.nix
 
     # Place Home Files Like Pictures

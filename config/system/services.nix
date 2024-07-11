@@ -22,7 +22,8 @@
     jack.enable = false;
   };
   networking.firewall.enable = true;
-  networking.firewall.allowedUDPPorts = [49152];
+  networking.firewall.allowedUDPPorts = [49152 443];
+  networking.firewall.allowedTCPPorts = [80 22];
   hardware.pulseaudio.enable = false;
   sound.enable = true;
   security.rtkit.enable = true;
@@ -63,7 +64,7 @@
  #  };
  #};
   # Battery power management
-  services.upower.enable = false;
+  #services.upower.enable = false;
   
 
 

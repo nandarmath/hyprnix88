@@ -17,6 +17,7 @@ lib.mkIf ("${gpuType}" == "intel") {
       #vaapiIntel
       vaapiVdpau
       libvdpau-va-gl
+      intel-compute-runtime
     ];
   };
   environment.sessionVariables ={ LIBVA_DRIVER_NAME = "iHD";};

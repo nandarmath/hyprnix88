@@ -12,7 +12,7 @@ let inherit (import ../../options.nix) flakeDir theShell; in
             h = "hx";
             j = "joshuto";
             n = "nvim";
-            z = "zellij";
+            #z = "zellij";
             lv = "lvim";
 
 	          cat ="bat";

@@ -16,6 +16,8 @@ let
     markdown
     pulp
     pip
+    sympy
+    scikit-learn
 
 
 

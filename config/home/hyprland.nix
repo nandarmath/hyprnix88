@@ -122,7 +122,7 @@ in with lib; {
      #  }
       }
       exec-once = $POLKIT_BIN
-      #exec-once = xdg_sh
+      exec-once = xdg_sh
       exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
       exec-once = systemctl --user import-environment QT_QPA_PLATFORMTHEME WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
       exec-once = xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2
@@ -170,11 +170,11 @@ in with lib; {
       bind = ${modifier},O,exec,obs
       bind = ${modifier},G,exec,gimp
       #bind = ${modifier}SHIFT,G,exec,godot4
-      bind = ${modifier}SHIFT,G,exec,${terminal} -e tgpt
+      bind = ${modifier}SHIFT,G,exec, fish -c record_scree_gif
       bind = ${modifier},E,exec,thunar
       #bind = ${modifier},TAB,exec,rofi -show window
       bind = ${modifier},TAB,exec,window-selector
-      bind = ${modifier}SHIFT,E,exec,${terminal} -e jo
+      bind = ${modifier}SHIFT,E,exec,${terminal} -e yazi
       bind = ${modifier}SHIFT,Y,exec,spotify
       bind = ${modifier},X,killactive,
       bind = ${modifier},P,pseudo,
@@ -281,13 +281,15 @@ in with lib; {
       bind = SUPER,F5,pass,^(com\.obsproject\.Studio)$
       bind = SUPER,F6,pass,^(com\.obsproject\.Studio)$
       bind = SUPER,F7,pass,^(com\.obsproject\.Studio)$
-      bind = SUPER,F10,pass,^(com\.obsproject\.Studio)$
+      bind = ALT,F10,pass,^(com\.obsproject\.Studio)$
       bind = SUPER,F8,pass,^(com\.obsproject\.Studio)$
-      bind = SUPER,F9,pass,^(com\.obsproject\.Studio)$
+      bind = ALT,F9,pass,^(com\.obsproject\.Studio)$
       bind = SUPER,RBRACKET,pass,^(com\.obsproject\.Studio)$
       bind = SUPER,APOSTROPHE,pass,^(com\.obsproject\.Studio)$
       bind = SUPER,LBRACKET,pass,^(com\.obsproject\.Studio)$
       bind = SUPER,SEMICOLON,pass,^(com\.obsproject\.Studio)$
+      bind = SUPER,comma,pass,^(com\.obsproject\.Studio)$
+      bind = SUPER,period,pass,^(com\.obsproject\.Studio)$
 
 
       windowrulev2 = opacity 0.7 0.7,floating:1

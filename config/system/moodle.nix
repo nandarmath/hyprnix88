@@ -49,7 +49,7 @@
       "moodlehtml:/var/www/html:rw"
     ];
     ports = [
-      "80:8082/tcp"
+      "80:8080"
     ];
     dependsOn = [
       "elmmoodle-postgres"

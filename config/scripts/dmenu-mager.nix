@@ -48,6 +48,7 @@ pkgs.writeShellScriptBin "dmenu-mager" ''
     [ "Canva",                  "brave --app=https://canva.com/" ],
     [ "HIX AI",                 "brave --app=https://hix.ai/" ],
     [ "Any Summary",            "brave --app=https://anysummary.app/" ],
+    [ "Remove Object Photo",    "brave --app=https://photoroom.com/" ],
     [ "whatsapp",               "brave --app=https://web.whatsapp.com/" ],
     [ "Image Creator AI",       "brave --app=https://bing.com/images/create/" ],
     [ "Prepostseo (Parafrase)", "brave --app=https://prepostseo.com/" ],

@@ -27,10 +27,13 @@
     ./steam.nix
     ./vm.nix
     ./rstudio.nix
-    ./docker.nix
+    #./docker.nix
     ./obs.nix
     ./power.nix
+    ./podman.nix
     #./moodle.nix
     #./kde.nix
+    ./google-chrome.nix
+    ./moodlev2.nix
   ];
 }

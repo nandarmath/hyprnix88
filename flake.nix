@@ -18,9 +18,16 @@
     };
     impermanence.url = "github:nix-community/impermanence";
     joshuto.url = "github:kamiyaa/joshuto";
+    ags.url ="github:Aylur/ags";
+
+    nur-ryan4yin = {
+      url = "github:ryan4yin/nur-packages";
+      #inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, impermanence, joshuto, ... }:
+  outputs = inputs@{ self, nixpkgs, home-manager, impermanence, joshuto, ... }:
   let
     system = "x86_64-linux";
     inherit (import ./options.nix) username hostname;
