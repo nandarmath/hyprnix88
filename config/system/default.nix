@@ -35,5 +35,6 @@
     #./kde.nix
     ./google-chrome.nix
     ./moodlev2.nix
+    ./apache.nix
   ];
 }

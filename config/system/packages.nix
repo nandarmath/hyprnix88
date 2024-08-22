@@ -6,10 +6,10 @@
 
   # List System Programs
   environment.systemPackages = with pkgs; [
-    wget curl git cmatrix lolcat neofetch htop btop libvirt
+    wget gcc curl git cmatrix lolcat neofetch htop btop libvirt
     polkit_gnome wineWowPackages.wayland ntfs3g lm_sensors unzip unrar libnotify eza pipewire wireplumber qt6.qtwayland qt5.qtwayland
-    v4l-utils ydotool wl-clipboard socat cowsay lsd lshw stow
-    pkg-config meson protonvpn-cli hugo gnumake ninja go nodejs symbola
+    v4l-utils ydotool distrobox wl-clipboard socat cowsay lsd lshw stow
+    pkg-config meson protonvpn-cli hugo lazygit ripgrep bottom neovim gnumake ninja go nodejs symbola
     noto-fonts-color-emoji material-icons brightnessctl
     toybox virt-viewer swappy ripgrep appimage-run pdftk poppler_utils
     networkmanagerapplet yad bluez pulseaudio wayland-utils xdg-utils

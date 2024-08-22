@@ -18,6 +18,7 @@ let
     pip
     sympy
     scikit-learn
+    typing
 
 
 
