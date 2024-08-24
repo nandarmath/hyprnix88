@@ -19,6 +19,7 @@
     impermanence.url = "github:nix-community/impermanence";
     joshuto.url = "github:kamiyaa/joshuto";
     ags.url ="github:Aylur/ags";
+    sops-nix.url = "github:Mic92/sops-nix";
 
     nur-ryan4yin = {
       url = "github:ryan4yin/nur-packages";
@@ -27,7 +28,7 @@
 
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, impermanence, joshuto, ... }:
+  outputs = inputs@{ self, nixpkgs, home-manager, impermanence, joshuto, sops-nix, ... }:
   let
     system = "x86_64-linux";
     inherit (import ./options.nix) username hostname;
@@ -47,15 +48,16 @@
         };
 	modules = [ 
 	  ./system.nix
+    sops-nix.nixosModules.sops
 	  impermanence.nixosModules.impermanence
-          home-manager.nixosModules.home-manager {
+    home-manager.nixosModules.home-manager {
 	    home-manager.extraSpecialArgs = {
 	      inherit username; inherit inputs;
               inherit (inputs.nix-colors.lib-contrib {inherit pkgs;}) gtkThemeFromScheme;
-            };
+      };
 	    home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.backupFileExtension = "backup";
+      home-manager.useUserPackages = true;
+      home-manager.backupFileExtension = "backup";
 	    home-manager.users.${username} = import ./home.nix;
 	   # home-manager.users.${username}.initialPassword = "1988";
 	  }

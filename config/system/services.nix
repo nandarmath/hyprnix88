@@ -23,7 +23,7 @@
   };
   networking.firewall.enable = true;
   networking.firewall.allowedUDPPorts = [49152 53317 443];
-  networking.firewall.allowedTCPPorts = [80 53317 22];
+  networking.firewall.allowedTCPPorts = [80 81 82 53317 22];
   hardware.pulseaudio.enable = false;
   sound.enable = true;
   security.rtkit.enable = true;
@@ -49,31 +49,6 @@
     freeMemThreshold = 5;
   };
 
-  services.cloudflared = {
-    enable = true;
-    user = "cloudflared";
-    package = pkgs.cloudflared;
-    tunnels = {
-      "4d36f048-69f9-453e-ae8f-3a753c271d8b" ={
-        credentialsFile = "/tmp/test";
-        default = "http_status:404";
-        ingress = {
-          "lms1.riastri.com" = {
-            service= "http://localhost:80";
-            };
-        };
-      };
-      "0dc72093-3d3e-42c4-baa5-01905b975d4e" ={
-        credentialsFile = "/tmp/test2";
-        default = "http_status:404";
-        ingress = {
-          "lms2.riastri.com" = {
-            service = "http://localhost:81";
-          };
-        };
-      };
-    };
-  };
   # For thinkpad
  #services.tlp ={ 
  #  enable = true;

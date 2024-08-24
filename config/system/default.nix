@@ -34,7 +34,10 @@
     #./moodle.nix
     #./kde.nix
     ./google-chrome.nix
-    ./moodlev2.nix
+    #./moodlev2.nix
     ./apache.nix
+    ./postresql.nix
+    # ./nginx.nix
+    ./cloudflared.nix
   ];
 }
