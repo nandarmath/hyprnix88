@@ -14,7 +14,7 @@ in {
   hostname = "${hostname}";
   gitUsername = "nandarsigma06";
   gitEmail = "nandarsigma06@gmail.com";
-  theme = "atelier-heath-light";
+  theme = "gruvbox-material-light-soft";
 # slickbar = if waybarStyle == "slickbar" then true else false;
 # simplebar = if waybarStyle == "simplebar" then true else false;
   borderAnim = true;

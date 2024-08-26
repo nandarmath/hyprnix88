@@ -31,13 +31,16 @@
     ./obs.nix
     ./power.nix
     ./podman.nix
-    #./moodle.nix
+    # ./moodle.nix
     #./kde.nix
     ./google-chrome.nix
     #./moodlev2.nix
     ./apache.nix
     ./postresql.nix
+    ./lemp.nix
     # ./nginx.nix
-    ./cloudflared.nix
+    # ./cloudflared.nix
+    # ./webserver.nix
+    # ./proxy.nix
   ];
 }

@@ -23,7 +23,7 @@
   };
   networking.firewall.enable = true;
   networking.firewall.allowedUDPPorts = [49152 53317 443];
-  networking.firewall.allowedTCPPorts = [80 81 82 53317 22];
+  networking.firewall.allowedTCPPorts = [80 443 53317 22];
   hardware.pulseaudio.enable = false;
   sound.enable = true;
   security.rtkit.enable = true;

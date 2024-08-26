@@ -45,10 +45,10 @@ in {
       hashedPassword = "$6$YdPBODxytqUWXCYL$AHW1U9C6Qqkf6PZJI54jxFcPVm2sm/XWq3Z1qa94PFYz0FF.za9gl5WZL/z/g4nFLQ94SSEzMg5GMzMjJ6Vd7.";
       isNormalUser = true;
       description = "${gitUsername}";
-      extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
+      extraGroups = [ "networkmanager" "wheel" "libvirtd" "nginx" "cloudflared" "acme" ];
       shell = pkgs.${theShell};
       ignoreShellProgramCheck = true;
-      packages = with pkgs; [];
+      packages = with pkgs; [php82];
     };
   };
 

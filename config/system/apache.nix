@@ -1,14 +1,14 @@
 {pkgs,config, ...}:
 {
 services.httpd = {
-  enable = true;
+  enable = false;
   package = pkgs.apacheHttpd;
   enablePHP = true;
   phpPackage = pkgs.php;
   user = "nandar";
   group="users";
   };
-
+# security.acme.certs.defaults.email="nandarsigma06@gmail.com";
 services.httpd.virtualHosts = {
   "chamilo.lc" = {
     documentRoot = "/home/nandar/WebApp/chamilo";
@@ -33,6 +33,8 @@ services.httpd.virtualHosts = {
       } ];
     };
   "moodle.lc" = {
+    # enableACME = true;
+    # forceSSL = true;
     documentRoot = "/home/nandar/WebApp/moodle";
     extraConfig = ''
       Timeout 600
@@ -72,6 +74,6 @@ services.httpd.phpOptions = ''
   extension=php_tidy.dll;
 
 '';
-services.mysql.enable = true;
-services.mysql.package = pkgs.mariadb;
+# services.mysql.enable = true;
+# services.mysql.package = pkgs.mariadb;
 }

@@ -3,7 +3,7 @@
 {
  services.nginx = {
    enable = true;
-   package = pkgs.nginxStable;
+   package = pkgs.nginx;
 
  # Use recommended settings
     recommendedGzipSettings = true;
@@ -16,22 +16,35 @@
 
 # Setup Nextcloud virtual host to listen on ports
  virtualHosts = {
-
-     # "nextcloud.example.com" = {
-       ## Force HTTP redirect to HTTPS
-       # forceSSL = false;
-       ## LetsEncrypt
-       # enableACME = true;
-    # };
     "moodle" = {
        root = "/home/nandar/WebApp/moodle";
+       extraConfig =''
+        index index.php index.html;
+       '';
+     locations."~ \\.php$".extraConfig = ''
+      fastcgi_pass  unix:${config.services.phpfpm.pools.mypool.socket};
+      fastcgi_index index.php;
+    '';
+     locations."/".extraConfig = ''
+              try_files $uri $uri/ /index.php?$args;
+     '';
+     locations."~* /(?:uploads|files)/.*\.php$".extraConfig = ''
+              deny all; 
+     '';
+     locations."~* \.(js|css|png|jpg|jpeg|gif|ico)$".extraConfig = ''
+                expires max;
+                log_not_found off;
+     '';
     };
     "umum" = {
        root = "/home/nandar/WebApp";
        listen = [{ port = 83;}];
+       extraConfig = ''
+        index index.php index.html;
+        '';
     };
   };
-  
+
   config = ''
       
       worker_processes auto;
@@ -103,7 +116,20 @@
     display_errors = on;
     upload_max_filesize = "100M";
     post_max_size = "100M";
+
   '';
 
+  services.phpfpm.pools.mypool = {
+    user = "nobody";
+    settings = {
+      pm = "dynamic";
+      "listen.owner" = config.services.nginx.user;
+      "pm.max_children" = 5;
+      "pm.start_servers" = 2;
+      "pm.min_spare_servers" = 1;
+      "pm.max_spare_servers" = 3;
+      "pm.max_requests" = 500;
+    };
+  };
 }
 
