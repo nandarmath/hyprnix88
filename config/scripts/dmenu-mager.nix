@@ -12,7 +12,6 @@ pkgs.writeShellScriptBin "dmenu-mager" ''
   # OPTIONS = [[label, command]]
   OPTIONS=''''
   [
-    [ "aria2",                  "dmenu_aria2" ],
     [ "boottester",             "dmenu_boottester" ],
     [ "droidcam audio only",    "droidcam-cli -a 192.168.43.1 4747 &" ],
     [ "droidcam video & audio", "droidcam-cli -a -v 192.168.43.1 4747 &" ],
@@ -22,6 +21,7 @@ pkgs.writeShellScriptBin "dmenu-mager" ''
     [ "kill",                   "dmenu_kill" ],
     [ "kill droidcam",          "pkill droidcam-cli" ],
     [ "monitor",                "dmenu_monitor" ],
+    [ "translate",              "translate" ],
     [ "mpdmenu",                "dmenu_mpdmenu" ],
     [ "mpv",                    "dmenu_mpv" ],
     [ "pass",                   "dmenu_pass -p \"Pass Man\"" ],
@@ -32,7 +32,7 @@ pkgs.writeShellScriptBin "dmenu-mager" ''
     [ "switcher",               "dmenu_switcher" ],
     [ "systemd",                "dmenu_systemd" ],
     [ "todo",                   "dmenu_todo" ],
-    [ "translate",              "dmenu_translate -i" ],
+    [ "translate-input",        "dmenu_translate -i" ],
     [ "udiskie",                "dmenu_udiskie -matching regex -dmenu -i -no-custom -multi-select -p FlashDrive" ],
     [ "wifi",                   "dmenu_wifi" ],
     [ "window",                 "dmenu_window" ],
@@ -42,6 +42,7 @@ pkgs.writeShellScriptBin "dmenu-mager" ''
     [ "Chat GPT",               "brave --app=https://chat.openai.com/" ],
     [ "Gemini",                 "brave --app=https://gemini.google.com/" ],
     [ "Zoom Meeting",           "firefox --new-window --app=https://zoom.us/id/join/" ],
+    [ "Matlab",                 "brave --app=https://matlab.mathworks.com/" ],
     [ "Remaker AI",             "brave --app=https://remaker.ai/" ],
     [ "Blackbox AI",            "brave --app=https://blackbox.ai/" ],
     [ "CLaude AI",              "brave --app=https://claude.ai/" ],
@@ -82,6 +83,9 @@ pkgs.writeShellScriptBin "dmenu-mager" ''
     [ "tweetDeck",              "firefox --new-window --app=https://tweetdeck.twitter.com/" ],
     [ "figma",                  "firefox --new-window --app=https://www.figma.com/files/drafts" ],
     [ "iptv",                   "dmenu_iptv" ],
+    [ "dmenu_ffmpeg",           "dmenu_ffmpeg" ],
+    [ "dmenu_aria",             "dmenu_aria" ],
+    [ "rofi-calc",              "roi-calc" ],
     [ "virtual session",        "dmenu_virtualsession" ],
     [ "dns switcher",           "dmenu_dns"],
     [ "adb clipoard",           "adbclip"]

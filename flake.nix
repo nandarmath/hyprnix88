@@ -21,6 +21,10 @@
     ags.url ="github:Aylur/ags";
     sops-nix.url = "github:Mic92/sops-nix";
 
+    fine-cmdline = {
+      url = "github:VonHeikemen/fine-cmdline.nvim";
+      flake = false;
+    };
     nur-ryan4yin = {
       url = "github:ryan4yin/nur-packages";
       #inputs.nixpkgs.follows = "nixpkgs";

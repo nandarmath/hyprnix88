@@ -6,7 +6,7 @@
   services.fstrim.enable = true;
   xdg.portal = {
     enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk
+    extraPortals = [ #pkgs.xdg-desktop-portal-gtk
       pkgs.xdg-desktop-portal
     ];
     configPackages = [ pkgs.xdg-desktop-portal-gtk
@@ -25,7 +25,7 @@
   networking.firewall.allowedUDPPorts = [49152 53317 443];
   networking.firewall.allowedTCPPorts = [80 443 53317 22];
   hardware.pulseaudio.enable = false;
-  sound.enable = true;
+  # sound.enable = true;
   security.rtkit.enable = true;
   programs.thunar = {
     enable = true;
@@ -61,6 +61,11 @@
   # Battery power management
   #services.upower.enable = false;
   
+# Enable thermald for CPU temperature auto handling.
+  services.thermald.enable = true;
+
+  # Enable throttled.service for fix Intel CPU throttling.
+  services.throttled.enable = true;
 
 
   # Enable NGINX

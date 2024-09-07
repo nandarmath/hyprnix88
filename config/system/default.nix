@@ -42,5 +42,6 @@
     # ./cloudflared.nix
     # ./webserver.nix
     # ./proxy.nix
+    ./gnome.nix
   ];
 }

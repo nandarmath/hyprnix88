@@ -4,7 +4,7 @@
   ...
 }: {
   services.tlp = {
-    enable = true;
+    enable = false;
     settings = {
       TLP_WARN_LEVEL = 10;
       # Audio

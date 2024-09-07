@@ -13,6 +13,11 @@
     noto-fonts-color-emoji material-icons brightnessctl
     toybox virt-viewer swappy ripgrep appimage-run pdftk poppler_utils
     networkmanagerapplet yad bluez pulseaudio wayland-utils xdg-utils
+    whitesur-gtk-theme
+    whitesur-cursors
+    whitesur-icon-theme
+    gnome.gnome-tweaks
+    gnome.gnome-shell-extensions
   ];
 
   programs.steam.gamescopeSession.enable = true;
