@@ -1,60 +1,49 @@
 { lib, config, pkgs, ... }:
-
+let
+  app = "myApp";
+  appDomain = "nixos.local";
+  dataDir = "/var/www/html";
+in
 {
-
 services.nginx = {
-  enable = true;
-  user="nandar";
-  group="users";
-# sesuaikan dengan hostname system nixos anda.
-  virtualHosts."local.nixos" = {
-    enableACME = true;
-    forceSSL = true;
-    root = "/var/www/html";
-    extraConfig = ''
-    index index.php;
+    enable = true;
+    user = "nandar";
+    group ="users";
+    eventsConfig = ''
+      worker_connections 10240;
+      use epoll;
+      multi_accept on;
     '';
-    locations."~ \\.php$".extraConfig = ''
-      fastcgi_pass  unix:${config.services.phpfpm.pools.mypool.socket};
-      fastcgi_index index.php;
-    '';
-     locations."/".extraConfig = ''
-              try_files $uri $uri/ /index.php?$args;
-     '';
-     locations."~* /(?:uploads|files)/.*\.php$".extraConfig = ''
-              deny all; 
-     '';
-     locations."~* \.(js|css|png|jpg|jpeg|gif|ico)$".extraConfig = ''
-                expires max;
-                log_not_found off;
-     '';
-  };
-  virtualHosts."moodle.nixos" = {
-    root = "/home/nandar/WebApp/moodle";
-    listen = [
-      {
-        addr ="*";
-        port = 82;
-      }
-    ];
-    extraConfig = ''
-    index index.php;
-    '';
-    locations."~ \\.php$".extraConfig = ''
-      fastcgi_pass  unix:${config.services.phpfpm.pools.mypool.socket};
-      fastcgi_index index.php;
-    '';
-     locations."/".extraConfig = ''
-              try_files $uri $uri/ /index.php?$args;
-     '';
-     locations."~* /(?:uploads|files)/.*\.php$".extraConfig = ''
-              deny all; 
-     '';
-     locations."~* \.(js|css|png|jpg|jpeg|gif|ico)$".extraConfig = ''
-                expires max;
-                log_not_found off;
-     '';
-  };
+    clientMaxBodySize = "100m";
+    virtualHosts = {
+      ${appDomain} = {
+        root = "${dataDir}";
+        enableACME = true;
+        forceSSL = true;
+        extraConfig = ''
+            index index.php;
+        '';
+        locations."/".extraConfig =''
+            try_files $uri $uri/ = 404;
+        '';
+        locations."~ ^(.+\\.php)(.*)$".extraConfig = ''
+            fastcgi_split_path_info  ^(.+\.php)(.*)$;
+            fastcgi_index            index.php;
+            fastcgi_pass             unix:${config.services.phpfpm.pools.${app}.socket};
+            include                  ${config.services.nginx.package}/conf/fastcgi_params;
+            fastcgi_param  PATH_INFO        $fastcgi_path_info;
+            fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+            # if(!-f $document_root$fastcgi_script_name) {return 404;}
+            # include ${pkgs.nginx}/conf/fastcgi.conf;            
+          '';
+        # locations."/dataroot/".extraConfig =''
+        #     internal;
+        #     alias /var/www/moodledata/; # ensure the path ends with /
+        #   '';
+        };
+      };
+    
+  
 };
 
 
@@ -86,10 +75,10 @@ security.acme = {
 };
 security.acme.certs = {
     # sesuaikan dengan hostname system nixos anda
-	"local.nixos".email = "nandarmath@gmail.com";
+	${appDomain}.email = "nandarmath@gmail.com";
 };
   
-  services.phpfpm.pools.mypool = {
+  services.phpfpm.pools.${app} = {
     user = "nobody";
     settings = {
       pm = "dynamic";

@@ -14,12 +14,11 @@ let inherit (import ../../options.nix) flakeDir theShell; in
             n = "nvim";
             #z = "zellij";
             lv = "lvim";
-
-	          cat ="bat";
-	          nf = "cd ~/zaneyos";
+            cat ="bat";
+            nf = "cd ~/zaneyos";
             cp = "cp -rv";
             ll = "eza -lah";
-	          ls = "eza";
+            ls = "eza";
             mv = "mv -v";
             rm = "rm -rfv";
             lsf = "lsblk -o name,fstype,fsavail,fsused,size,mountpoint";
