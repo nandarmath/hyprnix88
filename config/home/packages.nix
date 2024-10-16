@@ -30,6 +30,8 @@ in {
     (import ./../scripts/dmenu-mager.nix { inherit pkgs; })
     (import ./../scripts/dmenu_iptv.nix { inherit pkgs; })
     (import ./../scripts/dmenu_ffmpeg.nix { inherit pkgs; })
+    # (import ./../scripts/pdf-extractor.nix { inherit pkgs; })
+    # (import ./../scripts/pasopati.nix { inherit pkgs; })
     (import ./../scripts/dmenu_aria.nix { inherit pkgs; })
     # (import ./../scripts/rofi-calc.nix { inherit pkgs; })
     (import ./../scripts/translate.nix { inherit pkgs; })
@@ -38,6 +40,7 @@ in {
     (import ./../scripts/dmenu_translate.nix { inherit pkgs; })
     (import ./../scripts/joshuto-wrapper.nix { inherit pkgs; })
     (import ./../scripts/list-hypr-bindings.nix { inherit pkgs; })
+    # (import ./../scripts/pdfextrac.nix { inherit pkgs; })
     #(import ./../scripts/wvkbd.nix { inherit pkgs; })
   ];
 

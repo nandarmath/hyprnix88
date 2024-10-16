@@ -19,6 +19,7 @@ let
     sympy
     scikit-learn
     typing
+    plotly
 
 
 

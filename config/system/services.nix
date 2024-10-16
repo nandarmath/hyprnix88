@@ -6,7 +6,7 @@
   services.fstrim.enable = true;
   xdg.portal = {
     enable = true;
-    extraPortals = [ #pkgs.xdg-desktop-portal-gtk
+    extraPortals = [# pkgs.xdg-desktop-portal-gtk
       pkgs.xdg-desktop-portal
     ];
     configPackages = [ pkgs.xdg-desktop-portal-gtk
@@ -20,10 +20,16 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     jack.enable = false;
+    wireplumber = {
+      enable = true;
+      package = pkgs.wireplumber;
+
+    };
   };
+
   networking.firewall.enable = true;
-  networking.firewall.allowedUDPPorts = [49152 53317 443];
-  networking.firewall.allowedTCPPorts = [80 443 53317 22];
+  networking.firewall.allowedUDPPorts = [49152 53317 8181 8787 443];
+  networking.firewall.allowedTCPPorts = [80 443 53317 8181 8787 22];
   hardware.pulseaudio.enable = false;
   # sound.enable = true;
   security.rtkit.enable = true;
@@ -68,11 +74,4 @@
   services.throttled.enable = true;
 
 
-  # Enable NGINX
- #services.nginx = {
- #  enable = true;
- #  virtualHosts."localhost" = {
- #      root = "/home/vmandela/code/gh-blog/_site";
- #  };
- #};
 }

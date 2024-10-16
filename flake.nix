@@ -20,7 +20,7 @@
     joshuto.url = "github:kamiyaa/joshuto";
     ags.url ="github:Aylur/ags";
     sops-nix.url = "github:Mic92/sops-nix";
-
+    hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
     fine-cmdline = {
       url = "github:VonHeikemen/fine-cmdline.nvim";
       flake = false;
@@ -32,13 +32,16 @@
 
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, impermanence, joshuto, sops-nix, ... }:
+  outputs = inputs@{ self, nixpkgs, home-manager, impermanence, joshuto, hyprpanel, sops-nix, ... }:
   let
     system = "x86_64-linux";
     inherit (import ./options.nix) username hostname;
 
     pkgs = import nixpkgs {
       inherit system;
+      overlays = [
+        inputs.hyprpanel.overlay
+	    ];
       config = {
 	    allowUnfree = true;
       };

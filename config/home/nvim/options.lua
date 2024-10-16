@@ -18,4 +18,5 @@ opt.clipboard:append("unnamedplus")
 opt.splitright = true
 opt.splitbelow = true
 opt.swapfile = false
+opt.typst_pdf_viewer = ''
 vim.g.mapleader = " "

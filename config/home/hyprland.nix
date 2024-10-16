@@ -129,6 +129,7 @@ in with lib; {
       exec-once = hyprctl setcursor Bibata-Modern-Ice 24
       exec-once = swww init
       exec-once = pypr
+      exec-once = ags
       #exec-once = hyprbars
       exec-once = nwg-dock-hyprland -d
       exec-once = waybar
@@ -202,7 +203,8 @@ in with lib; {
       bind = ${modifier}SHIFT,S,exec,rofi-pulse-select sink
       bind = ${modifier}ALT,S,exec,rofi-pulse-select source
       bind = ${modifier}ALT,R,exec,wf-recorder --audio --file=$HOME/videos/$(date +Rec%d%m%Y_%Hh%Mm%Ss.mp4)
-      bind = ${modifier}CONTROL,R,exec,wf-recorder -g "$(slurp)" --audio --file=$HOME/Videos/$(date +Rec%d%m%Y_%Hh%Mm%Ss.mp4)
+      bind = ${modifier}CONTROL,R,exec,wf-recorder -c h264_vaapi -g "$(slurp)" --audio --file=$HOME/Videos/$(date +Rec%d%m%Y_%Hh%Mm%Ss.mp4)
+      bind = ${modifier}SHIFT,L,exec,wf-recorder -c h264_vaapi --muxer=v4l2 --codec=rawvideo --file=/dev/video2 -x yuv420p
       bind = ${modifier},left,movefocus,l
       bind = ${modifier},right,movefocus,r
       bind = ${modifier},up,movefocus,u
@@ -210,7 +212,7 @@ in with lib; {
       bind = ${modifier},U,togglespecialworkspace
       bind = ${modifier}SHIFT,U,movetoworkspace, special
       bind = ,Print,exec,grim
-      bind = ${modifier},Print,exec, grim | wl-copy
+      bind = ${modifier},print,exec,grim -g "$(slurp)" - | satty --filename - --fullscreen --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png
       bind = ${modifier}SHIFT,O,exec,grim -g "$(slurp $SLURP_ARGS)" "tmp.png" && tesseract "tmp.png" - | wl-copy && rm "tmp.png"
       bind = ${modifier}SHIFT,T,exec,grim -g "$(slurp $SLURP_ARGS)" "tmp.png" && tesseract --oem 3 -l ind "tmp.png" - | wl-copy && rm "tmp.png" 
       bind = ${modifier},h,movefocus,l
@@ -247,6 +249,7 @@ in with lib; {
       bind = ${modifier}SHIFT,8,movetoworkspacesilent,8
       bind = ${modifier}SHIFT,9,movetoworkspacesilent,9
       bind = ${modifier}SHIFT,0,movetoworkspacesilent,10
+      bind = ${modifier}ALT,X,exec,hyprctl reload
       bind = ${modifier}CONTROL,right,workspace,e+1
       bind = ${modifier}CONTROL,left,workspace,e-1
       bind = ${modifier},mouse_down,workspace, e+1

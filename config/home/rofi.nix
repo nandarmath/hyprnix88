@@ -5,7 +5,7 @@ let
   palette = config.colorScheme.palette;
 in {
   programs.rofi = {
-      plugins = [pkgs.rofi-calc];
+      plugins = [pkgs.rofi-calc pkgs.rofi-wayland];
     };
   home.file.".config/rofi/config.rasi".text = ''
     @theme "/dev/null"

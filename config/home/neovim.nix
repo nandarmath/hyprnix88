@@ -26,6 +26,7 @@ in
         yaml-language-server
         pyright
         marksman
+
       ];
       plugins = with pkgs.vimPlugins; [
         alpha-nvim
@@ -58,6 +59,7 @@ in
         nvim-tree-lua
         telescope-fzf-native-nvim
         vim-tmux-navigator
+        typst-vim
       ];
       extraConfig = ''
         set noemoji

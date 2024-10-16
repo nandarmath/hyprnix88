@@ -31,17 +31,17 @@
     ./obs.nix
     ./power.nix
     ./podman.nix
-    # ./moodle.nix
     #./kde.nix
     ./google-chrome.nix
     #./moodlev2.nix
     ./apache.nix
-    ./postresql.nix
     ./lemp.nix
-    # ./nginx.nix
     # ./cloudflared.nix
-    # ./webserver.nix
     # ./proxy.nix
     ./gnome.nix
+    # ./virtualbox.nix
+    ./incus.nix
+    ./network.nix
+    ./rstudio-server.nix
   ];
 }

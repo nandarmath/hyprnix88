@@ -5,7 +5,7 @@ lib.mkIf (theShell == "zsh") {
   programs.zsh = {
     enable = true;
     syntaxHighlighting.enable = true;
-    enableAutosuggestions = true;
+    autosuggestion.enable = true;
     historySubstringSearch.enable = true;
     profileExtra = ''
       #if [ -z "$DISPLAY" ] && [ "$XDG_VNTR" = 1 ]; then
@@ -25,7 +25,6 @@ lib.mkIf (theShell == "zsh") {
       bindkey '^[[1;3C' forward-word                  # Key Alt + Right
       bindkey '^[[H' beginning-of-line                # Key Home
       bindkey '^[[F' end-of-line                      # Key End
-      neofetch
       if [ -f $HOME/.zshrc-personal ]; then
         source $HOME/.zshrc-personal
       fi

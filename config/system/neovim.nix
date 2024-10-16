@@ -69,6 +69,7 @@ in {
     extraPlugins = [
       plugins.vim-airline-themes
       plugins.nvim-base16
+      plugins.typst-vim
     ];
 
     globals.mapleader = " "; # Sets the leader key to space

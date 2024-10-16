@@ -13,11 +13,22 @@
     noto-fonts-color-emoji material-icons brightnessctl
     toybox virt-viewer swappy ripgrep appimage-run pdftk poppler_utils
     networkmanagerapplet yad bluez pulseaudio wayland-utils xdg-utils
-    whitesur-gtk-theme
-    whitesur-cursors
-    whitesur-icon-theme
+    # whitesur-gtk-theme
+    # whitesur-cursors
+    # whitesur-icon-theme
     gnome.gnome-tweaks
     gnome.gnome-shell-extensions
+    whatsapp-for-linux
+    nil
+    typst
+    typstyle
+    typst-lsp
+    typstfmt
+    typst-live
+    vscodium
+    tinymist
+    vscode-extensions.myriad-dreamin.tinymist
+    
   ];
 
   programs.steam.gamescopeSession.enable = true;
@@ -28,7 +39,7 @@
     xwayland.enable = true;
     systemd.setPath.enable = true;
   };
-  
+
   programs.fuse.userAllowOther = true;
   programs.mtr.enable = true;
   programs.gnupg.agent = {

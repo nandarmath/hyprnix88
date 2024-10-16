@@ -1,7 +1,17 @@
-{ pkgs, config, lib, ... }:
+{config, pkgs, ...}:
 {
-  environment.systemPackages = with pkgs;let
-    list-packages = with rPackages;[
+
+# environment.systemPackages = [ pkgs.rstudio-server];
+services.rstudio-server ={
+  enable = true;
+  # serverWorkingDir = "/home/$USER/";
+  listenAddr = "0.0.0.0";
+  package = pkgs.rstudioServerWrapper.override {
+      packages = with pkgs.rPackages; [
+        languageserver
+        tidyverse
+        caret
+        ggplot2
        quarto
        AER
        Amelia
@@ -31,19 +41,6 @@
        Deriv
        DescTools
        DistributionUtils
-       DoseFinding
-       EnvStats
-       FMStable
-       FNN
-       Fahrmeir
-       Formula
-       GGally
-       GPArotation
-       GeneralizedHyperbolic
-       GlobalOptions
-       HistData
-       Hmisc
-       readODS
       readr
       readstata13
       readxl
@@ -119,7 +116,6 @@
       raster
       sf
       sp
-      #ggsn
       dbscan
       #rgdal
       spatialreg
@@ -132,39 +128,20 @@
       psychometric
       eRm
       difR
+      MASS
       
+      ];
+  };
+};
 
-      
-      
-
-      
-
-
-
-
-
-
-
+ systemd.services.rstudio-server = {
+    path = [
+      pkgs.git
+      pkgs.zip
+    ];
+  };
 
 
-  ];
-      r-with-packages =
-          (
-            rWrapper.override {
-              packages = list-packages;
-            }
-          );
-          rstudio-with-packages =
-          (
-            rstudioWrapper.override {
-              packages = list-packages;
-            }
-          );
-        in [
-          r-with-packages
-          rstudio-with-packages
-        ];
 
 
 }
-
