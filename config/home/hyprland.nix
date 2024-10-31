@@ -3,7 +3,7 @@
 let
   theme = config.colorScheme.palette;
   hyprplugins = inputs.hyprland-plugins.packages.${pkgs.system};
-  inherit (import ../../options.nix) 
+  inherit (import ../../options.nix)
     browser cpuType gpuType
     wallpaperDir borderAnim
     theKBDLayout terminal
@@ -17,6 +17,7 @@ in with lib; {
     plugins = [
 #    hyprplugins.hyprtrails
 #    hyprplugins.hyprbars
+     #inputs.hyprgrass.packages.${pkgs.system}.default
     ];
     extraConfig = let
       modifier = "SUPER";
@@ -49,7 +50,7 @@ in with lib; {
       env = NIXOS_OZONE_WL, 1
       env = NIXPKGS_ALLOW_UNFREE, 1
       env = XDG_CURRENT_DESKTOP,Hyprland
-      env = XDG_CURRENT_DESKTOP,sway
+      # env = XDG_CURRENT_DESKTOP,sway
       env = XDG_SESSION_TYPE,wayland
       env = XDG_SESSION_DESKTOP,Hyprland
       env = GDK_BACKEND,wayland,x11
@@ -120,16 +121,46 @@ in with lib; {
      #    hyprbars-button = rgb(eeee11), 10, ,, hyprctl dispatch fullscreen 1
      #    bar_buttons_alignment = left
      #  }
+        touch_gestures {
+         # swipe left from right edge
+         hyprgrass-bind = , edge:r:l, workspace, +1
+
+         # swipe up from bottom edge
+         hyprgrass-bind = , edge:d:u, exec, firefox
+
+         # swipe down from left edge
+         hyprgrass-bind = , edge:l:d, exec, pactl set-sink-volume @DEFAULT_SINK@ -4%
+
+         # swipe down with 4 fingers
+         # NOTE: swipe events only trigger for finger count of >= 3
+         hyprgrass-bind = , swipe:4:d, killactive
+
+         # swipe diagonally left and down with 3 fingers
+         # l (or r) must come before d and u
+         hyprgrass-bind = , swipe:3:ld, exec, thunar
+
+         # tap with 3 fingers
+         # NOTE: tap events only trigger for finger count of >= 3
+         hyprgrass-bind = , tap:3, exec, kitty
+
+         # longpress can trigger mouse binds:
+         hyprgrass-bindm = , longpress:2, movewindow
+         hyprgrass-bindm = , longpress:3, resizewindow
+         }
+
+
       }
+
       exec-once = $POLKIT_BIN
       exec-once = xdg_sh
       exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
       exec-once = systemctl --user import-environment QT_QPA_PLATFORMTHEME WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+      exec-once = systemctl --user stop xdg-desktop-portal-gtk
       exec-once = xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2
       exec-once = hyprctl setcursor Bibata-Modern-Ice 24
       exec-once = swww init
       exec-once = pypr
-      exec-once = ags
+      # exec-once = ags
       #exec-once = hyprbars
       exec-once = nwg-dock-hyprland -d
       exec-once = waybar
@@ -145,7 +176,7 @@ in with lib; {
         preserve_split = true
       }
       master {
-        new_is_master = true
+        new_status = true
       }
       bind = ${modifier},Q,exec,${terminal} -e fish
       bind = ${modifier},A,exec,rofi-launcher
@@ -158,6 +189,7 @@ in with lib; {
       ''}
       bind = ${modifier},M,exec,emopicker9000
       bind = ${modifier},N,exec,joplin-desktop
+      bind = ${modifier}CONTROL,N,exec, kitty -e joplin --profile ~/.config/joplin-desktop
       bind = ${modifier},S,exec,screenshootin
       #bind = ${modifier}SHIFT,exec, ~/zaneyos/config/home/files/womic.sh
       bind = ${modifier},D,exec,discord
@@ -214,7 +246,7 @@ in with lib; {
       bind = ,Print,exec,grim
       bind = ${modifier},print,exec,grim -g "$(slurp)" - | satty --filename - --fullscreen --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png
       bind = ${modifier}SHIFT,O,exec,grim -g "$(slurp $SLURP_ARGS)" "tmp.png" && tesseract "tmp.png" - | wl-copy && rm "tmp.png"
-      bind = ${modifier}SHIFT,T,exec,grim -g "$(slurp $SLURP_ARGS)" "tmp.png" && tesseract --oem 3 -l ind "tmp.png" - | wl-copy && rm "tmp.png" 
+      bind = ${modifier}SHIFT,T,exec,grim -g "$(slurp $SLURP_ARGS)" "tmp.png" && tesseract --oem 3 -l ind "tmp.png" - | wl-copy && rm "tmp.png"
       bind = ${modifier},h,movefocus,l
       bind = ${modifier},l,movefocus,r
       bind = ${modifier},k,movefocus,u

@@ -114,7 +114,10 @@ let inherit (import ../../options.nix) flakeDir theShell; in
             sv="sudo vim";
             flake-rebuild="sudo nixos-rebuild switch --flake ${flakeDir}";
             flake-update="sudo nix flake update ${flakeDir}";
+            fr="nh os switch --hostname $hostname";
+            fu="nh os switch --hostname $hostname --update";
             gcCleanup="nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
+            jop="joplin --profile ~/.config/joplin-desktop";
           #v="nvim";
           #ls="lsd";
           #ll="lsd -l";

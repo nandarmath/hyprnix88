@@ -11,11 +11,21 @@
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
-    };
+      };
+    hyprgrass = {
+         url = "github:horriblename/hyprgrass";
+         inputs.hyprland.follows = "hyprland"; # IMPORTANT
+      };
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    #### ---- nixvim
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
+      };
+    nvix = {
+      url = "github:niksingh710/nvix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      }; 
     impermanence.url = "github:nix-community/impermanence";
     joshuto.url = "github:kamiyaa/joshuto";
     ags.url ="github:Aylur/ags";
@@ -29,19 +39,23 @@
       url = "github:ryan4yin/nur-packages";
       #inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixpkgs-r2405.url = "github:NixOs/nixpkgs/nixos-24.05";
 
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, impermanence, joshuto, hyprpanel, sops-nix, ... }:
+  outputs = inputs@{ self, nixpkgs, home-manager, impermanence, joshuto, hyprpanel, sops-nix,nixvim, nixpkgs-r2405, ... }:
   let
     system = "x86_64-linux";
+    overlay-r2405 = final: prev:{
+      r2405=import nixpkgs-r2405 {
+        inherit system;
+        config.allowUnfree= true;
+      };
+    };
     inherit (import ./options.nix) username hostname;
 
     pkgs = import nixpkgs {
       inherit system;
-      overlays = [
-        inputs.hyprpanel.overlay
-	    ];
       config = {
 	    allowUnfree = true;
       };
@@ -54,8 +68,10 @@
           inherit username; inherit hostname;
         };
 	modules = [ 
+    ({config, pkgs, ...}:{nixpkgs.overlays = [overlay-r2405 inputs.hyprpanel.overlay];})
 	  ./system.nix
     sops-nix.nixosModules.sops
+    nixvim.nixosModules.nixvim
 	  impermanence.nixosModules.impermanence
     home-manager.nixosModules.home-manager {
 	    home-manager.extraSpecialArgs = {

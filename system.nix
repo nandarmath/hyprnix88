@@ -9,7 +9,6 @@ let
 in {
   imports =
     [
-      inputs.nixvim.nixosModules.nixvim
       ./hardware.nix
       ./config/system
     ];
@@ -67,7 +66,7 @@ in {
       ];
     };
     gc = {
-      automatic = true;
+      automatic = false;
       dates = "weekly";
       options = "--delete-older-than 7d";
     };

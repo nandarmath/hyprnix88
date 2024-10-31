@@ -2,7 +2,7 @@
   imports = [./tlp.nix];
   powerManagement.enable = true;
   services = {
-    auto-cpufreq.enable = true;
+    auto-cpufreq.enable = false;
     thermald = {
       enable = true;
       configFile = "/etc/thermald.xml";

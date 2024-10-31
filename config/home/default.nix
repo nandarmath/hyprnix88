@@ -25,8 +25,10 @@
     ./wlogout.nix
     ./yazi.nix
     #./kde.nix
-    ./neovim.nix
+    #./neovim.nix
     # Place Home Files Like Pictures
     ./files.nix
+    # ./nvim.nix
+    ./cava.nix
   ];
 }

@@ -1,8 +1,9 @@
-{ pkgs, config, lib, ... }:
-{
-  environment.systemPackages = with pkgs;let
+{ pkgs, ... }:
+
+  with pkgs;
+  let
+    name ="nandar";
     list-packages = with rPackages;[
-       quarto
        AER
        Amelia
        AmesHousing
@@ -10,7 +11,9 @@
        BBmisc
        BH
        BatchJobs
+       gtExtras
        BiasedUrn
+       janitor
        BoolNet
        BradleyTerry2
        rmarkdown
@@ -44,111 +47,152 @@
        HistData
        Hmisc
        readODS
-      readr
-      readstata13
-      readxl
-      recipes
-      registry
-      relimp
-      rematch
-      rematch2
-      remote
-      plm
-      plogr
-      plotly
-      plotmo
-      plyr
-      pmml
-      png
-      poLCA
-      polspline
-      polyCub
-      polyclip
-      polycor
-      polynom
-      prabclus
-      pracma
-      # Tamabahan
-      r2spss
-      MultivariateAnalysis
-      RVAideMemoire
-      mvnormtest
-      BART
-      factoextra
-      pandoc
-      markdown
-      FactoMineR
-      tidyverse
-      ggimage
-      Hotelling
-      psych
-      MCMCpack
-      pastecs
-      doBy
-      ICSNP
-      scales
-      gt
-      webr
-      Morpho
-      MVN
-      agricolae
-      here
-      knitr
-      tidytext
-      kableExtra
-      ggthemes
-      ggdag
-      textclean
-      wordcloud
-      colourpicker
-      esquisse
-      httr2
-      sf
-      leaflet
-      rvest
-      forcats
-      stringr
-      purrr
-      meta
-      metafor
-      tidyr
-      devtools
-      jmv
-      shiny
-      RColorBrewer
-      raster
-      sf
-      sp
-      #ggsn
-      dbscan
-      #rgdal
-      spatialreg
-      spatial
-      mapview
-      tidyselect
-      ggvenn
-      CTT
-      ltm
-      psychometric
-      eRm
-      difR
-      
-
-      
-      
-
-      
-
-
-
-
-
-
+       readr
+       tinytex
+       readstata13
+       readxl
+       recipes
+       registry
+       relimp
+       rematch
+       rematch2
+       remote
+       plm
+       plogr
+       plotly
+       plotmo
+       plyr
+       pmml
+       png
+       poLCA
+       polspline
+       polyCub
+       polyclip
+       polycor
+       polynom
+       prabclus
+       pracma
+       # Tamabahan
+       r2spss
+       MultivariateAnalysis
+       RVAideMemoire
+       mvnormtest
+       BART
+       factoextra
+       pandoc
+       markdown
+       MASS
+       FactoMineR
+       tidyverse
+       ggimage
+       Hotelling
+       psych
+       MCMCpack
+       pastecs
+       doBy
+       ICSNP
+       scales
+       gt
+       webr
+       # Morpho
+       MVN
+       rjson
+       agricolae
+       here
+       knitr
+       tidytext
+       kableExtra
+       ggthemes
+       ggdag
+       textclean
+       wordcloud
+       colourpicker
+       esquisse
+       httr2
+       sf
+       leaflet
+       rvest
+       forcats
+       stringr
+       purrr
+       meta
+       metafor
+       tidyr
+       devtools
+       jmv
+       shiny
+       RColorBrewer
+       raster
+       sf
+       sp
+       #ggsn
+       dbscan
+       #rgdal
+       spatialreg
+       spatial
+       mapview
+       tidyselect
+       ggvenn
+       CTT
+       ltm
+       psychometric
+       eRm
+       difR
+       gapminder
+       ggforce
+       gh
+       globals
+       openintro
+       profvis
+       RSQLite
+       shinycssloaders
+       shinyFeedback
+       shinythemes
+       shinydashboard
+       testthat
+       thematic
+       vroom
+       waiter
+       xml2
+       zeallot
+       shinylive
+       shinyquiz
+       bslib
+       quarto
+       bibliometrix
+       bibliometrixData
+       rcrossref
+       tm
+       SnowballC
+       topicmodels
+       igraph
+       quanteda_textstats
+       quanteda
+       ggraph
+       chromote
+       websocket
+       webshot2
+       RCurl
 
 
 
   ];
-      r-with-packages =
+
+  in {
+    services = {
+      rstudio-server = {
+        enable = true;
+        listenAddr = "0.0.0.0";
+        package = rstudioServerWrapper.override {
+          packages=list-packages;
+        };
+      };
+    };
+    home-manager = {
+    users.${name} = {
+      home = {
+        packages = let
+          r-with-packages =
           (
             rWrapper.override {
               packages = list-packages;
@@ -164,7 +208,9 @@
           r-with-packages
           rstudio-with-packages
         ];
-
-
+      };
+    };
+  };
 }
+
 

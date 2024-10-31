@@ -1,5 +1,5 @@
 { config, lib, pkgs, username, ... }:
-
+with pkgs;
 let inherit (import ../../options.nix) printer; in
 lib.mkIf (printer == true) {
   services = {
@@ -10,6 +10,14 @@ lib.mkIf (printer == true) {
       openFirewall = true;
     };
     ipp-usb.enable = true;
+    printing.drivers = [
+      epson-escpr
+      epson-escpr2
+      foomatic-db
+      gutenprint
+      hplip
+      splix
+    ];
   };
   hardware.sane = {
     enable = true;

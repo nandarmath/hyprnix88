@@ -1,4 +1,8 @@
-{pkgs, config, lib, ...}:
+{pkgs, gnomeSchema, config, lib, ...}:
+let 
+gnomeShellSchema = "${gnomeSchema}/shell";
+extensionSchema = "${gnomeShellSchema}/extensions";
+in
 {
 services.xserver.desktopManager.gnome.enable = true;
  environment.gnome.excludePackages = (with pkgs; [
@@ -6,13 +10,14 @@ services.xserver.desktopManager.gnome.enable = true;
     gnome-tour
     gnome-connections
 
-  ]) ++ (with pkgs.gnome; [
+  ]) ++ (with pkgs; [
     # for packages that are pkgs.gnome.*
     epiphany # web browser
     geary # email reader
     evince # document viewer
     gnome-tweaks
     gnome-shell-extensions
+    dconf-editor
   ]) ++ (with pkgs;[
     whitesur-gtk-theme
     whitesur-cursors
@@ -46,10 +51,14 @@ environment.systemPackages = with pkgs.gnomeExtensions; [
     '';
     extraGSettingsOverridePackages = [
       pkgs.gsettings-desktop-schemas # for org.gnome.desktop
-      pkgs.gnome.gnome-shell # for org.gnome.shell
+      pkgs.gnome-shell # for org.gnome.shell
     ];
   };
 
-
+  # dconf.settings ={
+  #   "${extensionSchema}/draw-on-your-screen" ={
+  #     persistent
+  #   };
+  # };
 
 }

@@ -13,7 +13,7 @@
         obs-gstreamer
         droidcam-obs
         obs-backgroundremoval
-        obs-vertical-canvas
+        # obs-vertical-canvas
         obs-3d-effect
         obs-move-transition
 

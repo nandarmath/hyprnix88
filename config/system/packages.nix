@@ -8,7 +8,11 @@
   environment.systemPackages = with pkgs; [
     wget gcc curl git cmatrix lolcat neofetch htop btop libvirt
     polkit_gnome wineWowPackages.wayland ntfs3g lm_sensors unzip unrar libnotify eza pipewire wireplumber qt6.qtwayland qt5.qtwayland
-    v4l-utils ydotool distrobox wl-clipboard socat cowsay lsd lshw stow
+    v4l-utils ydotool nh
+    # quarto
+    distrobox
+    nix-output-monitor
+    wl-clipboard socat cowsay lsd lshw stow
     pkg-config meson cloudflared protonvpn-cli hugo lazygit ripgrep bottom neovim gnumake ninja go nodejs symbola
     noto-fonts-color-emoji material-icons brightnessctl
     toybox virt-viewer swappy ripgrep appimage-run pdftk poppler_utils
@@ -16,9 +20,9 @@
     # whitesur-gtk-theme
     # whitesur-cursors
     # whitesur-icon-theme
-    gnome.gnome-tweaks
-    gnome.gnome-shell-extensions
-    whatsapp-for-linux
+    gnome-tweaks
+    gnome-shell-extensions
+    # whatsapp-for-linux
     nil
     typst
     typstyle
@@ -28,7 +32,9 @@
     vscodium
     tinymist
     vscode-extensions.myriad-dreamin.tinymist
-    
+    # inputs.nvix.packages.${system}.full
+    r2405.zoom-us
+    # hyprpanel
   ];
 
   programs.steam.gamescopeSession.enable = true;
