@@ -48,7 +48,7 @@
        Hmisc
        readODS
        readr
-       tinytex
+       # tinytex
        readstata13
        readxl
        recipes
@@ -160,6 +160,7 @@
        bslib
        quarto
        bibliometrix
+       
        bibliometrixData
        rcrossref
        tm
@@ -173,6 +174,8 @@
        websocket
        webshot2
        RCurl
+       svSweave
+       # citr
 
 
 
@@ -181,7 +184,7 @@
   in {
     services = {
       rstudio-server = {
-        enable = true;
+        enable = false;
         listenAddr = "0.0.0.0";
         package = rstudioServerWrapper.override {
           packages=list-packages;

@@ -6,7 +6,7 @@ let
 in {
   # Install Packages For The User
   home.packages = with pkgs; [
-    pkgs."${browser}" discord libvirt swww grim slurp file-roller ffmpeg wf-recorder tree zoxide android-tools
+    pkgs."${browser}" discord libvirt swww grim slurp file-roller ffmpeg wf-recorder wl-screenrec tree zoxide android-tools
     swaynotificationcenter nwg-dock-hyprland pyprland pandoc pistol rofi-power-menu imv transmission_3-gtk mpv rofi-pulse-select rofi-mpd gitg vlc xournalpp
     # openboard
     blender
@@ -14,7 +14,6 @@ in {
     nodejs_22
     jq drawio sticky rclone rclone-browser krita sweethome3d.application sweethome3d.furniture-editor
     libreoffice-qt-fresh
-    quarto
     # thunderbird-bin
     # zed-editor
     localsend jasp-desktop converseen satty onboard glab
@@ -28,7 +27,7 @@ in {
     spotify swayidle neovide swaylock hyprpicker cliphist joplin-desktop joplin
     rofi-wayland aria2 clipmenu xsel lapce
     hyprlandPlugins.hyprgrass
-    # hyprpanel
+    # nwg-launcher
     #(nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     # Import Scripts
     (import ./../scripts/emopicker9000.nix { inherit pkgs;})
@@ -45,6 +44,7 @@ in {
     (import ./../scripts/zcc.nix { inherit pkgs; })
     (import ./../scripts/dmenu-mager.nix { inherit pkgs; })
     (import ./../scripts/dmenu_iptv.nix { inherit pkgs; })
+    (import ./../scripts/terjemah.nix { inherit pkgs; })
     (import ./../scripts/dmenu_ffmpeg.nix { inherit pkgs; })
     # (import ./../scripts/pdf-extractor.nix { inherit pkgs; })
     # (import ./../scripts/pasopati.nix { inherit pkgs; })

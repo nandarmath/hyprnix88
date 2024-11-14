@@ -1,5 +1,16 @@
 {pkgs, config, ...}:
 {
+
+# pkgs = import nixpkgs {
+#   config = {
+#     packageOverrides = pkgs: {
+#       espanso = pkgs.espanso.override {
+#         x11Support = false;
+#         waylandSupport = true;
+#       };
+#     };
+#   };
+# };
 services.epanso ={
   enable = true;
   package = pkgs.espanso-wayland;

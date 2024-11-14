@@ -15,7 +15,7 @@ in with lib; {
 
       modules-center = [ "hyprland/workspaces" ] ;
       modules-left = [ "custom/startmenu" "hyprland/window" "pulseaudio" "cpu" "memory" "disk"];
-      modules-right = [ "custom/hyprbindings" "custom/exit" "idle_inhibitor" "custom/themeselector" "custom/notification" "battery" "clock" "tray" ];
+      modules-right = [ "custom/hyprbindings" "idle_inhibitor" "custom/themeselector" "custom/notification" "battery" "clock" "tray" "group/powermenu"];
 
       "hyprland/workspaces" = {
       	format = if bar-number == true then "{name}" else "{icon}";
@@ -85,11 +85,6 @@ in with lib; {
         format = "";
         on-click = "sleep 0.1 && theme-selector";
       };
-      "custom/exit" = {
-        tooltip = false;
-        format = "";
-        on-click = "sleep 0.1 && wlogout";
-      };
       "custom/startmenu" = {
         tooltip = false;
         format = " ";
@@ -140,6 +135,47 @@ in with lib; {
         on-click = "";
         tooltip = false;
       };
+
+      "group/powermenu" = {
+          drawer = {
+            children-class = "powermenu-child";
+            transition-duration = 300;
+            transition-left-to-right = false;
+          };
+          modules = [
+            "custom/power"
+            "custom/exit"
+            "custom/lock"
+            "custom/suspend"
+            "custom/reboot"
+          ];
+          orientation = "inherit";
+        };
+      "custom/power" = {
+          format = "󰐥";
+          on-click = "${pkgs.systemd}/bin/systemctl poweroff";
+          tooltip = false;
+        };
+        "custom/exit" = {
+          format = "󰈆";
+          on-click = "${pkgs.systemd}/bin/loginctl terminate-user $USER";
+          tooltip = false;
+        };
+        "custom/lock" = {
+          format = "󰌾";
+          on-click = "${pkgs.systemd}/bin/loginctl lock-session";
+          tooltip = false;
+        };
+        "custom/suspend" = {
+          format = "󰤄";
+          on-click = "${pkgs.systemd}/bin/systemctl suspend";
+          tooltip = false;
+        };
+        "custom/reboot" = {
+          format = "󰜉";
+          on-click = "${pkgs.systemd}/bin/systemctl reboot";
+          tooltip = false;
+        };
     }];
     style = concatStrings [''
       * {
@@ -334,19 +370,24 @@ in with lib; {
 	border-radius: 10px;
       }
       #idle_inhibitor {
-    	color: #${palette.base09};
-	background: #${palette.base01};
-	margin: 4px 0px;
-	padding: 2px 14px;
-	border-radius: 0px;
-      }
-      #custom-exit {
+    	  color: #${palette.base09};
+	      background: #${palette.base01};
+	      margin: 4px 0px;
+	      padding: 2px 14px;
+	      border-radius: 0px;
+        }
+      #custom-exit,
+      #custom-power
+      #custom-lock,
+      #custom-reboot,
+      #custom-suspend{
     	color: #${palette.base0E};
-	background: #${palette.base01};
-	border-radius: 10px 0px 0px 10px;
-	margin: 4px 0px;
-	padding: 2px 5px 2px 15px;
-      } ''
+	    background: #${palette.base01};
+	    border-radius: 10px 0px 0px 10px;
+	    margin: 4px 0px;
+	    padding: 2px 5px 2px 15px;
+      }
+      ''
     ];
   };
 }

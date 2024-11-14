@@ -1,3 +1,3 @@
 {pkgs, ...}:{
-  zoom-custom = pkgs.callPackage ./zoom-custom {};
+quartoNew = pkgs.callPackage ./quartoNew {};
 }

@@ -25,7 +25,7 @@ pkgs.writeShellScriptBin "dmenu-mager" ''
     [ "mpdmenu",                "dmenu_mpdmenu" ],
     [ "Stop VPN",               "sudo systemctl stop wg-quick-wg0" ],
     [ "mpv",                    "dmenu_mpv" ],
-    [ "Start Screen to Vcam ",  "wf-recorder --muxer=v4l2 -c h264_vaapi --codec=rawvideo --file=/dev/video1 -x yuv420p" ],
+    [ "Start Screen to Vcam ",  "wl-screenrec --ffmpeg-muxer v4l2 -f /dev/video0" ],
     [ "pass",                   "dmenu_pass -p \"Pass Man\"" ],
     [ "power",                  "dmenu_power" ],
     [ "qutebrowser",            "dmenu_qutebrowser" ],

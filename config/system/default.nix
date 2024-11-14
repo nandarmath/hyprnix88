@@ -24,28 +24,18 @@
     ./python.nix
     ./printer.nix
     ./services.nix
-    # ./steam.nix
     ./vm.nix
     ./rstudio.nix
-    #./docker.nix
     ./obs.nix
     ./power.nix
      ./podman.nix
-    #./kde.nix
     ./google-chrome.nix
-    #./moodlev2.nix
-    # ./apache.nix
     ./lemp.nix
-    # ./cloudflared.nix
-    # ./proxy.nix
     ./gnome.nix
-    # ./virtualbox.nix
     ./incus.nix
     ./network.nix
     ./nh.nix
-    # ../pkgs/zoom-custom
-    # ../system/nixvim
-    # ./nixvim.nix
-    ./scratch.nix
+    ./virtualbox.nix
+    # ./espanso.nix
   ];
 }

@@ -1,7 +1,7 @@
-{ lib, config, pkgs, ... }:
+{ config, pkgs, ... }:
 let
   app = "myApp";
-  appDomain = "nixos.local";
+  appDomain = "elmim.lc";
   dataDir = "/var/www/html/lms";
 in
 {

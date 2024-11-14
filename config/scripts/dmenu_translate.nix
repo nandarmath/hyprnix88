@@ -151,7 +151,7 @@ function translateText() {
         again=true
 
         notify-send -i $ICON "Translate" "Result saved to clipboard"
-        echo -n "$result" | xclip -selection clipboard
+        echo -n "$result" | wl-copy 
 
         while $again; do
             speak=$(echo -e "Yes\nNo" | $DMENU -theme-str "listview {lines:2;}" -p "Play Audio" -mesg "Result: $result")
@@ -166,7 +166,7 @@ function translateText() {
 }
 
 function fromClip() {
-    text=$(xclip -selection clipboard -o)
+    text=$(wl-paste)
     translateText "$text"
 }
 

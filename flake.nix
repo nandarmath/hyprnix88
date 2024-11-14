@@ -26,6 +26,11 @@
       url = "github:niksingh710/nvix";
       inputs.nixpkgs.follows = "nixpkgs";
       }; 
+     anyrun = {
+      url = "github:anyrun-org/anyrun";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     impermanence.url = "github:nix-community/impermanence";
     joshuto.url = "github:kamiyaa/joshuto";
     ags.url ="github:Aylur/ags";
@@ -40,14 +45,22 @@
       #inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs-r2405.url = "github:NixOs/nixpkgs/nixos-24.05";
+    quartoNew.url = "github:NixOs/nixpkgs/nixos-unstable";
+    walker.url = "github:abenz1267/walker";
 
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, impermanence, joshuto, hyprpanel, sops-nix,nixvim, nixpkgs-r2405, ... }:
+  outputs = inputs@{ self, nixpkgs, home-manager, impermanence, joshuto, hyprpanel, sops-nix,nixvim, nixpkgs-r2405, anyrun,quartoNew, ... }:
   let
     system = "x86_64-linux";
     overlay-r2405 = final: prev:{
       r2405=import nixpkgs-r2405 {
+        inherit system;
+        config.allowUnfree= true;
+      };
+    };
+    overlay-quartoNew = final: prev:{
+      quarto1630=import quartoNew {
         inherit system;
         config.allowUnfree= true;
       };
@@ -68,8 +81,9 @@
           inherit username; inherit hostname;
         };
 	modules = [ 
-    ({config, pkgs, ...}:{nixpkgs.overlays = [overlay-r2405 inputs.hyprpanel.overlay];})
-	  ./system.nix
+    ({config, pkgs, ...}:{nixpkgs.overlays = [overlay-r2405 overlay-quartoNew inputs.hyprpanel.overlay];})
+	  {environment.systemPackages = [ anyrun.packages.${system}.anyrun ];}
+  ./system.nix
     sops-nix.nixosModules.sops
     nixvim.nixosModules.nixvim
 	  impermanence.nixosModules.impermanence
