@@ -1456,6 +1456,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-r2411": {
+      "locked": {
+        "lastModified": 1731755305,
+        "narHash": "sha256-v5P3dk5JdiT+4x69ZaB18B8+Rcu3TIOrcdG4uEX7WZ8=",
+        "owner": "NixOs",
+        "repo": "nixpkgs",
+        "rev": "057f63b6dc1a2c67301286152eb5af20747a9cb4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOs",
+        "ref": "nixos-24.11",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-regression": {
       "locked": {
         "lastModified": 1643052045,
@@ -1960,22 +1976,6 @@
         "type": "github"
       }
     },
-    "quartoNew": {
-      "locked": {
-        "lastModified": 1731139594,
-        "narHash": "sha256-IigrKK3vYRpUu+HEjPL/phrfh7Ox881er1UEsZvw9Q4=",
-        "owner": "NixOs",
-        "repo": "nixpkgs",
-        "rev": "76612b17c0ce71689921ca12d9ffdc9c23ce40b2",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOs",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "ags": "ags",
@@ -1992,10 +1992,10 @@
         "nix-colors": "nix-colors",
         "nixpkgs": "nixpkgs_9",
         "nixpkgs-r2405": "nixpkgs-r2405",
+        "nixpkgs-r2411": "nixpkgs-r2411",
         "nixvim": "nixvim",
         "nur-ryan4yin": "nur-ryan4yin",
         "nvix": "nvix",
-        "quartoNew": "quartoNew",
         "sops-nix": "sops-nix",
         "walker": "walker"
       }

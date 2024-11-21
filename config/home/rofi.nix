@@ -25,6 +25,8 @@ in {
       display-drun:	    "   Apps ";
       display-run:	    "   Run ";
       display-filebrowser:  "   File ";
+      me-select-entry: "MousePrimary";
+      me-accept-entry: "!MousePrimary";
     }
 
     window { 

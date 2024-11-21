@@ -38,7 +38,7 @@ style = "white"
 [cmd_duration]
 disabled = true
 format = "took [$duration]($style)"
-min_time = 1
+min_time = 4
 
 
 ## SECOND LINE/ROW: Prompt
@@ -55,12 +55,12 @@ style = "bold red"
 threshold = 15
 
 [[battery.display]]  # "bold yellow" style when capacity is between 10% and 30%
-disabled = true
+disabled = false
 style = "bold yellow"
 threshold = 50
 
 [[battery.display]]  # "bold green" style when capacity is between 10% and 30%
-disabled = true
+disabled = false
 style = "bold green"
 threshold = 80
 

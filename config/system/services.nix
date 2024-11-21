@@ -28,8 +28,8 @@
   };
 
   networking.firewall.enable = true;
-  networking.firewall.allowedUDPPorts = [49152 53317 8181 8787 443];
-  networking.firewall.allowedTCPPorts = [80 443 53317 8181 8787 22];
+  networking.firewall.allowedUDPPorts = [49152 53317 8181 8787 443 53];
+  networking.firewall.allowedTCPPorts = [80 443 53317 8181 8787 22 53];
   hardware.pulseaudio.enable = false;
   # sound.enable = true;
   security.rtkit.enable = true;
@@ -73,5 +73,24 @@
   # Enable throttled.service for fix Intel CPU throttling.
   services.throttled.enable = true;
 
+  # services.dnsmasq = {
+  #   enable = true;
+  #   package = pkgs.dnsmasq;
+  #   settings.server = [
+  #     "8.8.8.8"
+  #     "8.8.4.4"
+  #   ];
+  #   settings ={
+  #     port=53;
+  #     domain-needed = true;
+  #     bogus-priv=true;
+  #     strict-order = true;
+  #     no-resolv = true;
+  #     local="/elmim.lc/";
+  #     listen-addres="127.0.0.1,192.168.1.5";
+  #     expand-hosts = true;
+  #     domain="elmim.lc";
+  #   };
+  # }; 
 
 }

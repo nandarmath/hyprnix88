@@ -6,7 +6,7 @@ let
   username = "nandar";
   hostname = "nixos";
   userHome = "/home/${username}";
-  flakeDir = "${userHome}/zaneyos";
+  flakeDir = "${userHome}/hyprnix";
   waybarStyle = "slickbar"; # simplebar, slickbar, or default
 in {
   # User Variables

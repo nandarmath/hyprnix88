@@ -38,7 +38,7 @@ in with lib; {
 
       input {
         kb_layout = ${theKBDLayout}, ${theSecondKBDLayout}
-	kb_options = grp:alt_shift_toggle
+	      kb_options = grp:alt_shift_toggle
         #kb_options=caps:super
         follow_mouse = 1
         touchpad {
@@ -46,6 +46,9 @@ in with lib; {
         }
         sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
         accel_profile = flat
+        touchdevice {
+          enabled = true
+        }
       }
       env = NIXOS_OZONE_WL, 1
       env = NIXPKGS_ALLOW_UNFREE, 1
@@ -77,10 +80,13 @@ in with lib; {
       gestures {
         workspace_swipe = true
         workspace_swipe_fingers = 3
+        workspace_swipe_touch = true
+
       }
       misc {
         mouse_move_enables_dpms = true
         key_press_enables_dpms = false
+        disable_hyprland_logo = true
       }
       animations {
         enabled = yes
@@ -163,6 +169,7 @@ in with lib; {
       # exec-once = ags
       #exec-once = hyprbars
       exec-once = nwg-dock-hyprland -d
+      exec-once = cloudflared tunnel run moodle
       exec-once = waybar
       exec-once = wl-paste --type text --watch cliphist store #Stores only text data
       exec-once = wl-paste --type image --watch cliphist store #Stores only image data
@@ -179,6 +186,7 @@ in with lib; {
         new_status = true
       }
       bind = ${modifier},Q,exec,${terminal} -e fish
+      bind = ${modifier},RETURN,exec,kitty -e fish
       bind = ${modifier},A,exec,rofi-launcher
       bind = ${modifier}SHIFT,W,exec,web-search
       bind = ${modifier}SHIFT,S,exec,swaync-client -rs
@@ -191,7 +199,7 @@ in with lib; {
       bind = ${modifier},N,exec,joplin-desktop
       bind = ${modifier}CONTROL,N,exec, kitty -e joplin --profile ~/.config/joplin-desktop
       bind = ${modifier},S,exec,screenshootin
-      #bind = ${modifier}SHIFT,exec, ~/zaneyos/config/home/files/womic.sh
+      #bind = ${modifier}SHIFT,exec, ~/hyprnix/config/home/files/womic.sh
       bind = ${modifier},D,exec,discord
       bind = ${modifier},R,exec,libreoffice --writer
       bind = ${modifier},C,exec,libreoffice --calc
@@ -205,7 +213,6 @@ in with lib; {
       #bind = ${modifier}SHIFT,G,exec,godot4
       bind = ${modifier}SHIFT,G,exec, fish -c record_scree_gif
       bind = ${modifier},E,exec,thunar
-      #bind = ${modifier},TAB,exec,rofi -show window
       bind = ${modifier},TAB,exec,window-selector
       bind = ${modifier}SHIFT,E,exec,${terminal} -e yazi
       bind = ${modifier}SHIFT,Y,exec,spotify
@@ -220,8 +227,8 @@ in with lib; {
       bind = ${modifier}SHIFT,C,exec,${terminal} -e kalker
       bind = ${modifier}SHIFT,Z,exec, pypr zoom
       bind = ${modifier}SHIFT,A,exec, pypr expose
-
-      bind = ${modifier}SHIFT,N,exec, sh ~/zaneyos/config/home/files/dmenu_iptv
+      bind = CONTROL, TAB,exec, hyprnome --cycle
+      bind = ${modifier}SHIFT,N,exec, sh ~/hyprnix/config/home/files/dmenu_iptv
       bind = ${modifier}SHIFT,left,movewindow,l
       bind = ${modifier}SHIFT,right,movewindow,r
       bind = ${modifier}SHIFT,up,movewindow,u

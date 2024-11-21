@@ -2,9 +2,7 @@
   gtkThemeFromScheme, ... }:
 let 
   inherit (import ./options.nix)
-    gitUsername gitEmail theme browser 
-    wallpaperDir wallpaperGit flakeDir 
-    waybarStyle;
+    gitUsername gitEmail theme ;
 in {
   # Home Manager Settings
   home.username = "${username}";

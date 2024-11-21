@@ -91,7 +91,7 @@
     database.name = "moodle";
     database.createLocally = true;
     database.host = "localhost";
-    #database.passwordFile = "/home/nandar/zaneyos/config/home/files/dbmoodle-pass";
+    #database.passwordFile = "/home/nandar/hyprnix/config/home/files/dbmoodle-pass";
     initialPassword = "@nandar88";
     virtualHost = {
       #hostName = "127.0.0.1";

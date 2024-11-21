@@ -9,7 +9,8 @@
     wget gcc curl git cmatrix lolcat neofetch htop btop libvirt
     polkit_gnome wineWowPackages.wayland ntfs3g lm_sensors unzip unrar libnotify eza pipewire wireplumber qt6.qtwayland qt5.qtwayland
     v4l-utils ydotool nh
-    quarto1630.quarto
+    r2411.quarto
+    imagemagick
     distrobox
     nix-output-monitor
     wl-clipboard socat cowsay lsd lshw stow
@@ -39,6 +40,8 @@
     cachix
     nixpkgs-fmt
     nushell
+    hyprnome
+    openrefine
   ];
 
   programs.steam.gamescopeSession.enable = true;

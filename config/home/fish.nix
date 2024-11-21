@@ -15,7 +15,7 @@ let inherit (import ../../options.nix) flakeDir theShell; in
             #z = "zellij";
             lv = "lvim";
             cat ="bat";
-            nf = "cd ~/zaneyos";
+            nf = "cd ~/hyprnix";
             cp = "cp -rv";
             ll = "eza -lah";
             ls = "eza";

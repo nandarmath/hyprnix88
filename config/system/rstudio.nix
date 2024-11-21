@@ -160,7 +160,7 @@
        bslib
        quarto
        bibliometrix
-       
+       naniar       
        bibliometrixData
        rcrossref
        tm
@@ -175,6 +175,7 @@
        webshot2
        RCurl
        svSweave
+       countdown
        # citr
 
 
@@ -184,7 +185,7 @@
   in {
     services = {
       rstudio-server = {
-        enable = false;
+        enable = true;
         listenAddr = "0.0.0.0";
         package = rstudioServerWrapper.override {
           packages=list-packages;
