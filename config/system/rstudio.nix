@@ -175,7 +175,18 @@
        webshot2
        RCurl
        svSweave
+       wordcloud2
+       ggmap
+       visNetwork
+       fresh
+       shinydashboardPlus
+       xfun
+       bookdown
+       servr
+       pagedown
+       sparkline
        countdown
+
        # citr
 
 

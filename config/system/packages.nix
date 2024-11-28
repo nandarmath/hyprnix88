@@ -10,9 +10,11 @@
     polkit_gnome wineWowPackages.wayland ntfs3g lm_sensors unzip unrar libnotify eza pipewire wireplumber qt6.qtwayland qt5.qtwayland
     v4l-utils ydotool nh
     r2411.quarto
+    r2411.jasp-desktop
     imagemagick
     distrobox
     nix-output-monitor
+    kdePackages.qt6ct
     wl-clipboard socat cowsay lsd lshw stow
     pkg-config meson cloudflared protonvpn-cli hugo lazygit ripgrep bottom neovim gnumake ninja go nodejs symbola
     noto-fonts-color-emoji material-icons brightnessctl
@@ -42,6 +44,7 @@
     nushell
     hyprnome
     openrefine
+    teams-for-linux
   ];
 
   programs.steam.gamescopeSession.enable = true;

@@ -29,8 +29,8 @@ let inherit (import ../../options.nix) flakeDir theShell; in
             sct = "sudo systemctl stop";
             scr = "sudo systemctl restart";
             scu = "sudo systemctl status";
-            wgs = "sudo systemctl stop wg-quick-wgo";
-            wgr = "sudo systemctl start wg-quick-wgo";
+            wgs = "sudo systemctl stop wg-quick-wg0";
+            wgr = "sudo systemctl start wg-quick-wg0";
             qup = "quarto publish netlify --no-browser";
             quv = "quarto preview";
             qur = "quarto render";

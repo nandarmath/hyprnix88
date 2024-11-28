@@ -15,7 +15,7 @@ in with lib; {
 
       modules-center = [ "hyprland/workspaces" ] ;
       modules-left = [ "custom/startmenu" "hyprland/window" "pulseaudio" "cpu" "memory" "disk"];
-      modules-right = [ "custom/hyprbindings" "idle_inhibitor" "custom/themeselector" "custom/notification" "battery" "clock" "tray" "group/powermenu"];
+      modules-right = [ "temperature" "custom/hyprbindings" "network" "idle_inhibitor" "custom/themeselector" "custom/notification" "battery" "clock" "tray" "group/powermenu"];
 
       "hyprland/workspaces" = {
       	format = if bar-number == true then "{name}" else "{icon}";
@@ -43,6 +43,13 @@ in with lib; {
       	format = " {}%";
         tooltip = true;
       };
+      "temperature"= {
+        critical-threshold= 80;
+        format = "{icon} {temperatureC}°C";
+        format-alt = "{temperatureF}°F {icon}";
+        format-icons = ["" "" ""];
+        tooltip = false;
+      };
       "cpu" = {
       	interval = 5;
       	format = " {usage:2}%";
@@ -55,7 +62,7 @@ in with lib; {
       "network" = {
         format-icons = ["󰤯" "󰤟" "󰤢" "󰤥" "󰤨"];
         format-ethernet = " {bandwidthDownOctets}";
-        format-wifi = "{icon} {signalStrength}%";
+        format-wifi = "{icon} {bandwidthUpBytes}|{bandwidthDownBytes}";
         format-disconnected = "󰤮";
         tooltip = false;
       };
@@ -184,10 +191,10 @@ in with lib; {
     	font-weight: bold;
       }
       window#waybar {
-	background-color: #${palette.base00};
-	border-bottom: 1px solid rgba(26,27,38,0);
-	border-radius: 0px;
-	color: #${palette.base0F};
+	      background-color: transparent;
+	      border-bottom: 1px solid rgba(26,27,38,0);
+	      border-radius: 0px;
+	      color: #${palette.base0F};
       }
       #workspaces {
 	background: #${palette.base01};
@@ -302,7 +309,7 @@ in with lib; {
 	border-radius: 10px;
       }
       #disk {
-    	color: #${palette.base03};
+    	color: #${palette.base08};
 	background: #${palette.base01};
 	margin: 4px;
 	padding: 2px 10px;
@@ -349,6 +356,14 @@ in with lib; {
 	margin: 4px;
 	padding: 2px 10px;
 	border-radius: 10px;
+      }
+
+      #temperature {
+    	  color: #${palette.base0C};
+	      background: #${palette.base01};
+	      margin: 4px;
+	      padding: 2px 10px;
+	      border-radius: 10px;
       }
       #custom-themeselector {
     	color: #${palette.base0D};

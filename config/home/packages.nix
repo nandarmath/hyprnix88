@@ -16,7 +16,7 @@ in {
     libreoffice-qt-fresh
     # thunderbird-bin
     # zed-editor
-    localsend jasp-desktop converseen satty onboard glab
+    localsend converseen satty onboard glab
     # calibre
     brave kalker jdk inkscape-with-extensions gimp-with-plugins ytfzf kitty ueberzugpp gImageReader tesseract hunspell hunspellDicts.en_US
     tdesktop sigil rnote pfetch libsForQt5.kget syncthing geogebra
@@ -46,13 +46,14 @@ in {
     (import ./../scripts/dmenu_iptv.nix { inherit pkgs; })
     (import ./../scripts/terjemah.nix { inherit pkgs; })
     (import ./../scripts/dmenu_ffmpeg.nix { inherit pkgs; })
-    # (import ./../scripts/pdf-extractor.nix { inherit pkgs; })
+    (import ./../scripts/pdf-extractor.nix { inherit pkgs; })
     # (import ./../scripts/pasopati.nix { inherit pkgs; })
     (import ./../scripts/dmenu_aria.nix { inherit pkgs; })
     # (import ./../scripts/rofi-calc.nix { inherit pkgs; })
     (import ./../scripts/translate.nix { inherit pkgs; })
     (import ./../scripts/window-selector.nix { inherit pkgs; })
     (import ./../scripts/dmenu_dns.nix { inherit pkgs; })
+    (import ./../scripts/mp.nix { inherit pkgs; })
     (import ./../scripts/dmenu_translate.nix { inherit pkgs; })
     (import ./../scripts/joshuto-wrapper.nix { inherit pkgs; })
     (import ./../scripts/list-hypr-bindings.nix { inherit pkgs; })

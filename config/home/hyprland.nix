@@ -166,10 +166,10 @@ in with lib; {
       exec-once = hyprctl setcursor Bibata-Modern-Ice 24
       exec-once = swww init
       exec-once = pypr
+      exec-once = cloudflared tunnel run moodle 
       # exec-once = ags
       #exec-once = hyprbars
-      exec-once = nwg-dock-hyprland -d
-      exec-once = cloudflared tunnel run moodle
+      exec-once = nwg-dock-hyprland -d -mb 10 -ml 10 -mr 10 -x -c "rofi -show drun"
       exec-once = waybar
       exec-once = wl-paste --type text --watch cliphist store #Stores only text data
       exec-once = wl-paste --type image --watch cliphist store #Stores only image data
@@ -195,6 +195,8 @@ in with lib; {
       '' else ''
 	    bind = ${modifier},W,exec,${browser}
       ''}
+      bind = ${modifier}, minus, movetoworkspace,special
+      bind = ${modifier}, equal, togglespecialworkspace
       bind = ${modifier},M,exec,emopicker9000
       bind = ${modifier},N,exec,joplin-desktop
       bind = ${modifier}CONTROL,N,exec, kitty -e joplin --profile ~/.config/joplin-desktop
@@ -218,6 +220,8 @@ in with lib; {
       bind = ${modifier}SHIFT,Y,exec,spotify
       bind = ${modifier},X,killactive,
       bind = ${modifier},P,pseudo,
+      # bind = ${modifier}CONTROL,P,exec,sh ~/hyprnix/config/scripts/projector.sh
+      bind = ${modifier}CONTROL,P,exec,monitor-projection
       bind = ${modifier},Z,exec, rofi -show power-menu -modi power-menu:rofi-power-menu
       bind = ${modifier}SHIFT,I,togglesplit,
       bind = ${modifier},F,fullscreen,
@@ -337,6 +341,7 @@ in with lib; {
 
       windowrulev2 = opacity 0.7 0.7,floating:1
       windowrulev2 = opacity 0.7 0.7,class:^(Alacritty)$
+      windowrulev2 = opacity 0.8 0.8,class:^(kitty)$
       windowrule = size 700 550,class:^(Alacritty)$
       windowrulev2 = float,class:^(Alacritty)$
       windowrulev2 = float,class:^("Quick Format Citation")$

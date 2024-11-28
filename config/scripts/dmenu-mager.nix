@@ -61,6 +61,7 @@ pkgs.writeShellScriptBin "dmenu-mager" ''
     [ "Prepostseo (Parafrase)", "brave --app=https://prepostseo.com/" ],
     [ "Perplexity",             "brave --app=https://perplexity.ai/" ],
     [ "Consensus",              "brave --app=https://consensus.app/" ],
+    [ "PDF tools",              "brave --app=https://iconictoolshub.com/" ],
     [ "Shortly AI",             "brave --app=https://shortlyai.com/" ],
     [ "Transcription Cockatoo", "brave --app=https://cockatoo.com/" ],
     [ "Jenni",                  "brave --app=https://jenni.ai/" ],

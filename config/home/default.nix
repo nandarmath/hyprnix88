@@ -24,11 +24,8 @@
     ./fonts.nix
     ./wlogout.nix
     ./yazi.nix
-    #./kde.nix
-    #./neovim.nix
-    # Place Home Files Like Pictures
     ./files.nix
-    # ./nvim.nix
+    # ./iiorient.nix
     ./cava.nix
   ];
 }
