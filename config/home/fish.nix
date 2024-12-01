@@ -118,6 +118,8 @@ let inherit (import ../../options.nix) flakeDir theShell; in
             fu="nh os switch --hostname $hostname --update";
             gcCleanup="nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
             jop="joplin --profile ~/.config/joplin-desktop";
+            # ydlmp4='yt-dlp -f "bestvideo&#91;ext=mp4]+bestaudio&#91;ext=m4a]/best&#91;ext=mp4]/best"';
+            # ydlmkv="yt-dlp -f "bestvideo&#91;ext=mkv]+bestaudio&#91;ext=mka]/best&#91;ext=mkv]/best"";
           #v="nvim";
           #ls="lsd";
           #ll="lsd -l";

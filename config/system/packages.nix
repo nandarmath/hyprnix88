@@ -26,6 +26,7 @@
     gnome-tweaks
     gnome-shell-extensions
     # whatsapp-for-linux
+    stirling-pdf
     nil
     typst
     typstyle
