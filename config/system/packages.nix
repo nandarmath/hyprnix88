@@ -9,6 +9,10 @@
     wget gcc curl git cmatrix lolcat neofetch htop btop libvirt
     polkit_gnome wineWowPackages.wayland ntfs3g lm_sensors unzip unrar libnotify eza pipewire wireplumber qt6.qtwayland qt5.qtwayland
     v4l-utils ydotool nh
+    rofi-systemd
+    (rofi.override {
+      plugins = [rofi-file-browser];
+    })
     r2411.quarto
     r2411.jasp-desktop
     imagemagick
@@ -46,6 +50,7 @@
     hyprnome
     openrefine
     teams-for-linux
+    pkgs.fmpkgs.xdman
   ];
 
   programs.steam.gamescopeSession.enable = true;

@@ -27,6 +27,7 @@ in {
     spotify swayidle neovide swaylock hyprpicker cliphist joplin-desktop joplin
     rofi-wayland aria2 clipmenu xsel lapce
     hyprlandPlugins.hyprgrass
+    fmpkgs.xdman
     # nwg-launcher
     #(nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     # Import Scripts

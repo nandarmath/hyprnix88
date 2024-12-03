@@ -189,6 +189,7 @@ in with lib; {
       bind = ${modifier},RETURN,exec,kitty -e fish
       bind = ${modifier},A,exec,rofi-launcher
       bind = ${modifier}SHIFT,W,exec,web-search
+      bind = ${modifier}SHIFT,F,exec,rofi -show filebrowser
       bind = ${modifier}SHIFT,S,exec,swaync-client -rs
       ${if browser == "google-chrome" then ''
     	bind = ${modifier},W,exec,google-chrome-stable

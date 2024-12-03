@@ -30,6 +30,7 @@
       url = "github:anyrun-org/anyrun";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+     fmpkgs.url = "github:fmway/fmpkgs";
 
     impermanence.url = "github:nix-community/impermanence";
     joshuto.url = "github:kamiyaa/joshuto";
@@ -50,7 +51,7 @@
 
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, impermanence, joshuto, hyprpanel, sops-nix,nixvim, nixpkgs-r2405, anyrun,nixpkgs-r2411, ... }:
+  outputs = inputs@{ self, nixpkgs, home-manager, impermanence, joshuto, hyprpanel, sops-nix,nixvim, nixpkgs-r2405, anyrun,nixpkgs-r2411, fmpkgs, ... }:
   let
     system = "x86_64-linux";
     overlay-r2405 = final: prev:{
@@ -82,6 +83,8 @@
         };
 	modules = [ 
     ({config, pkgs, ...}:{nixpkgs.overlays = [overlay-r2405 overlay-r2411 inputs.hyprpanel.overlay];})
+    { nixpkgs.overlays = [inputs.fmpkgs.overlays.default]; }
+    { inherit (inputs.fmpkgs) nixpkgs; }
 	  {environment.systemPackages = [ anyrun.packages.${system}.anyrun ];}
   ./system.nix
     sops-nix.nixosModules.sops
