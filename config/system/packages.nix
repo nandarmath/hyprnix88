@@ -11,7 +11,7 @@
     v4l-utils ydotool nh
     rofi-systemd
     (rofi.override {
-      plugins = [rofi-file-browser];
+      plugins = [rofi-file-browser rofi-calc];
     })
     r2411.quarto
     r2411.jasp-desktop
