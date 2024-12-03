@@ -194,7 +194,7 @@ in with lib; {
       ${if browser == "google-chrome" then ''
     	bind = ${modifier},W,exec,google-chrome-stable
       '' else ''
-	    bind = ${modifier},W,exec,${browser}
+	    bind = ${modifier},W,exec,[workspace 2 silent]${browser}
       ''}
       bind = ${modifier}, minus, movetoworkspace,special
       bind = ${modifier}, equal, togglespecialworkspace
@@ -213,7 +213,6 @@ in with lib; {
       bind = ${modifier},I,exec,${terminal} -e syncthing
       bind = ${modifier},O,exec,obs
       bind = ${modifier},G,exec,gimp
-      #bind = ${modifier}SHIFT,G,exec,godot4
       bind = ${modifier}SHIFT,G,exec, fish -c record_scree_gif
       bind = ${modifier},E,exec,thunar
       bind = ${modifier},TAB,exec,window-selector
@@ -221,7 +220,6 @@ in with lib; {
       bind = ${modifier}SHIFT,Y,exec,spotify
       bind = ${modifier},X,killactive,
       bind = ${modifier},P,pseudo,
-      # bind = ${modifier}CONTROL,P,exec,sh ~/hyprnix/config/scripts/projector.sh
       bind = ${modifier}CONTROL,P,exec,monitor-projection
       bind = ${modifier},Z,exec, rofi -show power-menu -modi power-menu:rofi-power-menu
       bind = ${modifier}SHIFT,I,togglesplit,
@@ -232,7 +230,7 @@ in with lib; {
       bind = ${modifier}SHIFT,C,exec,${terminal} -e kalker
       bind = ${modifier}SHIFT,Z,exec, pypr zoom
       bind = ${modifier}SHIFT,A,exec, pypr expose
-      bind = ${modifier}CONTROL,C,exec, calcure
+      bind = ${modifier}CONTROL,C,exec,[move 879 48; size 1031 638]${terminal} -e calcure
       bind = CONTROL, TAB,exec, hyprnome --cycle
       bind = ${modifier}SHIFT,N,exec, sh ~/hyprnix/config/home/files/dmenu_iptv
       bind = ${modifier}SHIFT,left,movewindow,l
@@ -254,8 +252,7 @@ in with lib; {
       bind = ${modifier},right,movefocus,r
       bind = ${modifier},up,movefocus,u
       bind = ${modifier},down,movefocus,d
-      bind = ${modifier},U,togglespecialworkspace
-      bind = ${modifier}SHIFT,U,movetoworkspace, special
+      bind = ${modifier},U,exec,rofi-systemd
       bind = ,Print,exec,grim
       bind = ${modifier},print,exec,grim -g "$(slurp)" - | satty --filename - --fullscreen --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png
       bind = ${modifier}SHIFT,O,exec,grim -g "$(slurp $SLURP_ARGS)" "tmp.png" && tesseract "tmp.png" - | wl-copy && rm "tmp.png"
@@ -275,6 +272,16 @@ in with lib; {
       bind = ${modifier},8,workspace,8
       bind = ${modifier},9,workspace,9
       bind = ${modifier},0,workspace,10
+      bind = ${modifier}CONTROL,1,workspace,11
+      bind = ${modifier}CONTROL,2,workspace,12
+      bind = ${modifier}CONTROL,3,workspace,13
+      bind = ${modifier}CONTROL,4,workspace,14
+      bind = ${modifier}CONTROL,5,workspace,15
+      bind = ${modifier}CONTROL,6,workspace,16
+      bind = ${modifier}CONTROL,7,workspace,17
+      bind = ${modifier}CONTROL,8,workspace,18
+      bind = ${modifier}CONTROL,9,workspace,19
+      bind = ${modifier}CONTROL,0,workspace,20
       bind = ALT,1,movetoworkspace,1
       bind = ALT,2,movetoworkspace,2
       bind = ALT,3,movetoworkspace,3
@@ -285,16 +292,26 @@ in with lib; {
       bind = ALT,8,movetoworkspace,8
       bind = ALT,9,movetoworkspace,9
       bind = ALT,0,movetoworkspace,10
-      bind = ${modifier}SHIFT,1,movetoworkspacesilent,1
-      bind = ${modifier}SHIFT,2,movetoworkspacesilent,2
-      bind = ${modifier}SHIFT,3,movetoworkspacesilent,3
-      bind = ${modifier}SHIFT,4,movetoworkspacesilent,4
-      bind = ${modifier}SHIFT,5,movetoworkspacesilent,5
-      bind = ${modifier}SHIFT,6,movetoworkspacesilent,6
-      bind = ${modifier}SHIFT,7,movetoworkspacesilent,7
-      bind = ${modifier}SHIFT,8,movetoworkspacesilent,8
-      bind = ${modifier}SHIFT,9,movetoworkspacesilent,9
-      bind = ${modifier}SHIFT,0,movetoworkspacesilent,10
+      bind = CONTROLALT,1,movetoworkspace,11 
+      bind = CONTROLALT,2,movetoworkspace,12 
+      bind = CONTROLALT,3,movetoworkspace,13
+      bind = CONTROLALT,4,movetoworkspace,14
+      bind = CONTROLALT,5,movetoworkspace,15
+      bind = CONTROLALT,6,movetoworkspace,16
+      bind = CONTROLALT,7,movetoworkspace,17
+      bind = CONTROLALT,8,movetoworkspace,18
+      bind = CONTROLALT,9,movetoworkspace,19
+      bind = CONTROLALT,0,movetoworkspace,10
+      bind = ${modifier}SHIFT,1,movetoworkspacesilent,11
+      bind = ${modifier}SHIFT,2,movetoworkspacesilent,12
+      bind = ${modifier}SHIFT,3,movetoworkspacesilent,13
+      bind = ${modifier}SHIFT,4,movetoworkspacesilent,14
+      bind = ${modifier}SHIFT,5,movetoworkspacesilent,15
+      bind = ${modifier}SHIFT,6,movetoworkspacesilent,16
+      bind = ${modifier}SHIFT,7,movetoworkspacesilent,17
+      bind = ${modifier}SHIFT,8,movetoworkspacesilent,18
+      bind = ${modifier}SHIFT,9,movetoworkspacesilent,19
+      bind = ${modifier}SHIFT,0,movetoworkspacesilent,20
       bind = ${modifier}ALT,X,exec,hyprctl reload
       bind = ${modifier}CONTROL,right,workspace,e+1
       bind = ${modifier}CONTROL,left,workspace,e-1
@@ -302,8 +319,8 @@ in with lib; {
       bind = ${modifier},mouse_up,workspace, e-1
       bindm = ${modifier},mouse:272,movewindow
       bindm = ${modifier},mouse:273,resizewindow
-      bind = ${modifier}ALT,right, resizeactive, 15 0
-      bind = ${modifier}ALT,left, resizeactive, -15 0
+      bind = ${modifier}ALT,right, resizeactive, 20 0
+      bind = ${modifier}ALT,left, resizeactive, -20 0
       bind = ${modifier}ALT,N, exec, sticky
       bind = ALT,Tab,cyclenext
       bind = ALT,Tab,bringactivetotop
@@ -352,16 +369,13 @@ in with lib; {
       windowrulev2 = float,class:^(sticky.py)$
       windowrulev2 = float,class:^(GoldenDict-ng)$
       windowrulev2 = float,class:^(GParted)$
-      #windowrulev2 = float,class:^(com.obsproject.Studio)$
-      #windowrule = float, ^(totem)$
-      #windowrule = float, ^(lollypop)$
       windowrulev2 = float,class:^(nwg-look)$
       windowrulev2 = float,class:^(ristretto)$
-      #windowrule = float, ^(io.github.celluloid_player.Celluloid)$
       windowrulev2 = float,class:^(pavucontrol)$
       windowrulev2 = float,title:^(Media viewer)$
       windowrulev2 = float,title:^(Add/Edit Citation)$
       windowrulev2 = float,title:^(TelegramDesktop)$
+      windowrulev2 = float,class:^(xdm-app)$
       windowrule = size 600 450,class:^(Add/Edit Citation)$
       windowrule = size 700 550,class:^(TelegramDesktop)$
       windowrulev2 = float,title:^(Volume Control)$
@@ -380,7 +394,9 @@ in with lib; {
       windowrulev2=move 0 0,title:^(flameshot)
       #windowrulev2=nofullscreenrequest,title:^(flameshot)
 
-      windowrulev2 = workspace 9 silent,class:^(brave-m.facebook.com__-Default)
+      windowrulev2 = workspace 2 silent,class:^(brave-browser)
+      windowrulev2 = workspace 2 silent,class:^(firefox)
+      windowrulev2 = workspace 2 silent,class:^(chromium-browser)
       windowrulev2 = workspace 9 silent,title:^(web.whatsapp.com)
       windowrulev2 = workspace 8 silent,title:^(brave-youtube.com__-Default)
       windowrulev2 = workspace 7 silent,class:^(libreoffice-calc)
