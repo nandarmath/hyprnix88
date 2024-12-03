@@ -232,6 +232,7 @@ in with lib; {
       bind = ${modifier}SHIFT,C,exec,${terminal} -e kalker
       bind = ${modifier}SHIFT,Z,exec, pypr zoom
       bind = ${modifier}SHIFT,A,exec, pypr expose
+      bind = ${modifier}CONTROL,C,exec, calcure
       bind = CONTROL, TAB,exec, hyprnome --cycle
       bind = ${modifier}SHIFT,N,exec, sh ~/hyprnix/config/home/files/dmenu_iptv
       bind = ${modifier}SHIFT,left,movewindow,l
