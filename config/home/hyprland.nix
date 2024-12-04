@@ -111,7 +111,7 @@ in with lib; {
         drop_shadow = false
         blur {
             enabled = true
-            size = 5
+            size = 3
             passes = 3
             new_optimizations = on
             ignore_opacity = on
@@ -398,7 +398,7 @@ in with lib; {
       windowrulev2 = workspace 2 silent,class:^(firefox)
       windowrulev2 = workspace 2 silent,class:^(chromium-browser)
       windowrulev2 = workspace 9 silent,title:^(web.whatsapp.com)
-      windowrulev2 = workspace 8 silent,title:^(brave-youtube.com__-Default)
+      windowrulev2 = workspace 8 silent,class:^(brave-youtube.com__-Default)
       windowrulev2 = workspace 7 silent,class:^(libreoffice-calc)
       windowrulev2 = workspace 6 silent,class:^(libreoffice-writer)
       windowrulev2 = workspace 5 silent,class:^(libreoffice-impress)

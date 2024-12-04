@@ -55,6 +55,7 @@
     freeMemThreshold = 5;
   };
 
+ services.gnome.gnome-keyring.enable = true;
   # For thinkpad
  #services.tlp ={ 
  #  enable = true;

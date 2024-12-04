@@ -28,7 +28,7 @@ pkgs.writeShellScriptBin "web-search" ''
 
       if [[ -n "$query" ]]; then
 	url=''${URLS[$platform]}$query
-	xdg-open "$url"
+	firefox "$url"
       else
 	exit
       fi
