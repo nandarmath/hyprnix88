@@ -51,8 +51,8 @@
     openrefine
     teams-for-linux
     pkgs.fmpkgs.xdman
-    gcalcli
     calcure
+    preload
   ];
 
   programs.steam.gamescopeSession.enable = true;

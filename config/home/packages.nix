@@ -28,6 +28,7 @@ in {
     rofi-wayland aria2 clipmenu xsel lapce
     hyprlandPlugins.hyprgrass
     fmpkgs.xdman
+    fastfetch
     # nwg-launcher
     #(nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     # Import Scripts

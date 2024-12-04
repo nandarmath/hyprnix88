@@ -47,6 +47,7 @@ pkgs.writeShellScriptBin "dmenu-mager" ''
     [ "Gemini",                 "brave --app=https://gemini.google.com/" ],
     [ "Zoom Meeting",           "firefox --new-window --app=https://zoom.us/id/join/" ],
     [ "Matlab",                 "brave --app=https://matlab.mathworks.com/" ],
+    [ "TRanslate PDF",          "firefox --new-window --app=https://onlinedoctranslator.com/" ],
     [ "Rstudio-server",         "brave --app=https://localhost:8787/" ],
     [ "Remaker AI",             "brave --app=https://remaker.ai/" ],
     [ "Blackbox AI",            "brave --app=https://blackbox.ai/" ],
