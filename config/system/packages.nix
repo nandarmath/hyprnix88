@@ -53,6 +53,9 @@
     pkgs.fmpkgs.xdman
     calcure
     preload
+    nix-prefetch-github
+    nix-init
+    fzf
   ];
 
   programs.steam.gamescopeSession.enable = true;

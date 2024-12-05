@@ -29,7 +29,10 @@ in {
     hyprlandPlugins.hyprgrass
     fmpkgs.xdman
     fastfetch
-    exo
+    xfce.exo
+    ddgr
+    # (pkgs.callPackage ../pkgs/rofi-blocks.nix {})
+    # (pkgs.callPackage ../pkgs/elforkane.nix {})
     # nwg-launcher
     #(nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     # Import Scripts

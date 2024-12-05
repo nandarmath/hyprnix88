@@ -16,12 +16,8 @@ pkgs.writeShellScriptBin "list-hypr-bindings" ''
   --timeout=90 \
   --timeout-indicator=right \
   " = Windows/Super/CAPS LOCK" "Modifier Key, used for keybindings" "Doesn't really execute anything by itself." \
-  " + Q" "Terminal" "${terminal}" \
   " + A" "Rofi App Launcher" "rofi -show drun" \
-  " + X" "Kill Focused Window" "killactive" \
-  " + SHIFT + W" "Search Websites Like Nix Packages" "web-search" \
-  " + SHIFT + N" "Watch TV" "TV" \
-  " + W" "Launch Web Browser" "${browser}" \
+  " + B" "Rofi Bluetooth" "Bluetooth" \
   " + M " "Launch Emoji Selector" "emopicker9000" \
   " + S" "Take Screenshot" "screenshootin" \
   " + D" "Launch Discord" "discord" \
@@ -30,14 +26,32 @@ pkgs.writeShellScriptBin "list-hypr-bindings" ''
   " + E" "Launch New File Browser Window" "thunar" \
   " +  " "Launch Spotify" "spotify" \
   " + P" "Pseudo Tiling" "pseudo" \
-  " + SHIFT + I" "Toggle Split Direction" "togglesplit" \
+  " + Q" "Launch Terminal" "Alacritty" \
   " + F" "Toggle Focused Fullscreen" "fullscreen" \
-  " + SHIFT + F" "Toggle Focused Floating" "fullscreen" \
+  " + R" "Launch LibreOffice writer" "Writer" \
+  " + C" "Launch LibreOffice Calc" "Calc" \
+  " + V" "Launch Clip History" "wf-clip" \
+  " + W" "Launch Web Browser" "${browser}" \
+  " + X" "Kill Focused Window" "killactive" \
+  " + Y" "Lauch Youtube Cli" "ytfzf" \
   " + Z" "Quit / Exit Hyprland" "exit" \
+  " + Plus" "Go To Special Workspace" "movetoworkspace" \
+  " + Minus" "Add To Special Workspace" "Add to Scpesial" \
+  " + ENTER" "Launch Terminal" "Kitty" \
   " + Left" "Move Focus To Window On The Left" "movefocus,l" \
   " + Right" "Move Focus To Window On The Right" "movefocus,r" \
   " + Up" "Move Focus To Window On The Up" "movefocus,u" \
   " + Down" "Move Focus To Window On The Down" "movefocus,d" \
+  " + CONTROL + R" "Record Screen" "Screen Record" \
+  " + CONTROL + C" "Calendar CLi" "calcure" \
+  " + SHIFT+ C" "Calculator" "calker" \
+  " + SHIFT + F" "Toggle Focused Floating" "fullscreen" \
+  " + SHIFT + I" "Toggle Split Direction" "togglesplit" \
+  " + SHIFT + W" "Search Websites Like Nix Packages" "web-search" \
+  " + SHIFT + N" "Watch TV" "TV" \
+  " + SHIFT + M" "Dmenu Mager" "Mager" \
+  " + SHIFT + R" "Stop Wf-recorder" "Kill Record" \
+  " + SHIFT + P" "Launch Color Picker" "picker" \
   " + SHIFT + Left" "Move Focused Window Left" "movewindow,l" \
   " + SHIFT + Right" "Move Focused Window Right" "movewindow,r" \
   " + SHIFT + Up" "Move Focused Window Up" "movewindow,u" \

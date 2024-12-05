@@ -9,11 +9,11 @@ pkgs.writeShellScriptBin "rofi-finder" ''
     if [[ "$@" == /* ]]; then
       if [[ "$@" == *\?\? ]]; then
         # Open parent directory
-        ${pkgs.exo}/bin/exo-open "''${QUERY%\/* \?\?}" > /dev/null 2>&1
+        ${pkgs.xfce.exo}/bin/exo-open "''${QUERY%\/* \?\?}" > /dev/null 2>&1
         exit
       else
         # Open selected path
-        ${pkgs.exo}/bin/exo-open "$@" > /dev/null 2>&1
+        ${pkgs.xfce.exo}/bin/exo-open "$@" > /dev/null 2>&1
         exit
       fi
     
