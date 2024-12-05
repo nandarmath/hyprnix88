@@ -186,6 +186,7 @@
        pagedown
        sparkline
        countdown
+       equatiomatic
 
        # citr
 

@@ -29,6 +29,7 @@ in {
     hyprlandPlugins.hyprgrass
     fmpkgs.xdman
     fastfetch
+    exo
     # nwg-launcher
     #(nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     # Import Scripts
@@ -49,6 +50,7 @@ in {
     (import ./../scripts/terjemah.nix { inherit pkgs; })
     (import ./../scripts/dmenu_ffmpeg.nix { inherit pkgs; })
     (import ./../scripts/pdf-extractor.nix { inherit pkgs; })
+    (import ./../scripts/rofi-finder.nix { inherit pkgs; })
     # (import ./../scripts/pasopati.nix { inherit pkgs; })
     (import ./../scripts/dmenu_aria.nix { inherit pkgs; })
     # (import ./../scripts/rofi-calc.nix { inherit pkgs; })

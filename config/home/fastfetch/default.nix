@@ -50,7 +50,7 @@
           }
           {
               type = "custom";
-              format = " OS -> ZaneyOS 2.2";
+              format = " OS -> Hyprnix Fork of ZaneyOS 2.1";
           }
           {
               type = "kernel";

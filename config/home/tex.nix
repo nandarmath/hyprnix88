@@ -12,6 +12,7 @@
           dvipng
           caption
           tikz-ext
+          multirow
           pgf
           inputenx
           setspace
@@ -42,6 +43,7 @@
           titlesec
           ulem
           wrapfig
+          anyfontsize
           xifthen;
         })
         texstudio

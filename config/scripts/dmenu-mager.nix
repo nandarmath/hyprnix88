@@ -44,6 +44,8 @@ pkgs.writeShellScriptBin "dmenu-mager" ''
     [ "umount iso",             "dmenu_iso" ],
     [ "photopea",               "firefox --new-window --app=https://photopea.com/" ],
     [ "Chat GPT",               "brave --app=https://chat.openai.com/" ],
+    [ "Google Drive",           "brave --app=https://drive.google.com/drive/home/" ],
+    [ "Office 365",             "brave --app=https://office.com/" ],
     [ "Gemini",                 "brave --app=https://gemini.google.com/" ],
     [ "Zoom Meeting",           "firefox --new-window --app=https://zoom.us/id/join/" ],
     [ "Matlab",                 "brave --app=https://matlab.mathworks.com/" ],
