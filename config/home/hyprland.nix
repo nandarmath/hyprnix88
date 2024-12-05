@@ -252,7 +252,7 @@ in with lib; {
       bind = ${modifier},right,movefocus,r
       bind = ${modifier},up,movefocus,u
       bind = ${modifier},down,movefocus,d
-      bind = ${modifier},U,exec,rofi-systemd
+      bind = ${modifier},U,exec,rofi -show find -modi find:rofi-finder
       bind = ,Print,exec,grim
       bind = ${modifier},print,exec,grim -g "$(slurp)" - | satty --filename - --fullscreen --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png
       bind = ${modifier}SHIFT,O,exec,grim -g "$(slurp $SLURP_ARGS)" "tmp.png" && tesseract "tmp.png" - | wl-copy && rm "tmp.png"
