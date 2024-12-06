@@ -1,45 +1,33 @@
-{ lib
-, stdenv
-, rustPlatform
-, fetchFromGitHub
-, pkg-config
-, rofi
-, libxcb
-, cairo
-, pango
-, glib
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  meson,
+  ninja,
 }:
 
-rustPlatform.buildRustPackage rec {
+stdenv.mkDerivation rec {
   pname = "rofi-blocks";
-  version = "0.1.0"; # Sesuaikan dengan versi terbaru di repository
+  version = "0.1.0";
 
   src = fetchFromGitHub {
     owner = "OmarCastro";
     repo = "rofi-blocks";
-    rev = "v${version}"; # Pastikan ini sesuai tag di repository
-    sha256 = "sha256-jO1NeycBo/nl0DVfgXo5P4xU3cwZCX8KMJ1ozuMB4GU="; # Gunakan ini saat pertama kali, nanti ganti dengan hash aktual
+    rev = "v${version}";
+    hash = "sha256-jO1NeycBo/nl0DVfgXo5P4xU3cwZCX8KMJ1ozuMB4GU=";
   };
 
-  # Hapus baris ini saat Anda mendapatkan hash asli
-
   nativeBuildInputs = [
-    pkg-config
+    meson
+    ninja
   ];
 
-  buildInputs = [
-    rofi
-    libxcb
-    cairo
-    pango
-    glib
-  ];
-
-  meta = with lib; {
-    description = "Rofi script that allows creating interactive block-based interfaces";
+  meta = {
+    description = "A Rofi modi that allows controlling rofi content throug communication with an external program";
     homepage = "https://github.com/OmarCastro/rofi-blocks";
-    license = licenses.mit; # Sesuaikan dengan lisensi aktual di repository
-    platforms = platforms.linux;
-    maintainers = with maintainers; [ ]; # Tambahkan maintainer jika Anda mau
+    license = lib.licenses.gpl3Only;
+    maintainers = with lib.maintainers; [ ];
+    mainProgram = "rofi-blocks";
+    platforms = lib.platforms.all;
   };
 }

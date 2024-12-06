@@ -169,7 +169,8 @@ in with lib; {
       exec-once = cloudflared tunnel run moodle 
       # exec-once = ags
       #exec-once = hyprbars
-      exec-once = nwg-dock-hyprland -d -mb 10 -ml 10 -mr 10 -x -c "rofi -show drun"
+      # exec-once = nwg-dock-hyprland -d -mb 10 -ml 10 -mr 10 -x -c "rofi -show drun"
+      exec-once = sleep 10 && nwg-dock-hyprland -x -p "left"  -i 24 -mt 10 -mb 10 -ml 5 -f
       exec-once = waybar
       exec-once = wl-paste --type text --watch cliphist store #Stores only text data
       exec-once = wl-paste --type image --watch cliphist store #Stores only image data
@@ -209,7 +210,7 @@ in with lib; {
       bind = ${modifier},T,exec,[workspace 9 silent] telegram-desktop
       bind = ${modifier},K,exec, rofi -show calc -modi calc -no-show-match -no-sort
       bind = ${modifier},B,exec, rofi-bluetooth
-      bind = ${modifier},Y,exec,kitty -e ytfzf -t
+      bind = ${modifier},Y,exec, kitty -e ytfzf -t --thumb-viewer=kitty
       bind = ${modifier},I,exec,${terminal} -e syncthing
       bind = ${modifier},O,exec,obs
       bind = ${modifier},G,exec,gimp
@@ -227,6 +228,7 @@ in with lib; {
       bind = ${modifier},V,exec,cliphist list | rofi -dmenu | cliphist decode | wl-copy
       bind = ${modifier},Space,togglefloating,
       bind = ${modifier}SHIFT,P,exec, hyprpicker --autocopy
+      # bind = ${modifier}CONTROL,H,exec, kitty -e history | rofi -dmenu | wl-copy
       bind = ${modifier}SHIFT,C,exec,${terminal} -e kalker
       bind = ${modifier}SHIFT,Z,exec, pypr zoom
       bind = ${modifier}SHIFT,A,exec, pypr expose
@@ -322,6 +324,8 @@ in with lib; {
       bind = ${modifier}ALT,right, resizeactive, 20 0
       bind = ${modifier}ALT,left, resizeactive, -20 0
       bind = ${modifier}ALT,N, exec, sticky
+      bind = ${modifier},SLASH,exec, hyprctl dispatch pin
+      bind = ${modifier}ALT,SLASH,exec, hyprctl dispatch unset
       bind = ALT,Tab,cyclenext
       bind = ALT,Tab,bringactivetotop
       bind = ,XF86AudioRaiseVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
@@ -356,6 +360,10 @@ in with lib; {
       bind = SUPER,SEMICOLON,pass,^(com\.obsproject\.Studio)$
       bind = SUPER,comma,pass,^(com\.obsproject\.Studio)$
       bind = SUPER,period,pass,^(com\.obsproject\.Studio)$
+
+      
+      layerrule = blur ,gtk-layer-shell 
+      layerrule = ignorezero ,gtk-layer-shell
 
 
       windowrulev2 = opacity 0.7 0.7,floating:1

@@ -32,6 +32,7 @@ in {
     xfce.exo
     ddgr
     # (pkgs.callPackage ../pkgs/rofi-blocks.nix {})
+    (pkgs.callPackage ../pkgs/amzqr.nix {})
     # (pkgs.callPackage ../pkgs/elforkane.nix {})
     # nwg-launcher
     #(nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
@@ -54,6 +55,7 @@ in {
     (import ./../scripts/dmenu_ffmpeg.nix { inherit pkgs; })
     (import ./../scripts/pdf-extractor.nix { inherit pkgs; })
     (import ./../scripts/rofi-finder.nix { inherit pkgs; })
+    (import ./../scripts/qr-generator.nix { inherit pkgs; })
     # (import ./../scripts/pasopati.nix { inherit pkgs; })
     (import ./../scripts/dmenu_aria.nix { inherit pkgs; })
     # (import ./../scripts/rofi-calc.nix { inherit pkgs; })
