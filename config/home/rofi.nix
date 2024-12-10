@@ -16,7 +16,7 @@ in {
     }
 
     configuration {
-      modi:		    "run,filebrowser,drun";
+      modi:		    "run,filebrowser,drun,recursivebrowser";
       show-icons:	    true;
       icon-theme:	    "Papirus";
       location:		    0;

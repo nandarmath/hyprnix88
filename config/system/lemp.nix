@@ -109,11 +109,13 @@ services.postgresql = {
         # max_client_conn = 300;
         # default_pool_size = 50;
         # server_round_robin = 0;
-        # work_mem = 10240;
+        # work_mem = 5242;
         # maintenance_work_mem = 163840;
         # max_fsm_pages = 100000;
         # max_fsm_relations = 5000;
         # wal_buffers = 64;
+        # shared_buffers=4;
+
 
     };
   };

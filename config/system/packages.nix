@@ -58,13 +58,14 @@
     nix-prefetch-github
     nix-init
     fzf
+    r2411.hyprland
   ];
 
   programs.steam.gamescopeSession.enable = true;
   programs.dconf.enable = true;
   programs.hyprland = {
     enable = true;
-    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    # package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     xwayland.enable = true;
     systemd.setPath.enable = true;
   };

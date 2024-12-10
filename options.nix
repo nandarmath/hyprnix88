@@ -36,7 +36,7 @@ in {
   theKBDVariant = "";
   theLCVariables = "id_ID.UTF-8";
   theTimezone = "Asia/Jakarta";
-  theShell = "zsh"; # Possible options: bash, zsh
+  theShell = "fish"; # Possible options: bash, zsh
   theKernel = "xanmod"; # Possible options: default, latest, lqx, xanmod, zen
   # This is for running NixOS
   # On a tmpfs or root on RAM

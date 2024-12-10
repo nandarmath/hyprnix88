@@ -17,6 +17,7 @@ in with lib; {
     plugins = [
 #    hyprplugins.hyprtrails
 #    hyprplugins.hyprbars
+     # hyprplugins.hyprexpo
      #inputs.hyprgrass.packages.${pkgs.system}.default
     ];
     extraConfig = let
@@ -108,7 +109,8 @@ in with lib; {
       }
       decoration {
         rounding = 10
-        drop_shadow = false
+        drop_shadow = true
+        shadow_range = 25
         blur {
             enabled = true
             size = 3
@@ -153,7 +155,17 @@ in with lib; {
          hyprgrass-bindm = , longpress:2, movewindow
          hyprgrass-bindm = , longpress:3, resizewindow
          }
+        hyprexpo {
+          columns = 3
+          gap_size = 5
+          bg_col = rgb(111111)
+          workspace_method = center current # [center/first] [workspace] e.g. first 1 or center m+1
 
+          enable_gesture = true # laptop touchpad
+          gesture_fingers = 4  # 3 or 4
+          gesture_distance = 300 # how far is the "max"
+          gesture_positive = true # positive = swipe down. Negative = swipe up.
+        }
 
       }
 
@@ -170,6 +182,7 @@ in with lib; {
       # exec-once = ags
       #exec-once = hyprbars
       # exec-once = nwg-dock-hyprland -d -mb 10 -ml 10 -mr 10 -x -c "rofi -show drun"
+      exec-once = sleep 10 && nwg-dock-hyprland -i 32 -w 5 -d -mb 10 -ml 10 -mr 10 -x -c "rofi -show drun"
       exec-once = sleep 10 && nwg-dock-hyprland -x -p "left"  -i 24 -mt 10 -mb 10 -ml 5 -f
       exec-once = waybar
       exec-once = wl-paste --type text --watch cliphist store #Stores only text data
@@ -187,7 +200,7 @@ in with lib; {
         new_status = true
       }
       bind = ${modifier},Q,exec,${terminal} -e fish
-      bind = ${modifier},RETURN,exec,kitty -e fish
+      bind = ${modifier},RETURN,exec,kitty
       bind = ${modifier},A,exec,rofi-launcher
       bind = ${modifier}SHIFT,W,exec,web-search
       bind = ${modifier}SHIFT,F,exec,rofi -show filebrowser
@@ -254,7 +267,8 @@ in with lib; {
       bind = ${modifier},right,movefocus,r
       bind = ${modifier},up,movefocus,u
       bind = ${modifier},down,movefocus,d
-      bind = ${modifier},U,exec,rofi -show find -modi find:rofi-finder
+      bind = ${modifier}SHIFT,U,exec,rofi -show find -modi find:rofi-finder
+      bind = ${modifier},U,exec,rofi -show recursivebrowser -theme-str 'window {width: 80%; height: 60%;}'
       bind = ,Print,exec,grim
       bind = ${modifier},print,exec,grim -g "$(slurp)" - | satty --filename - --fullscreen --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png
       bind = ${modifier}SHIFT,O,exec,grim -g "$(slurp $SLURP_ARGS)" "tmp.png" && tesseract "tmp.png" - | wl-copy && rm "tmp.png"
@@ -333,7 +347,7 @@ in with lib; {
       binde = ,XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
       bind = ,XF86MonBrightnessDown,exec,brightnessctl set 5%-
       bind = ,XF86MonBrightnessUp,exec,brightnessctl set +5%
-
+      # bind = SUPER, grave,exec,hyprexpo:expo, toggle 
       # Multi Monitor
       bind = SUPERCONTROL,PERIOD,exec, hyprctl --batch 'keyword monitor eDP-1,highres,0x0,1; keyword monitor HDMI-A-1,1920x1080,1920x0,1'
       bind = SUPERCONTROL,COMMA, exec, hyprctl --batch 'keyword monitor HDMI-A-1,1920x1080,0x0,1; keyword monitor eDP-1,highres,1920x0,1'

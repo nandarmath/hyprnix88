@@ -9,6 +9,7 @@ in lib.mkIf (wezterm == false && alacritty == false
   programs.kitty = {
     enable = true;
     package = pkgs.kitty;
+    shellIntegration.enableFishIntegration=true;
     font.name = "JetBrainsMono Nerd Font";
     font.size = 16;
     settings = {
@@ -17,6 +18,7 @@ in lib.mkIf (wezterm == false && alacritty == false
       window_padding_width = 0;
       confirm_os_window_close = 0;
       background_opacity = "0.85";
+      shell = "fish";
     };
     extraConfig = ''
       foreground #${palette.base05}

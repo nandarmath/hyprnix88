@@ -6,8 +6,10 @@ plugins = [
 ]
 
 [scratchpads.term]
-command = "wezterm start --class wezterm_dropdown"
+command = "kitty --class kitty-dropterm"
 animation = "fromTop"
+class = "kitty-dropterm"
+size ="75% 60%"
 unfocus = "hide"
 excludes = "*"
 lazy = true

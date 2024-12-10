@@ -41,7 +41,7 @@ pkgs.writeShellScriptBin "dmenu-mager" ''
     [ "wifi",                   "dmenu_wifi" ],
     [ "window",                 "dmenu_window" ],
     [ "History Command",        "history | rofi -dmenu | wl-copy" ],
-    [ "youtube",                "ytfzf -ft --thumb-viewer=kitty" ],
+    [ "youtube",                "ytfzf -fDh" ],
     [ "Start Cloudflared",      "cloudflared tunnel run moodle" ],
     [ "Stop Cloudflared",       "pkill cloudflared" ],
     [ "umount iso",             "dmenu_iso" ],

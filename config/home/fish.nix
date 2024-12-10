@@ -1,7 +1,7 @@
-{ ... }:
+{ lib,... }:
 
 let inherit (import ../../options.nix) flakeDir theShell; in
-{
+lib.mkIf (theShell =="fish") {
        programs = {
         fish = {
           enable = true;
@@ -127,6 +127,13 @@ let inherit (import ../../options.nix) flakeDir theShell; in
           #lal="lsd -al";
           #".."="cd ..";
           };
+          shellInit =''
+          set fish_greeting ""
+          fastfetch
+          export STARSHIP_LOG="error"
+          eval "$(starship init fish)"
+
+          '';
         };
       };
 

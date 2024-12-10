@@ -50,6 +50,14 @@
       auth include login
     '';
   };
+  security.pam.loginLimits = [
+    {
+      domain = "*";
+      type = "-";
+      item = "nofile";
+      value = "100000";
+    }
+  ];
   services.earlyoom = {
     enable = true;
     freeMemThreshold = 5;

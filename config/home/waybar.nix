@@ -94,7 +94,7 @@ in with lib; {
       };
       "custom/startmenu" = {
         tooltip = false;
-        format = " ";
+        format = "  ";
         # exec = "rofi -show drun";
         on-click = "sleep 0.1 && rofi-launcher";
       };
@@ -106,8 +106,8 @@ in with lib; {
       "idle_inhibitor" = {
         format = "{icon}";
         format-icons = {
-            activated = "";
-            deactivated = "";
+            activated = " ";
+            deactivated = " ";
         };
         tooltip = "true";
       };
@@ -370,7 +370,7 @@ in with lib; {
 	background: #${palette.base01};
 	margin: 4px 0px;
 	padding: 2px 10px 2px 5px;
-	border-radius: 0px 10px 10px 0px;
+	border-radius: 10px;
       }
       #custom-startmenu {
     	color: #${palette.base00};
@@ -389,7 +389,7 @@ in with lib; {
 	      background: #${palette.base01};
 	      margin: 4px 0px;
 	      padding: 2px 14px;
-	      border-radius: 0px;
+	      border-radius: 10px;
         }
       #custom-exit,
       #custom-power
@@ -398,7 +398,7 @@ in with lib; {
       #custom-suspend{
     	color: #${palette.base0E};
 	    background: #${palette.base01};
-	    border-radius: 10px 0px 0px 10px;
+	    border-radius: 10px;
 	    margin: 4px 0px;
 	    padding: 2px 5px 2px 15px;
       }
