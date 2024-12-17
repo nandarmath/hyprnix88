@@ -15,8 +15,8 @@
     (rofi.override {
       plugins = [rofi-file-browser rofi-calc];
     })
-    r2411.quarto
-    r2411.jasp-desktop
+    quarto
+    jasp-desktop
     imagemagick
     distrobox
     nix-output-monitor
@@ -58,14 +58,14 @@
     nix-prefetch-github
     nix-init
     fzf
-    r2411.hyprland
+    # r2411.hyprland
   ];
 
   programs.steam.gamescopeSession.enable = true;
   programs.dconf.enable = true;
   programs.hyprland = {
     enable = true;
-    # package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     xwayland.enable = true;
     systemd.setPath.enable = true;
   };

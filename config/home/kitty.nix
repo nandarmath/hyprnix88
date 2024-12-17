@@ -10,7 +10,8 @@ in lib.mkIf (wezterm == false && alacritty == false
     enable = true;
     package = pkgs.kitty;
     shellIntegration.enableFishIntegration=true;
-    font.name = "JetBrainsMono Nerd Font";
+    # font.name = "JetBrainsMono Nerd Font";
+    font.name = "jetbrains-mono";
     font.size = 16;
     settings = {
       scrollback_lines = 2000;

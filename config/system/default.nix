@@ -16,6 +16,7 @@
     ./logitech.nix
    # ./neovim.nix
     ./nfs.nix
+    ./fonts.nix
     ./ntp.nix
     ./nvidia.nix
     ./packages.nix

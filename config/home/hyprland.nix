@@ -109,8 +109,8 @@ in with lib; {
       }
       decoration {
         rounding = 10
-        drop_shadow = true
-        shadow_range = 25
+        # drop_shadow = true
+        # shadow_range = 25
         blur {
             enabled = true
             size = 3
@@ -181,9 +181,7 @@ in with lib; {
       exec-once = cloudflared tunnel run moodle 
       # exec-once = ags
       #exec-once = hyprbars
-      # exec-once = nwg-dock-hyprland -d -mb 10 -ml 10 -mr 10 -x -c "rofi -show drun"
-      exec-once = sleep 10 && nwg-dock-hyprland -i 32 -w 5 -d -mb 10 -ml 10 -mr 10 -x -c "rofi -show drun"
-      exec-once = sleep 10 && nwg-dock-hyprland -x -p "left"  -i 24 -mt 10 -mb 10 -ml 5 -f
+      exec-once = nwg-dock-hyprland -x -p "bottom"  -i 24 -mt 10 -mb 10 -ml 5 -c "rofi -show drun" -d
       exec-once = waybar
       exec-once = wl-paste --type text --watch cliphist store #Stores only text data
       exec-once = wl-paste --type image --watch cliphist store #Stores only image data
@@ -229,7 +227,7 @@ in with lib; {
       bind = ${modifier},G,exec,gimp
       bind = ${modifier}SHIFT,G,exec, fish -c record_scree_gif
       bind = ${modifier},E,exec,thunar
-      bind = ${modifier},TAB,exec,window-selector
+      bind = ${modifier},TAB,exec,rofi -show window -window-thumbnail
       bind = ${modifier}SHIFT,E,exec,${terminal} -e yazi
       bind = ${modifier}SHIFT,Y,exec,spotify
       bind = ${modifier},X,killactive,
@@ -246,7 +244,7 @@ in with lib; {
       bind = ${modifier}SHIFT,Z,exec, pypr zoom
       bind = ${modifier}SHIFT,A,exec, pypr expose
       bind = ${modifier}CONTROL,C,exec,[move 879 48; size 1031 638]${terminal} -e calcure
-      bind = CONTROL, TAB,exec, hyprnome --cycle
+      bind = CONTROL, TAB,focuscurrentorlast
       bind = ${modifier}SHIFT,N,exec, sh ~/hyprnix/config/home/files/dmenu_iptv
       bind = ${modifier}SHIFT,left,movewindow,l
       bind = ${modifier}SHIFT,right,movewindow,r

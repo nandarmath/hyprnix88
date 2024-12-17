@@ -4,7 +4,7 @@
   # Fonts are nice to have
   home.packages = with pkgs; [
     noto-fonts
-    noto-fonts-cjk
+    noto-fonts-cjk-sans
     noto-fonts-emoji
     roboto
     roboto-serif
@@ -14,15 +14,14 @@
     freefont_ttf
     dejavu_fonts
     unifont
-    (nerdfonts.override { fonts = [ "FiraCode" "Inconsolata" "Iosevka" "JetBrainsMono" "Meslo" "Noto" "RobotoMono" "Ubuntu" "UbuntuMono" ]; })
-    fira-code
-    fira-code-symbols
-    inconsolata
+    # (nerd-fonts.override { fonts = [ "FiraCode" "Inconsolata" "Iosevka" "JetBrainsMono" "Meslo" "Noto" "RobotoMono" "Ubuntu" "UbuntuMono" ]; })
     iosevka
+    fira-code-symbols
     jetbrains-mono
-    meslo-lg
     ubuntu_font_family
     helvetica-neue-lt-std
   ];
+
+
 }
 

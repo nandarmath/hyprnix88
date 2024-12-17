@@ -46,22 +46,16 @@
       #inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs-r2405.url = "github:NixOs/nixpkgs/nixos-24.05";
-    nixpkgs-r2411.url = "github:NixOs/nixpkgs/nixos-24.11";
+    # nixpkgs-r2411.url = "github:NixOs/nixpkgs/nixos-24.11";
     walker.url = "github:abenz1267/walker";
 
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, impermanence, joshuto, hyprpanel, sops-nix,nixvim, nixpkgs-r2405, anyrun,nixpkgs-r2411, fmpkgs, ... }:
+  outputs = inputs@{ self, nixpkgs, home-manager, impermanence, joshuto, hyprpanel, sops-nix,nixvim, nixpkgs-r2405, anyrun, fmpkgs, ... }:
   let
     system = "x86_64-linux";
     overlay-r2405 = final: prev:{
       r2405=import nixpkgs-r2405 {
-        inherit system;
-        config.allowUnfree= true;
-      };
-    };
-    overlay-r2411 = final: prev:{
-      r2411=import nixpkgs-r2411 {
         inherit system;
         config.allowUnfree= true;
       };
@@ -82,7 +76,7 @@
           inherit username; inherit hostname;
         };
 	modules = [ 
-    ({config, pkgs, ...}:{nixpkgs.overlays = [overlay-r2405 overlay-r2411 inputs.hyprpanel.overlay];})
+    ({config, pkgs, ...}:{nixpkgs.overlays = [overlay-r2405 inputs.hyprpanel.overlay];})
     { nixpkgs.overlays = [inputs.fmpkgs.overlays.default]; }
     { inherit (inputs.fmpkgs) nixpkgs; }
 	  {environment.systemPackages = [ anyrun.packages.${system}.anyrun ];}

@@ -21,6 +21,7 @@ in {
       icon-theme:	    "Papirus";
       location:		    0;
       font:		    "JetBrains Nerd Font 16";	
+
       drun-display-format:  "{icon} {name}";
       display-drun:	    "   Apps ";
       display-run:	    "   Run ";

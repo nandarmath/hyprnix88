@@ -27,7 +27,7 @@ in {
     spotify swayidle neovide swaylock hyprpicker cliphist joplin-desktop joplin
     rofi-wayland aria2 clipmenu xsel lapce
     hyprlandPlugins.hyprgrass
-    r2411.hyprlandPlugins.hyprexpo
+    hyprlandPlugins.hyprexpo
     fmpkgs.xdman
     fastfetch
     xfce.exo
