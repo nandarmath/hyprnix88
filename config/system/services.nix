@@ -28,8 +28,8 @@
   };
 
   networking.firewall.enable = true;
-  networking.firewall.allowedUDPPorts = [49152 53317 8181 8787 7236 7250 443 53];
-  networking.firewall.allowedTCPPorts = [80 443 53317 8181 7236 5353 8787 22 53];
+  networking.firewall.allowedUDPPorts = [49152 53317 8181 8787 7236 7250 443 53 11434];
+  networking.firewall.allowedTCPPorts = [80 443 53317 8181 7236 5353 8787 22 53 11434];
   hardware.pulseaudio.enable = false;
   # sound.enable = true;
   security.rtkit.enable = true;
@@ -49,6 +49,7 @@
     text = ''
       auth include login
     '';
+    fprintAuth = true;
   };
   security.pam.loginLimits = [
     {

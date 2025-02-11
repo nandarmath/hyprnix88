@@ -15,15 +15,16 @@ in with lib; {
     xwayland.enable = true;
     systemd.enable = true;
     plugins = [
+      inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars
+      inputs.hyprgrass.packages.${pkgs.system}.default
 #    hyprplugins.hyprtrails
-#    hyprplugins.hyprbars
      # hyprplugins.hyprexpo
      #inputs.hyprgrass.packages.${pkgs.system}.default
     ];
     extraConfig = let
       modifier = "SUPER";
     in concatStrings [ ''
-      monitor=,preferred,auto,1
+      monitor=,preferred,auto,1,transform,0
       windowrule = float, ^(steam)$
       windowrule = size 1080 900, ^(steam)$
       windowrule = center, ^(steam)$
@@ -36,7 +37,6 @@ in with lib; {
         layout = dwindle
         resize_on_border = true
       }
-
       input {
         kb_layout = ${theKBDLayout}, ${theSecondKBDLayout}
 	      kb_options = grp:alt_shift_toggle
@@ -44,6 +44,7 @@ in with lib; {
         follow_mouse = 1
         touchpad {
           natural_scroll = false
+          disable_while_typing = true
         }
         sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
         accel_profile = flat
@@ -89,6 +90,9 @@ in with lib; {
         key_press_enables_dpms = false
         disable_hyprland_logo = true
       }
+      # xwayland {
+      #   force_zero_scalling = true
+      # }
       animations {
         enabled = yes
         bezier = wind, 0.05, 0.9, 0.1, 1.05
@@ -109,8 +113,6 @@ in with lib; {
       }
       decoration {
         rounding = 10
-        # drop_shadow = true
-        # shadow_range = 25
         blur {
             enabled = true
             size = 3
@@ -118,17 +120,21 @@ in with lib; {
             new_optimizations = on
             ignore_opacity = on
         }
+        shadow {
+            enabled = true
+            range = 25
+        }
       }
       plugin {
      #  hyprtrails {
      #    color = rgba(${theme.base0A}ff)
      #  }
-     #  hyprbars {
-     #    bar_height = 17
-     #    hyprbars-button = rgba(${theme.base0A}ff), 10, 󰖭, hyprctl dispatch killactive
-     #    hyprbars-button = rgb(eeee11), 10, ,, hyprctl dispatch fullscreen 1
-     #    bar_buttons_alignment = left
-     #  }
+      hyprbars {
+        bar_height = 17
+        hyprbars-button = rgba(${theme.base0A}ff), 10, 󰖭, hyprctl dispatch killactive
+        hyprbars-button = rgb(eeee11), 10, ,, hyprctl dispatch fullscreen 1
+        bar_buttons_alignment = left
+      }
         touch_gestures {
          # swipe left from right edge
          hyprgrass-bind = , edge:r:l, workspace, +1
@@ -180,7 +186,8 @@ in with lib; {
       exec-once = pypr
       exec-once = cloudflared tunnel run moodle 
       # exec-once = ags
-      #exec-once = hyprbars
+      exec-once = iio-hyprland
+      exec-once = hyprbars
       exec-once = nwg-dock-hyprland -x -p "bottom"  -i 24 -mt 10 -mb 10 -ml 5 -c "rofi -show drun" -d
       exec-once = waybar
       exec-once = wl-paste --type text --watch cliphist store #Stores only text data
@@ -214,7 +221,6 @@ in with lib; {
       bind = ${modifier},N,exec,joplin-desktop
       bind = ${modifier}CONTROL,N,exec, kitty -e joplin --profile ~/.config/joplin-desktop
       bind = ${modifier},S,exec,screenshootin
-      #bind = ${modifier}SHIFT,exec, ~/hyprnix/config/home/files/womic.sh
       bind = ${modifier},D,exec,discord
       bind = ${modifier},R,exec,libreoffice --writer
       bind = ${modifier},C,exec,libreoffice --calc
@@ -231,6 +237,7 @@ in with lib; {
       bind = ${modifier}SHIFT,E,exec,${terminal} -e yazi
       bind = ${modifier}SHIFT,Y,exec,spotify
       bind = ${modifier},X,killactive,
+      bind = ${modifier}SHIFT,K,exec, kitty -e lvim ~/hyprnix/config/home/hyprland.nix
       bind = ${modifier},P,pseudo,
       bind = ${modifier}CONTROL,P,exec,monitor-projection
       bind = ${modifier},Z,exec, rofi -show power-menu -modi power-menu:rofi-power-menu
@@ -239,12 +246,12 @@ in with lib; {
       bind = ${modifier},V,exec,cliphist list | rofi -dmenu | cliphist decode | wl-copy
       bind = ${modifier},Space,togglefloating,
       bind = ${modifier}SHIFT,P,exec, hyprpicker --autocopy
-      # bind = ${modifier}CONTROL,H,exec, kitty -e history | rofi -dmenu | wl-copy
       bind = ${modifier}SHIFT,C,exec,${terminal} -e kalker
       bind = ${modifier}SHIFT,Z,exec, pypr zoom
       bind = ${modifier}SHIFT,A,exec, pypr expose
       bind = ${modifier}CONTROL,C,exec,[move 879 48; size 1031 638]${terminal} -e calcure
       bind = CONTROL, TAB,focuscurrentorlast
+      # bind = CONTROL ALT,L,hyprctl dispatch exit
       bind = ${modifier}SHIFT,N,exec, sh ~/hyprnix/config/home/files/dmenu_iptv
       bind = ${modifier}SHIFT,left,movewindow,l
       bind = ${modifier}SHIFT,right,movewindow,r
@@ -272,6 +279,12 @@ in with lib; {
       bind = ${modifier}SHIFT,O,exec,grim -g "$(slurp $SLURP_ARGS)" "tmp.png" && tesseract "tmp.png" - | wl-copy && rm "tmp.png"
       bind = ${modifier}SHIFT,T,exec,grim -g "$(slurp $SLURP_ARGS)" "tmp.png" && tesseract --oem 3 -l ind "tmp.png" - | wl-copy && rm "tmp.png"
       bind = ${modifier}ALT, T, exec,terjemah
+      bind = ${modifier},BACKSLASH,exec, hyprctl dispatch splitratio 0.3
+      # group
+      bind = ${modifier}SHIFT, G, togglegroup # toggle group
+      bind = ${modifier}SHIFT, H, changegroupactive  # change focus to another window
+      
+
       bind = ${modifier},h,movefocus,l
       bind = ${modifier},l,movefocus,r
       bind = ${modifier},k,movefocus,u
@@ -333,8 +346,8 @@ in with lib; {
       bind = ${modifier},mouse_up,workspace, e-1
       bindm = ${modifier},mouse:272,movewindow
       bindm = ${modifier},mouse:273,resizewindow
-      bind = ${modifier}ALT,right, resizeactive, 20 0
-      bind = ${modifier}ALT,left, resizeactive, -20 0
+      bind = ${modifier}ALT,right, resizeactive, 30 0
+      bind = ${modifier}ALT,left, resizeactive, -30 0
       bind = ${modifier}ALT,N, exec, sticky
       bind = ${modifier},SLASH,exec, hyprctl dispatch pin
       bind = ${modifier}ALT,SLASH,exec, hyprctl dispatch unset

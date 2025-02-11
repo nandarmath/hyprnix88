@@ -7,8 +7,8 @@
 # Last Modified By  : M. Nabil Adani <nblid48@gmail.com>
 { pkgs }:
 
-pkgs.writeShellScriptBin "dmenu-mager" ''
-  DMENU="rofi -dmenu -i -p Mager"
+pkgs.writeShellScriptBin "wofi-mager" ''
+  DMENU="wofi -dmenu "
   # OPTIONS = [[label, command]]
   OPTIONS=''''
   [
@@ -103,7 +103,7 @@ pkgs.writeShellScriptBin "dmenu-mager" ''
     [ "BeSmart UNY",            "firefox --new-window --app=https://besmart.uny.ac.id/" ],
     [ "E-Service UNY",          "firefox --new-window --app=https://eservice.uny.ac.id/" ],
     [ "YouTube",                "brave --app=https://youtube.com/" ],
-    [ "Pusdapendik",            "firefox --new-window --app=https://pusdapendik.disdik.kailinusantara.com/" ],
+    [ "Pusdapendik",            "firefox --new-window --app=https://pusdapendik.sultengprov.go.id/" ],
     [ "Gitlab",                 "firefox --new-window --app=https://gitlab.com/" ],
     [ "trello",                 "firefox --new-window --app=https://trello.com/" ],
     [ "facebook",               "brave --app=https://m.facebook.com/" ],

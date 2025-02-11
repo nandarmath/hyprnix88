@@ -14,7 +14,7 @@ services.nginx = {
     recommendedZstdSettings = true;
     mapHashMaxSize = 2048;
     appendConfig = ''
-      worker_processes auto;
+      worker_processes 4;
       worker_rlimit_nofile 65535;
 
     '';
@@ -29,6 +29,8 @@ services.nginx = {
         root = "${dataDir}";
         enableACME = true;
         forceSSL = true;
+        # sslCertificate = "/home/nandar/hyprnix/config/system/secret/nixos.loca.pem";
+        # sslCertificateKey = "/home/nandar/hyprnix/config/system/secret/nixos.loca-key.pem";
         extraConfig = ''
             index index.php;
             client_body_buffer_size 128k;
@@ -56,6 +58,8 @@ services.nginx = {
             open_file_cache_valid 45s;
             open_file_cache_min_uses 3;
             open_file_cache_errors on;
+
+            
             
 
         '';
@@ -105,19 +109,28 @@ services.postgresql = {
     enable = true;
     package = pkgs.postgresql;
     settings = {
-        # pool_mode = session;
+        # pool_mode = "session";
         # max_client_conn =  300;
         # default_pool_size = 50;
         # server_round_robin = 0;
-        # work_mem = 5242;
-        # maintenance_work_mem = 163840;
-        # max_fsm_pages = 100000;
-        # max_fsm_relations = 5000;
-        # wal_buffers = "64Mb";
-        # shared_buffers=4;
-
-
-    };
+        max_connections = 200;
+        shared_buffers = "3GB";
+        effective_cache_size = "9GB";
+        maintenance_work_mem = "768MB";
+        checkpoint_completion_target = 0.9;
+        wal_buffers = "16MB";
+        default_statistics_target = 100;
+        random_page_cost = 1.1;
+        effective_io_concurrency = 200;
+        work_mem = "5242kB";
+        huge_pages = "off";
+        min_wal_size = "1GB";
+        max_wal_size = "4GB";
+        max_worker_processes = 6;
+        max_parallel_workers_per_gather = 3;
+        max_parallel_workers = 6;
+        max_parallel_maintenance_workers = 3;
+        };
   };
   
   

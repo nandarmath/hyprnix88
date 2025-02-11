@@ -1,7 +1,5 @@
 {
   pkgs,
-  host,
-  #nur-ryan4yin,
   ...
 }: {
   # terminal file manager

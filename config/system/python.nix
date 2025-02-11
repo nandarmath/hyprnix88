@@ -20,6 +20,12 @@ let
     scikit-learn
     typing
     plotly
+    tinycss2
+    speechrecognition
+    pydub
+    # pyside2
+    torch
+    whisper
 
 
 

@@ -53,7 +53,7 @@ in {
       extraGroups = [ "networkmanager" "wheel" "libvirtd" "nginx" "cloudflared" "acme" "redis" "incus-admin"];
       shell = pkgs.${theShell};
       ignoreShellProgramCheck = true;
-      packages = with pkgs; [php82];
+      packages = with pkgs; [php82 php83Extensions.redis];
     };
   };
 

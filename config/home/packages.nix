@@ -32,6 +32,7 @@ in {
     fastfetch
     xfce.exo
     ddgr
+    tvbrowser
     # (pkgs.callPackage ../pkgs/rofi-blocks.nix {})
     (pkgs.callPackage ../pkgs/amzqr.nix {})
     # (pkgs.callPackage ../pkgs/elforkane.nix {})
@@ -55,6 +56,8 @@ in {
     (import ./../scripts/terjemah.nix { inherit pkgs; })
     (import ./../scripts/dmenu_ffmpeg.nix { inherit pkgs; })
     (import ./../scripts/pdf-extractor.nix { inherit pkgs; })
+    (import ./../scripts/transkripsi.nix { inherit pkgs; })
+    (import ./../scripts/komprespdf.nix { inherit pkgs; })
     (import ./../scripts/rofi-finder.nix { inherit pkgs; })
     (import ./../scripts/qr-generator.nix { inherit pkgs; })
     # (import ./../scripts/pasopati.nix { inherit pkgs; })
@@ -65,8 +68,9 @@ in {
     (import ./../scripts/dmenu_dns.nix { inherit pkgs; })
     (import ./../scripts/mp.nix { inherit pkgs; })
     (import ./../scripts/dmenu_translate.nix { inherit pkgs; })
-    (import ./../scripts/joshuto-wrapper.nix { inherit pkgs; })
     (import ./../scripts/list-hypr-bindings.nix { inherit pkgs; })
+    (import ./../scripts/wofi/wofi-iptv.nix { inherit pkgs; })
+    (import ./../scripts/wofi/wofi-mager.nix { inherit pkgs; })
     # (import ./../scripts/pdfextrac.nix { inherit pkgs; })
     #(import ./../scripts/wvkbd.nix { inherit pkgs; })
   ];

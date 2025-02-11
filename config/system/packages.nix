@@ -3,7 +3,6 @@
 {
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
   # List System Programs
   environment.systemPackages = with pkgs; [
     wget cmake gcc curl git cmatrix lolcat htop btop libvirt
@@ -15,6 +14,9 @@
     (rofi.override {
       plugins = [rofi-file-browser rofi-calc];
     })
+      # (callPackage ../pkgs/audio2text.nix {})
+      # (callPackage ../pkgs/speech.nix {})
+      # (callPackage ../pkgs/sapulatar.nix {})
     quarto
     jasp-desktop
     imagemagick
@@ -26,6 +28,9 @@
     noto-fonts-color-emoji material-icons brightnessctl
     toybox virt-viewer swappy ripgrep appimage-run pdftk poppler_utils
     networkmanagerapplet yad bluez pulseaudio wayland-utils xdg-utils
+    fprintd
+    wofi
+    openai-whisper
     # whitesur-gtk-theme
     # whitesur-cursors
     # whitesur-icon-theme
@@ -58,7 +63,20 @@
     nix-prefetch-github
     nix-init
     fzf
+    # rustdesk
+    anydesk
+    wvkbd
+    iio-hyprland
+    iio-sensor-proxy
+    gnome-network-displays
+    mkcert
+    lmstudio
+    ollama
+    open-webui
     # r2411.hyprland
+    ferdium
+    keepassxc
+    newsflash
   ];
 
   programs.steam.gamescopeSession.enable = true;

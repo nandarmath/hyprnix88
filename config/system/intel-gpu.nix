@@ -14,6 +14,8 @@ lib.mkIf ("${gpuType}" == "intel") {
     extraPackages = with pkgs; [
       intel-media-driver
       intel-vaapi-driver
+      libva
+      libva-utils
       #vaapiIntel
       vaapiVdpau
       libvdpau-va-gl
