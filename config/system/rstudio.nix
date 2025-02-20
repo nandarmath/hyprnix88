@@ -32,7 +32,7 @@
        DT
        DendSer
        Deriv
-       DescTools
+       # DescTools
        DistributionUtils
        DoseFinding
        EnvStats
@@ -48,7 +48,7 @@
        Hmisc
        readODS
        readr
-       # tinytex
+       tinytex
        readstata13
        readxl
        recipes
@@ -56,7 +56,7 @@
        relimp
        rematch
        rematch2
-       remote
+       # remote
        plm
        plogr
        plotly
@@ -75,7 +75,7 @@
        # Tamabahan
        r2spss
        MultivariateAnalysis
-       RVAideMemoire
+       # RVAideMemoire
        mvnormtest
        BART
        factoextra
@@ -90,7 +90,7 @@
        MCMCpack
        pastecs
        doBy
-       ICSNP
+       # ICSNP
        scales
        gt
        webr
@@ -110,7 +110,7 @@
        esquisse
        httr2
        sf
-       leaflet
+       # leaflet
        rvest
        forcats
        stringr
@@ -119,10 +119,10 @@
        metafor
        tidyr
        devtools
-       jmv
+       # jmv
        shiny
        RColorBrewer
-       raster
+       # raster
        sf
        sp
        #ggsn
@@ -130,26 +130,26 @@
        #rgdal
        spatialreg
        spatial
-       mapview
+       # mapview
        tidyselect
        ggvenn
        CTT
        ltm
        psychometric
        eRm
-       difR
+       # difR
        gapminder
        ggforce
        gh
        globals
-       openintro
+       # openintro
        profvis
        RSQLite
        shinycssloaders
        shinyFeedback
        shinythemes
        shinydashboard
-       testthat
+       # testthat
        thematic
        vroom
        waiter
@@ -162,7 +162,7 @@
        bibliometrix
        naniar       
        bibliometrixData
-       rcrossref
+       # rcrossref
        tm
        SnowballC
        topicmodels
@@ -171,8 +171,8 @@
        quanteda
        ggraph
        chromote
-       websocket
-       webshot2
+       # websocket
+       # webshot2
        RCurl
        svSweave
        wordcloud2
@@ -187,6 +187,13 @@
        sparkline
        countdown
        equatiomatic
+       car
+       moments
+       nortest
+       reactable  # paket untuk inteaktife tabel
+       reactablefmtr
+       htmltools
+       ggiraph
 
        # citr
 

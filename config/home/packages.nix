@@ -22,6 +22,8 @@ in {
     tdesktop sigil rnote pfetch libsForQt5.kget syncthing geogebra
     lunarvim
     yt-dlp pspp okular
+    # anydesk
+    teamviewer
     # goldendict-ng
     scribus handbrake zotero
     spotify swayidle neovide swaylock hyprpicker cliphist joplin-desktop joplin
@@ -32,7 +34,8 @@ in {
     fastfetch
     xfce.exo
     ddgr
-    tvbrowser
+    appflowy
+    # tvbrowser
     # (pkgs.callPackage ../pkgs/rofi-blocks.nix {})
     (pkgs.callPackage ../pkgs/amzqr.nix {})
     # (pkgs.callPackage ../pkgs/elforkane.nix {})
@@ -56,7 +59,7 @@ in {
     (import ./../scripts/terjemah.nix { inherit pkgs; })
     (import ./../scripts/dmenu_ffmpeg.nix { inherit pkgs; })
     (import ./../scripts/pdf-extractor.nix { inherit pkgs; })
-    (import ./../scripts/transkripsi.nix { inherit pkgs; })
+    # (import ./../scripts/transkripsi.nix { inherit pkgs; })
     (import ./../scripts/komprespdf.nix { inherit pkgs; })
     (import ./../scripts/rofi-finder.nix { inherit pkgs; })
     (import ./../scripts/qr-generator.nix { inherit pkgs; })

@@ -9,12 +9,13 @@ services.ollama = {
     # HOME = "/home/ollama";
     # OLLAMA_MODELS = "/home/ollama/models";
     # OLLAMA_HOST = "0.0.0.0:11434"; # Make Ollama accesible outside of localhost
-    # OLLAMA_ORIGINS = "http://localhost:8080,http://192.168.0.10:*"; # Allow access, otherwise Ollama returns 403 forbidden due to CORS
+    # OLLAMA_ORIGINS = "http://localhost:8090"; #,http://192.168.0.10:*"; # Allow access, otherwise Ollama returns 403 forbidden due to CORS
   #};
 };
 
 services.open-webui = {
   enable = true;
+  port = 8090;
   environment = {
     ANONYMIZED_TELEMETRY = "False";
     DO_NOT_TRACK = "True";
@@ -26,7 +27,7 @@ services.open-webui = {
 
 # Add oterm to the systemPackages
 environment.systemPackages = with pkgs; [
-  oterm
+  # oterm
 ];
 
 

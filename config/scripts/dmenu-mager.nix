@@ -79,6 +79,7 @@ pkgs.writeShellScriptBin "dmenu-mager" ''
     [ "Research rabbit",        "brave --app=https://researchrabbit.ai/" ],
     [ "Connected Paper",        "brave --app=https://connectedpapers.com/" ],
     [ "Grammarly",              "brave --app=https://grammarly.com/" ],
+    [ "Yalla Shoot Live Streaming",              "brave --app=https://shotz.yalla-shoot-tv.live/home18/" ],
     [ "Humata - Review Jurnal", "brave --app=https://humata.ai/" ],
     [ "sci-hub (Open lock Journal)", "brave --app=https://sci-hub.se/" ],
     [ "Quillbot",               "brave --app=https://quillbot.com/" ],

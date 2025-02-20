@@ -21,11 +21,11 @@ let
     typing
     plotly
     tinycss2
-    speechrecognition
+    # speechrecognition
     pydub
     # pyside2
     torch
-    whisper
+    # whisper
 
 
 

@@ -36,7 +36,7 @@
     ./incus.nix
     ./network.nix
     ./nh.nix
-    ./virtualbox.nix
+    # ./virtualbox.nix
     ./mpd.nix
     # ./espanso.nix
     ./open-webui.nix

@@ -63,7 +63,10 @@
     enable = true;
     freeMemThreshold = 5;
   };
-
+ services.preload = {
+    enable = true;
+    package = pkgs.preload;
+ };
  services.gnome.gnome-keyring.enable = true;
   # For thinkpad
  #services.tlp ={ 

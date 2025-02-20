@@ -18,6 +18,7 @@
       # (callPackage ../pkgs/speech.nix {})
       # (callPackage ../pkgs/sapulatar.nix {})
     quarto
+    inxi
     jasp-desktop
     imagemagick
     distrobox
@@ -30,7 +31,7 @@
     networkmanagerapplet yad bluez pulseaudio wayland-utils xdg-utils
     fprintd
     wofi
-    openai-whisper
+    # openai-whisper
     # whitesur-gtk-theme
     # whitesur-cursors
     # whitesur-icon-theme
@@ -41,7 +42,7 @@
     nil
     typst
     typstyle
-    typst-lsp
+    # typst-lsp
     typstfmt
     typst-live
     vscodium
@@ -49,6 +50,7 @@
     vscode-extensions.myriad-dreamin.tinymist
     # inputs.nvix.packages.${system}.full
     r2405.zoom-us
+    # zoom-us
     # hyprpanel
     # scratch-desktop
     cachix
@@ -64,16 +66,15 @@
     nix-init
     fzf
     # rustdesk
-    anydesk
+    
     wvkbd
     iio-hyprland
     iio-sensor-proxy
     gnome-network-displays
     mkcert
-    lmstudio
+    # lmstudio
     ollama
     open-webui
-    # r2411.hyprland
     ferdium
     keepassxc
     newsflash
@@ -88,6 +89,11 @@
     systemd.setPath.enable = true;
   };
 
+  programs.iio-hyprland = {
+    enable =true;
+    package = pkgs.iio-hyprland;
+  };
+  hardware.sensor.iio.enable = true;
   programs.fuse.userAllowOther = true;
   programs.mtr.enable = true;
   programs.gnupg.agent = {

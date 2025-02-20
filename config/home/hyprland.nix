@@ -15,7 +15,7 @@ in with lib; {
     xwayland.enable = true;
     systemd.enable = true;
     plugins = [
-      inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars
+      # inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars
       inputs.hyprgrass.packages.${pkgs.system}.default
 #    hyprplugins.hyprtrails
      # hyprplugins.hyprexpo
@@ -24,7 +24,7 @@ in with lib; {
     extraConfig = let
       modifier = "SUPER";
     in concatStrings [ ''
-      monitor=,preferred,auto,1,transform,0
+      monitor=eDP-1,preferred,auto,1,transform,0
       windowrule = float, ^(steam)$
       windowrule = size 1080 900, ^(steam)$
       windowrule = center, ^(steam)$
@@ -137,13 +137,22 @@ in with lib; {
       }
         touch_gestures {
          # swipe left from right edge
-         hyprgrass-bind = , edge:r:l, workspace, +1
+         hyprgrass-bind = , swipe:2:l, workspace, +1
 
+         # swipe left from right edge
+         hyprgrass-bind = , swipe:2:r, workspace, -1
+
+         # swipe down from up  edge
+         hyprgrass-bind = , edge:u:d, exec, pkill wvkbd-mobintl
+         
          # swipe up from bottom edge
-         hyprgrass-bind = , edge:d:u, exec, firefox
+         hyprgrass-bind = , edge:d:u, exec, wvkbd-mobintl
 
          # swipe down from left edge
          hyprgrass-bind = , edge:l:d, exec, pactl set-sink-volume @DEFAULT_SINK@ -4%
+
+         # swipe down from left edge
+         hyprgrass-bind = , edge:l:u, exec, pactl set-sink-volume @DEFAULT_SINK@ +4%
 
          # swipe down with 4 fingers
          # NOTE: swipe events only trigger for finger count of >= 3
@@ -187,7 +196,8 @@ in with lib; {
       exec-once = cloudflared tunnel run moodle 
       # exec-once = ags
       exec-once = iio-hyprland
-      exec-once = hyprbars
+      # exec-once = wvkbd-mobintl
+      # exec-once = hyprbars
       exec-once = nwg-dock-hyprland -x -p "bottom"  -i 24 -mt 10 -mb 10 -ml 5 -c "rofi -show drun" -d
       exec-once = waybar
       exec-once = wl-paste --type text --watch cliphist store #Stores only text data
@@ -217,7 +227,7 @@ in with lib; {
       ''}
       bind = ${modifier}, minus, movetoworkspace,special
       bind = ${modifier}, equal, togglespecialworkspace
-      bind = ${modifier},M,exec,emopicker9000
+      bind = ${modifier}SHIFT,M,exec,emopicker9000
       bind = ${modifier},N,exec,joplin-desktop
       bind = ${modifier}CONTROL,N,exec, kitty -e joplin --profile ~/.config/joplin-desktop
       bind = ${modifier},S,exec,screenshootin
@@ -262,12 +272,12 @@ in with lib; {
       bind = ${modifier}SHIFT,k,movewindow,u
       bind = ${modifier}SHIFT,j,movewindow,d
       bind = ${modifier}SHIFT,R,exec,pkill wf-recorder
-      bind = ${modifier}SHIFT,M,exec,dmenu-mager
+      bind = ${modifier},M,exec,dmenu-mager
       bind = ${modifier}SHIFT,S,exec,rofi-pulse-select sink
       bind = ${modifier}ALT,S,exec,rofi-pulse-select source
       bind = ${modifier}ALT,R,exec,wf-recorder --audio --file=$HOME/videos/$(date +Rec%d%m%Y_%Hh%Mm%Ss.mp4)
       bind = ${modifier}CONTROL,R,exec,wf-recorder -c h264_vaapi -g "$(slurp)" --audio --file=$HOME/Videos/$(date +Rec%d%m%Y_%Hh%Mm%Ss.mp4)
-      bind = ${modifier}SHIFT,L,exec,wf-recorder -c h264_vaapi --muxer=v4l2 --codec=rawvideo --file=/dev/video2 -x yuv420p
+      bind = ${modifier}CONTROL,X,exec,wf-recorder -c h264_vaapi --muxer=v4l2 --codec=rawvideo --file=/dev/video2 -x yuv420p
       bind = ${modifier},left,movefocus,l
       bind = ${modifier},right,movefocus,r
       bind = ${modifier},up,movefocus,u
@@ -376,9 +386,9 @@ in with lib; {
       bind = SUPER,F5,pass,^(com\.obsproject\.Studio)$
       bind = SUPER,F6,pass,^(com\.obsproject\.Studio)$
       bind = SUPER,F7,pass,^(com\.obsproject\.Studio)$
-      bind = ALT,F10,pass,^(com\.obsproject\.Studio)$
+      bind = SUPER,F10,pass,^(com\.obsproject\.Studio)$
       bind = SUPER,F8,pass,^(com\.obsproject\.Studio)$
-      bind = ALT,F9,pass,^(com\.obsproject\.Studio)$
+      bind = SUPER,F9,pass,^(com\.obsproject\.Studio)$
       bind = SUPER,RBRACKET,pass,^(com\.obsproject\.Studio)$
       bind = SUPER,APOSTROPHE,pass,^(com\.obsproject\.Studio)$
       bind = SUPER,LBRACKET,pass,^(com\.obsproject\.Studio)$
