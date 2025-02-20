@@ -146,7 +146,7 @@ in with lib; {
          hyprgrass-bind = , edge:u:d, exec, pkill wvkbd-mobintl
          
          # swipe up from bottom edge
-         hyprgrass-bind = , edge:d:u, exec, wvkbd-mobintl
+         hyprgrass-bind = , edge:d:u, exec, wvkbd-mobintl -H 300 -L 350 --alpha 100
 
          # swipe down from left edge
          hyprgrass-bind = , edge:l:d, exec, pactl set-sink-volume @DEFAULT_SINK@ -4%
