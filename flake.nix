@@ -17,6 +17,10 @@
          inputs.hyprland.follows = "hyprland"; # IMPORTANT
       };
     flake-parts.url = "github:hercules-ci/flake-parts";
+    
+    # zen zen-browser
+    zen-browser.url = "github:MarceColl/zen-browser-flake";
+
     #### ---- nixvim
     nixvim = {
       url = "github:nix-community/nixvim";

@@ -28,5 +28,6 @@
     ./fastfetch
     # ./iiorient.nix
     ./cava.nix
+    # ./espanso.nix
   ];
 }

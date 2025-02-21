@@ -1,4 +1,4 @@
-{ pkgs, username, ... }:
+{pkgs, username, ... }:
 
 let
   inherit (import ../../options.nix)
@@ -36,11 +36,8 @@ in {
     ddgr
     appflowy
     # tvbrowser
-    # (pkgs.callPackage ../pkgs/rofi-blocks.nix {})
     (pkgs.callPackage ../pkgs/amzqr.nix {})
-    # (pkgs.callPackage ../pkgs/elforkane.nix {})
-    # nwg-launcher
-    #(nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    (pkgs.callPackage ../pkgs/ffmpegsplitpy.nix {})
     # Import Scripts
     (import ./../scripts/emopicker9000.nix { inherit pkgs;})
     (import ./../scripts/task-waybar.nix { inherit pkgs; })

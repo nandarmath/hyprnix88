@@ -78,6 +78,8 @@
     ferdium
     keepassxc
     newsflash
+    inputs.zen-browser.packages."${system}".specific
+
   ];
 
   programs.steam.gamescopeSession.enable = true;
