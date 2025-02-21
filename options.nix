@@ -79,7 +79,7 @@ in {
   # If You Disable All You Get Kitty
   wezterm = false;
   alacritty = true;
-  kitty = false;
+  kitty = true;
 
   # Enable Python & PyCharm
   python = true;

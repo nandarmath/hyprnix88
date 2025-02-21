@@ -12,7 +12,7 @@ in lib.mkIf (wezterm == false && alacritty == false
     shellIntegration.enableFishIntegration=true;
     # font.name = "JetBrainsMono Nerd Font";
     font.name = "jetbrains-mono";
-    font.size = 18;
+    font.size = 13;
     settings = {
       scrollback_lines = 2000;
       wheel_scroll_min_lines = 1;
