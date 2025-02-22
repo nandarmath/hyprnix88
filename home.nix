@@ -29,7 +29,10 @@ in {
     enable = true;
     userName = "${gitUsername}";
     userEmail = "${gitEmail}";
-    extraConfig.init.defaultBranch = "main";
+    extraConfig = {
+      init.defaultBranch = "main";
+      safe.directory = "/home/nandar/Data/01 My Data/01 Kuliah/18_Persiapan Tesis";
+      };
   };
 
   # Create XDG Dirs
