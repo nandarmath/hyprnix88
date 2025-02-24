@@ -34,6 +34,28 @@ in {
       safe.directory = "/home/nandar/Data/01 My Data/01 Kuliah/18_Persiapan Tesis";
       };
   };
+  
+  # config ssh
+  programs.ssh = {
+    enable = true;
+    extraConfig = ''
+      #Account 1
+      Host github.com
+        HostName nandarmath
+        # IgnoreUnknown UseKeychain
+        # UseKeychain yes
+        Identityfile ~/.ssh/id_ed25519
+
+      #Account -3
+      Host github.com
+        HostName risnandarh
+        # IgnoreUnknown UseKeychain
+        # UseKeychain yes
+        Identityfile ~/.ssh/git_student
+
+
+    '';
+  };
 
   # Create XDG Dirs
   xdg = {

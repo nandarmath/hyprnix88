@@ -25,7 +25,8 @@ let
     pydub
     # pyside2
     torch
-    # whisper
+    whisper
+    srt
 
 
 

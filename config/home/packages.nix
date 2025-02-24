@@ -35,6 +35,8 @@ in {
     xfce.exo
     ddgr
     appflowy
+    wasistlos
+    ocrmypdf
     # tvbrowser
     (pkgs.callPackage ../pkgs/amzqr.nix {})
     (pkgs.callPackage ../pkgs/ffmpegsplitpy.nix {})
