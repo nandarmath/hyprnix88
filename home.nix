@@ -39,19 +39,19 @@ in {
   programs.ssh = {
     enable = true;
     extraConfig = ''
-      #Account 1
-      Host github.com
-        HostName nandarmath
-        # IgnoreUnknown UseKeychain
-        # UseKeychain yes
-        Identityfile ~/.ssh/id_ed25519
+      # #Account 1
+      # Host github.com
+      #   HostName nandarmath
+      #   # IgnoreUnknown UseKeychain
+      #   # UseKeychain yes
+      #   Identityfile ~/.ssh/id_ed25519
 
-      #Account -3
-      Host github.com
-        HostName risnandarh
-        # IgnoreUnknown UseKeychain
-        # UseKeychain yes
-        Identityfile ~/.ssh/git_student
+      # #Account -3
+      # Host github.com
+      #   HostName risnandarh
+      #   # IgnoreUnknown UseKeychain
+      #   # UseKeychain yes
+      #   Identityfile ~/.ssh/git_student
 
 
     '';
