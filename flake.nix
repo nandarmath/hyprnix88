@@ -18,10 +18,13 @@
       };
     flake-parts.url = "github:hercules-ci/flake-parts";
     
+
     # zen zen-browser
     zen-browser.url = "github:MarceColl/zen-browser-flake";
 
     #### ---- nixvim
+    nixvim-config.url = "github:nicolas-goudry/nixvim-config";
+    
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -55,7 +58,7 @@
 
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, impermanence, joshuto, hyprpanel, sops-nix,nixvim, nixpkgs-r2405, anyrun, fmpkgs, ... }:
+  outputs = inputs@{ self, nixvim-config, nixpkgs, home-manager, impermanence, joshuto, hyprpanel, sops-nix,nixvim, nixpkgs-r2405, anyrun, fmpkgs, ... }:
   let
     system = "x86_64-linux";
     overlay-r2405 = final: prev:{
@@ -64,6 +67,7 @@
         config.allowUnfree= true;
       };
     };
+
     inherit (import ./options.nix) username hostname;
 
     pkgs = import nixpkgs {
@@ -73,17 +77,21 @@
       };
     };
   in {
-    nixosConfigurations = {
+
+  nixosConfigurations = {
       "${hostname}" = nixpkgs.lib.nixosSystem {
 	specialArgs = { 
           inherit system; inherit inputs; 
           inherit username; inherit hostname;
         };
+    
+
 	modules = [ 
     ({config, pkgs, ...}:{nixpkgs.overlays = [overlay-r2405 inputs.hyprpanel.overlay];})
     { nixpkgs.overlays = [inputs.fmpkgs.overlays.default]; }
     { inherit (inputs.fmpkgs) nixpkgs; }
 	  {environment.systemPackages = [ anyrun.packages.${system}.anyrun ];}
+  
   ./system.nix
     sops-nix.nixosModules.sops
     nixvim.nixosModules.nixvim

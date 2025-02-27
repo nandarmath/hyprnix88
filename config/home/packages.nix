@@ -7,7 +7,10 @@ in {
   # Install Packages For The User
   home.packages = with pkgs; [
     pkgs."${browser}" discord libvirt swww grim slurp file-roller ffmpeg wf-recorder wl-screenrec tree zoxide android-tools
-    swaynotificationcenter nwg-dock-hyprland pyprland pandoc pistol rofi-power-menu imv transmission_3-gtk mpv rofi-pulse-select rofi-mpd gitg vlc xournalpp
+    swaynotificationcenter nwg-dock-hyprland pyprland pandoc pistol rofi-power-menu imv transmission_3-gtk 
+    mpv
+    # smplayer
+    rofi-pulse-select rofi-mpd gitg vlc xournalpp
     # openboard
     blender
     rustup nix-search-cli microsoft-edge ghostscript gparted droidcam thinkpad-scripts cpu-x tenacity pavucontrol rofi-bluetooth pdfarranger chromium tgpt bat scrcpy mpd
