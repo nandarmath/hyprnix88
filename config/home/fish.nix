@@ -88,9 +88,9 @@ lib.mkIf (theShell =="fish") {
             gmlm = "git merge gl/main";
             gmt = "git mergetool --no-prompt";
 
-            gpsm = "git push -u sh main";
-            gpgm = "git push -u gh main";
-            gplm = "git push -u gl main";
+            gpsm = "git push -u gitstudent main";
+            gpgm = "git push -u github main";
+            gplm = "git push -u origin main";
 
             gr = "git remote";
             gra = "git remote add";
