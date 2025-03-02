@@ -5,11 +5,11 @@
       wg0={
         address =["10.2.0.2/32"];
         dns = ["10.2.0.1"];
-        privateKey ="qMPBwLqo33vBPwrU1icX3WCzFGjso6pCgq9XDYLYOVI=";
+        privateKey ="QBLS8ID/8U+7m+kv1ylScfwBzmd3JxYQVrGAn1WM4n0=";
         peers=[{
-          publicKey ="mortbpQLtauCXw+rSFfEty9xZa1kEAeB9iB/c8sw6Wo=";
+          publicKey ="xrZTJ9U7GHo834PN1sckR4RuLjP/Sy0jb2d0z1pLgzU=";
           allowedIPs =["0.0.0.0/0"];
-          endpoint="212.102.51.110:51820";
+          endpoint="37.19.205.198:51820";
         }];
       };
     };

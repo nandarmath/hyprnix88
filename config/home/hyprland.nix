@@ -244,7 +244,7 @@ in with lib; {
       bind = ${modifier}SHIFT,G,exec, fish -c record_scree_gif
       bind = ${modifier},E,exec,thunar
       bind = ${modifier},TAB,exec,rofi -show window -window-thumbnail
-      bind = ${modifier}SHIFT,E,exec,${terminal} -e yazi
+      bind = ${modifier}SHIFT,E,exec,kitty -e yazi
       bind = ${modifier}SHIFT,Y,exec,spotify
       bind = ${modifier},X,killactive,
       bind = ${modifier}SHIFT,K,exec, kitty -e lvim ~/hyprnix/config/home/hyprland.nix

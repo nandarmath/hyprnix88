@@ -7,8 +7,8 @@
   environment.systemPackages = with pkgs; [
     wget cmake gcc curl git cmatrix lolcat htop btop libvirt
     polkit_gnome
-    # winetricks
-    # wineWowPackages.waylandFull
+    winetricks
+    wineWowPackages.waylandFull
     ntfs3g lm_sensors unzip unrar libnotify eza pipewire wireplumber qt6.qtwayland qt5.qtwayland
     v4l-utils ydotool nh
     gtk3
