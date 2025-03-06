@@ -70,8 +70,8 @@ lib.mkIf (theShell =="fish") {
             gd = "git diff";
             gdca = "git diff --cached";
 
-            gfs = "git fetch sh";
-            gfg = "git fetch gh";
+            gfs = "git fetch gs";
+            gfn = "git fetch gn";
             gfl = "git fetch gl";
             gfa = "git fetch --all --prune";
 
@@ -83,14 +83,14 @@ lib.mkIf (theShell =="fish") {
             glo = "git log --oneline --decorate";
 
             gm = "git merge";
-            gmsm = "git merge sh/main";
-            gmgm = "git merge gh/main";
+            gmsm = "git merge gs/main";
+            gmnm = "git merge gn/main";
             gmlm = "git merge gl/main";
             gmt = "git mergetool --no-prompt";
 
-            gpsm = "git push -u gitstudent main";
-            gpgm = "git push -u github main";
-            gplm = "git push -u origin main";
+            gpsm = "git push -u gs main";
+            gpnm = "git push -u gn main";
+            gplm = "git push -u gl main";
 
             gr = "git remote";
             gra = "git remote add";
@@ -106,8 +106,8 @@ lib.mkIf (theShell =="fish") {
             gta = "git tag -a";
 
             gur = "git pull --rebase";
-            gusm = "git pull sh main";
-            gugm = "git pull gh main";
+            gusm = "git pull gs main";
+            gunm = "git pull gn main";
             gulm = "git pull gl main";
           };
           shellAliases = {

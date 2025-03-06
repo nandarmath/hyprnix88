@@ -31,8 +31,6 @@ in {
     scribus handbrake zotero
     spotify swayidle neovide swaylock hyprpicker cliphist joplin-desktop joplin
     rofi-wayland aria2 clipmenu xsel lapce
-    hyprlandPlugins.hyprgrass
-    hyprlandPlugins.hyprexpo
     fmpkgs.xdman
     fastfetch
     xfce.exo

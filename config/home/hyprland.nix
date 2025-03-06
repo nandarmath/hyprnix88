@@ -2,7 +2,6 @@
 
 let
   theme = config.colorScheme.palette;
-  hyprplugins = inputs.hyprland-plugins.packages.${pkgs.system};
   inherit (import ../../options.nix)
     browser cpuType gpuType
     wallpaperDir borderAnim
@@ -14,12 +13,9 @@ in with lib; {
     enable = true;
     xwayland.enable = true;
     systemd.enable = true;
-    plugins = [
-      # inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars
-      inputs.hyprgrass.packages.${pkgs.system}.default
-#    hyprplugins.hyprtrails
-     # hyprplugins.hyprexpo
-     #inputs.hyprgrass.packages.${pkgs.system}.default
+    plugins = with pkgs.hyprlandPlugins;[
+      hyprgrass
+      hyprexpo
     ];
     extraConfig = let
       modifier = "SUPER";

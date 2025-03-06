@@ -6,19 +6,8 @@
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nix-colors.url = "github:misterio77/nix-colors";
-    #hyprland.url = "github:hyprwm/Hyprland";
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
-      };
-    hyprgrass = {
-         url = "github:horriblename/hyprgrass";
-         inputs.hyprland.follows = "hyprland"; # IMPORTANT
-      };
     flake-parts.url = "github:hercules-ci/flake-parts";
     
-
     # zen zen-browser
     zen-browser.url = "github:MarceColl/zen-browser-flake";
 
@@ -40,7 +29,6 @@
      fmpkgs.url = "github:fmway/fmpkgs";
 
     impermanence.url = "github:nix-community/impermanence";
-    joshuto.url = "github:kamiyaa/joshuto";
     ags.url ="github:Aylur/ags";
     sops-nix.url = "github:Mic92/sops-nix";
     hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
@@ -58,7 +46,7 @@
 
   };
 
-  outputs = inputs@{ self, nixvim-config, nixpkgs, home-manager, impermanence, joshuto, hyprpanel, sops-nix,nixvim, nixpkgs-r2405, anyrun, fmpkgs, ... }:
+  outputs = inputs@{ self, nixvim-config, nixpkgs, home-manager, impermanence, hyprpanel, sops-nix,nixvim, nixpkgs-r2405, anyrun, fmpkgs, ... }:
   let
     system = "x86_64-linux";
     overlay-r2405 = final: prev:{

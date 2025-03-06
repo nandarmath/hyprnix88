@@ -15,7 +15,7 @@ in {
   # Import Program Configurations
   imports = [
     inputs.nix-colors.homeManagerModules.default
-    inputs.hyprland.homeManagerModules.default
+    # inputs.hyprland.homeManagerModules.default
     ./config/home
   ];
 
