@@ -74,6 +74,9 @@ in {
     (import ./../scripts/list-hypr-bindings.nix { inherit pkgs; })
     (import ./../scripts/wofi/wofi-iptv.nix { inherit pkgs; })
     (import ./../scripts/wofi/wofi-mager.nix { inherit pkgs; })
+    (import ./../scripts/ocr-indonesia.nix { inherit pkgs; })
+    (import ./../scripts/ocr-screenshoot.nix { inherit pkgs; })
+    (import ./../scripts/sattyss.nix { inherit pkgs; })
     # (import ./../scripts/pdfextrac.nix { inherit pkgs; })
     #(import ./../scripts/wvkbd.nix { inherit pkgs; })
   ];

@@ -14,7 +14,7 @@ in with lib; {
     xwayland.enable = true;
     systemd.enable = true;
     plugins = with pkgs.hyprlandPlugins;[
-      hyprgrass
+      # hyprgrass
       hyprexpo
     ];
     extraConfig = let
