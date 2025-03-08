@@ -78,7 +78,7 @@ in {
     (import ./../scripts/ocr-indonesia.nix { inherit pkgs; })
     (import ./../scripts/ocr-screenshoot.nix { inherit pkgs; })
     (import ./../scripts/rofi-calc.nix { inherit pkgs; })
-    (import ./../scripts/rofi-wifi.nix { inherit pkgs; })
+    (import ./../scripts/rofi-wf.nix { inherit pkgs; })
     (import ./../scripts/sattyss.nix { inherit pkgs; })
     # (import ./../scripts/pdfextrac.nix { inherit pkgs; })
     #(import ./../scripts/wvkbd.nix { inherit pkgs; })

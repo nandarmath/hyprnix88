@@ -26,10 +26,11 @@ in {
       display-drun:	    "   Apps ";
       display-run:	    "   Run ";
       display-filebrowser:  "   File ";
-      me-select-entry: "";
-      me-accept-entry: "MousePrimary";
-      click-to-exit: true;
       hover-select: true;
+      me-select-entry: "";
+      me-select-entry: "MousePrimary";
+      me-accept-entry: "!MousePrimary";
+      click-to-exit: true;
     }
 
     window { 
