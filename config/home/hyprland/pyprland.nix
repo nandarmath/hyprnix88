@@ -14,12 +14,12 @@
     size = "75% 60%"
     max_size = "1920px 100%"
 
-    [scratchpads.volume]
+    [scratchpads.calendar]
     animation = "fromTop"
-    command = "pavucontrol"
-    class = "pavucontrol"
+    command = "kitty -e calcure"
+    class = "kitty-dropterm"
     lazy = true
-    size = "40% 90%"
+    size = "40% 60%"
 
     [scratchpads.thunar]
     animation = "fromBottom"
