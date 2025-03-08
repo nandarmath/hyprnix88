@@ -13,6 +13,7 @@ in {
     rofi-pulse-select rofi-mpd gitg vlc xournalpp
     # openboard
     blender
+    pairdrop
     rustup nix-search-cli microsoft-edge ghostscript gparted droidcam thinkpad-scripts cpu-x tenacity pavucontrol rofi-bluetooth pdfarranger chromium tgpt bat scrcpy mpd
     nodejs_22
     jq drawio sticky rclone rclone-browser krita sweethome3d.application sweethome3d.furniture-editor

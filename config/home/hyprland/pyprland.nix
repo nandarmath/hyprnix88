@@ -5,6 +5,8 @@
     [pyprland]
     plugins = [
       "scratchpads",
+      "magnify",
+      "expose",
     ]
 
     [scratchpads.term]
@@ -16,15 +18,15 @@
 
     [scratchpads.calendar]
     animation = "fromTop"
-    command = "calcure"
-    class = "calcure"
+    command = "kitty -e calcure"
+    class = "kitty-dropterm"
     lazy = true
     size = "40% 60%"
 
-    [scratchpads.thunar]
+    [scratchpads.nautilus]
     animation = "fromBottom"
-    command = "thunar"
-    class = "thunar"
+    command = "nautilus"
+    class = "nautilus"
     size = "75% 60%"
   '';
 }

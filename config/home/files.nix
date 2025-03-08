@@ -16,7 +16,7 @@
  #  source = ./files/obs-studio;
  #  recursive = true;
  #};
-  home.file.".config/hypr/pyprland.toml".source = ./files/pyprland.toml;
+  # home.file.".config/hypr/pyprland.toml".source = ./files/pyprland.toml;
 
   home.file.".config/fish/functions/record_scree_gif.fish" ={
     source = ./files/fish/record_scree_gif.fish;

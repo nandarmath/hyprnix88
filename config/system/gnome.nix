@@ -29,7 +29,7 @@ environment.systemPackages = with pkgs.gnomeExtensions; [
     pop-shell
     dash-to-dock
     copier
-    thinkpad-battery-threshold
+    # thinkpad-battery-threshold
     thinkpad-thermal
     logo-menu
     tophat

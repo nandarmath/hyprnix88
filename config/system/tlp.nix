@@ -3,8 +3,9 @@
   pkgs,
   ...
 }: {
+  services.power-profiles-daemon.enable = false;
   services.tlp = {
-    enable = false;
+    enable = true;
     settings = {
       TLP_WARN_LEVEL = 10;
       # Audio
@@ -29,8 +30,8 @@
       AHCI_RUNTIME_PM_ON_BAT = "auto";
       AHCI_RUNTIME_PM_TIMEOUT = 15;
       # Graphics
-      INTEL_GPU_MIN_FREQ_ON_AC = 300;
-      INTEL_GPU_MIN_FREQ_ON_BAT = 300;
+      INTEL_GPU_MIN_FREQ_ON_AC = 500;
+      INTEL_GPU_MIN_FREQ_ON_BAT = 400;
       INTEL_GPU_MAX_FREQ_ON_AC = 1100;
       INTEL_GPU_MAX_FREQ_ON_BAT = 800;
       INTEL_GPU_BOOST_FREQ_ON_AC = 1100;
