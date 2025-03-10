@@ -30,7 +30,7 @@
   networking.firewall.enable = true;
   networking.firewall.allowedUDPPorts = [49152 53317 8181 8787 7236 7250 443 53 11434 3000];
   networking.firewall.allowedTCPPorts = [80 443 53317 8181 7236 5353 8787 22 53 11434 3000];
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   # sound.enable = true;
   security.rtkit.enable = true;
   programs.thunar = {

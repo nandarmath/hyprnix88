@@ -136,7 +136,6 @@ services.postgresql = {
   
 ## Redis
 services.redis = {
-  enable = true;
   package = pkgs.redis;
   servers."nandar" = {
     enable = true;
