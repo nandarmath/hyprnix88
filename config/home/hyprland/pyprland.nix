@@ -19,7 +19,7 @@
     [scratchpads.calendar]
     animation = "fromTop"
     command = "kitty -e calcure"
-    class = "kitty-dropterm"
+    class = "calcure"
     lazy = true
     size = "40% 60%"
 

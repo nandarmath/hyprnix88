@@ -194,6 +194,7 @@
        reactablefmtr
        htmltools
        ggiraph
+       googlesheets4
 
        # citr
 

@@ -51,7 +51,7 @@ in with lib; {
       "$mod SHIFT,A,exec, pypr expose"
       "$mod SHIFT,RETURN,exec, pypr toggle term"
       "$mod CONTROL,C,exec,pypr toggle calendar"
-      "$mod ALT,N,exec, rofi-wfi"
+      "$mod ALT,N,exec, wifi-menu"
       "CONTROL, TAB,focuscurrentorlast"
       "$mod SHIFT,N,exec, sh ~/hyprnix/config/home/files/dmenu_iptv"
       "$mod SHIFT,left,movewindow,l"

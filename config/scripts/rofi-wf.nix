@@ -1,249 +1,287 @@
-#!/usr/bin/env bash
+{ pkgs ? import <nixpkgs> {} }:
 
-# Dependensi: rofi, nmcli, awk, grep
+pkgs.symlinkJoin {
+  name = "wifi-manager";
+  paths = [
+    (pkgs.writeShellScriptBin "connect-to-network" ''
+      local ssid="$1"
+      
+      # Check if connection to this SSID already exists in saved connections
+      if ${pkgs.networkmanager}/bin/nmcli -t -f NAME connection show | grep -Fx "$ssid" &>/dev/null; then
+          # Use existing connection (with saved password)
+          echo "Using saved profile for '$ssid'"
+          ${pkgs.networkmanager}/bin/nmcli connection up id "$ssid"
+          return $?
+      fi
+      
+      # If no saved connection, check if network requires password
+      if ${pkgs.networkmanager}/bin/nmcli -t -f SSID,SECURITY device wifi list | grep -F "$(echo "$ssid" | sed 's/:/\\:/g'):" | grep -q "WPA"; then
+          # Use rofi to request password
+          password=$(${pkgs.rofi}/bin/rofi -dmenu -p "Password for '$ssid'" -password -lines 0)
+          
+          # If user cancels password input
+          if [[ -z "$password" ]]; then
+              return 1
+          fi
+          
+          # Connect to network with password and save to NetworkManager profile
+          ${pkgs.networkmanager}/bin/nmcli device wifi connect "$ssid" password "$password"
+      else
+          # Connect to network without password
+          ${pkgs.networkmanager}/bin/nmcli device wifi connect "$ssid"
+      fi
+    '')
 
-# Fungsi untuk menghubungkan ke jaringan
-{pkgs}:
-pkgs.writeShellScriptBin "rofi-wfi" ''
-
-connect_to_network() {
-    local ssid="$1"
-    
-    # Cek apakah koneksi ke SSID ini sudah ada dalam daftar koneksi tersimpan
-    if nmcli -t -f NAME connection show | grep -Fx "$ssid" &>/dev/null; then
-        # Gunakan koneksi yang sudah ada (dengan password tersimpan)
-        echo "Menggunakan profil tersimpan untuk '$ssid'"
-        nmcli connection up id "$ssid"
-        return $?
-    fi
-    
-    # Jika tidak ada koneksi tersimpan, cek apakah jaringan memerlukan password
-    if nmcli -t -f SSID,SECURITY device wifi list | grep -F "$(echo "$ssid" | sed 's/:/\\:/g'):" | grep -q "WPA"; then
-        # Gunakan rofi untuk meminta password
-        password=$(rofi -dmenu -p "Password untuk '$ssid'" -password -lines 0)
+    (pkgs.writeShellScriptBin "wifi-menu" ''
+      # Function to connect to a network
+      connect_to_network() {
+        local ssid="$1"
         
-        # Jika pengguna membatalkan input password
-        if [[ -z "$password" ]]; then
-            return 1
+        # Check if connection to this SSID already exists in saved connections
+        if ${pkgs.networkmanager}/bin/nmcli -t -f NAME connection show | grep -Fx "$ssid" &>/dev/null; then
+            # Use existing connection (with saved password)
+            echo "Using saved profile for '$ssid'"
+            ${pkgs.networkmanager}/bin/nmcli connection up id "$ssid"
+            return $?
         fi
         
-        # Hubungkan ke jaringan dengan password dan simpan ke dalam profil NetworkManager
-        nmcli device wifi connect "$ssid" password "$password"
-    else
-        # Hubungkan ke jaringan tanpa password
-        nmcli device wifi connect "$ssid"
-    fi
-}
-
-# Fungsi untuk menampilkan daftar jaringan dan menangani pilihan
-show_wifi_menu() {
-    # Dapatkan SSID yang sedang aktif terhubung
-    active_device=$(nmcli -t -f DEVICE,TYPE device status | grep ':wifi$' | cut -d':' -f1 | head -n1)
-    active_connection=$(nmcli -t -f DEVICE,CONNECTION device status | grep "^${active_device}:" | cut -d':' -f2)
-
-    echo "Perangkat aktif: $active_device"
-    echo "Koneksi aktif: $active_connection"
-
-    # Ambil daftar SSID yang tersedia beserta kekuatan sinyal dan info keamanan
-    networks=$(nmcli --colors no --fields SSID,BARS,SECURITY,IN-USE device wifi list | tail -n +2)
-
-    formatted_networks=""
-
-    # Gunakan IFS untuk membaca berdasarkan baris penuh
-    while IFS= read -r line; do
-        # Ekstrak SSID dengan menangani spasi dengan benar
-        in_use=$(echo "$line" | grep -o "^\*" || echo "")
-        line_without_star=${line#\* }
-        line_without_star=${line#  }
-        
-        ssid=$(echo "$line_without_star" | awk -F ' {2,}' '{print $1}')
-        signal=$(echo "$line_without_star" | awk -F ' {2,}' '{print $2}')
-        security=$(echo "$line_without_star" | awk -F ' {2,}' '{print $3}')
-        
-        # Skip jaringan dengan SSID kosong
-        if [[ -z "$ssid" || "$ssid" == "--" ]]; then
-            continue
-        fi
-        
-        # Tandai jaringan yang terhubung dengan label "Connected"
-        if [[ -n "$in_use" || "$ssid" == "$active_connection" ]]; then
-            formatted_networks+="$ssid [Connected] ∷ $signal ∷ $security\n"
-        else
-            formatted_networks+="$ssid ∷ $signal ∷ $security\n"
-        fi
-    done <<< "$networks"
-
-    # Tambahkan opsi untuk memindai ulang dan mengelola koneksi tersimpan
-    formatted_networks+="[Pindai Ulang Jaringan WiFi]\n"
-    formatted_networks+="[Kelola Koneksi Tersimpan]"
-
-    # Tampilkan menu rofi
-    chosen_network=$(echo -e "$formatted_networks" | rofi -dmenu -i -p "Pilih Jaringan WiFi" -lines 15 -width 40)
-
-    # Jika tidak ada yang dipilih (user cancel)
-    if [[ -z "$chosen_network" ]]; then
-        exit 0
-    fi
-
-    # Jika opsi pindai ulang dipilih
-    if [[ "$chosen_network" == "[Pindai Ulang Jaringan WiFi]" ]]; then
-        echo "Memindai ulang jaringan WiFi..."
-        # Pastikan semua perangkat WiFi dipindai
-        for wifi_dev in $(nmcli -t -f DEVICE,TYPE device status | grep ':wifi$' | cut -d':' -f1); do
-            nmcli device wifi rescan ifname "$wifi_dev" &>/dev/null
-        done
-        # Jika tidak ada perangkat spesifik, lakukan pemindaian umum
-        if [ $? -ne 0 ]; then
-            nmcli device wifi rescan &>/dev/null
-        fi
-        
-        # Tunggu sebentar untuk memastikan scan selesai
-        sleep 2
-        notify-send "WiFi" "Pemindaian jaringan selesai"
-        
-        # Panggil fungsi ini lagi untuk refresh
-        show_wifi_menu
-        return
-    fi
-
-    # Jika opsi kelola koneksi dipilih
-    if [[ "$chosen_network" == "[Kelola Koneksi Tersimpan]" ]]; then
-        # Ambil daftar koneksi WiFi tersimpan
-        saved_connections=$(nmcli -t -f NAME,TYPE connection show | grep ':802-11-wireless$' | cut -d':' -f1)
-        
-        if [[ -z "$saved_connections" ]]; then
-            notify-send "WiFi" "Tidak ada koneksi tersimpan"
-            show_wifi_menu
-            return
-        fi
-        
-        # Tambahkan opsi kembali
-        saved_connections+=$(echo -e "\n[Kembali]")
-        
-        # Tampilkan daftar koneksi tersimpan
-        selected_conn=$(echo -e "$saved_connections" | rofi -dmenu -i -p "Kelola Koneksi Tersimpan" -lines 10)
-        
-        if [[ -z "$selected_conn" || "$selected_conn" == "[Kembali]" ]]; then
-            show_wifi_menu
-            return
-        fi
-        
-        # Tanyakan tindakan untuk koneksi tersimpan
-        action=$(echo -e "Hubungkan\nLupakan\nKembali" | rofi -dmenu -i -p "Tindakan untuk '$selected_conn'")
-        
-        case "$action" in
-            "Hubungkan")
-                nmcli connection up id "$selected_conn"
-                if [[ $? -eq 0 ]]; then
-                    notify-send "WiFi" "Terhubung ke '$selected_conn'"
-                else
-                    notify-send "WiFi" "Gagal terhubung ke '$selected_conn'"
-                fi
-                ;;
-            "Lupakan")
-                nmcli connection delete id "$selected_conn"
-                notify-send "WiFi" "Menghapus koneksi '$selected_conn'"
-                ;;
-            *)
-                show_wifi_menu
-                return
-                ;;
-        esac
-        
-        show_wifi_menu
-        return
-    fi
-
-    # Cek apakah jaringan yang dipilih adalah yang sedang terhubung
-    if [[ "$chosen_network" == *"[Connected]"* ]]; then
-        # Ekstrak SSID dari jaringan terhubung
-        selected_ssid=$(echo "$chosen_network" | awk -F ' \[Connected\]' '{print $1}')
-        
-        # Konfirmasi sebelum memutuskan koneksi
-        action=$(echo -e "Putuskan\nBatal" | rofi -dmenu -i -p "Apakah anda ingin memutuskan dari '$selected_ssid'?")
-        
-        if [[ "$action" == "Putuskan" ]]; then
-            # Coba dengan beberapa metode untuk memastikan koneksi terputus
-            # Metode 1: Gunakan nama koneksi
-            nmcli connection down id "$selected_ssid" 2>/dev/null
+        # If no saved connection, check if network requires password
+        if ${pkgs.networkmanager}/bin/nmcli -t -f SSID,SECURITY device wifi list | grep -F "$(echo "$ssid" | sed 's/:/\\:/g'):" | grep -q "WPA"; then
+            # Use rofi to request password
+            password=$(${pkgs.rofi}/bin/rofi -dmenu -p "Password for '$ssid'" -password -lines 0)
             
-            # Metode 2: Gunakan nama perangkat wifi
-            if [[ -n "$active_device" ]]; then
-                nmcli device disconnect "$active_device" 2>/dev/null
+            # If user cancels password input
+            if [[ -z "$password" ]]; then
+                return 1
             fi
             
-            # Metode 3: Coba dengan semua interface wifi yang diketahui
-            for dev in $(nmcli -t -f DEVICE,TYPE device status | grep ':wifi$' | cut -d':' -f1); do
-                nmcli device disconnect "$dev" 2>/dev/null
-            done
-            
-            notify-send "WiFi" "Terputus dari '$selected_ssid'"
-            sleep 1
-            
-            # Refresh untuk menampilkan status terbaru
-            show_wifi_menu
-            return
+            # Connect to network with password and save to NetworkManager profile
+            ${pkgs.networkmanager}/bin/nmcli device wifi connect "$ssid" password "$password"
+        else
+            # Connect to network without password
+            ${pkgs.networkmanager}/bin/nmcli device wifi connect "$ssid"
         fi
-        
-        show_wifi_menu
-        return
-    else
-        # Untuk jaringan yang tidak terhubung, ekstrak SSID
-        selected_ssid=$(echo "$chosen_network" | awk -F ' ∷ ' '{print $1}')
-    fi
+      }
+      
+      show_wifi_menu() {
+          # Get currently active SSID
+          active_device=$(${pkgs.networkmanager}/bin/nmcli -t -f DEVICE,TYPE device status | grep ':wifi$' | cut -d':' -f1 | head -n1)
+          active_connection=$(${pkgs.networkmanager}/bin/nmcli -t -f DEVICE,CONNECTION device status | grep "^''${active_device}:" | cut -d':' -f2)
 
-    # Cek apakah koneksi sudah tersimpan
-    if nmcli -t -f NAME connection show | grep -Fx "$selected_ssid" &>/dev/null; then
-        # Jika koneksi sudah tersimpan, langsung hubungkan
-        nmcli connection up id "$selected_ssid"
-        
-        if [[ $? -eq 0 ]]; then
-            notify-send "WiFi" "Terhubung ke '$selected_ssid'"
-        else
-            # Jika gagal, mungkin password sudah berubah
-            action=$(echo -e "Gunakan Password Baru\nLupakan\nKembali" | rofi -dmenu -i -p "Gagal terhubung ke '$selected_ssid'")
-            
-            case "$action" in
-                "Gunakan Password Baru")
-                    # Hapus koneksi lama dan buat koneksi baru
-                    nmcli connection delete id "$selected_ssid" &>/dev/null
-                    connect_to_network "$selected_ssid"
-                    
-                    if [[ $? -eq 0 ]]; then
-                        notify-send "WiFi" "Terhubung ke '$selected_ssid' dengan password baru"
-                    else
-                        notify-send "WiFi" "Gagal terhubung ke '$selected_ssid'"
-                    fi
-                    ;;
-                "Lupakan")
-                    nmcli connection delete id "$selected_ssid"
-                    notify-send "WiFi" "Menghapus koneksi '$selected_ssid'"
-                    ;;
-                *)
-                    show_wifi_menu
-                    return
-                    ;;
-            esac
-        fi
-    else
-        # Hubungkan ke jaringan yang belum tersimpan
-        connect_to_network "$selected_ssid"
-        
-        # Menampilkan notifikasi status koneksi
-        if [[ $? -eq 0 ]]; then
-            notify-send "WiFi" "Terhubung ke '$selected_ssid'"
-        else
-            notify-send "WiFi" "Gagal terhubung ke '$selected_ssid'"
-        fi
-    fi
-    
-    # Kembali ke menu utama setelah melakukan aksi
-    sleep 1
-    show_wifi_menu
+          echo "Active device: $active_device"
+          echo "Active connection: $active_connection"
+
+          # Get list of available SSIDs with signal strength and security info
+          networks=$(${pkgs.networkmanager}/bin/nmcli --colors no --fields SSID,BARS,SECURITY,IN-USE device wifi list | tail -n +2)
+
+          formatted_networks=""
+
+          # Use IFS to read based on full lines
+          while IFS= read -r line; do
+              # Extract SSID handling spaces correctly
+              in_use=$(echo "$line" | grep -o "^\*" || echo "")
+              line_without_star=''${line#\* }
+              line_without_star=''${line#  }
+              
+              ssid=$(echo "$line_without_star" | ${pkgs.gawk}/bin/awk -F ' {2,}' '{print $1}')
+              signal=$(echo "$line_without_star" | ${pkgs.gawk}/bin/awk -F ' {2,}' '{print $2}')
+              security=$(echo "$line_without_star" | ${pkgs.gawk}/bin/awk -F ' {2,}' '{print $3}')
+              
+              # Skip networks with empty SSID
+              if [[ -z "$ssid" || "$ssid" == "--" ]]; then
+                  continue
+              fi
+              
+              # Mark connected network with "Connected" label
+              if [[ -n "$in_use" || "$ssid" == "$active_connection" ]]; then
+                  formatted_networks+="$ssid [Connected] ∷ $signal ∷ $security\n"
+              else
+                  formatted_networks+="$ssid ∷ $signal ∷ $security\n"
+              fi
+          done <<< "$networks"
+
+          # Add options to rescan and manage saved connections
+          formatted_networks+="[Rescan WiFi Networks]\n"
+          formatted_networks+="[Manage Saved Connections]"
+
+          # Display rofi menu
+          chosen_network=$(echo -e "$formatted_networks" | ${pkgs.rofi}/bin/rofi -dmenu -i -p "Select WiFi Network" -lines 15 -width 40)
+
+          # If nothing selected (user cancel)
+          if [[ -z "$chosen_network" ]]; then
+              exit 0
+          fi
+
+          # If rescan option selected
+          if [[ "$chosen_network" == "[Rescan WiFi Networks]" ]]; then
+              echo "Rescanning WiFi networks..."
+              ${pkgs.libnotify}/bin/notify-send "WiFi" "Scanning WiFi networks..."
+              
+              # Ensure all WiFi devices are scanned
+              for wifi_dev in $(${pkgs.networkmanager}/bin/nmcli -t -f DEVICE,TYPE device status | grep ':wifi$' | cut -d':' -f1); do
+                  ${pkgs.networkmanager}/bin/nmcli device wifi rescan ifname "$wifi_dev" &>/dev/null
+              done
+              
+              # If no specific device, do general scan
+              if [ $? -ne 0 ]; then
+                  ${pkgs.networkmanager}/bin/nmcli device wifi rescan &>/dev/null
+              fi
+              
+              # Wait a bit to ensure scan completes
+              sleep 2
+              ${pkgs.libnotify}/bin/notify-send "WiFi" "Network scan complete"
+              
+              # Call function again to refresh
+              show_wifi_menu
+              return
+          fi
+
+          # If manage connections option selected
+          if [[ "$chosen_network" == "[Manage Saved Connections]" ]]; then
+              # Get list of saved WiFi connections
+              saved_connections=$(${pkgs.networkmanager}/bin/nmcli -t -f NAME,TYPE connection show | grep ':802-11-wireless$' | cut -d':' -f1)
+              
+              if [[ -z "$saved_connections" ]]; then
+                  ${pkgs.libnotify}/bin/notify-send "WiFi" "No saved connections"
+                  show_wifi_menu
+                  return
+              fi
+              
+              # Add back option
+              saved_connections+=$(echo -e "\n[Back]")
+              
+              # Display saved connections list
+              selected_conn=$(echo -e "$saved_connections" | ${pkgs.rofi}/bin/rofi -dmenu -i -p "Manage Saved Connections" -lines 10)
+              
+              if [[ -z "$selected_conn" || "$selected_conn" == "[Back]" ]]; then
+                  show_wifi_menu
+                  return
+              fi
+              
+              # Ask for action on saved connection
+              action=$(echo -e "Connect\nForget\nBack" | ${pkgs.rofi}/bin/rofi -dmenu -i -p "Action for '$selected_conn'")
+              
+              case "$action" in
+                  "Connect")
+                      ${pkgs.networkmanager}/bin/nmcli connection up id "$selected_conn"
+                      if [[ $? -eq 0 ]]; then
+                          ${pkgs.libnotify}/bin/notify-send "WiFi" "Connected to '$selected_conn'"
+                      else
+                          ${pkgs.libnotify}/bin/notify-send "WiFi" "Failed to connect to '$selected_conn'"
+                      fi
+                      ;;
+                  "Forget")
+                      ${pkgs.networkmanager}/bin/nmcli connection delete id "$selected_conn"
+                      ${pkgs.libnotify}/bin/notify-send "WiFi" "Deleted connection '$selected_conn'"
+                      ;;
+                  *)
+                      show_wifi_menu
+                      return
+                      ;;
+              esac
+              
+              show_wifi_menu
+              return
+          fi
+
+          # Check if selected network is currently connected
+          if [[ "$chosen_network" == *"[Connected]"* ]]; then
+              # Extract SSID from connected network
+              selected_ssid=$(echo "$chosen_network" | ${pkgs.gawk}/bin/awk -F ' \[Connected\]' '{print $1}')
+              
+              # Confirm before disconnecting
+              action=$(echo -e "Disconnect\nCancel" | ${pkgs.rofi}/bin/rofi -dmenu -i -p "Do you want to disconnect from '$selected_ssid'?")
+              
+              if [[ "$action" == "Disconnect" ]]; then
+                  # Try several methods to ensure connection is disconnected
+                  # Method 1: Use connection name
+                  ${pkgs.networkmanager}/bin/nmcli connection down id "$selected_ssid" 2>/dev/null
+                  
+                  # Method 2: Use wifi device name
+                  if [[ -n "$active_device" ]]; then
+                      ${pkgs.networkmanager}/bin/nmcli device disconnect "$active_device" 2>/dev/null
+                  fi
+                  
+                  # Method 3: Try with all known wifi interfaces
+                  for dev in $(${pkgs.networkmanager}/bin/nmcli -t -f DEVICE,TYPE device status | grep ':wifi$' | cut -d':' -f1); do
+                      ${pkgs.networkmanager}/bin/nmcli device disconnect "$dev" 2>/dev/null
+                  done
+                  
+                  ${pkgs.libnotify}/bin/notify-send "WiFi" "Disconnected from '$selected_ssid'"
+                  sleep 1
+                  
+                  # Refresh to show latest status
+                  show_wifi_menu
+                  return
+              fi
+              
+              show_wifi_menu
+              return
+          else
+              # For networks not connected, extract SSID
+              selected_ssid=$(echo "$chosen_network" | ${pkgs.gawk}/bin/awk -F ' ∷ ' '{print $1}')
+          fi
+
+          # Check if connection is already saved
+          if ${pkgs.networkmanager}/bin/nmcli -t -f NAME connection show | grep -Fx "$selected_ssid" &>/dev/null; then
+              # If connection already saved, connect directly
+              ${pkgs.networkmanager}/bin/nmcli connection up id "$selected_ssid"
+              
+              if [[ $? -eq 0 ]]; then
+                  ${pkgs.libnotify}/bin/notify-send "WiFi" "Connected to '$selected_ssid'"
+              else
+                  # If failed, password might have changed
+                  action=$(echo -e "Use New Password\nForget\nBack" | ${pkgs.rofi}/bin/rofi -dmenu -i -p "Failed to connect to '$selected_ssid'")
+                  
+                  case "$action" in
+                      "Use New Password")
+                          # Delete old connection and create new one
+                          ${pkgs.networkmanager}/bin/nmcli connection delete id "$selected_ssid" &>/dev/null
+                          connect_to_network "$selected_ssid"
+                          
+                          if [[ $? -eq 0 ]]; then
+                              ${pkgs.libnotify}/bin/notify-send "WiFi" "Connected to '$selected_ssid' with new password"
+                          else
+                              ${pkgs.libnotify}/bin/notify-send "WiFi" "Failed to connect to '$selected_ssid'"
+                          fi
+                          ;;
+                      "Forget")
+                          ${pkgs.networkmanager}/bin/nmcli connection delete id "$selected_ssid"
+                          ${pkgs.libnotify}/bin/notify-send "WiFi" "Deleted connection '$selected_ssid'"
+                          ;;
+                      *)
+                          show_wifi_menu
+                          return
+                          ;;
+                  esac
+              fi
+          else
+              # Connect to unsaved network
+              connect_to_network "$selected_ssid"
+              
+              # Display connection status notification
+              if [[ $? -eq 0 ]]; then
+                  ${pkgs.libnotify}/bin/notify-send "WiFi" "Connected to '$selected_ssid'"
+              else
+                  ${pkgs.libnotify}/bin/notify-send "WiFi" "Failed to connect to '$selected_ssid'"
+              fi
+          fi
+          
+          # Return to main menu after action
+          sleep 1
+          show_wifi_menu
+      }
+
+      # Start program
+      show_wifi_menu
+    '')
+  ];
+
+  meta = with pkgs.lib; {
+    description = "A NetworkManager-based WiFi menu using rofi";
+    license = licenses.mit;
+    platforms = platforms.linux;
+    maintainers = [];
+  };
 }
-
-# Mulai program
-show_wifi_menu
-
-''
 
