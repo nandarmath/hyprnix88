@@ -26,6 +26,7 @@
     ./wlogout.nix
     ./yazi.nix
     ./files.nix
+    ./firefox.nix
     ./fastfetch
     # ./iiorient.nix
     ./cava.nix

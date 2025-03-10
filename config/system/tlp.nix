@@ -14,7 +14,7 @@
       SOUND_POWER_SAVE_CONTROLLER = "Y";
       # Battery Care
       START_CHARGE_THRESH_BAT0 = 60;
-      STOP_CHARGE_THRESH_BAT0 = 80;
+      STOP_CHARGE_THRESH_BAT0 = 91;
       RESTORE_THRESHOLDS_ON_BAT = 1;
       NATACPI_ENABLE = 1;
       # Drive Bay - don't have one so all features on
