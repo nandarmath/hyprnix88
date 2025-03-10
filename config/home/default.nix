@@ -31,5 +31,6 @@
     # ./iiorient.nix
     ./cava.nix
     # ./espanso.nix
+    # ./mpv.nix
   ];
 }

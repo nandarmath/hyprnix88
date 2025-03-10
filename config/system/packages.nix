@@ -82,7 +82,7 @@
     keepassxc
     newsflash
     inputs.zen-browser.packages."${system}".specific
-
+    vim
   ];
 
   programs.steam.gamescopeSession.enable = true;

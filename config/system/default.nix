@@ -40,5 +40,6 @@
     ./mpd.nix
     # ./espanso.nix
     ./open-webui.nix
+    ./mpv.nix
   ];
 }
