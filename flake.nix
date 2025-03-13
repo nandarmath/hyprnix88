@@ -67,36 +67,35 @@
   in {
 
   nixosConfigurations = {
-      "${hostname}" = nixpkgs.lib.nixosSystem {
-	specialArgs = { 
-          inherit system; inherit inputs; 
-          inherit username; inherit hostname;
-        };
+  "${hostname}" = nixpkgs.lib.nixosSystem {
+	   specialArgs = { 
+       inherit system; inherit inputs; 
+       inherit username; inherit hostname;
+     };
     
 
-	modules = [ 
-    ({config, pkgs, ...}:{nixpkgs.overlays = [overlay-r2405 inputs.hyprpanel.overlay];})
-    { nixpkgs.overlays = [inputs.fmpkgs.overlays.default]; }
-    { inherit (inputs.fmpkgs) nixpkgs; }
-	  {environment.systemPackages = [ anyrun.packages.${system}.anyrun ];}
-  
-  ./system.nix
-    sops-nix.nixosModules.sops
-    nixvim.nixosModules.nixvim
-	  impermanence.nixosModules.impermanence
-    home-manager.nixosModules.home-manager {
-	    home-manager.extraSpecialArgs = {
-	      inherit username; inherit inputs;
-              inherit (inputs.nix-colors.lib-contrib {inherit pkgs;}) gtkThemeFromScheme;
-      };
-	    home-manager.useGlobalPkgs = true;
-      home-manager.useUserPackages = true;
-      home-manager.backupFileExtension = "backup";
-	    home-manager.users.${username} = import ./home.nix;
-	   # home-manager.users.${username}.initialPassword = "1988";
-	  }
-	];
-      };
-    };
+     modules = [ 
+       ({config, pkgs, ...}:{nixpkgs.overlays = [overlay-r2405 inputs.hyprpanel.overlay];})
+       { nixpkgs.overlays = [inputs.fmpkgs.overlays.default]; }
+       { inherit (inputs.fmpkgs) nixpkgs; }
+       {environment.systemPackages = [ anyrun.packages.${system}.anyrun ];}
+       ./system.nix
+       sops-nix.nixosModules.sops
+       nixvim.nixosModules.nixvim
+       impermanence.nixosModules.impermanence
+       home-manager.nixosModules.home-manager {
+         home-manager.extraSpecialArgs = {
+           inherit username; inherit inputs;
+           inherit (inputs.nix-colors.lib-contrib {inherit pkgs;}) gtkThemeFromScheme;
+         };
+         home-manager.useGlobalPkgs = true;
+         home-manager.useUserPackages = true;
+         home-manager.backupFileExtension = "backup";
+         home-manager.users.${username} = import ./home.nix;
+        # home-manager.users.${username}.initialPassword = "1988";
+       }
+	  ];
+   };
   };
+ };
 }

@@ -5,7 +5,7 @@ services.mpd = {
   enable = true;
   user ="nandar";
   group = "users";
-  musicDirectory = "/home/nandar/Music/";
+  musicDirectory = "/home/nandar/Music";
   extraConfig = ''
    audio_output {
     type "pipewire"

@@ -6,11 +6,9 @@
     ./alacritty.nix
     ./bash.nix
     ./gtk-qt.nix
-    # ./hyprland.nix
     ./hyprland
     ./kdenlive.nix
     ./kitty.nix
-    # ./neofetch.nix
     ./packages.nix
     ./rofi.nix
     ./starship.nix
@@ -28,9 +26,7 @@
     ./files.nix
     ./firefox.nix
     ./fastfetch
-    # ./iiorient.nix
     ./cava.nix
     # ./espanso.nix
-    # ./mpv.nix
   ];
 }

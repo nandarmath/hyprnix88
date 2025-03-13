@@ -37,9 +37,10 @@
     ./network.nix
     ./nh.nix
     # ./virtualbox.nix
-    ./mpd.nix
+    # ./mpd.nix
     # ./espanso.nix
     ./open-webui.nix
     ./mpv.nix
+    ./mpd.nix
   ];
 }
