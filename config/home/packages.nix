@@ -10,7 +10,7 @@ in {
     swaynotificationcenter nwg-dock-hyprland pyprland pandoc pistol rofi-power-menu imv transmission_3-gtk 
     mpv
     # smplayer
-    rofi-pulse-select rofi-mpd gitg vlc xournalpp
+    rofi-pulse-select gitg vlc xournalpp
     # openboard
     blender
     pairdrop
@@ -39,6 +39,7 @@ in {
     appflowy
     wasistlos
     ocrmypdf
+    rofi-mpd
     # tvbrowser
     (pkgs.callPackage ../pkgs/amzqr.nix {})
     (pkgs.callPackage ../pkgs/ffmpegsplitpy.nix {})

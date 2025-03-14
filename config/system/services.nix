@@ -28,8 +28,8 @@
   };
 
   networking.firewall.enable = true;
-  networking.firewall.allowedUDPPorts = [49152 53317 8181 8787 7236 7250 443 53 11434 3000];
-  networking.firewall.allowedTCPPorts = [80 443 53317 8181 7236 5353 8787 22 53 11434 3000];
+  networking.firewall.allowedUDPPorts = [49152 53317 8181 8787 7236 7250 443 53 11434 3000 6600];
+  networking.firewall.allowedTCPPorts = [80 85 443 53317 8181 7236 5353 8787 22 53 11434 3000 6600];
   services.pulseaudio.enable = false;
   # sound.enable = true;
   security.rtkit.enable = true;

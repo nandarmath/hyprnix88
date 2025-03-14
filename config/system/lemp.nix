@@ -75,8 +75,40 @@ services.nginx = {
             fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
           '';
         };
+        "~^(?<domain>.+)\\.test$" = {
+          listen = [{ addr = "127.0.0.1"; port = 85; }];
+               serverName = "~^(?<domain>.+)\\.test$";
+               # root = "/srv/Web/$domain";
+               root = "/srv/WebApp/$domain/public";
+               locations."/" = {
+                   index = "index.php index.html index.htm";
+                   tryFiles = "$uri $uri/ /index.php?$query_string";
+                   # tryFiles = "public/$uri /public/$uri/ $uri $uri/ public/index.php?$query_string /index.php?$query_string";
+                   # extraConfig = ''
+                   #     autoindex on;
+                   #     charset utf-8;
+                   # '';
+                   extraConfig = ''
+                       charset utf-8;
+                   '';
+                   # return = "404 /index.php";
+               };
+
+               locations."~ \.php$" = {
+                   extraConfig = ''
+                       fastcgi_split_path_info ^(.+\\.php)(/.+)$;
+                       fastcgi_pass unix:/run/phpfpm/mypool.sock;
+                       fastcgi_index index.php;
+                       include ${pkgs.nginx}/conf/fastcgi_params;
+                       fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+                   '';
+               };
+               # locations."~ /\.(?!well-known).*" = {
+               #     extraConfig = "deny all;";
+               # };
+            };  
+
       };
-    
   
 };
 
@@ -235,7 +267,14 @@ networking.extraHosts = ''
   127.0.0.1   moodle.nixos
   '';
   
-  
+  services.dnsmasq = {
+            enable = true;
+            settings = {
+                address = "/test/127.0.0.1";
+                local = "/test/";
+                domain = "test";
+            };
+        };
 
 }
 

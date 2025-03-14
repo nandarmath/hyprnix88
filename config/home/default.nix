@@ -27,6 +27,8 @@
     ./firefox.nix
     ./fastfetch
     ./cava.nix
+    ./mpd.nix
+    ./ncmpcpp.nix
     # ./espanso.nix
   ];
 }
