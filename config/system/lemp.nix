@@ -114,7 +114,7 @@ services.nginx = {
 
 ## Mariadb
   services.mysql = {
-    enable = true;
+    enable = false;
     package = pkgs.mariadb;
 #    settings = { "mysqld" = { "port" = 3308; }; };
     initialScript =

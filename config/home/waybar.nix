@@ -14,8 +14,8 @@ in with lib; {
       position = "top";
 
       modules-center = [ "hyprland/workspaces" ] ;
-      modules-left = [ "custom/startmenu" "hyprland/window" "pulseaudio" "cpu" "memory" "disk"];
-      modules-right = [ "temperature" "custom/hyprbindings" "network" "idle_inhibitor" "custom/themeselector" "custom/notification" "battery" "clock" "tray" "group/powermenu"];
+      modules-left = [ "custom/startmenu" "pulseaudio" "cpu" "memory" "disk" "hyprland/window" ];
+      modules-right = [ "temperature" "custom/weather" "network" "idle_inhibitor" "custom/notification" "battery" "clock" "tray" "group/powermenu"];
 
       "hyprland/workspaces" = {
       	format = if bar-number == true then "{name}" else "{icon}";
@@ -42,6 +42,13 @@ in with lib; {
       	interval = 5;
       	format = " {}%";
         tooltip = true;
+      };
+      "custom/weather" = {
+        exec = "./get_weather.sh Jakarta+Indonesia";
+        return-type = "json";
+        format = "{}";
+        tooltip = true;
+        interval = 3600;
       };
       "temperature"= {
         critical-threshold= 80;
@@ -197,97 +204,97 @@ in with lib; {
 	      color: #${palette.base0F};
       }
       #workspaces {
-	background: #${palette.base01};
-	margin: 2px;
-	padding: 0px 1px;
-	border-radius: 15px;
-	border: 0px;
-	font-style: normal;
-	color: #${palette.base00};
+       background: #${palette.base01};
+       margin: 2px;
+       padding: 0px 1px;
+       border-radius: 15px;
+       border: 0px;
+       font-style: normal;
+       color: #${palette.base00};
       }
       #workspaces button {
-	  padding: 0px 5px;
-	  margin: 4px 3px;
-	  border-radius: 10px;
-	  border: 0px;
-	  color: #${palette.base00};
+	     padding: 0px 5px;
+	     margin: 4px 3px;
+	     border-radius: 10px;
+	     border: 0px;
+	     color: #${palette.base00};
           background: linear-gradient(45deg, #${palette.base0E}, #${palette.base0F}, #${palette.base0D}, #${palette.base09});
           background-size: 300% 300%;
           ${if waybarAnim == true then ''
             animation: gradient_horizontal 15s ease infinite;
           '' else '' 
           ''}
-	  opacity: 0.5;
+       opacity: 0.5;
           transition: ${betterTransition};
       }
       #workspaces button.active {
-	  padding: 0px 5px;
-	  margin: 4px 3px;
-	  border-radius: 10px;
-	  border: 0px;
-	  color: #${palette.base00};
-          background: linear-gradient(45deg, #${palette.base0E}, #${palette.base0F}, #${palette.base0D}, #${palette.base09});
-          background-size: 300% 300%;
-          ${if waybarAnim == true then ''
-            animation: gradient_horizontal 15s ease infinite;
-          '' else '' 
-          ''}
-          transition: ${betterTransition};
-	  opacity: 1.0;
-	  min-width: 40px;
+       padding: 0px 5px;
+       margin: 4px 3px;
+       border-radius: 10px;
+       border: 0px;
+       color: #${palette.base00};
+             background: linear-gradient(45deg, #${palette.base0E}, #${palette.base0F}, #${palette.base0D}, #${palette.base09});
+             background-size: 300% 300%;
+             ${if waybarAnim == true then ''
+               animation: gradient_horizontal 15s ease infinite;
+             '' else '' 
+             ''}
+             transition: ${betterTransition};
+       opacity: 1.0;
+       min-width: 40px;
       }
       #workspaces button:hover {
-	  border-radius: 10px;
-	  color: #${palette.base00};
-          background: linear-gradient(45deg, #${palette.base0E}, #${palette.base0F}, #${palette.base0D}, #${palette.base09});
-          background-size: 300% 300%;
-          ${if waybarAnim == true then ''
-            animation: gradient_horizontal 15s ease infinite;
-          '' else '' 
-          ''}
-	  opacity: 0.8;
-          transition: ${betterTransition};
-      }
-      @keyframes gradient_horizontal {
-	0% {
-	  background-position: 0% 50%;
-	}
-	50% {
-	  background-position: 100% 50%;
-	}
-	100% {
-	  background-position: 0% 50%;
-	}
-      }
-      @keyframes swiping {
-        0% {
-	  background-position: 0% 200%;
-	}
-	100% {
-	  background-position: 200% 200%;
-	}
-      }
+       border-radius: 10px;
+       color: #${palette.base00};
+             background: linear-gradient(45deg, #${palette.base0E}, #${palette.base0F}, #${palette.base0D}, #${palette.base09});
+             background-size: 300% 300%;
+             ${if waybarAnim == true then ''
+               animation: gradient_horizontal 15s ease infinite;
+             '' else '' 
+             ''}
+       opacity: 0.8;
+             transition: ${betterTransition};
+         }
+         @keyframes gradient_horizontal {
+         0% {
+           background-position: 0% 50%;
+         }
+         50% {
+           background-position: 100% 50%;
+         }
+         100% {
+           background-position: 0% 50%;
+         }
+             }
+             @keyframes swiping {
+               0% {
+           background-position: 0% 200%;
+         }
+         100% {
+           background-position: 200% 200%;
+         }
+         }
       tooltip {
-	background: #${palette.base00};
-	border: 1px solid #${palette.base0E};
-	border-radius: 10px;
+      background: #${palette.base00};
+      border: 1px solid #${palette.base0E};
+      border-radius: 10px;
       }
       tooltip label {
-	color: #${palette.base07};
+    	color: #${palette.base07};
       }
       #window {
-	  margin: 4px;
-	  padding: 2px 10px;
-	  color: #${palette.base05};
-	  background: #${palette.base01};
-	  border-radius: 10px;
+	     margin: 4px;
+	     padding: 2px 10px;
+	     color: #${palette.base05};
+	     background: #${palette.base01};
+	     border-radius: 10px;
       }
       #memory {
-   	color: #${palette.base0F};
-	background: #${palette.base01};
-	margin: 4px;
-	padding: 2px 10px;
-	border-radius: 10px;
+     	color: #${palette.base0F};
+      background: #${palette.base01};
+      margin: 4px;
+      padding: 2px 10px;
+      border-radius: 10px;
       }
       #clock {
     	color: #${palette.base01};
@@ -297,65 +304,72 @@ in with lib; {
           animation: gradient_horizontal 15s ease infinite;
         '' else '' 
         ''}
-	margin: 4px;
-	padding: 2px 10px;
-	border-radius: 10px;
+        margin: 4px;
+        padding: 2px 10px;
+        border-radius: 10px;
       }
       #cpu {
-    	color: #${palette.base07};
-	background: #${palette.base01};
-	margin: 4px;
-	padding: 2px 10px;
-	border-radius: 10px;
+      	color: #${palette.base07};
+        background: #${palette.base01};
+        margin: 4px;
+        padding: 2px 10px;
+        border-radius: 10px;
       }
       #disk {
     	color: #${palette.base08};
-	background: #${palette.base01};
-	margin: 4px;
-	padding: 2px 10px;
-	border-radius: 10px;
+      background: #${palette.base01};
+      margin: 4px;
+      padding: 2px 10px;
+      border-radius: 10px;
       }
       #battery {
     	color: #${palette.base08};
-	background: #${palette.base01};
-	margin: 4px;
-	padding: 2px 10px;
-	border-radius: 10px;
+      background: #${palette.base01};
+      margin: 4px;
+      padding: 2px 10px;
+      border-radius: 10px;
       }
       #network {
     	color: #${palette.base09};
-	background: #${palette.base01};
-	margin: 4px;
-	padding: 2px 10px;
-	border-radius: 10px;
+      background: #${palette.base01};
+      margin: 4px;
+      padding: 2px 10px;
+      border-radius: 10px;
       }
       #custom-hyprbindings {
     	color: #${palette.base0E};
-	background: #${palette.base01};
-	margin: 4px;
-	padding: 2px 10px;
-	border-radius: 10px;
+      background: #${palette.base01};
+      margin: 4px;
+      padding: 2px 10px;
+      border-radius: 10px;
+      }
+      #custom-weather {
+    	color: #${palette.base0E};
+      background: #${palette.base01};
+      margin: 4px;
+      padding: 2px 10px;
+      border-radius: 10px;
       }
       #tray {
     	color: #${palette.base05};
-	background: #${palette.base01};
-	margin: 4px;
-	padding: 2px 10px;
-	border-radius: 10px;
+      background: #${palette.base01};
+      margin: 4px;
+      padding: 2px 10px;
+      border-radius: 10px;
       }
       #pulseaudio {
     	color: #${palette.base0D};
-	background: #${palette.base01};
-	margin: 4px;
-	padding: 2px 10px;
-	border-radius: 10px;
+       background: #${palette.base01};
+       margin: 4px;
+       padding: 2px 10px;
+       border-radius: 10px;
       }
       #custom-notification {
     	color: #${palette.base0C};
-	background: #${palette.base01};
-	margin: 4px;
-	padding: 2px 10px;
-	border-radius: 10px;
+      background: #${palette.base01};
+      margin: 4px;
+      padding: 2px 10px;
+      border-radius: 10px;
       }
 
       #temperature {
@@ -366,42 +380,42 @@ in with lib; {
 	      border-radius: 10px;
       }
       #custom-themeselector {
-    	color: #${palette.base0D};
-	background: #${palette.base01};
-	margin: 4px 0px;
-	padding: 2px 10px 2px 5px;
-	border-radius: 10px;
+        color: #${palette.base0D};
+        background: #${palette.base01};
+        margin: 4px;
+        padding: 2px 10px;
+        border-radius: 10px;
       }
       #custom-startmenu {
-    	color: #${palette.base00};
+    	  color: #${palette.base00};
         background: linear-gradient(45deg, #${palette.base09}, #${palette.base03}, #${palette.base0C}, #${palette.base07});
         background-size: 300% 300%;
         ${if waybarAnim == true then ''
           animation: gradient_horizontal 15s ease infinite;
         '' else '' 
         ''}
-	margin: 4px;
-	padding: 2px 10px;
-	border-radius: 10px;
+        margin: 4px;
+        padding: 2px 10px;
+        border-radius: 10px;
       }
       #idle_inhibitor {
     	  color: #${palette.base09};
 	      background: #${palette.base01};
-	      margin: 4px 0px;
-	      padding: 2px 14px;
+	      margin: 4px;
+	      padding: 2px 10px;
 	      border-radius: 10px;
         }
       #custom-exit,
-      #custom-power
+      #custom-power,
       #custom-lock,
       #custom-reboot,
       #custom-suspend{
-    	color: #${palette.base0E};
-	    background: #${palette.base01};
-	    border-radius: 10px;
-	    margin: 4px 0px;
-	    padding: 2px 5px 2px 15px;
-      }
+        color: #${palette.base0E};
+	      background: #${palette.base01};
+	      border-radius: 10px;
+	      margin: 4px;
+	      padding: 2px 10px;
+        }
       ''
     ];
   };

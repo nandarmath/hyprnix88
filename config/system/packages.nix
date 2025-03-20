@@ -5,17 +5,37 @@
   nixpkgs.config.allowUnfree = true;
   # List System Programs
   environment.systemPackages = with pkgs; [
-    wget cmake gcc curl git cmatrix lolcat htop btop libvirt
+    wget
+    cmake
+    gcc
+    curl
+    git
+    cmatrix
+    lolcat
+    htop
+    btop
+    libvirt
     polkit_gnome
     winetricks
     wineWowPackages.waylandFull
-    ntfs3g lm_sensors unzip unrar libnotify eza pipewire wireplumber qt6.qtwayland qt5.qtwayland
-    v4l-utils ydotool nh
+    ntfs3g
+    lm_sensors
+    unzip
+    unrar
+    libnotify
+    eza
+    pipewire
+    wireplumber
+    qt6.qtwayland
+    qt5.qtwayland
+    v4l-utils
+    ydotool
+    nh
     gtk3
     gtk-layer-shell 
     rofi-systemd
     (rofi.override {
-      plugins = [rofi-file-browser rofi-calc];
+      plugins = [rofi-file-browser rofi-mpd rofi-calc];
     })
       # (callPackage ../pkgs/audio2text.nix {})
       # (callPackage ../pkgs/speech.nix {})
@@ -27,11 +47,42 @@
     distrobox
     nix-output-monitor
     kdePackages.qt6ct
-    wl-clipboard socat cowsay lsd lshw stow
-    pkg-config meson cloudflared protonvpn-cli hugo lazygit ripgrep bottom neovim gnumake ninja go nodejs symbola
-    noto-fonts-color-emoji material-icons brightnessctl
-    toybox virt-viewer swappy ripgrep appimage-run pdftk poppler_utils
-    networkmanagerapplet yad bluez pulseaudio wayland-utils xdg-utils
+    wl-clipboard
+    socat
+    cowsay
+    lsd 
+    lshw
+    stow
+    pkg-config
+    meson
+    cloudflared
+    protonvpn-cli
+    hugo
+    lazygit
+    ripgrep 
+    bottom 
+    neovim 
+    gnumake
+    ninja
+    go
+    nodejs
+    symbola
+    noto-fonts-color-emoji
+    material-icons
+    brightnessctl
+    toybox
+    virt-viewer
+    swappy
+    ripgrep
+    appimage-run
+    pdftk
+    poppler_utils
+    networkmanagerapplet
+    yad
+    bluez
+    pulseaudio
+    wayland-utils
+    xdg-utils
     fprintd
     wofi
     # openai-whisper
@@ -108,5 +159,7 @@
   };
 
   virtualisation.libvirtd.enable = true;
+  virtualisation.spiceUSBRedirection.enable = true;
   programs.virt-manager.enable = true;
+
 }

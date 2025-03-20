@@ -29,6 +29,7 @@
     ./cava.nix
     ./mpd.nix
     ./ncmpcpp.nix
+    ./vim.nix
     # ./espanso.nix
   ];
 }
