@@ -58,6 +58,7 @@ pkgs.writeShellScriptBin "dmenu-mager" ''
     [ "TRanslate PDF",          "firefox --new-window --app=https://onlinedoctranslator.com/" ],
     [ "Portal UNY",             "firefox --new-window --app=https://unity.uny.ac.id/" ],
     [ "Scite Ai",               "zen   --new-window --app=https://scite.ai" ],
+    [ "NixOS dan Flake Book",   "zen   --new-window --app=https://nixos-and-flakes.thiscute.world" ],
     [ "Rstudio-server",         "brave --app=https://localhost:8787/" ],
     [ "Remaker AI",             "brave --app=https://remaker.ai/" ],
     [ "Blackbox AI",            "brave --app=https://blackbox.ai/" ],

@@ -22,7 +22,7 @@
     ./tex.nix
     ./fonts.nix
     ./wlogout.nix
-    ./yazi.nix
+    ./yazi
     ./files.nix
     ./firefox.nix
     ./fastfetch
@@ -30,6 +30,7 @@
     ./mpd.nix
     ./ncmpcpp.nix
     ./vim.nix
+    # ./nixvim.nix
     # ./espanso.nix
   ];
 }

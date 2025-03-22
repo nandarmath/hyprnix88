@@ -36,6 +36,10 @@
            # NOTE: tap events only trigger for finger count of >= 3
            hyprgrass-bind = , tap:3, exec, kitty
 
+           # tap with 2 fingers
+           # NOTE: tap events only trigger for finger count of >= 3
+           hyprgrass-bind = , tap:2, exec, fuzzel
+
            # longpress can trigger mouse binds:
            hyprgrass-bindm = , longpress:2, movewindow
            hyprgrass-bindm = , longpress:3, resizewindow

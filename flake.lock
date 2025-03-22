@@ -961,6 +961,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-baru": {
+      "locked": {
+        "lastModified": 1740928666,
+        "narHash": "sha256-CUkBv+WHfpAWAU2y2DdF9Dq7DJL92tGngqrdSjeH7do=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "fd19e10b526f2d77f80df25104d62430183539f4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "fd19e10b526f2d77f80df25104d62430183539f4",
+        "type": "github"
+      }
+    },
     "nixpkgs-lib": {
       "locked": {
         "lastModified": 1738452942,
@@ -1461,6 +1477,7 @@
         "impermanence": "impermanence",
         "nix-colors": "nix-colors",
         "nixpkgs": "nixpkgs_4",
+        "nixpkgs-baru": "nixpkgs-baru",
         "nixpkgs-r2405": "nixpkgs-r2405",
         "nixvim": "nixvim",
         "nixvim-config": "nixvim-config",

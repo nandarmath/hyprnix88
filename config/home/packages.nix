@@ -40,6 +40,8 @@ in {
     wasistlos
     ocrmypdf
     rofi-mpd
+    fuzzel
+    nixd
     # tvbrowser
     (pkgs.callPackage ../pkgs/amzqr.nix {})
     (pkgs.callPackage ../pkgs/ffmpegsplitpy.nix {})

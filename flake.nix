@@ -8,6 +8,7 @@
     nix-colors.url = "github:misterio77/nix-colors";
     flake-parts.url = "github:hercules-ci/flake-parts";
     
+    nixpkgs-baru.url = "github:nixos/nixpkgs/fd19e10b526f2d77f80df25104d62430183539f4";
     # zen zen-browser
     zen-browser.url = "github:MarceColl/zen-browser-flake";
 
@@ -46,7 +47,7 @@
 
   };
 
-  outputs = inputs@{ self, nixvim-config, nixpkgs, home-manager, impermanence, hyprpanel, sops-nix,nixvim, nixpkgs-r2405, anyrun, fmpkgs, ... }:
+  outputs = inputs@{ self, nixvim-config, nixpkgs, nixpkgs-baru, home-manager, impermanence, hyprpanel, sops-nix,nixvim, nixpkgs-r2405, anyrun, fmpkgs, ... }:
   let
     system = "x86_64-linux";
     overlay-r2405 = final: prev:{
@@ -56,6 +57,12 @@
       };
     };
 
+    overlay-baru = final: prev:{
+      pkgs-baru=import nixpkgs-baru {
+        inherit system;
+        config.allowUnfree= true;
+      };
+    };
     inherit (import ./options.nix) username hostname;
 
     pkgs = import nixpkgs {
@@ -75,7 +82,7 @@
     
 
      modules = [ 
-       ({config, pkgs, ...}:{nixpkgs.overlays = [overlay-r2405 inputs.hyprpanel.overlay];})
+       ({config, pkgs, ...}:{nixpkgs.overlays = [overlay-r2405 overlay-baru inputs.hyprpanel.overlay];})
        { nixpkgs.overlays = [inputs.fmpkgs.overlays.default]; }
        { inherit (inputs.fmpkgs) nixpkgs; }
        {environment.systemPackages = [ anyrun.packages.${system}.anyrun ];}
@@ -87,6 +94,7 @@
          home-manager.extraSpecialArgs = {
            inherit username; inherit inputs;
            inherit (inputs.nix-colors.lib-contrib {inherit pkgs;}) gtkThemeFromScheme;
+           inherit overlay-baru;
          };
          home-manager.useGlobalPkgs = true;
          home-manager.useUserPackages = true;

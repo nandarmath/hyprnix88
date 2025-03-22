@@ -65,7 +65,7 @@ in {
   nix = {
     settings = {
       auto-optimise-store = true;
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = [ "nix-command" "flakes" "pipe-operators" ];
       substituters = [
       "https://cache.nixos.org?priority=10"
       "https://anyrun.cachix.org"

@@ -57,6 +57,7 @@ in lib.mkIf (wezterm == false && alacritty == false
       inactive_border_color #${palette.base00}
       bell_border_color #${palette.base03}
       tab_bar_style fade
+      cursor_trail 0
       tab_fade 1
       active_tab_foreground   #${palette.base04}
       active_tab_background   #${palette.base00}
