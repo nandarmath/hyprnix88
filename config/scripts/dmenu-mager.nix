@@ -102,6 +102,7 @@ pkgs.writeShellScriptBin "dmenu-mager" ''
     [ "PMM",                    "firefox --new-window --app=https://guru.kemdikbud.go.id/" ],
     [ "E-Monev",                "firefox --new-window --app=https://beasiswa.kemdikbud.go.id/monev" ],
     [ "KBBI Daring",            "zen     --new-window --app=https://kbbi.kemdikbud.go.id/" ],
+    [ "Scopus AI",              "zen     --new-window --app=https://www.scopus.com/search/form.uri?display=basic#scopus-ai/" ],
     [ "Siakad UNY",             "firefox --new-window --app=https://siakad.uny.ac.id/" ],
     [ "Registrasi UNY",         "firefox --new-window --app=https://registrasi.uny.ac.id/" ],
     [ "BeSmart UNY",            "firefox --new-window --app=https://besmart.uny.ac.id/" ],

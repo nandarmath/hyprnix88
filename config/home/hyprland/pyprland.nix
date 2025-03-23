@@ -23,11 +23,6 @@
     lazy = true
     size = "40% 60%"
 
-    [scratchpads.nautilus]
-    animation = "fromBottom"
-    command = "nautilus"
-    class = "nautilus"
-    size = "75% 60%"
   '';
 }
 

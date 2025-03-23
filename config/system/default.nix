@@ -40,6 +40,5 @@
     # ./espanso.nix
     ./open-webui.nix
     ./mpv.nix
-    ./nixvim.nix
   ];
 }

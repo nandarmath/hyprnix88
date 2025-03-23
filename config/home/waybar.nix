@@ -44,7 +44,7 @@ in with lib; {
         tooltip = true;
       };
       "custom/weather" = {
-        exec = "/home/nandar/hyprnix/config/home/get_weather.sh Yogyakarta+Indonesia";
+        exec = "/home/nandar/hyprnix/config/home/get_weather.sh";
         return-type = "json";
         format = "{}";
         tooltip = true;

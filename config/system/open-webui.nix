@@ -14,7 +14,7 @@ services.ollama = {
 };
 
 services.open-webui = {
-  enable = true;
+  enable = false;
   port = 8090;
   environment = {
     ANONYMIZED_TELEMETRY = "False";

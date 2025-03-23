@@ -69,6 +69,7 @@ in with lib; {
       "$mod ALT,S,exec,rofi-pulse-select source"
       "$mod ALT,R,exec,wf-recorder --audio --file=$HOME/videos/$(date +Rec%d%m%Y_%Hh%Mm%Ss.mp4)"
       "$mod CONTROL,X,exec,wf-recorder -c h264_vaapi --muxer=v4l2 --codec=rawvideo --file=/dev/video2 -x yuv420p"
+      "$mod CONTROL, W,exec,pkill waybar && hyprctl dispatch exec waybar"
       "$mod ,left,movefocus,l"
       "$mod ,right,movefocus,r"
       "$mod ,up,movefocus,u"
