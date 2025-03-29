@@ -5,7 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    nix-colors.url = "github:misterio77/nix-colors";
+    # nix-colors.url = "github:misterio77/nix-colors";
     flake-parts.url = "github:hercules-ci/flake-parts";
     stylix.url = "github:danth/stylix/release-24.11";
     
@@ -45,7 +45,21 @@
 
   };
 
-  outputs = inputs@{ self, nixvim-config, nixpkgs, nixpkgs-baru,stylix, home-manager, impermanence, hyprpanel, sops-nix,nixvim, nixpkgs-r2405, nixpkgs-r2205, fmpkgs, ... }:
+  outputs = inputs@{ self,
+                    nixvim-config,
+                    nixpkgs,
+                    nixpkgs-baru,
+                    stylix,
+                    home-manager,
+                    impermanence, 
+                    hyprpanel,
+                    sops-nix,
+                    nixvim,
+                    nixpkgs-r2405,
+                    nixpkgs-r2205,
+                    fmpkgs,
+                    ...
+                  }:
   let
     system = "x86_64-linux";
     overlay-r2405 = final: prev:{
@@ -98,7 +112,7 @@
        home-manager.nixosModules.home-manager {
          home-manager.extraSpecialArgs = {
            inherit username; inherit inputs;
-           inherit (inputs.nix-colors.lib-contrib {inherit pkgs;}) gtkThemeFromScheme;
+           # inherit (inputs.nix-colors.lib-contrib {inherit pkgs;}) gtkThemeFromScheme;
            inherit overlay-baru;
          };
          home-manager.useGlobalPkgs = true;
