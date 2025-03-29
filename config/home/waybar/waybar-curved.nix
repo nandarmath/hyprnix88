@@ -22,7 +22,7 @@ in
             "pulseaudio"
             "cpu"
             "memory"
-            "idle_inhibitor"
+            "temperature"
             "disk"
             "hyprland/window"
           ];
@@ -70,6 +70,13 @@ in
             interval = 5;
             format = " {usage:2}%";
             tooltip = true;
+          };
+          "temperature"= {
+            critical-threshold= 80;
+            format = "{icon} {temperatureC}°C";
+            format-alt = "{temperatureF}°F {icon}";
+            format-icons = ["" "" ""];
+            tooltip = false;
           };
           "disk" = {
             format = " {free}";
@@ -246,7 +253,7 @@ in
           tooltip label {
             color: #${config.lib.stylix.colors.base08};
           }
-          #window, #pulseaudio, #cpu, #memory, #idle_inhibitor, #disk {
+          #window, #pulseaudio, #cpu, #memory, #temperature, #disk {
             font-weight: bold;
             margin: 4px 0px;
             margin-left: 7px;
