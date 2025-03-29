@@ -1,7 +1,7 @@
 { pkgs, config, lib, ... }:
 
 let
-  palette = config.colorScheme.palette;
+  palette = config.lib.stylix.colors;
   inherit (import ../../options.nix) alacritty wezterm kitty;
 in lib.mkIf (wezterm == false && alacritty == false
 	     || kitty == true) {

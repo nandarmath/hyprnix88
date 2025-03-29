@@ -1,12 +1,7 @@
 { pkgs, config, lib, inputs, ... }:
 
 let
-  theme = config.colorScheme.palette;
-  image = pkgs.fetchurl {
-      url = "https://www.pixelstalk.net/wp-content/uploads/2016/05/Epic-Anime-Awesome-Wallpapers.jpg";
-      sha256 = "enQo3wqhgf0FEPHj2coOCvo7DuZv+x5rL/WIo4qPI50=";  
-    };
-
+  theme = config.lib.stylix.colors;
   inherit (import ../../../options.nix)
     stylixImage
     theKBDLayout
@@ -26,7 +21,7 @@ wayland.windowManager.hyprland = {
         "hyprctl setcursor Bibata-Modern-Ice 24"
         # "killall -q swww;sleep .5 && swww init"
         "swww init"
-        "swww img ${stylixImage}"
+        "sleep 1.5 && swww img ${stylixImage}"
         "pypr &"
         "keepassxc"
         "cloudflared tunnel run moodle"
