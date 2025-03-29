@@ -13,6 +13,8 @@ in {
     rofi-pulse-select gitg vlc xournalpp
     # openboard
     blender
+    persepolis
+    gabutdm
     pairdrop
     rustup nix-search-cli microsoft-edge ghostscript gparted droidcam thinkpad-scripts cpu-x tenacity pavucontrol rofi-bluetooth pdfarranger chromium tgpt bat scrcpy mpd
     nodejs_22
@@ -45,12 +47,13 @@ in {
     # tvbrowser
     (pkgs.callPackage ../pkgs/amzqr.nix {})
     (pkgs.callPackage ../pkgs/ffmpegsplitpy.nix {})
+    # (pkgs.callPackage ../pkgs/lumi.nix {})
     # Import Scripts
     (import ./../scripts/emopicker9000.nix { inherit pkgs;})
     (import ./../scripts/task-waybar.nix { inherit pkgs; })
     (import ./../scripts/squirtle.nix { inherit pkgs; })
-    (import ./../scripts/wallsetter.nix { inherit pkgs; inherit wallpaperDir;
-      inherit username; inherit wallpaperGit; })
+    # (import ./../scripts/wallsetter.nix { inherit pkgs; inherit wallpaperDir;
+      # inherit username; inherit wallpaperGit; })
     (import ./../scripts/themechange.nix { inherit pkgs; inherit flakeDir; })
     (import ./../scripts/theme-selector.nix { inherit pkgs; })
     (import ./../scripts/nvidia-offload.nix { inherit pkgs; })

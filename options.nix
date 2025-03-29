@@ -7,7 +7,6 @@ let
   hostname = "nixos";
   userHome = "/home/${username}";
   flakeDir = "${userHome}/hyprnix";
-  waybarStyle = "slickbar"; # simplebar, slickbar, or default
 in {
   # User Variables
   username = "${username}";
@@ -20,14 +19,20 @@ in {
   borderAnim = true;
   bar-number = true;
   waybarAnim = true;
+  waybarChoice = ./config/home/waybar/waybar-df.nix;
   browser = "firefox";
-  wallpaperGit = "https://gitlab.com/nandarsigma06/Wallpaper.git"; # This will give you my wallpapers
   # ^ (use as is or replace with your own repo - removing will break the wallsetter script) 
-  wallpaperDir = "${userHome}/Pictures/Wallpapers";
   screenshotDir = "${userHome}/Pictures/Screenshots";
   flakeDir = "${flakeDir}";
   terminal = "alacritty";
+  stylixImage = ./config/wallpapers/min_forest.jpg;
 
+  # Set Animation style
+  # Available options are:
+  # animations-def.nix  (default)
+  # animations-end4.nix (end-4 project)
+  # animations-dynamic.nix (ml4w project)
+  animChoice = ./config/home/hyprland/animations-def.nix;
   # System Settings
   clock24h = true;
   theLocale = "en_US.UTF-8";

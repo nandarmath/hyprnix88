@@ -2,7 +2,7 @@
 
 
 let
-  palette = config.colorScheme.palette;
+  palette = config.lib.stylix.colors;
 in {
   programs.rofi = {
       plugins = [pkgs.rofi-calc pkgs.rofi-wayland];

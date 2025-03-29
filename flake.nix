@@ -7,6 +7,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nix-colors.url = "github:misterio77/nix-colors";
     flake-parts.url = "github:hercules-ci/flake-parts";
+    stylix.url = "github:danth/stylix/release-24.11";
     
     nixpkgs-baru.url = "github:nixos/nixpkgs/fd19e10b526f2d77f80df25104d62430183539f4";
     # zen zen-browser
@@ -23,11 +24,7 @@
       url = "github:niksingh710/nvix";
       inputs.nixpkgs.follows = "nixpkgs";
       }; 
-     anyrun = {
-      url = "github:anyrun-org/anyrun";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-     fmpkgs.url = "github:fmway/fmpkgs";
+    fmpkgs.url = "github:fmway/fmpkgs";
 
     impermanence.url = "github:nix-community/impermanence";
     ags.url ="github:Aylur/ags";
@@ -42,12 +39,13 @@
       #inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs-r2405.url = "github:NixOs/nixpkgs/nixos-24.05";
+    nixpkgs-r2205.url = "github:NixOs/nixpkgs/nixos-22.05";
     # nixpkgs-r2411.url = "github:NixOs/nixpkgs/nixos-24.11";
     walker.url = "github:abenz1267/walker";
 
   };
 
-  outputs = inputs@{ self, nixvim-config, nixpkgs, nixpkgs-baru, home-manager, impermanence, hyprpanel, sops-nix,nixvim, nixpkgs-r2405, anyrun, fmpkgs, ... }:
+  outputs = inputs@{ self, nixvim-config, nixpkgs, nixpkgs-baru,stylix, home-manager, impermanence, hyprpanel, sops-nix,nixvim, nixpkgs-r2405, nixpkgs-r2205, fmpkgs, ... }:
   let
     system = "x86_64-linux";
     overlay-r2405 = final: prev:{
@@ -57,6 +55,12 @@
       };
     };
 
+    overlay-r2205 = final: prev:{
+      r2205=import nixpkgs-r2205 {
+        inherit system;
+        config.allowUnfree= true;
+      };
+    };
     overlay-baru = final: prev:{
       pkgs-baru=import nixpkgs-baru {
         inherit system;
@@ -82,11 +86,12 @@
     
 
      modules = [ 
-       ({config, pkgs, ...}:{nixpkgs.overlays = [overlay-r2405 overlay-baru inputs.hyprpanel.overlay];})
+       ({config, pkgs, ...}:{nixpkgs.overlays = [overlay-r2405 overlay-r2205 overlay-baru inputs.hyprpanel.overlay];})
        { nixpkgs.overlays = [inputs.fmpkgs.overlays.default]; }
        { inherit (inputs.fmpkgs) nixpkgs; }
-       {environment.systemPackages = [ anyrun.packages.${system}.anyrun ];}
+       # {environment.systemPackages = [ anyrun.packages.${system}.anyrun ];}
        ./system.nix
+       # stylix.nixosModules.stylix
        sops-nix.nixosModules.sops
        nixvim.nixosModules.nixvim
        impermanence.nixosModules.impermanence

@@ -53,7 +53,12 @@ in {
         Identityfile ~/.ssh/id_ed2519_akun2
         IdentitiesOnly yes
 
-
+      #Account 3
+      Host gitlab.com
+        HostName gitlab.com
+        User git
+        Identityfile ~/.ssh/id_ed2519_akun1
+        IdentitiesOnly yes
 
     '';
   };

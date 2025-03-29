@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ inputs, config, pkgs, ... }:
 
 {
   imports = [
@@ -40,5 +40,7 @@
     # ./espanso.nix
     ./open-webui.nix
     ./mpv.nix
+    ./stylix.nix
+    inputs.stylix.nixosModules.stylix
   ];
 }

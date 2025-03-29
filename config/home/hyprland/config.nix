@@ -2,12 +2,16 @@
 
 let
   theme = config.colorScheme.palette;
+  image = pkgs.fetchurl {
+      url = "https://www.pixelstalk.net/wp-content/uploads/2016/05/Epic-Anime-Awesome-Wallpapers.jpg";
+      sha256 = "enQo3wqhgf0FEPHj2coOCvo7DuZv+x5rL/WIo4qPI50=";  
+    };
+
   inherit (import ../../../options.nix)
-    browser cpuType gpuType
-    wallpaperDir borderAnim
-    theKBDLayout terminal
+    stylixImage
+    theKBDLayout
     theSecondKBDLayout
-    theKBDVariant sdl-videodriver;
+    sdl-videodriver;
 in with lib; {
 
 wayland.windowManager.hyprland = {
@@ -20,17 +24,21 @@ wayland.windowManager.hyprland = {
         "systemctl --user stop xdg-desktop-portal-gtk"
         "xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2"
         "hyprctl setcursor Bibata-Modern-Ice 24"
+        # "killall -q swww;sleep .5 && swww init"
         "swww init"
+        "swww img ${stylixImage}"
         "pypr &"
+        "keepassxc"
         "cloudflared tunnel run moodle"
         "iio-hyprland"
-        "nwg-dock-hyprland -x -p 'bottom'  -i 24 -mt 10 -mb 10 -ml 5 -c 'rofi -show drun' -d"
+        "nwg-dock-hyprland -x -p 'bottom' -l 'top' -i 32 -hd 10 -mt 10 -mb 10 -ml 5 -c 'rofi -show drun' -d"
         "waybar"
+        # "eww daemon"
         "wl-paste --type text --watch cliphist store"
         "wl-paste --type image --watch cliphist store"
         "modprobe snd-aloop"
         "swaync"
-        "wallsetter"
+        # "wallsetter"
         "nm-applet --indicator"
         "swayidle -w timeout 720 'swaylock -f' timeout 800 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on' before-sleep 'swaylock -f -c 000000'"
 
@@ -63,8 +71,10 @@ wayland.windowManager.hyprland = {
         gaps_in = 4;
         gaps_out = 5;
         border_size = 4;
-        "col.active_border" = "rgba(${theme.base0C}ff) rgba(${theme.base0D}ff) rgba(${theme.base0B}ff) rgba(${theme.base0E}ff) 45deg";
-        "col.inactive_border" = "rgba(${theme.base00}cc) rgba(${theme.base01}cc) 45deg";
+        # "col.active_border" = "rgb(${config.lib.stylix.colors.base08}) rgb(${config.lib.stylix.colors.base0C}) 45deg";
+        # "col.inactive_border" = "rgb(${config.lib.stylix.colors.base01})";
+        "col.active_border" = lib.mkForce "rgba(${theme.base0C}ff) rgba(${theme.base0D}ff) rgba(${theme.base0B}ff) rgba(${theme.base0E}ff) 45deg";
+        "col.inactive_border" = lib.mkForce "rgba(${theme.base00}cc) rgba(${theme.base01}cc) 45deg";
         layout = "dwindle";
         resize_on_border = true;
       };
@@ -171,6 +181,8 @@ wayland.windowManager.hyprland = {
         "float, class:^('Quick Format Citation')$"
         "float, class:^(file-roller)$"
         "float, class:^(Alacritty)$"
+        "float, class:^(org.keepassxc.KeePassXC)$"
+        "size 1080 560, class:^(org.keepassxc.KeePassXC)$"
         "size 700 550,class:^(Alacritty)$"
         "size 600 450,class:^(Add/Edit Citation)$"
         "size 700 550,class:^(TelegramDesktop)$"
@@ -181,7 +193,7 @@ wayland.windowManager.hyprland = {
         "size 60% 70%, class:^([Ff]erdium)$"
         "opacity 1.0 1.0, tag:browser*"
         "opacity 0.9 0.8, tag:projects*"
-        "opacity 0.94 0.86, tag:im*"
+        "opacity 0.94 0.86, tag:im"
         "opacity 0.9 0.8, tag:file-manager*"
         "opacity 0.8 0.7, tag:terminal*"
         "opacity 0.8 0.7, tag:settings*"
@@ -193,14 +205,17 @@ wayland.windowManager.hyprland = {
         "noblur, tag:games*"
         "fullscreen, tag:games*"
         "workspace 2 silent,class:^(brave-browser)"
+        "workspace 2 silent,class:^(zen-alpha)"
         "workspace 2 silent,class:^(firefox)"
         "workspace 2 silent,class:^(chromium-browser)"
-        "workspace 9 silent,title:^(web.whatsapp.com)"
+        "workspace 9 silent,title:^(WasIstLos)"
         "workspace 8 silent,class:^(brave-youtube.com__-Default)"
         "workspace 7 silent,class:^(libreoffice-calc)"
         "workspace 6 silent,class:^(libreoffice-writer)"
         "workspace 5 silent,class:^(libreoffice-impress)"
-
+        "workspace 10 silent,class:^(org.keepassxc.KeePassXC)"
+        "pin,title:^(KeePassXC - Browser Access Request)"
+        "tile,  class:^(libreoffice.*)$"
       ];
 
       env = [

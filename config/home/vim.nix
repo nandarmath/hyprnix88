@@ -2,6 +2,9 @@
 {
 programs.vim = {
     enable = true;
+    settings = {
+      
+    };
     extraConfig = ''
       set mouse =a
       syntax on
@@ -31,8 +34,25 @@ programs.vim = {
       set termguicolors
       colorscheme desert
 
+       " Airline & theming it
+      let g:airline#extensions#tabline#enabled = 1
+      let g:airline#extensions#tabline#left_sep = ' '
+      let g:airline#extensions#tabline#left_alt_sep = '|'
+      let g:airline#extensions#tabline#formatter = 'default'
+      let g:airline_theme='desert'
+
 
     '';
+    plugins = with pkgs.vimPlugins;[
+      gruvbox-community
+      vim-airline
+      vim-airline-themes
+      vim-lastplace
+      vim-lsp
+      vim-lsp-settings
+      vim-nix
+
+    ];
     
   };
 

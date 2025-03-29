@@ -1,5 +1,8 @@
 { pkgs, config, ... }:
-
+let
+inherit (import ../../options.nix)
+waybarChoice;
+in
 {
   imports = [
     # Enable &/ Configure Programs
@@ -11,8 +14,10 @@
     ./kitty.nix
     ./packages.nix
     ./rofi.nix
+    # ./rofi
     ./starship.nix
-    ./waybar.nix
+    # ./waybar.nix
+    waybarChoice
     ./swappy.nix
     ./swaylock.nix
     ./swaync.nix
@@ -30,6 +35,8 @@
     ./mpd.nix
     ./ncmpcpp.nix
     ./vim.nix
+    ./stylix.nix
+    # ./eww
     # ./nixvim.nix
     # ./espanso.nix
   ];

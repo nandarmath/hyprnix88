@@ -57,7 +57,7 @@
     meson
     cloudflared
     protonvpn-cli
-    hugo
+    # hugo
     lazygit
     ripgrep 
     bottom 
@@ -76,7 +76,7 @@
     ripgrep
     appimage-run
     pdftk
-    poppler_utils
+       poppler_utils
     networkmanagerapplet
     yad
     bluez
@@ -104,6 +104,7 @@
     vscode-extensions.myriad-dreamin.tinymist
     # inputs.nvix.packages.${system}.full
     r2405.zoom-us
+    r2205.hugo
     # zoom-us
     # hyprpanel
     # scratch-desktop
