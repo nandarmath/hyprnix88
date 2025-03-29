@@ -19,18 +19,20 @@ in
           modules-center = ["hyprland/workspaces"];
           modules-left = [
             "custom/startmenu"
-            "hyprland/window"
             "pulseaudio"
             "cpu"
             "memory"
             "idle_inhibitor"
+            "disk"
+            "hyprland/window"
           ];
           modules-right = [
-            "custom/hyprbindings"
+            "custom/weather"
+            "network"
             "custom/notification"
-            "custom/exit"
             "battery"
             "tray"
+            "custom/exit"
             "clock"
           ];
 
@@ -82,9 +84,18 @@ in
               "󰤨"
             ];
             format-ethernet = " {bandwidthDownOctets}";
-            format-wifi = "{icon} {signalStrength}%";
+            # format-wifi = "{icon} {signalStrength}%";
+            format-wifi = "{icon} {bandwidthUpBytes}|{bandwidthDownBytes}";
             format-disconnected = "󰤮";
             tooltip = false;
+          };
+          
+          "custom/weather" = {
+            exec = "/home/nandar/hyprnix/config/home/get_weather.sh";
+            return-type = "json";
+            format = "{}";
+            tooltip = true;
+            interval = 3600;
           };
           "tray" = {
             spacing = 12;
@@ -235,7 +246,7 @@ in
           tooltip label {
             color: #${config.lib.stylix.colors.base08};
           }
-          #window, #pulseaudio, #cpu, #memory, #idle_inhibitor {
+          #window, #pulseaudio, #cpu, #memory, #idle_inhibitor, #disk {
             font-weight: bold;
             margin: 4px 0px;
             margin-left: 7px;
@@ -253,7 +264,7 @@ in
             border-radius: 0px 0px 40px 0px;
           }
           #custom-hyprbindings, #network, #battery,
-          #custom-notification, #tray, #custom-exit {
+          #custom-notification, #tray, #custom-exit, #custom-weather {
             font-weight: bold;
             background: #${config.lib.stylix.colors.base0F};
             color: #${config.lib.stylix.colors.base00};

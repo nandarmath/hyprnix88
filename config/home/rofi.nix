@@ -18,7 +18,7 @@ in {
     configuration {
       modi:		    "run,filebrowser,drun,recursivebrowser";
       show-icons:	    true;
-      icon-theme:	    "Papirus";
+      icon-theme:	    "Yaru-dark";
       location:		    0;
       font:		    "JetBrains Nerd Font 16";	
 

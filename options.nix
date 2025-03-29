@@ -19,13 +19,13 @@ in {
   borderAnim = true;
   bar-number = true;
   waybarAnim = true;
-  waybarChoice = ./config/home/waybar/waybar-df.nix;
+  waybarChoice = ./config/home/waybar/waybar-curved.nix;
   browser = "firefox";
   # ^ (use as is or replace with your own repo - removing will break the wallsetter script) 
   screenshotDir = "${userHome}/Pictures/Screenshots";
   flakeDir = "${flakeDir}";
   terminal = "alacritty";
-  stylixImage = ./config/wallpapers/min_forest.jpg;
+  stylixImage = ./config/wallpapers/hasil.jpg;
 
   # Set Animation style
   # Available options are:

@@ -1,10 +1,12 @@
 _: {
   stylix.targets = {
-    waybar.enable = true;
+    waybar.enable = false;
     rofi.enable = false;
-    hyprland.enable = true;
+    hyprland.enable = false;
     hyprlock.enable = false;
     ghostty.enable = false;
-    # qt.enable = false;
+    # qt.enable = true;
+    # qt.platform = "qtct";
+    
   };
 }

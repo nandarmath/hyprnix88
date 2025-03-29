@@ -25,7 +25,7 @@ in {
     localsend converseen satty onboard glab
     # calibre
     brave kalker jdk inkscape-with-extensions gimp-with-plugins ytfzf kitty ueberzugpp gImageReader tesseract hunspell hunspellDicts.id_ID hunspellDicts.en_US
-    tdesktop sigil rnote pfetch libsForQt5.kget syncthing geogebra
+    tdesktop sigil rnote pfetch syncthing geogebra
     lunarvim
     yt-dlp pspp okular
     # anydesk
