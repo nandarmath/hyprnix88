@@ -10,11 +10,11 @@ in {
   home.stateVersion = "24.11";
 
   # Set The Colorscheme
-  colorScheme = inputs.nix-colors.colorSchemes."${theme}";
+  # colorScheme = inputs.nix-colors.colorSchemes."${theme}";
 
   # Import Program Configurations
   imports = [
-    inputs.nix-colors.homeManagerModules.default
+    # inputs.nix-colors.homeManagerModules.default
     # inputs.hyprland.homeManagerModules.default
     ./config/home
   ];
