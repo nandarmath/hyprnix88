@@ -55,7 +55,7 @@ in
             tooltip-format = "<big>{:%A, %d.%B %Y }</big>\n<tt><small>{calendar}</small></tt>";
           };
           "hyprland/window" = {
-            max-length = 22;
+            max-length = 18;
             separate-outputs = false;
             rewrite = {
               "" = " 🙈 No Windows? ";
