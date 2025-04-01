@@ -5,6 +5,7 @@ _: {
     hyprland.enable = false;
     hyprlock.enable = false;
     ghostty.enable = false;
+    firefox.enable = true;
     # qt.enable = true;
     # qt.platform = "qtct";
     

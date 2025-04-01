@@ -153,6 +153,7 @@
   };
   hardware.sensor.iio.enable = true;
   programs.fuse.userAllowOther = true;
+
   programs.mtr.enable = true;
   programs.gnupg.agent = {
     enable = true;

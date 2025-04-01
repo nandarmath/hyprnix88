@@ -29,7 +29,9 @@ services.nginx = {
         root = "${dataDir}";
         enableACME = true;
         forceSSL = true;
-        # sslCertificate = "/home/nandar/hyprnix/config/system/secret/nixos.loca.pem";
+        sslCertificate = "/var/lib/acme/moodle.local/fullchain.pem";
+        sslCertificateKey = "/var/lib/acme/moodle.local/key.pem";
+        # sslCertificate = "/home/nandar/hyprnix/config/system/secret/nixos.loca.pem"; 
         # sslCertificateKey = "/home/nandar/hyprnix/config/system/secret/nixos.loca-key.pem";
         extraConfig = ''
             index index.php;
@@ -275,6 +277,21 @@ networking.extraHosts = ''
                 domain = "test";
             };
         };
+  boot.kernel.sysctl ={
+    "net.core.somaxconn" = 4096;
+    "net.ipv4.tcp_max_syn_backlog" = 4096;
+    "net.core.netdev_max_backlog" = 4096;
+    "net.ipv4.ip_local_port_range" = "1024 65535";
+  };
+
+  # Membuat self-signed certificate untuk HTTPS lokal
+  system.activationScripts.ssl-cert = ''
+    mkdir -p /var/lib/acme/moodle.local
+    if [ ! -f /var/lib/acme/moodle.local/fullchain.pem ]; then
+      ${pkgs.openssl}/bin/openssl req -x509 -newkey rsa:4096 -keyout /var/lib/acme/moodle.local/key.pem -out /var/lib/acme/moodle.local/fullchain.pem -days 3650 -nodes -subj "/CN=moodle.local"
+      chmod 600 /var/lib/acme/moodle.local/key.pem
+    fi
+  '';
 
 }
 

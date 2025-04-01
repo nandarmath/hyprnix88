@@ -31,12 +31,13 @@ let
     google-api-python-client google-auth-httplib2 google-auth-oauthlib
 
 
-
   ];
 in lib.mkIf (python == true) {
   environment.systemPackages = with pkgs; [
     #jetbrains.pycharm-community-bin
     (pkgs.python3.withPackages my-python-packages)
+    baru.python312Packages.pymonctl
+    baru.python312Packages.pywinctl
   ];
 
 }

@@ -1107,17 +1107,17 @@
     },
     "nixpkgs-baru": {
       "locked": {
-        "lastModified": 1740928666,
-        "narHash": "sha256-CUkBv+WHfpAWAU2y2DdF9Dq7DJL92tGngqrdSjeH7do=",
+        "lastModified": 1743315132,
+        "narHash": "sha256-6hl6L/tRnwubHcA4pfUUtk542wn2Om+D4UnDhlDW9BE=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "fd19e10b526f2d77f80df25104d62430183539f4",
+        "rev": "52faf482a3889b7619003c0daec593a1912fddc1",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
+        "ref": "nixos-unstable",
         "repo": "nixpkgs",
-        "rev": "fd19e10b526f2d77f80df25104d62430183539f4",
         "type": "github"
       }
     },

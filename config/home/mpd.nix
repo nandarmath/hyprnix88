@@ -22,7 +22,7 @@
       enable = true;
     };
 
-    services.playerctld.enable = true;
+    # services.playerctld.enable = true;
 
   home.packages = with pkgs; [
     mpc_cli

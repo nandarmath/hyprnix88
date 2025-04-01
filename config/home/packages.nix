@@ -7,13 +7,19 @@ in {
   # Install Packages For The User
   home.packages = with pkgs; [
     pkgs."${browser}" discord libvirt swww grim slurp file-roller ffmpeg wf-recorder wl-screenrec tree zoxide android-tools
-    swaynotificationcenter nwg-dock-hyprland pyprland pandoc pistol rofi-power-menu imv transmission_3-gtk 
+    swaynotificationcenter
+    nwg-dock-hyprland
+    pyprland
+    pandoc
+    pistol
+    rofi-power-menu
+    imv
+    transmission_3-gtk 
     mpv
     # smplayer
     rofi-pulse-select gitg vlc xournalpp
     # openboard
     blender
-    persepolis
     gabutdm
     pairdrop
     rustup nix-search-cli microsoft-edge ghostscript gparted droidcam thinkpad-scripts cpu-x tenacity pavucontrol rofi-bluetooth pdfarranger chromium tgpt bat scrcpy mpd
@@ -44,6 +50,7 @@ in {
     rofi-mpd
     fuzzel
     nixd
+    hyprshot
     # tvbrowser
     (pkgs.callPackage ../pkgs/amzqr.nix {})
     (pkgs.callPackage ../pkgs/ffmpegsplitpy.nix {})
@@ -54,8 +61,8 @@ in {
     (import ./../scripts/squirtle.nix { inherit pkgs; })
     # (import ./../scripts/wallsetter.nix { inherit pkgs; inherit wallpaperDir;
       # inherit username; inherit wallpaperGit; })
-    (import ./../scripts/themechange.nix { inherit pkgs; inherit flakeDir; })
-    (import ./../scripts/theme-selector.nix { inherit pkgs; })
+    # (import ./../scripts/themechange.nix { inherit pkgs; inherit flakeDir; })
+    # (import ./../scripts/theme-selector.nix { inherit pkgs; })
     (import ./../scripts/nvidia-offload.nix { inherit pkgs; })
     (import ./../scripts/web-search.nix { inherit pkgs; })
     (import ./../scripts/rofi-launcher.nix { inherit pkgs; })

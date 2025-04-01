@@ -9,7 +9,6 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     stylix.url = "github:danth/stylix/release-24.11";
     
-    nixpkgs-baru.url = "github:nixos/nixpkgs/fd19e10b526f2d77f80df25104d62430183539f4";
     # zen zen-browser
     zen-browser.url = "github:MarceColl/zen-browser-flake";
 
@@ -40,6 +39,7 @@
     };
     nixpkgs-r2405.url = "github:NixOs/nixpkgs/nixos-24.05";
     nixpkgs-r2205.url = "github:NixOs/nixpkgs/nixos-22.05";
+    nixpkgs-baru.url = "github:nixos/nixpkgs/nixos-unstable";
     # nixpkgs-r2411.url = "github:NixOs/nixpkgs/nixos-24.11";
     walker.url = "github:abenz1267/walker";
 
@@ -48,7 +48,6 @@
   outputs = inputs@{ self,
                     nixvim-config,
                     nixpkgs,
-                    nixpkgs-baru,
                     stylix,
                     home-manager,
                     impermanence, 
@@ -57,6 +56,7 @@
                     nixvim,
                     nixpkgs-r2405,
                     nixpkgs-r2205,
+                    nixpkgs-baru,
                     fmpkgs,
                     ...
                   }:
@@ -76,7 +76,7 @@
       };
     };
     overlay-baru = final: prev:{
-      pkgs-baru=import nixpkgs-baru {
+      baru=import nixpkgs-baru {
         inherit system;
         config.allowUnfree= true;
       };
