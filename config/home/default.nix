@@ -36,6 +36,7 @@ in
     ./ncmpcpp.nix
     ./vim.nix
     ./stylix.nix
+    ./nvf.nix
     # ./eww
     # ./nixvim.nix
     # ./espanso.nix
