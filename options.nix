@@ -1,7 +1,6 @@
 # PLEASE READ THE WIKI FOR DETERMINING
-# VALUES FOR THIS PAGE. 
+# VALUES FOR THIS PAGE.
 # https://gitlab.com/Zaney/zaneyos/-/wikis/Setting-Options
-
 let
   username = "nandar";
   hostname = "nixos";
@@ -14,18 +13,18 @@ in {
   gitUsername = "nandarsigma06";
   gitEmail = "nandarsigma06@gmail.com";
   theme = "catppuccin-macchiato";
-# slickbar = if waybarStyle == "slickbar" then true else false;
-# simplebar = if waybarStyle == "simplebar" then true else false;
+  # slickbar = if waybarStyle == "slickbar" then true else false;
+  # simplebar = if waybarStyle == "simplebar" then true else false;
   borderAnim = true;
   bar-number = true;
   waybarAnim = true;
-  waybarChoice = ./config/home/waybar/waybar-curved.nix;
+  waybarChoice = ./config/home/waybar/waybar-simple.nix;
   browser = "firefox";
-  # ^ (use as is or replace with your own repo - removing will break the wallsetter script) 
+  # ^ (use as is or replace with your own repo - removing will break the wallsetter script)
   screenshotDir = "${userHome}/Pictures/Screenshots";
   flakeDir = "${flakeDir}";
   terminal = "alacritty";
-  stylixImage = ./config/wallpapers/hasil.jpg;
+  stylixImage = ./config/wallpapers/min_forest.jpg;
 
   # Set Animation style
   # Available options are:
@@ -55,7 +54,7 @@ in {
 
   # Nvidia Hybrid Devices
   # ONLY NEEDED FOR HYBRID
-  # SYSTEMS! 
+  # SYSTEMS!
   intel-bus-id = "PCI:0:2:0";
   nvidia-bus-id = "PCI:14:0:0";
 
@@ -88,5 +87,4 @@ in {
 
   # Enable Python & PyCharm
   python = true;
-
 }

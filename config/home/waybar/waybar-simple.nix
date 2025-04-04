@@ -22,13 +22,15 @@ in
             "pulseaudio"
             "cpu"
             "memory"
+            "disk"
+            "temperature"
             "idle_inhibitor"
             "custom/arrow7"
             "hyprland/window"
           ];
           modules-right = [
             "custom/arrow4"
-            "custom/hyprbindings"
+            "network"
             "custom/arrow3"
             "custom/notification"
             "custom/arrow3"
@@ -50,10 +52,17 @@ in
             on-scroll-up = "hyprctl dispatch workspace e+1";
             on-scroll-down = "hyprctl dispatch workspace e-1";
           };
+          "temperature" = {
+            critical-threshold = 80;
+            format = "{icon} {temperatureC}°C";
+            format-alt = "{temperatureF}°F {icon}";
+            format-icons = ["" "" ""];
+            tooltip = false;
+          };
           "clock" = {
             format =
               if clock24h == true
-              then '' {:L%H:%M}''
+              then '' {:L%H:%M %A, %d.%B %Y }''
               else '' {:L%I:%M %p}'';
             tooltip = true;
             tooltip-format = "<big>{:%A, %d.%B %Y }</big>\n<tt><small>{calendar}</small></tt>";
@@ -88,7 +97,8 @@ in
               "󰤨"
             ];
             format-ethernet = " {bandwidthDownOctets}";
-            format-wifi = "{icon} {signalStrength}%";
+            # format-wifi = "{icon} {signalStrength}%";
+            format-wifi = "{icon} {bandwidthUpBytes}|{bandwidthDownBytes}";
             format-disconnected = "󰤮";
             tooltip = false;
           };
@@ -209,7 +219,7 @@ in
         ''
           * {
             font-family: JetBrainsMono Nerd Font Mono;
-            font-size: 14px;
+            font-size: 16px;
             border-radius: 0px;
             border: none;
             min-height: 0px;
@@ -240,7 +250,7 @@ in
           #window {
             padding: 0px 10px;
           }
-          #pulseaudio, #cpu, #memory, #idle_inhibitor {
+          #pulseaudio, #cpu, #memory, #disk, #temperature, #idle_inhibitor {
             padding: 0px 10px;
             background: #${config.lib.stylix.colors.base04};
             color: #${config.lib.stylix.colors.base00};

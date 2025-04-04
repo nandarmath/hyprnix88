@@ -1,13 +1,12 @@
-{ pkgs, config, lib, inputs, ... }:
-
-let
-  inherit (import ../../../options.nix)
+{lib, ...}: let
+  inherit
+    (import ../../../options.nix)
     browser
     terminal
-    sdl-videodriver;
-in with lib; {
+    ;
+in {
   wayland.windowManager.hyprland.settings = {
-    bind =[
+    bind = [
       "$mod ,Q,exec,${terminal} -e fish"
       "$mod ,RETURN,exec,kitty"
       "$mod ,A,exec,rofi-launcher"
@@ -15,7 +14,7 @@ in with lib; {
       "$mod SHIFT,F,exec,rofi -show filebrowser"
       "$mod SHIFT,S,exec,swaync-client -rs"
       # "$mod SHIFT,L,exec,pypr toggle pass"
-	    "$mod ,W,exec,[workspace 2 silent]${browser}"
+      "$mod ,W,exec,[workspace 2 silent]${browser}"
       "$mod , minus, movetoworkspace,special"
       "$mod , equal, togglespecialworkspace"
       "$mod SHIFT,M,exec,emopicker9000"
@@ -185,14 +184,11 @@ in with lib; {
       "$mod ,SEMICOLON,pass,^(com\.obsproject\.Studio)$"
       "$mod ,comma,pass,^(com\.obsproject\.Studio)$"
       "$mod ,period,pass,^(com\.obsproject\.Studio)$"
-
-      ];
-
+    ];
 
     bindm = [
       "$mod ,mouse:272,movewindow"
       "$mod ,mouse:273,resizewindow"
-      ];
+    ];
   };
-
 }

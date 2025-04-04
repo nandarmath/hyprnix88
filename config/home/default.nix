@@ -1,9 +1,13 @@
-{ pkgs, config, ... }:
-let
-inherit (import ../../options.nix)
-waybarChoice;
-in
 {
+  pkgs,
+  config,
+  ...
+}: let
+  inherit
+    (import ../../options.nix)
+    waybarChoice
+    ;
+in {
   imports = [
     # Enable &/ Configure Programs
     ./alacritty.nix
@@ -37,6 +41,7 @@ in
     ./vim.nix
     ./stylix.nix
     ./nvf.nix
+    ./zed.nix
     # ./eww
     # ./nixvim.nix
     # ./espanso.nix
