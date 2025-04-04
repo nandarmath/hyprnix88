@@ -1,11 +1,12 @@
 {
   pkgs,
+  baru,
   ...
 }: {
   # terminal file manager
   programs.yazi = {
     enable = true;
-    package = pkgs.yazi;
+    package = baru.yazi;
     # Changing working directory when exiting Yazi
     enableBashIntegration = true;
     enableNushellIntegration = true;

@@ -34,12 +34,12 @@ in
             "custom/arrow3"
             "custom/notification"
             "custom/arrow3"
-            "custom/exit"
             "battery"
             "custom/arrow2"
             "tray"
             "custom/arrow1"
             "clock"
+            "custom/exit"
           ];
 
           "hyprland/workspaces" = {
@@ -259,6 +259,7 @@ in
             color: #${config.lib.stylix.colors.base02};
             padding: 0px 14px;
             font-size: 20px;
+            font-weight: bold;
             background: #${config.lib.stylix.colors.base0B};
           }
           #custom-hyprbindings, #network, #battery,
@@ -269,7 +270,7 @@ in
           }
           #tray {
             background: #${config.lib.stylix.colors.base02};
-            color: #${config.lib.stylix.colors.base00};
+            color: #${config.lib.stylix.colors.base04};
             padding: 0px 10px;
           }
           #clock {

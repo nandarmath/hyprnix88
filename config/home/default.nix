@@ -20,7 +20,6 @@ in {
     ./rofi.nix
     # ./rofi
     ./starship.nix
-    # ./waybar.nix
     waybarChoice
     ./swappy.nix
     ./swaylock.nix
@@ -30,7 +29,7 @@ in {
     ./fish.nix
     ./tex.nix
     ./fonts.nix
-    ./wlogout.nix
+    ./wlogout
     ./yazi
     ./files.nix
     ./firefox.nix
