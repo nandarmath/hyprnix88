@@ -1,6 +1,9 @@
-{ inputs, config, pkgs, ... }:
-
 {
+  inputs,
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     ./amd-gpu.nix
     ./appimages.nix
@@ -14,7 +17,7 @@
     ./intel-nvidia.nix
     ./kernel.nix
     ./logitech.nix
-   # ./neovim.nix
+    # ./neovim.nix
     ./nfs.nix
     ./fonts.nix
     ./ntp.nix
@@ -29,7 +32,7 @@
     ./rstudio.nix
     ./obs.nix
     ./power.nix
-     ./podman.nix
+    ./podman.nix
     ./google-chrome.nix
     ./lemp.nix
     ./gnome.nix

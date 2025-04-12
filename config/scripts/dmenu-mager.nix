@@ -5,8 +5,7 @@
 # Date              : Jumat, 15/05/2020 13:12 WIB
 # Last Modified Date: Minggu, 11/10/2020 12:44 WIB
 # Last Modified By  : M. Nabil Adani <nblid48@gmail.com>
-{ pkgs }:
-
+{pkgs}:
 pkgs.writeShellScriptBin "dmenu-mager" ''
   DMENU="rofi -dmenu -i -p Mager"
   # OPTIONS = [[label, command]]
@@ -66,7 +65,7 @@ pkgs.writeShellScriptBin "dmenu-mager" ''
     [ "Canva",                  "brave --app=https://canva.com/" ],
     [ "HIX AI",                 "brave --app=https://hix.ai/" ],
     [ "Any Summary",            "brave --app=https://anysummary.app/" ],
-    [ "JalaLive",               "brave --app=https://jalalive5.com/" ],
+    [ "JalaLive",               "brave --app=https://jala29.vip/" ],
     [ "Remove Object Photo",    "brave --app=https://photoroom.com/" ],
     [ "whatsapp",               "brave --app=https://web.whatsapp.com/" ],
     [ "Image Creator AI",       "brave --app=https://bing.com/images/create/" ],
@@ -90,8 +89,9 @@ pkgs.writeShellScriptBin "dmenu-mager" ''
     [ "Open Asset",             "firefox --new-window --app=https://openverse.org/" ],
     [ "Scopus",                 "firefox --new-window --app=https://scopus.com/" ],
     [ "E-Book Gratis",          "firefox --new-window --app=https://libgen.is/" ],
-    [ "Belajar R Dasar | Program R",        "firefox --new-window --app=https://bookdown.org/aepstk/intror/" ],
+    [ "R dan Rstudio Stat & DC", "zen --new-window --app=https://bookdown.org/aepstk/intror/" ],
     [ "Tidy Modelling W R | Program R",     "firefox --new-window --app=https://tmwr.org/" ],
+    [ "Top Packages for R | Program R",     "firefox --new-window --app=https://rpubs.com/drgregmartin/1250204/" ],
     [ "Statistical ML | Program R",         "firefox --new-window --app=https://unsw-risk-and-actuarial-studies.github.io/ACTL3142/" ],
     [ "Hands On ML With R | Program R",     "firefox --new-window --app=https://bradleyboehmke.github.io/HOML/" ],
     [ "R For data science | Program R",     "firefox --new-window --app=https://r4ds.had.co.nz/" ],

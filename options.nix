@@ -24,7 +24,7 @@ in {
   screenshotDir = "${userHome}/Pictures/Screenshots";
   flakeDir = "${flakeDir}";
   terminal = "alacritty";
-  stylixImage = ./config/wallpapers/min_forest.jpg;
+  stylixImage = ./config/wallpapers/bg21.jpg;
 
   # Set Animation style
   # Available options are:

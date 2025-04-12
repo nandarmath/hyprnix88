@@ -1,6 +1,9 @@
-{ pkgs, config, inputs, ... }:
-
 {
+  pkgs,
+  config,
+  inputs,
+  ...
+}: {
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   # List System Programs
@@ -32,14 +35,14 @@
     ydotool
     nh
     gtk3
-    gtk-layer-shell 
+    gtk-layer-shell
     rofi-systemd
     (rofi.override {
       plugins = [rofi-file-browser rofi-mpd rofi-calc];
     })
-      # (callPackage ../pkgs/audio2text.nix {})
-      # (callPackage ../pkgs/speech.nix {})
-      # (callPackage ../pkgs/sapulatar.nix {})
+    # (callPackage ../pkgs/audio2text.nix {})
+    # (callPackage ../pkgs/speech.nix {})
+    # (callPackage ../pkgs/sapulatar.nix {})
     quarto
     inxi
     jasp-desktop
@@ -50,18 +53,18 @@
     wl-clipboard
     socat
     cowsay
-    lsd 
+    lsd
     lshw
     stow
     pkg-config
     meson
     cloudflared
-    protonvpn-cli
+    # protonvpn-cli
     # hugo
     lazygit
-    ripgrep 
-    bottom 
-    neovim 
+    ripgrep
+    bottom
+    neovim
     gnumake
     ninja
     go
@@ -73,10 +76,9 @@
     toybox
     virt-viewer
     swappy
-    ripgrep
     appimage-run
     pdftk
-       poppler_utils
+    poppler_utils
     networkmanagerapplet
     yad
     bluez
@@ -105,6 +107,10 @@
     # inputs.nvix.packages.${system}.full
     r2405.zoom-us
     r2205.hugo
+    baru.python312Packages.pymonctl
+    baru.python312Packages.pywinctl
+    libvirt-glib
+
     # zoom-us
     # hyprpanel
     # scratch-desktop
@@ -121,7 +127,7 @@
     nix-init
     fzf
     # rustdesk
-    
+
     wvkbd
     iio-hyprland
     iio-sensor-proxy
@@ -135,6 +141,7 @@
     newsflash
     inputs.zen-browser.packages."${system}".specific
     vim
+    baru.rembg
   ];
 
   programs.steam.gamescopeSession.enable = true;
@@ -148,7 +155,7 @@
   };
 
   programs.iio-hyprland = {
-    enable =true;
+    enable = true;
     package = pkgs.iio-hyprland;
   };
   hardware.sensor.iio.enable = true;
@@ -163,5 +170,4 @@
   virtualisation.libvirtd.enable = true;
   virtualisation.spiceUSBRedirection.enable = true;
   programs.virt-manager.enable = true;
-
 }

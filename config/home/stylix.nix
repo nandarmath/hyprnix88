@@ -6,8 +6,8 @@ _: {
     hyprlock.enable = false;
     ghostty.enable = false;
     firefox.enable = true;
+    fuzzel.enable = true;
     # qt.enable = true;
     # qt.platform = "qtct";
-    
   };
 }

@@ -24,6 +24,7 @@ in
             "memory"
             "disk"
             "temperature"
+            "backlight"
             "idle_inhibitor"
             "custom/arrow7"
             "hyprland/window"
@@ -54,18 +55,43 @@ in
           };
           "temperature" = {
             critical-threshold = 80;
-            format = "{icon} {temperatureC}°C";
+            format = "{icon}{temperatureC}°C";
             format-alt = "{temperatureF}°F {icon}";
             format-icons = ["" "" ""];
             tooltip = false;
           };
+          "backlight" = {
+            device = "intel_backlight";
+            format = "{icon}{percent}%";
+            format-icons = ["" ""];
+          };
           "clock" = {
+            interval = 1;
             format =
               if clock24h == true
-              then '' {:L%H:%M %A, %d.%B %Y }''
+              then '' {:L%H:%M:%S %A,%d-%m-%Y}''
               else '' {:L%I:%M %p}'';
             tooltip = true;
-            tooltip-format = "<big>{:%A, %d.%B %Y }</big>\n<tt><small>{calendar}</small></tt>";
+            tooltip-format = "<big>{:%A,%d %B %Y }</big>\n<tt><small>{calendar}</small></tt>";
+            calendar = {
+              mode = "year";
+              mode-mon-col = 3;
+              weeks-pos = "right";
+              on-scroll = 1;
+              format = {
+                months = "<span color='#ffead3'><b>{}</b></span>";
+                days = "<span color='#ecc6d9'><b>{}</b></span>";
+                weeks = "<span color='#99ffdd'><b>W{}</b></span>";
+                weekdays = "<span color='#ffcc66'><b>{}</b></span>";
+                today = "<span color='#ff6699'><b><u>{}</u></b></span>";
+              };
+            };
+            actions = {
+              on-click-right = "mode";
+              on-scroll-up = "tz_up";
+              on-scroll-down = "tz_down";
+            };
+            on-click = "sleep 0.1 && kitty -e calcure";
           };
           "hyprland/window" = {
             max-length = 22;
@@ -100,7 +126,8 @@ in
             # format-wifi = "{icon} {signalStrength}%";
             format-wifi = "{icon} {bandwidthUpBytes}|{bandwidthDownBytes}";
             format-disconnected = "󰤮";
-            tooltip = false;
+            tooltip = true;
+            tooltip-format = "{ipaddr}-{essid}({signalStrength}%)";
           };
           "tray" = {
             spacing = 12;
@@ -110,7 +137,7 @@ in
             format-bluetooth = "{volume}% {icon} {format_source}";
             format-bluetooth-muted = " {icon} {format_source}";
             format-muted = " {format_source}";
-            format-source = " {volume}%";
+            format-source = "{volume}%";
             format-source-muted = "";
             format-icons = {
               headphone = "";
@@ -129,7 +156,7 @@ in
           };
           "custom/exit" = {
             tooltip = false;
-            format = "";
+            format = " ";
             on-click = "sleep 0.1 && wlogout";
           };
           "custom/startmenu" = {
@@ -218,8 +245,8 @@ in
       style = concatStrings [
         ''
           * {
-            font-family: JetBrainsMono Nerd Font Mono;
-            font-size: 16px;
+            font-family: JetBrainsMono;
+            font-size: 18px;
             border-radius: 0px;
             border: none;
             min-height: 0px;
@@ -250,7 +277,7 @@ in
           #window {
             padding: 0px 10px;
           }
-          #pulseaudio, #cpu, #memory, #disk, #temperature, #idle_inhibitor {
+          #pulseaudio, #cpu, #memory, #disk, #backlight, #temperature, #idle_inhibitor {
             padding: 0px 10px;
             background: #${config.lib.stylix.colors.base04};
             color: #${config.lib.stylix.colors.base00};

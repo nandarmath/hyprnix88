@@ -1,6 +1,7 @@
 {
   inputs,
   config,
+  pkgs,
   ...
 }: {
   imports = [inputs.nvf.homeManagerModules.default];
@@ -201,4 +202,11 @@
       };
     };
   };
+
+  # Extra Plugins
+  # config.vim.lazy.plugins = {
+  #   "vim-zettel" = {
+  #     package = pkgs.vimPlugins.vim-zettel;
+  #   };
+  # };
 }

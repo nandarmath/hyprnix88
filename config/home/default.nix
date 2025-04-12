@@ -41,6 +41,7 @@ in {
     ./stylix.nix
     ./nvf.nix
     ./zed.nix
+
     # ./eww
     # ./nixvim.nix
     # ./espanso.nix

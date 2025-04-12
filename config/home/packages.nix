@@ -1,14 +1,7 @@
-{
-  pkgs,
-  username,
-  ...
-}: let
+{pkgs, ...}: let
   inherit
     (import ../../options.nix)
     browser
-    wallpaperDir
-    wallpaperGit
-    flakeDir
     ;
 in {
   # Install Packages For The User
@@ -31,7 +24,6 @@ in {
     pyprland
     pandoc
     pistol
-    rofi-power-menu
     imv
     transmission_3-gtk
     mpv
@@ -75,7 +67,6 @@ in {
     localsend
     converseen
     satty
-    onboard
     glab
     # calibre
     brave
@@ -99,7 +90,7 @@ in {
     geogebra
     lunarvim
     yt-dlp
-    pspp
+    # pspp
     okular
     # anydesk
     teamviewer
@@ -120,7 +111,7 @@ in {
     clipmenu
     xsel
     zed-editor
-    fmpkgs.xdman
+    # fmpkgs.xdman
     fastfetch
     xfce.exo
     ddgr
@@ -174,6 +165,8 @@ in {
     (import ./../scripts/rofi-calc.nix {inherit pkgs;})
     (import ./../scripts/rofi-wf.nix {inherit pkgs;})
     (import ./../scripts/sattyss.nix {inherit pkgs;})
+    (import ./../scripts/wl-record.nix {inherit pkgs;})
+    (import ./../scripts/wl-recordNoA.nix {inherit pkgs;})
     # (import ./../scripts/pdfextrac.nix { inherit pkgs; })
     #(import ./../scripts/wvkbd.nix { inherit pkgs; })
   ];
