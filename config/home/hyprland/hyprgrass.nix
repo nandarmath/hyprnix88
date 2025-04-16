@@ -1,7 +1,4 @@
-{
-...
-}:{
-
+{...}: {
   wayland.windowManager.hyprland = {
     extraConfig = ''
       plugin {
@@ -14,7 +11,7 @@
 
            # swipe down from up  edge
            hyprgrass-bind = , edge:u:d, exec, pkill wvkbd-mobintl
-           
+
            # swipe up from bottom edge
            hyprgrass-bind = , edge:d:u, exec, wvkbd-mobintl -H 300 -L 350 --alpha 100
 
@@ -34,7 +31,7 @@
 
            # tap with 3 fingers
            # NOTE: tap events only trigger for finger count of >= 3
-           hyprgrass-bind = , tap:3, exec, kitty
+           hyprgrass-bind = , tap:3, exec, dmenu-mager
 
            # tap with 2 fingers
            # NOTE: tap events only trigger for finger count of >= 3
