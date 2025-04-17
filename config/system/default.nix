@@ -45,5 +45,6 @@
     ./mpv.nix
     ./stylix.nix
     inputs.stylix.nixosModules.stylix
+    ./syncthing.nix
   ];
 }

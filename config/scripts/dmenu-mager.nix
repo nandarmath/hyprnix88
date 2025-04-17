@@ -113,6 +113,7 @@ pkgs.writeShellScriptBin "dmenu-mager" ''
     [ "Gitlab",                 "firefox --new-window --app=https://gitlab.com/" ],
     [ "trello",                 "firefox --new-window --app=https://trello.com/" ],
     [ "facebook",               "brave --app=https://m.facebook.com/" ],
+    [ "Instagram",              "brave --app=https://instagram.com/" ],
     [ "E-Learning",             "brave --app=https://localhost" ],
     [ "Excalidraw",             "brave --app=http://localhost:5000" ],
     [ "ChatPDF",                "brave --app=http://chatpdf.com" ],
