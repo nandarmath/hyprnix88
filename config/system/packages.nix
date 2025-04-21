@@ -107,8 +107,8 @@
     # inputs.nvix.packages.${system}.full
     r2405.zoom-us
     r2205.hugo
-    baru.python312Packages.pymonctl
-    baru.python312Packages.pywinctl
+    new.python312Packages.pymonctl
+    new.python312Packages.pywinctl
     libvirt-glib
 
     # zoom-us
@@ -141,7 +141,9 @@
     newsflash
     inputs.zen-browser.packages."${system}".specific
     vim
-    baru.rembg
+    new.rembg
+    new.gimp3
+    new.gimp3-with-plugins
   ];
 
   programs.steam.gamescopeSession.enable = true;

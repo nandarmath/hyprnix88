@@ -30,7 +30,7 @@
     };
     nixpkgs-r2405.url = "github:NixOs/nixpkgs/nixos-24.05";
     nixpkgs-r2205.url = "github:NixOs/nixpkgs/nixos-22.05";
-    nixpkgs-baru.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-new.url = "github:nixos/nixpkgs/nixos-unstable";
     walker.url = "github:abenz1267/walker";
   };
 
@@ -44,7 +44,7 @@
     sops-nix,
     nixpkgs-r2405,
     nixpkgs-r2205,
-    nixpkgs-baru,
+    nixpkgs-new,
     fmpkgs,
     ...
   }: let
@@ -62,8 +62,8 @@
         config.allowUnfree = true;
       };
     };
-    overlay-baru = final: prev: {
-      baru = import nixpkgs-baru {
+    overlay-new = final: prev: {
+      new = import nixpkgs-new {
         inherit system;
         config.allowUnfree = true;
       };
@@ -91,7 +91,7 @@
             config,
             pkgs,
             ...
-          }: {nixpkgs.overlays = [overlay-r2405 overlay-r2205 overlay-baru inputs.hyprpanel.overlay];})
+          }: {nixpkgs.overlays = [overlay-r2405 overlay-r2205 overlay-new inputs.hyprpanel.overlay];})
           {nixpkgs.overlays = [inputs.fmpkgs.overlays.default];}
           {inherit (inputs.fmpkgs) nixpkgs;}
           # {environment.systemPackages = [ anyrun.packages.${system}.anyrun ];}
@@ -105,7 +105,7 @@
               inherit username;
               inherit inputs;
               # inherit (inputs.nix-colors.lib-contrib {inherit pkgs;}) gtkThemeFromScheme;
-              inherit overlay-baru;
+              inherit overlay-new;
             };
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;

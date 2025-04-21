@@ -82,6 +82,7 @@ with pkgs; let
     MASS
     FactoMineR
     tidyverse
+    tidyxl
     ggimage
     Hotelling
     psych

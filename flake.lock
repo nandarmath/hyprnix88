@@ -525,22 +525,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-baru": {
-      "locked": {
-        "lastModified": 1743315132,
-        "narHash": "sha256-6hl6L/tRnwubHcA4pfUUtk542wn2Om+D4UnDhlDW9BE=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "52faf482a3889b7619003c0daec593a1912fddc1",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs-lib": {
       "locked": {
         "lastModified": 1738452942,
@@ -565,6 +549,22 @@
       "original": {
         "owner": "nix-community",
         "repo": "nixpkgs.lib",
+        "type": "github"
+      }
+    },
+    "nixpkgs-new": {
+      "locked": {
+        "lastModified": 1744932701,
+        "narHash": "sha256-fusHbZCyv126cyArUwwKrLdCkgVAIaa/fQJYFlCEqiU=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
         "type": "github"
       }
     },
@@ -795,7 +795,7 @@
         "hyprpanel": "hyprpanel",
         "impermanence": "impermanence",
         "nixpkgs": "nixpkgs_4",
-        "nixpkgs-baru": "nixpkgs-baru",
+        "nixpkgs-new": "nixpkgs-new",
         "nixpkgs-r2205": "nixpkgs-r2205",
         "nixpkgs-r2405": "nixpkgs-r2405",
         "nur-ryan4yin": "nur-ryan4yin",

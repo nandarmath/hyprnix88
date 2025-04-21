@@ -20,7 +20,7 @@
           command = ["select_item" "scroll_up"];
         }
       ];
-      mpdMusicDir = "~/Music";
+      mpdMusicDir = "~/Music/Mp3";
       settings = {
         mpd_host = "localhost";
         # mpd_music_dir = "/home/nandar/Music";

@@ -30,7 +30,12 @@ IPTV=''''
     ["THRILL",            "http://45.126.83.51/qwr9ew/s/s34/index2.m3u8"],
     ["TRANS 7",           "https://video.detik.com/trans7/smil:trans7.smil/playlist.m3u8"],
     ["TRANS TV",          "https://video.detik.com/transtv/smil:transtv.smil/playlist.m3u8"],
+    ["KOMPAS TV",         "https://youtu.be/DOOrIxw5xOw"],
+    ["TV Kesehatan",      "https://list.iptvcat.com/my_list/s/1b589843e8cc9363874804b0bdb50e5e.m3u8"],
+    ["TVMu",              "https://list.iptvcat.com/my_list/s/d91477278a3b88b432dff159e472a3b4.m3u8"],
+    ["Rajawali TV",       "https://list.iptvcat.com/my_list/s/02163af5761894c056fcac64449f5e99.m3u8"],
     ["TVN MOVIE",         "https://nonton.site:8443/provision/pp/927"],
+    ["TV Cinema USA",     "https://list.iptvcat.com/my_list/s/3440cec48e2dd0b61dfff0c0a3d6fdef.m3u8"],
     ["TVONE",             "https://youtu.be/yNKvkPJl-tg"],
     ["RAI ITALIA",        "http://210.210.155.35/x6bnqe/s/s63/S4/mnf.m3u8"]
 ]

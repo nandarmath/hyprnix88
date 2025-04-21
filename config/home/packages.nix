@@ -73,7 +73,7 @@ in {
     kalker
     jdk
     inkscape-with-extensions
-    gimp-with-plugins
+    # gimp-with-plugins
     ytfzf
     kitty
     ueberzugpp
