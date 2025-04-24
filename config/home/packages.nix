@@ -123,6 +123,9 @@ in {
     nixd
     nixfmt-rfc-style
     hyprshot
+    whatsie
+    whatsapp-for-mac
+    zapzap
     # tvbrowser
     (pkgs.callPackage ../pkgs/amzqr.nix {})
     (pkgs.callPackage ../pkgs/ffmpegsplitpy.nix {})
@@ -167,6 +170,8 @@ in {
     (import ./../scripts/sattyss.nix {inherit pkgs;})
     (import ./../scripts/wl-record.nix {inherit pkgs;})
     (import ./../scripts/wl-recordNoA.nix {inherit pkgs;})
+    (import ./../scripts/mirrorhp.nix {inherit pkgs;})
+    (import ./../scripts/rofi-droid.nix {inherit pkgs;})
     # (import ./../scripts/pdfextrac.nix { inherit pkgs; })
     #(import ./../scripts/wvkbd.nix { inherit pkgs; })
   ];

@@ -41,7 +41,7 @@ in {
   theLCVariables = "id_ID.UTF-8";
   theTimezone = "Asia/Jakarta";
   theShell = "fish"; # Possible options: bash, zsh
-  theKernel = "xanmod"; # Possible options: default, latest, lqx, xanmod, zen
+  theKernel = "cachyos"; # Possible options: default, latest, lqx, xanmod, zen
   # This is for running NixOS
   # On a tmpfs or root on RAM
   # You Most Like Want This -> false

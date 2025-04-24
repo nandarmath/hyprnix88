@@ -86,24 +86,4 @@
   # Enable throttled.service for fix Intel CPU throttling.
   services.throttled.enable = true;
 
-  # services.dnsmasq = {
-  #   enable = true;
-  #   package = pkgs.dnsmasq;
-  #   settings.server = [
-  #     "8.8.8.8"
-  #     "8.8.4.4"
-  #   ];
-  #   settings ={
-  #     port=53;
-  #     domain-needed = true;
-  #     bogus-priv=true;
-  #     strict-order = true;
-  #     no-resolv = true;
-  #     local="/elmim.lc/";
-  #     listen-addres="127.0.0.1,192.168.1.5";
-  #     expand-hosts = true;
-  #     domain="elmim.lc";
-  #   };
-  # }; 
-
 }

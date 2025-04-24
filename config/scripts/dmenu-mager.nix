@@ -12,12 +12,13 @@ pkgs.writeShellScriptBin "dmenu-mager" ''
   OPTIONS=''''
   [
     [ "boottester",             "dmenu_boottester" ],
-    [ "droidcam audio only",    "droidcam-cli -a 192.168.43.1 4747 &" ],
-    [ "droidcam video & audio", "droidcam-cli -a -v 192.168.43.1 4747 &" ],
-    [ "droidcam video only",    "droidcam-cli 192.168.43.1 4747 &" ],
+    [ "droidcam",               "droidcam-rofi" ],
     [ "play video0",            "mpv --no-audio --window-scale=0.5 av://v4l2:/dev/video0 --vf=hflip --profile=low-latency --untimed" ],
     [ "play video1",            "mpv --no-audio --window-scale=0.5 av://v4l2:/dev/video1 --vf=hflip --profile=low-latency --untimed" ],
     [ "play video2",            "mpv --no-audio --window-scale=0.5 av://v4l2:/dev/video2 --vf=hflip --profile=low-latency --untimed" ],
+    [ "Mirror HP",              "adb-scrcpy" ],
+    [ "Wifi Menu",              "wifi-menu" ],
+    [ "Kalkulator",             "rofi-calc" ],
     [ "kill",                   "dmenu_kill" ],
     [ "kill droidcam",          "pkill droidcam-cli" ],
     [ "monitor",                "dmenu_monitor" ],

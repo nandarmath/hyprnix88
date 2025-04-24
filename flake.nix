@@ -9,6 +9,7 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     stylix.url = "github:danth/stylix/release-24.11";
 
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     # zen zen-browser
     zen-browser.url = "github:MarceColl/zen-browser-flake";
     # neovim in nix
@@ -46,6 +47,7 @@
     nixpkgs-r2205,
     nixpkgs-new,
     fmpkgs,
+    chaotic,
     ...
   }: let
     system = "x86_64-linux";
@@ -66,6 +68,7 @@
       new = import nixpkgs-new {
         inherit system;
         config.allowUnfree = true;
+        config.allowBroken = true;
       };
     };
     inherit (import ./options.nix) username hostname;
@@ -96,6 +99,7 @@
           {inherit (inputs.fmpkgs) nixpkgs;}
           # {environment.systemPackages = [ anyrun.packages.${system}.anyrun ];}
           ./system.nix
+          chaotic.nixosModules.default
           # stylix.nixosModules.stylix
           sops-nix.nixosModules.sops
           impermanence.nixosModules.impermanence

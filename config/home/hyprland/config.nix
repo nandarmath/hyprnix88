@@ -220,7 +220,10 @@ in
           "noshadow, floating:0"
           # "shadow, floating:1"
         ];
+        workspace = [
+          "11, rounding:false, decorate:false"
 
+        ];
         env = [
           "NIXOS_OZONE_WL, 1"
           "NIXPKGS_ALLOW_UNFREE, 1"

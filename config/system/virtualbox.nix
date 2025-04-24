@@ -4,9 +4,9 @@ virtualisation.virtualbox = {
     host = {
       enable = true;
       package = pkgs.virtualbox;
-      enableExtensionPack = true;
+      enableExtensionPack = false;
     };
-    guest.enable = true;
+    guest.enable = false;
     guest.clipboard = true;
   };
 }
