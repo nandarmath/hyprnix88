@@ -116,7 +116,6 @@ in {
     xfce.exo
     ddgr
     appflowy
-    wasistlos
     ocrmypdf
     rofi-mpd
     fuzzel
@@ -124,8 +123,6 @@ in {
     nixfmt-rfc-style
     hyprshot
     whatsie
-    whatsapp-for-mac
-    zapzap
     # tvbrowser
     (pkgs.callPackage ../pkgs/amzqr.nix {})
     (pkgs.callPackage ../pkgs/ffmpegsplitpy.nix {})

@@ -1,5 +1,8 @@
-{...}: {
+{...}:let
+  inherit (import ../../../options.nix) animChoice;
+in {
   imports = [
+    animChoice
     ./binds.nix
     ./config.nix
     # ./hypridle.nix

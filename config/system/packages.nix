@@ -156,6 +156,7 @@
     systemd.setPath.enable = true;
   };
 
+  # For Autorotate on tablet mode with x390 yoga
   programs.iio-hyprland = {
     enable = true;
     package = pkgs.iio-hyprland;
@@ -169,7 +170,9 @@
     enableSSHSupport = true;
   };
 
+  # Qemu with virt-manager
   virtualisation.libvirtd.enable = true;
+  virtualisation.libvirtd.allowedBridges = ["virbr0"];
   virtualisation.spiceUSBRedirection.enable = true;
   programs.virt-manager.enable = true;
 }
