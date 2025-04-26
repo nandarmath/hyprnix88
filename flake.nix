@@ -16,7 +16,6 @@
     nvf.url = "github:notashelf/nvf";
     # repo xdman
     fmpkgs.url = "github:fmway/fmpkgs";
-
     impermanence.url = "github:nix-community/impermanence";
     ags.url = "github:Aylur/ags";
     sops-nix.url = "github:Mic92/sops-nix";
@@ -41,7 +40,6 @@
     stylix,
     home-manager,
     impermanence,
-    hyprpanel,
     sops-nix,
     nixpkgs-r2405,
     nixpkgs-r2205,
@@ -78,6 +76,9 @@
       config = {
         allowUnfree = true;
       };
+      overlays = [
+        inputs.hyprpanel.overlay
+      ];
     };
   in {
     nixosConfigurations = {

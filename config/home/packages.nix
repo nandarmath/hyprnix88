@@ -123,6 +123,7 @@ in {
     nixfmt-rfc-style
     hyprshot
     whatsie
+    hyprpanel
     # tvbrowser
     (pkgs.callPackage ../pkgs/amzqr.nix {})
     (pkgs.callPackage ../pkgs/ffmpegsplitpy.nix {})

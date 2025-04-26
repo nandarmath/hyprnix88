@@ -41,6 +41,7 @@ in {
     ./stylix.nix
     ./nvf.nix
     ./zed.nix
+    # ./hyprpanel.nix
 
     # ./eww
     # ./nixvim.nix
