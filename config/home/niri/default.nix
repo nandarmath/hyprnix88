@@ -9,6 +9,8 @@
     packages = with pkgs; [
       seatd
       jaq
+      brillo
+      ghostty
     ];
   };
 }

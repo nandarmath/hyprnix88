@@ -26,13 +26,15 @@
     "Print".action.screenshot-screen = {write-to-disk = true;};
     "Mod+Shift+Alt+S".action = screenshot-window;
     "Mod+Shift+S".action = screenshot;
-    "Mod+D".action = spawn "${pkgs.anyrun}/bin/anyrun";
-    "Mod+Return".action = spawn "${
-      inputs.ghostty.packages.${pkgs.system}.default
-    }/bin/ghostty";
+    "Mod+D".action = spawn "${pkgs.rofi}/bin/rofi";
+    # "Mod+Return".action = spawn "${
+    #   inputs.ghostty.packages.${pkgs.system}.default
+    # }/bin/ghostty";
+    "Mod+Return".action = spawn "${pkgs.kitty}/bin/kitty";
+
     "Ctrl+Alt+L".action = spawn "sh -c pgrep hyprlock || hyprlock";
 
-    "Mod+U".action = spawn "env XDG_CURRENT_DESKTOP=gnome gnome-control-center";
+    # "Mod+U".action = spawn "env XDG_CURRENT_DESKTOP=gnome gnome-control-center";
 
     "Mod+Q".action = close-window;
     "Mod+S".action = switch-preset-column-width;

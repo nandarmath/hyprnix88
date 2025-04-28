@@ -21,7 +21,7 @@
     {
       matches = [
         {
-          is-window-cast-target = true;
+          # is-window-cast-target = true;
         }
       ];
       focus-ring = {
@@ -32,7 +32,7 @@
         inactive.color = "#7d0d2d";
       };
       shadow = {
-        color = "#7d0d2d70";
+        color = "#7d0d2d";
       };
       tab-indicator = {
         active.color = "#f38ba8";
@@ -44,17 +44,17 @@
       block-out-from = "screencast";
     }
     {
-      matches = [{app-id = "app.drey.PaperPlane";}];
-      block-out-from = "screencast";
+      # matches = [{app-id = "app.drey.PaperPlane";}];
+      # block-out-from = "screencast";
     }
     {
       matches = [
         {app-id = "zen";}
         {app-id = "firefox";}
         {app-id = "chromium-browser";}
-        {app-id = "xdg-desktop-portal-gtk";}
+        # {app-id = "xdg-desktop-portal-gtk";}
       ];
-      scroll-factor = 0.2;
+      # scroll-factor = 0.2;
     }
     {
       matches = [

@@ -14,6 +14,7 @@ in {
     ./bash.nix
     ./gtk-qt.nix
     ./hyprland
+    # ./niri
     ./kdenlive.nix
     ./kitty.nix
     ./packages.nix

@@ -24,6 +24,10 @@
       url = "github:VonHeikemen/fine-cmdline.nvim";
       flake = false;
     };
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nur-ryan4yin = {
       url = "github:ryan4yin/nur-packages";
       #inputs.nixpkgs.follows = "nixpkgs";
