@@ -7,7 +7,7 @@ in {
   # Install Packages For The User
   home.packages = with pkgs; [
     pkgs."${browser}"
-    discord
+    # discord
     libvirt
     swww
     grim
@@ -117,13 +117,19 @@ in {
     ddgr
     appflowy
     ocrmypdf
-    rofi-mpd
     fuzzel
     nixd
     nixfmt-rfc-style
     hyprshot
-    whatsie
+    wasistlos
     hyprpanel
+    # planify # taks manager
+    # parabolic # front-end yt-dlp / download video and audio
+    loupe # image viewer support touchscreen
+    # amberol # music and audio player
+    vesktop # discord app client elternative
+    netscanner # Network scanner & diagnostic tool.
+
     # tvbrowser
     (pkgs.callPackage ../pkgs/amzqr.nix {})
     (pkgs.callPackage ../pkgs/ffmpegsplitpy.nix {})

@@ -5,7 +5,7 @@ in {
     animChoice
     ./binds.nix
     ./config.nix
-    # ./hypridle.nix
+    ./hypridle.nix
     ./hyprland.nix
     ./pyprland.nix
     ./hyprexpo.nix
