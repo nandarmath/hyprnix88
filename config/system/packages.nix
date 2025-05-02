@@ -87,6 +87,7 @@
     xdg-utils
     fprintd
     wofi
+    rofi-calc
     # openai-whisper
     # whitesur-gtk-theme
     # whitesur-cursors
@@ -108,6 +109,7 @@
     r2405.zoom-us
     r2205.hugo
     new.python312Packages.pymonctl
+    new.rofi-network-manager
     new.python312Packages.pywinctl
     libvirt-glib
 
@@ -126,7 +128,8 @@
     nix-prefetch-github
     nix-init
     fzf
-    # rustdesk
+    rustdesk-flutter
+    anydesk
 
     wvkbd
     iio-hyprland

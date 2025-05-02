@@ -6,8 +6,11 @@ pkgs.writeShellScriptBin "web-search" ''
   URLS=(
     ["🌎 Search"]="https://search.brave.com/search?q="
     ["❄️  Unstable Packages"]="https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query="
-    ["🏠 Manager Options"]="https://home-manager-options.extranix.com/"
+    ["❄️  NixOs Wiki"]="https://https://wiki.nixos.org/w/index.php?search="
+    ["🏠 Manager Options"]="https://home-manager-options.extranix.com/?query="
     ["🎞️ YouTube"]="https://www.youtube.com/results?search_query="
+    ["ℹ️  Google-Translate"]="https://translate.google.com/?sl=auto&tl=id&text="
+    ["📕 KBBI"]="https://kbbi.kemdikbud.go.id/entri/"
     ["🦥 Arch Wiki"]="https://wiki.archlinux.org/title/"
     ["🐃 Gentoo Wiki"]="https://wiki.gentoo.org/index.php?title="
   )
@@ -29,7 +32,7 @@ pkgs.writeShellScriptBin "web-search" ''
 
       if [[ -n "$query" ]]; then
 	url=''${URLS[$platform]}$query
-	firefox "$url"
+	zen "$url"
       else
 	exit
       fi

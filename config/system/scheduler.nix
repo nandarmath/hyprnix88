@@ -3,7 +3,7 @@
 # default scheduler
   services.scx.enable = true;
   services.scx.scheduler = "scx_bpfland";
-  services.scx.extraArgs = [ "-k" "-p" ];
+  services.scx.extraArgs = ["-f" "-k" "-p" ];
 
   # change scheduler to scx_flash when power is on
   systemd.services.scx.serviceConfig = with config.services.scx; let

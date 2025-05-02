@@ -3,6 +3,7 @@
     (import ../../../options.nix)
     browser
     terminal
+    stylixImage
     ;
 in {
   wayland.windowManager.hyprland.settings = {
@@ -22,13 +23,14 @@ in {
       "$mod CONTROL,N,exec, kitty -e joplin --profile ~/.config/joplin-desktop"
       "$mod ,S,exec,screenshootin"
       "$mod ,D,exec,discord"
+      "$mod SHIFT, D,exec,sh ~/.config/eww/dashboard/launch_dashboard"
+      "$mod SHIFT, D,exec, ~/.config/eww/dashboard/launch_dashboard"
       "$mod ,R,exec,libreoffice --writer"
       "$mod ,C,exec,libreoffice --calc"
       "$mod ,T,exec,[workspace 9 silent] telegram-desktop"
       "$mod ,K,exec, rofi -show calc -modi calc -no-show-match -no-sort"
       "$mod ,B,exec, rofi-bluetooth"
       "$mod ,Y,exec, kitty -e ytfzf -t --thumb-viewer=kitty"
-      "$mod ,I,exec,${terminal} -e syncthing"
       "$mod ,O,exec,[workspace 5 silent ] obs"
       "$mod ,G,exec,[workspace 4 silent ] gimp"
       "$mod SHIFT,G,exec, fish -c record_scree_gif"
@@ -46,12 +48,12 @@ in {
       "$mod ,V,exec,cliphist list | rofi -dmenu | cliphist decode | wl-copy"
       "$mod ,Space,togglefloating,"
       "$mod SHIFT,P,exec, hyprpicker --autocopy"
-      "$mod SHIFT,C,exec, rofi-calc"
+      "$mod SHIFT,C,exec, roficalc"
       "$mod SHIFT,Z,exec, pypr zoom"
       "$mod SHIFT,A,exec, pypr expose"
       "$mod SHIFT,RETURN,exec, pypr toggle term"
       "$mod CONTROL,C,exec,pypr toggle calendar"
-      "$mod ALT,N,exec, wifi-menu"
+      "$mod ALT,N,exec, rofi-network-manager"
       "CONTROL, TAB,focuscurrentorlast"
       "$mod SHIFT,N,exec,dmenu_iptv"
       "$mod SHIFT,space,exec,workspaceopt, allfloat"
@@ -72,7 +74,7 @@ in {
       "$mod ALT,R,exec,wl-recordNoA"
       "$mod ALT,S,exec,rofi-pulse-select source"
       "$mod CONTROL,X,exec,wf-recorder -c h264_vaapi --muxer=v4l2 --codec=rawvideo --file=/dev/video2 -x yuv420p"
-      "$mod CONTROL,W,exec,pkill hyprpanel && hyprctl dispatch exec waybar && hyprctl distpatch exec swaync"
+      "$mod CONTROL,W,exec,pkill hyprpanel && hyprctl dispatch exec waybar && hyprctl distpatch exec swaync && sleep 1.5 && hyprctl distpatch exec swww img ${stylixImage}"
       "$mod CONTROL,H,exec,pkill waybar swaync swww && hyprctl dispatch exec hyprpanel"
       "$mod ,left,movefocus,l"
       "$mod ,right,movefocus,r"

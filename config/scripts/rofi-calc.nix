@@ -1,6 +1,6 @@
 { pkgs ? import <nixpkgs> { } }:
 
-pkgs.writeShellScriptBin "rofi-calc" ''
+pkgs.writeShellScriptBin "roficalc" ''
   # Pastikan dependensi tersedia dalam path
   PATH=${pkgs.rofi}/bin:${pkgs.kalker}/bin:${pkgs.wl-clipboard}/bin:$PATH
   

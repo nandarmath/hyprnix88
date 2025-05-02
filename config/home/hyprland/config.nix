@@ -31,7 +31,7 @@ in
           "pkill swaync"
           "pkill swww"
           "pkill SwayNotificationCentre"
-          "sleep 1.5 && swww img ${stylixImage}"
+          # "sleep 1.5 && swww img ${stylixImage}"
           "pypr &"
           "keepassxc"
           "wasistlos"
@@ -39,7 +39,9 @@ in
           "iio-hyprland"
           "nwg-dock-hyprland -x -p 'bottom' -l 'top' -i 32 -hd 10 -mt 10 -mb 10 -ml 5 -c 'rofi -show drun' -d"
           # "waybar"
-          "hyprpanel"
+          "~/hyprnix/config/home/hyprland/panel.sh &"
+          "hyprpanel &"
+          "sleep 1"
           # "eww daemon"
           "wl-paste --type text --watch cliphist store"
           "wl-paste --type image --watch cliphist store"
@@ -74,9 +76,9 @@ in
 
         general = {
           "$mod" = "SUPER";
-          gaps_in = 5;
+          gaps_in = 4;
           gaps_out = 6;
-          border_size = 6;
+          border_size = 5;
           # "col.active_border" = lib.mkForce "rgb(${theme.base08}) rgb(${theme.base0C}) 45deg";
           # "col.inactive_border" = lib.mkForce "rgb(${theme.base01})";
           "col.active_border" = lib.mkForce "rgba(${theme.base0C}ff) rgba(${theme.base0D}ff) rgba(${theme.base0B}ff) rgba(${theme.base0E}ff) 45deg";

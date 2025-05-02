@@ -42,6 +42,8 @@ in {
     ./stylix.nix
     ./nvf.nix
     ./zed.nix
+    ./dashboard
+
     # ./hyprpanel.nix
 
     # ./eww

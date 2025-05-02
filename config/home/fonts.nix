@@ -18,6 +18,7 @@
     iosevka
     fira-code-symbols
     jetbrains-mono
+    icomoon-feather
     ubuntu_font_family
     helvetica-neue-lt-std
   ];

@@ -129,6 +129,8 @@ in {
     # amberol # music and audio player
     vesktop # discord app client elternative
     netscanner # Network scanner & diagnostic tool.
+    socat
+    procps
 
     # tvbrowser
     (pkgs.callPackage ../pkgs/amzqr.nix {})
@@ -170,12 +172,14 @@ in {
     (import ./../scripts/ocr-indonesia.nix {inherit pkgs;})
     (import ./../scripts/ocr-screenshoot.nix {inherit pkgs;})
     (import ./../scripts/rofi-calc.nix {inherit pkgs;})
-    (import ./../scripts/rofi-wf.nix {inherit pkgs;})
+    # (import ./../scripts/rofi-wf.nix {inherit pkgs;})
     (import ./../scripts/sattyss.nix {inherit pkgs;})
     (import ./../scripts/wl-record.nix {inherit pkgs;})
     (import ./../scripts/wl-recordNoA.nix {inherit pkgs;})
     (import ./../scripts/mirrorhp.nix {inherit pkgs;})
     (import ./../scripts/rofi-droid.nix {inherit pkgs;})
+    (import ./../scripts/rofi-shot.nix {inherit pkgs;})
+    # (import ./../scripts/power-profile-menu.nix {inherit pkgs;})
     # (import ./../scripts/pdfextrac.nix { inherit pkgs; })
     #(import ./../scripts/wvkbd.nix { inherit pkgs; })
   ];
