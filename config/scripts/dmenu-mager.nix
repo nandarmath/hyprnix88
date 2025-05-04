@@ -18,6 +18,7 @@ pkgs.writeShellScriptBin "dmenu-mager" ''
     [ "play video2",            "mpv --no-audio --window-scale=0.5 av://v4l2:/dev/video2 --vf=hflip --profile=low-latency --untimed" ],
     [ "Mirror HP",              "adb-scrcpy" ],
     [ "Wifi Menu",              "rofi-network-manager" ],
+    [ "Music",                  "dmenu_mpc" ],
     [ "Rofi-screnshoot",         "rofi-screenshot" ],
     [ "Kalkulator",             "roficalc" ],
     [ "kill",                   "dmenu_kill" ],

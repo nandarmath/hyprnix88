@@ -8,7 +8,7 @@
 in {
   wayland.windowManager.hyprland.settings = {
     bind = [
-      "$mod ,Q,exec,${terminal} -e fish"
+      "$mod ,Q,exec,${terminal}"
       "$mod ,RETURN,exec,kitty"
       "$mod ,A,exec,rofi-launcher"
       "$mod SHIFT,W,exec,web-search"
@@ -25,6 +25,7 @@ in {
       "$mod ,D,exec,discord"
       "$mod SHIFT, D,exec,sh ~/.config/eww/dashboard/launch_dashboard"
       "$mod SHIFT, D,exec, ~/.config/eww/dashboard/launch_dashboard"
+      "$mod ALT, D,exec, hyprpanel t dashboardmenu && hyprpanel t calendarmenu"
       "$mod ,R,exec,libreoffice --writer"
       "$mod ,C,exec,libreoffice --calc"
       "$mod ,T,exec,[workspace 9 silent] telegram-desktop"

@@ -131,6 +131,9 @@ in {
     netscanner # Network scanner & diagnostic tool.
     socat
     procps
+    mutt-wizard
+    pass
+    geary
 
     # tvbrowser
     (pkgs.callPackage ../pkgs/amzqr.nix {})
@@ -179,6 +182,7 @@ in {
     (import ./../scripts/mirrorhp.nix {inherit pkgs;})
     (import ./../scripts/rofi-droid.nix {inherit pkgs;})
     (import ./../scripts/rofi-shot.nix {inherit pkgs;})
+    (import ./../scripts/dmenu_mpc.nix {inherit pkgs;})
     # (import ./../scripts/power-profile-menu.nix {inherit pkgs;})
     # (import ./../scripts/pdfextrac.nix { inherit pkgs; })
     #(import ./../scripts/wvkbd.nix { inherit pkgs; })

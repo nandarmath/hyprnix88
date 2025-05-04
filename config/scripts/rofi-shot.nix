@@ -12,7 +12,7 @@ pkgs.writeShellScriptBin "rofi-screenshot" ''
 ## Modified: Menggunakan wl-screenrec untuk merekam layar di Wayland untuk NixOS
 
 # Memastikan semua tools tersedia di PATH
-PATH="${pkgs.grim}/bin:${pkgs.slurp}/bin:${pkgs.wl-screenrec}/bin:${pkgs.wl-clipboard}/bin:${pkgs.ffmpeg}/bin:${pkgs.rofi}/bin:${pkgs.coreutils}/bin:${pkgs.procps}/bin:${pkgs.libnotify}/bin:$PATH"
+# PATH="${pkgs.grim}/bin:${pkgs.slurp}/bin:${pkgs.wl-screenrec}/bin:${pkgs.wl-clipboard}/bin:${pkgs.ffmpeg}/bin:${pkgs.rofi}/bin:${pkgs.coreutils}/bin:${pkgs.procps}/bin:${pkgs.libnotify}/bin:$PATH"
 
 # Screenshot directory
 screenshot_directory="''${ROFI_SCREENSHOT_DIR:-''${XDG_PICTURES_DIR:-$HOME/Pictures}/Screenshots}"

@@ -52,7 +52,7 @@ function change_dns() {
     nmcli connection up "$ssid" && notify-send "DNS Switcher" "success recconect to $ssid"
 }
 
-OPTIONS='''
+OPTIONS=''''
 [
 	["DNS Google",     "8.8.8.8"],
 	["DNS CloudFlare", "1.1.1.1"],
@@ -60,7 +60,7 @@ OPTIONS='''
 	["DNS Local",      "127.0.0.1"],
     ["Default",        "default"]
 ]
-'''
+''''
 
 label=$(echo $OPTIONS | jq -r ".[][0]" | rofi -dmenu -p "DNS Switcher" -theme-str 'window {width: 25%;} listview {lines:5;}')
 dns=$(echo $OPTIONS | jq -r ".[] | select(.[0] == \"$label\") | .[1]")

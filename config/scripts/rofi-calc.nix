@@ -2,7 +2,7 @@
 
 pkgs.writeShellScriptBin "roficalc" ''
   # Pastikan dependensi tersedia dalam path
-  PATH=${pkgs.rofi}/bin:${pkgs.kalker}/bin:${pkgs.wl-clipboard}/bin:$PATH
+  # PATH=${pkgs.rofi}/bin:${pkgs.kalker}/bin:${pkgs.wl-clipboard}/bin:$PATH
   
   # Fungsi untuk membersihkan saat keluar
   cleanup() {
