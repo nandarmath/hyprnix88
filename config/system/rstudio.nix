@@ -80,6 +80,7 @@ with pkgs; let
     pandoc
     markdown
     MASS
+    caret
     FactoMineR
     tidyverse
     tidyxl

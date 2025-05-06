@@ -40,7 +40,8 @@ in {
     ./ncmpcpp.nix
     ./vim.nix
     ./stylix.nix
-    ./nvf.nix
+    # ./nvf.nix
+    ./nxchad.nix
     ./zed.nix
     ./dashboard
 

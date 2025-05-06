@@ -54,6 +54,7 @@ in {
       "$mod SHIFT,A,exec, pypr expose"
       "$mod SHIFT,RETURN,exec, pypr toggle term"
       "$mod CONTROL,C,exec,pypr toggle calendar"
+      "$mod CONTROL,A,exec,rofi -show run"
       "$mod ALT,N,exec, rofi-network-manager"
       "CONTROL, TAB,focuscurrentorlast"
       "$mod SHIFT,N,exec,dmenu_iptv"

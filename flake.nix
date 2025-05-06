@@ -13,7 +13,7 @@
     # zen zen-browser
     zen-browser.url = "github:MarceColl/zen-browser-flake";
     # neovim in nix
-    nvf.url = "github:notashelf/nvf";
+    # nvf.url = "github:notashelf/nvf";
     # repo xdman
     fmpkgs.url = "github:fmway/fmpkgs";
     impermanence.url = "github:nix-community/impermanence";
@@ -24,10 +24,18 @@
       url = "github:VonHeikemen/fine-cmdline.nvim";
       flake = false;
     };
-    niri = {
-      url = "github:sodiboo/niri-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nixvim.url = "github:nix-community/nixvim";
+    nixvim.inputs.nixpkgs.follows = "nixpkgs";
+    nxchad.url = "github:fmway/nxchad";
+    # This is important, since nxchad dosn't add nixpkgs repo in dependencies
+    nxchad.inputs.nixpkgs.follows = "nixpkgs";
+
+
+
+    # niri = {
+    #   url = "github:sodiboo/niri-flake";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     nur-ryan4yin = {
       url = "github:ryan4yin/nur-packages";
       #inputs.nixpkgs.follows = "nixpkgs";
@@ -50,6 +58,8 @@
     nixpkgs-new,
     fmpkgs,
     chaotic,
+    nixvim,
+    nxchad,
     ...
   }: let
     system = "x86_64-linux";
@@ -109,6 +119,8 @@
           sops-nix.nixosModules.sops
           impermanence.nixosModules.impermanence
           home-manager.nixosModules.home-manager
+          nixvim.nixosModules.nixvim
+          nxchad.nixosModules.nixvim
           {
             home-manager.extraSpecialArgs = {
               inherit username;
