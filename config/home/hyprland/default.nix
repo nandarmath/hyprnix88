@@ -1,4 +1,4 @@
-{...}:let
+{...}: let
   inherit (import ../../../options.nix) animChoice;
 in {
   imports = [
@@ -10,6 +10,6 @@ in {
     ./pyprland.nix
     ./hyprexpo.nix
     ./hyprgrass.nix
+    ./hyprlock.nix
   ];
 }
-

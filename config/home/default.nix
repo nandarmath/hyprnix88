@@ -23,7 +23,7 @@ in {
     ./starship.nix
     waybarChoice
     ./swappy.nix
-    ./swaylock.nix
+    # ./swaylock.nix
     ./swaync.nix
     ./wezterm.nix
     ./zsh.nix
