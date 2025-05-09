@@ -42,6 +42,14 @@
           shadow_passes = 2;
         }
       ];
+      auth = [
+        fingerprint {
+           enabled = true
+           ready_message = Scan fingerprint to unlock
+           present_message = Scanning...
+           retry_delay = 250 # in milliseconds
+        }
+      ];
     };
   };
 }

@@ -76,7 +76,7 @@ in {
       "$mod ALT,S,exec,rofi-pulse-select source"
       "$mod CONTROL,X,exec,wf-recorder -c h264_vaapi --muxer=v4l2 --codec=rawvideo --file=/dev/video2 -x yuv420p"
       "$mod CONTROL,W,exec,pkill hyprpanel && hyprctl dispatch exec waybar && hyprctl distpatch exec swaync && sleep 1.5 && hyprctl distpatch exec swww img ${stylixImage}"
-      "$mod CONTROL,H,exec,pkill waybar swaync swww && hyprctl dispatch exec hyprpanel"
+      "$mod CONTROL,H,exec,pkill waybar && pkill swaync && pkill swww && hyprctl dispatch exec hyprpanel"
       "$mod CONTROL,A,exec,rofi -show run"
       "$mod ,left,movefocus,l"
       "$mod ,right,movefocus,r"
