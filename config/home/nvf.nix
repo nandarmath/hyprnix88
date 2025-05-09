@@ -10,7 +10,7 @@
     enable = true;
 
     settings.vim = {
-      vimAlias = true;
+      vimAlias = false;
       viAlias = true;
       withNodeJs = true;
       useSystemClipboard = true;
@@ -27,6 +27,12 @@
           mode = ["i"];
           action = "<ESC>";
           desc = "Exit insert mode";
+        }
+        {
+          key = "<leader>tn";
+          mode = ["n"];
+          action = ":term";
+          desc = "acces terminal mode";
         }
         {
           key = "<leader>nh";
@@ -112,6 +118,8 @@
         php.enable = true;
       };
 
+      # maps.terminal = "tm";
+
       visuals = {
         nvim-web-devicons.enable = true;
         nvim-cursorline.enable = true;
@@ -131,7 +139,16 @@
 
       autopairs.nvim-autopairs.enable = true;
 
-      autocomplete.nvim-cmp.enable = true;
+      autocomplete.nvim-cmp = {
+        enable = true;
+        sourcePlugins = ["cmp-path"];
+        sources = {
+          buffer = "[Buffer]";
+          nvim-cmp = null;
+          path = "[Path]";
+        };
+      };
+
       snippets.luasnip.enable = true;
 
       tabline = {

@@ -195,6 +195,7 @@ with pkgs; let
     htmltools
     ggiraph
     googlesheets4
+    randomForest
 
     # citr
   ];
