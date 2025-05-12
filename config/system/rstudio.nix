@@ -202,7 +202,7 @@ with pkgs; let
 in {
   services = {
     rstudio-server = {
-      enable = false;
+      enable = true;
       listenAddr = "0.0.0.0";
       package = rstudioServerWrapper.override {
         packages = list-packages;

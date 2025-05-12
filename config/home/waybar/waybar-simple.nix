@@ -33,6 +33,8 @@ in
             "custom/arrow4"
             "network"
             "custom/arrow3"
+            "custom/prayer_times"
+            "custom/arrow3"
             "custom/notification"
             "custom/arrow3"
             "battery"
@@ -129,8 +131,16 @@ in
             tooltip = true;
             tooltip-format = "{ipaddr}-{essid}({signalStrength}%)";
           };
+          "custom/prayer_times" = {
+            format = "🕌 {}";
+            tooltip = true;
+            interval = 60;
+            exec = "prayer_time";
+            return-type = "json";
+            on-click = "notify-send \"Waktu Sholat Kab. Sleman\" \"$(jq -r '.tooltip' $HOME/.cache/prayer_times.json | sed 's/\\\\n/\\n/g')\"";
+          };
           "tray" = {
-            spacing = 12;
+            spacing = 10;
           };
           "pulseaudio" = {
             format = "{icon} {volume}% {format_source}";

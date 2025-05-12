@@ -41,7 +41,7 @@ in {
     ./vim.nix
     ./stylix.nix
     ./nvf.nix
-    ./zed.nix
+    # ./neovim
     ./dashboard
 
     # ./hyprpanel.nix

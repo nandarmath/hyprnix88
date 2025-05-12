@@ -1,12 +1,14 @@
-{ pkgs, config, ... }:
-
-
-let
+{
+  pkgs,
+  new,
+  config,
+  ...
+}: let
   palette = config.lib.stylix.colors;
 in {
   programs.rofi = {
-      plugins = [pkgs.rofi-calc pkgs.rofi-wayland];
-    };
+    plugins = [new.rofi-calc pkgs.rofi-wayland];
+  };
   home.file.".config/rofi/config.rasi".text = ''
     @theme "/dev/null"
 
@@ -20,7 +22,7 @@ in {
       show-icons:	    true;
       icon-theme:	    "Yaru-dark";
       location:		    0;
-      font:		    "JetBrains Nerd Font 16";	
+      font:		    "JetBrains Nerd Font 16";
 
       drun-display-format:  "{icon} {name}";
       display-drun:	    "   Apps ";
@@ -33,7 +35,7 @@ in {
       click-to-exit: true;
     }
 
-    window { 
+    window {
       width: 45%;
       transparency: "real";
       orientation: vertical;
@@ -82,7 +84,7 @@ in {
       border: 0 10 6 10;
     }
 
-    // INPUT BAR 
+    // INPUT BAR
     //------------------------------------------------
 
     entry {
@@ -95,7 +97,7 @@ in {
       background-image: url("~/.config/rofi/rofi.jpg", width);
       padding: 180 0 0;
       margin: 0 0 0 0;
-    } 
+    }
 
     prompt {
       text-color: #${palette.base0D};
@@ -115,7 +117,7 @@ in {
       padding:	      10px;
       background-color: @bg;
       text-color:	      #${palette.base01};
-      vertical-align:   0.5; 
+      vertical-align:   0.5;
       horizontal-align: 0.5;
     }
 

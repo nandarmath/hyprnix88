@@ -32,6 +32,7 @@ in {
     gitg
     vlc
     xournalpp
+    # positron-bin
     # openboard
     blender
     gabutdm
@@ -159,7 +160,6 @@ in {
     (import ./../scripts/pdf-extractor.nix {inherit pkgs;})
     # (import ./../scripts/transkripsi.nix { inherit pkgs; })
     (import ./../scripts/komprespdf.nix {inherit pkgs;})
-    (import ./../scripts/rofi-finder.nix {inherit pkgs;})
     (import ./../scripts/qr-generator.nix {inherit pkgs;})
     # (import ./../scripts/pasopati.nix { inherit pkgs; })
     (import ./../scripts/dmenu_aria.nix {inherit pkgs;})
@@ -183,6 +183,7 @@ in {
     (import ./../scripts/rofi-droid.nix {inherit pkgs;})
     (import ./../scripts/rofi-shot.nix {inherit pkgs;})
     (import ./../scripts/dmenu_mpc.nix {inherit pkgs;})
+    (import ./../scripts/prayer_time.nix {inherit pkgs;})
     # (import ./../scripts/power-profile-menu.nix {inherit pkgs;})
     # (import ./../scripts/pdfextrac.nix { inherit pkgs; })
     #(import ./../scripts/wvkbd.nix { inherit pkgs; })
