@@ -132,12 +132,14 @@ in
             tooltip-format = "{ipaddr}-{essid}({signalStrength}%)";
           };
           "custom/prayer_times" = {
-            format = "🕌 {}";
+            format = "🕌{}";
             tooltip = true;
             interval = 60;
             exec = "prayer_time";
             return-type = "json";
             on-click = "notify-send \"Waktu Sholat Kab. Sleman\" \"$(jq -r '.tooltip' $HOME/.cache/prayer_times.json | sed 's/\\\\n/\\n/g')\"";
+            # on-click = "notify-send \"Waktu Sholat $(jq -r '.location' $HOME/.cache/prayer_times/prayer_times.json)\" \"$(jq -r '.tooltip' $HOME/.cache/prayer_times/prayer_times.json | sed 's/\\\\n/\\n/g')\"";
+            # on-click-right = get_location;
           };
           "tray" = {
             spacing = 10;
@@ -299,7 +301,7 @@ in
             font-weight: bold;
             background: #${config.lib.stylix.colors.base0B};
           }
-          #custom-hyprbindings, #network, #battery,
+          #custom-hyprbindings, #network, #battery, #custom-prayer_times,
           #custom-notification, #custom-exit {
             background: #${config.lib.stylix.colors.base0F};
             color: #${config.lib.stylix.colors.base00};

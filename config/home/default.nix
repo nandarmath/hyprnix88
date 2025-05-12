@@ -43,6 +43,7 @@ in {
     ./nvf.nix
     # ./neovim
     ./dashboard
+    # ../home/waybar/prayer_time_notif.nix
 
     # ./hyprpanel.nix
 
