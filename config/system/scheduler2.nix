@@ -1,58 +1,106 @@
-{ config, lib, pkgs, ... }:
-
 {
-  # Default scheduler setup
-  services.scx = {
-    enable = true;
-    scheduler = "scx_bpfland";
-    extraArgs = ["-f" "-k" "-p"];
-  };
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
+  # default scheduler
+  services.scx.enable = true;
+  services.scx.package = lib.mkDefault pkgs.scx.full;
+  services.scx.scheduler = "scx_bpfland";
+  services.scx.extraArgs = ["-f" "-k" "-p"];
 
-  # Modify scheduler service based on power status
+  # change scheduler to scx_flash when power is on
   systemd.services.scx.serviceConfig = with config.services.scx; let
     alter = "${lib.getExe' package "scx_flash"} -k";
-    default = lib.concatMapStringsSep " " (x: "${x}") 
-              ([ (lib.getExe' package scheduler) ] ++ extraArgs);
+    default = lib.concatStringsSep " " ([(lib.getExe' package scheduler)] ++ extraArgs);
   in {
-    ExecStart = lib.mkForce (pkgs.writeShellScript "scx.sh" ''
-      # Check if battery exists first
-      if [ -e /sys/class/power_supply/BAT0 ]; then
-        # If discharging, use default scheduler (scx_bpfland)
-        if [[ "$(cat /sys/class/power_supply/BAT0/status)" == "Discharging" ]]; then
-          echo "Running with default scheduler: ${default}"
-          exec ${default}
-        else
-          echo "Running with alternate scheduler: ${alter}"
-          exec ${alter}
+    ExecStart = lib.mkForce (pkgs.writeScript "scx.sh"
+    /*
+    bash
+    */
+    ''
+      #!${lib.getExe pkgs.bash}
+      
+      # Fungsi untuk mencari file status baterai
+      find_battery_status() {
+        # Cari semua direktori power_supply yang mungkin berisi status baterai
+        for bat in /sys/class/power_supply/*/; do
+          # Periksa apakah ini adalah baterai (bukan AC adapter)
+          if [ -f "$bat/type" ] && [ "$(cat "$bat/type" 2>/dev/null)" = "Battery" ]; then
+            # Periksa apakah file status ada
+            if [ -f "$bat/status" ]; then
+              echo "$(cat "$bat/status" 2>/dev/null)"
+              return 0
+            fi
+          fi
+        done
+        
+        # Fallback ke BAT0 jika pencarian gagal
+        if [ -f "/sys/class/power_supply/BAT0/status" ]; then
+          echo "$(cat "/sys/class/power_supply/BAT0/status" 2>/dev/null)"
+          return 0
         fi
-      else
-        # Fallback if no battery is detected
-        echo "No battery detected, using default scheduler"
+        
+        # Jika tidak menemukan status, kembalikan status default "Unknown"
+        echo "Unknown"
+        return 1
+      }
+
+      # Dapatkan status baterai
+      BATTERY_STATUS=$(find_battery_status)
+      
+      # Log status baterai untuk debugging
+      echo "Battery status: $BATTERY_STATUS" > /tmp/scx_battery_status.log
+      
+      # Tentukan scheduler berdasarkan status baterai
+      if [ "$BATTERY_STATUS" = "Discharging" ]; then
+        echo "Running with default scheduler: ${default}" >> /tmp/scx_battery_status.log
         exec ${default}
+      else
+        # Kondisi Charging atau Not Charging atau Unknown
+        echo "Running with alter scheduler: ${alter}" >> /tmp/scx_battery_status.log
+        exec ${alter}
       fi
     '');
-    Restart = "on-failure";
-    RestartSec = "5s";
   };
 
-  # Service to refresh the SCX scheduler when power status changes
   systemd.services."scx-refresh" = {
-    description = "Refresh SCX scheduler based on power status";
+    unitConfig = {
+      Description = "refresh scx";
+    };
+    script = ''
+      # Log timestamp untuk debugging
+      echo "SCX refresh triggered at $(date)" > /tmp/scx_refresh.log
+      
+      if systemctl status scx.service &>/dev/null; then
+        echo "Stopping SCX service" >> /tmp/scx_refresh.log
+        systemctl stop scx.service
+      fi
+      
+      echo "Starting SCX service" >> /tmp/scx_refresh.log
+      systemctl start scx.service
+    '';
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = pkgs.writeShellScript "scx-refresh.sh" ''
-        echo "Refreshing SCX scheduler service..."
-        systemctl try-restart scx.service
-      '';
     };
-    wantedBy = [ "multi-user.target" ];
   };
 
-  # udev rules to trigger service when power status changes
-  services.udev.extraRules = ''
-    SUBSYSTEM=="power_supply", ATTR{status}=="Charging", RUN+="${pkgs.systemd}/bin/systemctl start scx-refresh.service"
-    SUBSYSTEM=="power_supply", ATTR{status}=="Discharging", RUN+="${pkgs.systemd}/bin/systemctl start scx-refresh.service"
-    SUBSYSTEM=="power_supply", ATTR{status}=="Not charging", RUN+="${pkgs.systemd}/bin/systemctl start scx-refresh.service"
-    SUBSYSTEM=="power_supply", ATTR{status}=="Full", RUN+="${pkgs.systemd}/bin/systemctl start scx-refresh.service"
+  # Perbaikan udev rules untuk menangani semua status
+  services.udev.extraRules =
+  /*
+  udev
+  */
+  ''
+    # Monitor perubahan status power supply
+    ACTION=="change", SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_STATUS}=="Charging", ENV{SYSTEMD_WANTS}="scx-refresh.service"
+    ACTION=="change", SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_STATUS}=="Discharging", ENV{SYSTEMD_WANTS}="scx-refresh.service"
+    ACTION=="change", SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_STATUS}=="Not Charging", ENV{SYSTEMD_WANTS}="scx-refresh.service"
   '';
+
+  # Tambahkan tmpfiles rule untuk memastikan log dapat dibuat
+  systemd.tmpfiles.rules = [
+    "f /tmp/scx_battery_status.log 0644 root root - -"
+    "f /tmp/scx_refresh.log 0644 root root - -"
+  ];
 }

@@ -1,37 +1,45 @@
-{config, lib, pkgs, ... }:{
-
-# default scheduler
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
+  # default scheduler
   services.scx.enable = true;
   services.scx.package = lib.mkDefault pkgs.scx.full;
   services.scx.scheduler = "scx_bpfland";
-  services.scx.extraArgs = ["-f" "-k" "-p" ];
+  services.scx.extraArgs = ["-f" "-k" "-p"];
 
   # change scheduler to scx_flash when power is on
   systemd.services.scx.serviceConfig = with config.services.scx; let
     alter = "${lib.getExe' package "scx_flash"} -k";
-    default = lib.concatStringsSep " " ([ (lib.getExe' package scheduler) ] ++ extraArgs);
+    default = lib.concatStringsSep " " ([(lib.getExe' package scheduler)] ++ extraArgs);
   in {
-    ExecStart = lib.mkForce (pkgs.writeScript "scx.sh" /* bash */ ''
-      #!${lib.getExe pkgs.bash}
-      
-      # if discarging, use default, if else use alter
-      if [[ "$(cat /sys/class/power_supply/BAT0/status)" == "Discharging" ]]; then
-        exec ${default}
-      else
-        exec ${alter}
-      fi
-    '');
+    ExecStart = lib.mkForce (pkgs.writeScript "scx.sh"
+      /*
+      bash
+      */
+      ''
+        #!${lib.getExe pkgs.bash}
+
+        # if discarging, use default, if else use alter
+        if [ "$(cat /sys/class/power_supply/BAT0/status)" == "Discharging" ]; then
+          exec ${default}
+        else
+          exec ${alter}
+        fi
+      '');
   };
 
   systemd.services."scx-refresh" = {
     unitConfig = {
       Description = "refresh scx";
     };
-    script=''
-        if systemctl status scx.service &>/dev/null; then
-          systemctl stop scx.service
-        fi
-        systemctl start scx.service
+    script = ''
+      if systemctl status scx.service &>/dev/null; then
+        systemctl stop scx.service
+      fi
+      systemctl start scx.service
     '';
     serviceConfig = {
       Type = "oneshot";
@@ -46,10 +54,13 @@
     };
   };
 
-  services.udev.extraRules = /* udev */ ''
-  ACTION=="change", \
-    SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_STATUS}=="Charging", ENV{SYSTEMD_WANTS}="scx-refresh.service"
-    SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_STATUS}=="Discharging", ENV{SYSTEMD_WANTS}="scx-refresh.service"
-  '';
+  services.udev.extraRules =
+    /*
+    udev
+    */
+    ''
+      ACTION=="change", \
+        SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_STATUS}=="Charging", ENV{SYSTEMD_WANTS}="scx-refresh.service"
+        SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_STATUS}=="Discharging", ENV{SYSTEMD_WANTS}="scx-refresh.service"
+    '';
 }
-
