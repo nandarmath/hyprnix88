@@ -50,6 +50,7 @@ in {
     rofi-bluetooth
     pdfarranger
     chromium
+    floorp-unwrapped
     tgpt
     bat
     scrcpy
@@ -134,7 +135,7 @@ in {
     procps
     mutt-wizard
     pass
-    geary
+    thunderbird-bin
 
     # tvbrowser
     (pkgs.callPackage ../pkgs/amzqr.nix {})
@@ -158,12 +159,10 @@ in {
     (import ./../scripts/terjemah.nix {inherit pkgs;})
     (import ./../scripts/dmenu_ffmpeg.nix {inherit pkgs;})
     (import ./../scripts/pdf-extractor.nix {inherit pkgs;})
-    # (import ./../scripts/transkripsi.nix { inherit pkgs; })
     (import ./../scripts/komprespdf.nix {inherit pkgs;})
     (import ./../scripts/qr-generator.nix {inherit pkgs;})
     # (import ./../scripts/pasopati.nix { inherit pkgs; })
     (import ./../scripts/dmenu_aria.nix {inherit pkgs;})
-    # (import ./../scripts/rofi-calc.nix { inherit pkgs; })
     (import ./../scripts/translate.nix {inherit pkgs;})
     (import ./../scripts/window-selector.nix {inherit pkgs;})
     (import ./../scripts/dmenu_dns.nix {inherit pkgs;})
@@ -175,7 +174,6 @@ in {
     (import ./../scripts/ocr-indonesia.nix {inherit pkgs;})
     (import ./../scripts/ocr-screenshoot.nix {inherit pkgs;})
     (import ./../scripts/rofi-calc.nix {inherit pkgs;})
-    # (import ./../scripts/rofi-wf.nix {inherit pkgs;})
     (import ./../scripts/sattyss.nix {inherit pkgs;})
     (import ./../scripts/wl-record.nix {inherit pkgs;})
     (import ./../scripts/wl-recordNoA.nix {inherit pkgs;})
@@ -186,9 +184,6 @@ in {
     # (import ./../home/waybar/get_location.nix {inherit pkgs;})
     # (import ./../home/waybar/prayer-times-module.nix {inherit pkgs;})
     (import ./../scripts/prayer_time.nix {inherit pkgs;})
-    # (import ./../scripts/power-profile-menu.nix {inherit pkgs;})
-    # (import ./../scripts/pdfextrac.nix { inherit pkgs; })
-    #(import ./../scripts/wvkbd.nix { inherit pkgs; })
   ];
 
   programs.gh.enable = true;

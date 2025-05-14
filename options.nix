@@ -19,7 +19,7 @@ in {
   bar-number = true;
   waybarAnim = true;
   waybarChoice = ./config/home/waybar/waybar-simple.nix;
-  browser = "firefox";
+  browser = "floorp";
   # ^ (use as is or replace with your own repo - removing will break the wallsetter script)
   screenshotDir = "${userHome}/Pictures/Screenshots";
   flakeDir = "${flakeDir}";

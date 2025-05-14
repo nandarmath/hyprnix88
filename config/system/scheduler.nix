@@ -2,6 +2,7 @@
 
 # default scheduler
   services.scx.enable = true;
+  services.scx.package = lib.mkDefault pkgs.scx.full;
   services.scx.scheduler = "scx_bpfland";
   services.scx.extraArgs = ["-f" "-k" "-p" ];
 
@@ -26,20 +27,27 @@
     unitConfig = {
       Description = "refresh scx";
     };
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStart = pkgs.writeScript "scx-refresh.sh" ''
-        #!${lib.getExe pkgs.bash}
-
+    script=''
         if systemctl status scx.service &>/dev/null; then
           systemctl stop scx.service
         fi
         systemctl start scx.service
-      '';
+    '';
+    serviceConfig = {
+      Type = "oneshot";
+      # ExecStart = pkgs.writeScript "scx-refresh.sh" ''
+      #   #!${lib.getExe pkgs.bash}
+
+      #   if systemctl status scx.service &>/dev/null; then
+      #     systemctl stop scx.service
+      #   fi
+      #   systemctl start scx.service
+      # '';
     };
   };
 
   services.udev.extraRules = /* udev */ ''
+  ACTION=="change", \
     SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_STATUS}=="Charging", ENV{SYSTEMD_WANTS}="scx-refresh.service"
     SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_STATUS}=="Discharging", ENV{SYSTEMD_WANTS}="scx-refresh.service"
   '';
