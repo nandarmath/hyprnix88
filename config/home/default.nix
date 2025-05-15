@@ -40,12 +40,14 @@ in {
     ./ncmpcpp.nix
     ./vim.nix
     ./stylix.nix
-    ./nvf.nix
+    # ./nvf.nix
     # ./neovim
+    # ./nvf.nix
+    # ./nxchad.nix
+    ./zed.nix
     ./dashboard
     # ../home/waybar/prayer_time_notif.nix
 
-    # ./hyprpanel.nix
 
     # ./eww
     # ./nixvim.nix

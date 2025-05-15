@@ -110,8 +110,6 @@ pkgs.writeShellScriptBin "dmenu-mager" ''
     [ "tweetDeck",              "floorp --new-window --app=https://tweetdeck.twitter.com/" ],
     [ "figma",                  "floorp --new-window --app=https://www.figma.com/files/drafts" ],
     [ "iptv",                   "dmenu_iptv" ],
-    [ "dmenu_aria",             "dmenu_aria" ],
-    [ "rofi-calc",              "roi-calc" ],
     [ "virtual session",        "dmenu_virtualsession" ],
     [ "dns switcher",           "dmenu_dns"],
     [ "adb clipoard",           "adbclip"]
