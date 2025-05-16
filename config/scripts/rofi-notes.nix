@@ -10,12 +10,12 @@ pkgs.writeScriptBin "rofi-notes" ''
   NOTES_FOLDER="$HOME/.notes"
   NOTES_EDITOR='kitty --class kitty-floating -e lvim '
   
-  if [[ ! -d "$\{NOTES_FOLDER}" ]]; then
+  if [[ ! -d "$NOTES_FOLDER" ]]; then
       mkdir -p "$NOTES_FOLDER"
   fi
   
   get_notes() {
-      ls "$\{NOTES_FOLDER}"
+      ls "$NOTES_FOLDER"
   }
   
   edit_note() {
@@ -82,7 +82,7 @@ pkgs.writeScriptBin "rofi-notes" ''
       local all_notes="$(get_notes)"
       local first_menu="New"
       if [ "$all_notes" ];then
-          first_menu="New\n$\{all_notes}"
+          first_menu="New\n$all_notes"
       fi
       local note=$(echo -e "$first_menu" | rofi -dmenu -p "󰚸  Notes")
       case $note in

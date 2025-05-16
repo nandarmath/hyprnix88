@@ -29,7 +29,10 @@
     nxchad.url = "github:fmway/nxchad";
     # This is important, since nxchad dosn't add nixpkgs repo in dependencies
     nxchad.inputs.nixpkgs.follows = "nixpkgs";
-
+    nvchad4nix = {
+    url = "github:MOIS3Y/nvchad4nix";
+    inputs.nixpkgs.follows = "nixpkgs";
+    };
 
 
     # niri = {

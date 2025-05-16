@@ -136,6 +136,7 @@ in {
     mutt-wizard
     pass
     thunderbird-bin
+    libqalculate
 
     # tvbrowser
     (pkgs.callPackage ../pkgs/amzqr.nix {})
