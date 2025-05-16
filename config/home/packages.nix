@@ -181,6 +181,7 @@ in {
     (import ./../scripts/rofi-droid.nix {inherit pkgs;})
     (import ./../scripts/rofi-shot.nix {inherit pkgs;})
     (import ./../scripts/dmenu_mpc.nix {inherit pkgs;})
+    (import ./../scripts/rofi-notes.nix {inherit pkgs;})
     # (import ./../home/waybar/get_location.nix {inherit pkgs;})
     # (import ./../home/waybar/prayer-times-module.nix {inherit pkgs;})
     (import ./../scripts/prayer_time.nix {inherit pkgs;})

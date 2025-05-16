@@ -8,11 +8,13 @@ pkgs.writeShellScriptBin "web-search" ''
     ["❄️  Unstable Packages"]="https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query="
     ["❄️  NixOs Wiki"]="https://https://wiki.nixos.org/w/index.php?search="
     ["🏠 Manager Options"]="https://home-manager-options.extranix.com/?query="
-    ["🎞️ YouTube"]="https://www.youtube.com/results?search_query="
-    ["ℹ️  Google-Translate"]="https://translate.google.com/?sl=auto&tl=id&text="
+    ["  YouTube"]="https://www.youtube.com/results?search_query="
+    ["󰊿  Google-Translate"]="https://translate.google.com/?sl=auto&tl=id&text="
     ["📕 KBBI"]="https://kbbi.kemdikbud.go.id/entri/"
-    ["🦥 Arch Wiki"]="https://wiki.archlinux.org/title/"
-    ["🐃 Gentoo Wiki"]="https://wiki.gentoo.org/index.php?title="
+    ["󰣇  Arch Wiki"]="https://wiki.archlinux.org/title/"
+    ["  Gentoo Wiki"]="https://wiki.gentoo.org/index.php?title="
+    ["󰊤  Github Search"]="https://github.com/search?q="
+    ["󰛖  Nerdfont Cheat seat"]="https://www.nerdfonts.com/cheat-sheet"
   )
 
   # List for rofi

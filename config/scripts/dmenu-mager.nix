@@ -20,6 +20,7 @@ pkgs.writeShellScriptBin "dmenu-mager" ''
     [ "Wifi Menu",              "rofi-network-manager" ],
     [ "Music",                  "dmenu_mpc" ],
     [ "Rofi-screnshoot",         "rofi-screenshot" ],
+    [ "Rofi-Notes",             "rofi-notes" ],
     [ "Kalkulator",             "roficalc" ],
     [ "kill",                   "dmenu_kill" ],
     [ "kill droidcam",          "pkill droidcam-cli" ],

@@ -1,13 +1,13 @@
 {
   pkgs,
-  new,
   config,
   ...
 }: let
   palette = config.lib.stylix.colors;
 in {
   programs.rofi = {
-    plugins = [new.rofi-calc pkgs.rofi-wayland];
+    package = pkgs.rofi.override {plugins = [pkgs.rofi-calc];};
+    plugins = [ pkgs.rofi-wayland];
   };
   home.file.".config/rofi/config.rasi".text = ''
     @theme "/dev/null"

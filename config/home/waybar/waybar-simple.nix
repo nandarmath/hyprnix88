@@ -132,7 +132,7 @@ in
             tooltip-format = "{ipaddr}-{essid}({signalStrength}%)";
           };
           "custom/prayer_times" = {
-            format = "🕌{}";
+            format = " {}";
             tooltip = true;
             interval = 60;
             exec = "prayer_time";
