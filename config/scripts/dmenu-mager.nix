@@ -23,6 +23,8 @@ pkgs.writeShellScriptBin "dmenu-mager" ''
     [ "Rofi-screnshoot",         "rofi-screenshot" ],
     [ "Rofi-Notes",             "rofi-notes" ],
     [ "Rofi-keybinds",          "keybinds" ],
+    [ "Rofi-wlstream",          "rofi-wlstream" ],
+    [ "Rofi-Filemanager",          "rofi-filemanager" ],
     [ "Kalkulator",             "roficalc" ],
     [ "kill",                   "dmenu_kill" ],
     [ "kill droidcam",          "pkill droidcam-cli" ],
