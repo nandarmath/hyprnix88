@@ -27,7 +27,6 @@ in {
     imv
     transmission_3-gtk
     mpv
-    # smplayer
     rofi-pulse-select
     gitg
     vlc
@@ -36,6 +35,7 @@ in {
     # openboard
     blender
     gabutdm
+    # varia
     pairdrop
     rustup
     nix-search-cli
@@ -137,6 +137,7 @@ in {
     pass
     thunderbird-bin
     libqalculate
+    zenity
 
     # tvbrowser
     (pkgs.callPackage ../pkgs/amzqr.nix {})

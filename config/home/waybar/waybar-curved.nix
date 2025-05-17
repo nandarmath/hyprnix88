@@ -24,12 +24,13 @@ in
             "memory"
             "temperature"
             "disk"
+            "idle_inhibitor"
             "hyprland/window"
           ];
           modules-right = [
-            "custom/weather"
+            "custom/prayer_times"
             "network"
-            "custom/notification"
+            "group/notifmenu"
             "battery"
             "tray"
             "custom/exit"
@@ -49,10 +50,29 @@ in
           "clock" = {
             format =
               if clock24h == true
-              then '' {:L%H:%M}''
+              then '' {:%H:%M:%S}''
               else '' {:L%I:%M %p}'';
             tooltip = true;
             tooltip-format = "<big>{:%A, %d.%B %Y }</big>\n<tt><small>{calendar}</small></tt>";
+            calendar = {
+              mode = "year";
+              mode-mon-col = 3;
+              weeks-pos = "right";
+              on-scroll = 1;
+              format = {
+                months = "<span color='#ffead3'><b>{}</b></span>";
+                days = "<span color='#ecc6d9'><b>{}</b></span>";
+                weeks = "<span color='#99ffdd'><b>W{}</b></span>";
+                weekdays = "<span color='#ffcc66'><b>{}</b></span>";
+                today = "<span color='#ff6699'><b><u>{}</u></b></span>";
+              };
+            };
+            actions = {
+              on-click-right = "mode";
+              on-scroll-up = "tz_up";
+              on-scroll-down = "tz_down";
+            };
+            on-click = "sleep 0.1 && kitty -e calcure";
           };
           "hyprland/window" = {
             max-length = 18;
@@ -78,6 +98,31 @@ in
             format-icons = ["" "" ""];
             tooltip = false;
           };
+           "custom/prayer_times" = {
+            format = " {}";
+            tooltip = true;
+            interval = 60;
+            exec = "prayer_time";
+            return-type = "json";
+            on-click = "notify-send \"Waktu Sholat Kab. Sleman\" \"$(jq -r '.tooltip' $HOME/.cache/prayer_times.json | sed 's/\\\\n/\\n/g')\"";
+            # on-click = "notify-send \"Waktu Sholat $(jq -r '.location' $HOME/.cache/prayer_times/prayer_times.json)\" \"$(jq -r '.tooltip' $HOME/.cache/prayer_times/prayer_times.json | sed 's/\\\\n/\\n/g')\"";
+            # on-click-right = get_location;
+          };
+          "group/notifmenu" = {
+          drawer = {
+            children-class = "notifmenu-child";
+            transition-duration = 300;
+            transition-left-to-right = false;
+          };
+          modules = [
+            "custom/notification"
+            "custom/screenrecorder"
+            "custom/timer"
+            "custom/weather"
+          ];
+          orientation = "inherit";
+        };
+
           "disk" = {
             format = " {free}";
             tooltip = true;
@@ -172,6 +217,29 @@ in
             on-click = "sleep 0.1 && task-waybar";
             escape = true;
           };
+
+        "custom/timer" = {
+          tooltip = true;
+          return-type = "json";
+          exec = "waybar-timer check";
+          on-click = "waybar-timer minute_dialog";
+          on-click-right = "waybar-timer datetime_dialog";
+          on-click-middle = "waybar-timer stop";
+          interval = 1;
+        };
+
+        "custom/screenrecorder"=  {
+          exec = "screenrecorder status";
+          interval = "once";
+          signal = 1;
+          return-type = "json";
+          tooltip = true;
+          format = "{}";
+          on-click = "screenrecorder toggle fullscreen";
+          on-click-right = "screenrecorder toggle region";
+        };
+
+
           "battery" = {
             states = {
               warning = 30;
@@ -253,7 +321,7 @@ in
           tooltip label {
             color: #${config.lib.stylix.colors.base08};
           }
-          #window, #pulseaudio, #cpu, #memory, #temperature, #disk {
+          #window, #pulseaudio, #cpu, #memory, #temperature, #disk, #idle_inhibitor {
             font-weight: bold;
             margin: 4px 0px;
             margin-left: 7px;
@@ -271,7 +339,7 @@ in
             border-radius: 0px 0px 40px 0px;
           }
           #custom-hyprbindings, #network, #battery,
-          #custom-notification, #tray, #custom-exit, #custom-weather {
+          #custom-notification, #tray, #custom-exit, #custom-weather, #custom-prayer_times, #custom-timer, #custom-screenrecorder {
             font-weight: bold;
             background: #${config.lib.stylix.colors.base0F};
             color: #${config.lib.stylix.colors.base00};
@@ -279,6 +347,9 @@ in
             margin-right: 7px;
             border-radius: 10px 24px 10px 24px;
             padding: 0px 18px;
+          }
+          #custom-timer.active {
+            background-color: #CF2430;
           }
           #clock {
             font-weight: bold;

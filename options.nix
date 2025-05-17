@@ -18,7 +18,7 @@ in {
   borderAnim = true;
   bar-number = true;
   waybarAnim = true;
-  waybarChoice = ./config/home/waybar/waybar-simple.nix;
+  waybarChoice = ./config/home/waybar/waybar-curved.nix;
   browser = "floorp";
   # ^ (use as is or replace with your own repo - removing will break the wallsetter script)
   screenshotDir = "${userHome}/Pictures/Screenshots";

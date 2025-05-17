@@ -30,6 +30,7 @@ in
           "sleep 1.5 && swww img ${stylixImage}"
           "pypr &"
           "keepassxc"
+          "~/.config/waybar/scripts/waybar_timer serve"
           "wasistlos"
           "cloudflared tunnel run moodle"
           "iio-hyprland"

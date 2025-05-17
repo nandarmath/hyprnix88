@@ -34,11 +34,12 @@
     v4l-utils
     ydotool
     nh
+    dateutils
     gtk3
     gtk-layer-shell
     rofi-systemd
     (rofi.override {
-      plugins = [rofi-file-browser rofi-mpd new.rofi-calc];
+      plugins = [rofi-file-browser rofi-mpd];
     })
     # (callPackage ../pkgs/audio2text.nix {})
     # (callPackage ../pkgs/speech.nix {})

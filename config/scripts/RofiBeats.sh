@@ -3,7 +3,7 @@
 # For Rofi Beats to play online Music or Locally save media files
 
 # Directory local music folder
-mDIR="$HOME/Music/"
+mDIR="$HOME/Music/Mp3"
 
 # Directory for icons
 iDIR="$HOME/.config/swaync/icons"
@@ -25,6 +25,7 @@ declare -A online_music=(
   ["YT - AfroBeatz 2024 📹🎶"]="https://www.youtube.com/watch?v=7uB-Eh9XVZQ"
   ["YT - Relaxing Piano Jazz Music 🎹🎶"]="https://youtu.be/85UEqRat6E4?si=jXQL1Yp2VP_G6NSn"
   ["Audio Book Myanmar - YT"]="https://youtu.be/iZAtsnfJOWE?si=Ck13NQBHqGAEwEVT"
+  ["YT - Muzzammil Juz 30"]="https://youtu.be/Zv18GEpMdXs?si=12Xust_eVlnw7_RQ"
 )
 
 # Populate local_music array with files from music directory and subdirectories
@@ -47,7 +48,7 @@ play_local_music() {
   populate_local_music
 
   # Prompt the user to select a song
-  choice=$(printf "%s\n" "${filenames[@]}" | rofi -i -dmenu -config ~/.config/rofi/config-rofi-Beats.rasi -p "Local Music")
+  choice=$(printf "%s\n" "${filenames[@]}" | rofi -i -dmenu -p "Local Music")
 
   if [ -z "$choice" ]; then
     exit 1
@@ -77,7 +78,7 @@ shuffle_local_music() {
 
 # Main function for playing online music
 play_online_music() {
-  choice=$(printf "%s\n" "${!online_music[@]}" | rofi -i -dmenu -config ~/.config/rofi/config-rofi-Beats.rasi -p "Online Music")
+  choice=$(printf "%s\n" "${!online_music[@]}" | rofi -i -dmenu -p "Online Music")
 
   if [ -z "$choice" ]; then
     exit 1
@@ -95,7 +96,7 @@ play_online_music() {
 pkill mpv && notify-send -u low -i "$iDIR/music.png" "Music stopped" || {
 
 # Prompt the user to choose between local and online music
-user_choice=$(printf "Play from Online Stations\nPlay from Music Folder\nShuffle Play from Music Folder" | rofi -dmenu -config ~/.config/rofi/config-rofi-Beats-menu.rasi -p "Select music source")
+user_choice=$(printf "Play from Online Stations\nPlay from Music Folder\nShuffle Play from Music Folder" | rofi -dmenu -p "Select music source")
 
   case "$user_choice" in
     "Play from Music Folder")

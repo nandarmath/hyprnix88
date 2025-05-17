@@ -1233,26 +1233,6 @@
         "type": "github"
       }
     },
-    "nvchad4nix": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1732616202,
-        "narHash": "sha256-NvrTwdzaZYlMNuEdAMuoAB/n7RpiC2fX7AVA7P5DzcI=",
-        "owner": "MOIS3Y",
-        "repo": "nvchad4nix",
-        "rev": "0aa513c1fec993548140f2d0dc9a92b08406e877",
-        "type": "github"
-      },
-      "original": {
-        "owner": "MOIS3Y",
-        "repo": "nvchad4nix",
-        "type": "github"
-      }
-    },
     "nvf": {
       "inputs": {
         "flake-parts": "flake-parts_3",
@@ -1316,7 +1296,6 @@
         "nixpkgs-r2405": "nixpkgs-r2405",
         "nixvim": "nixvim",
         "nur-ryan4yin": "nur-ryan4yin",
-        "nvchad4nix": "nvchad4nix",
         "nvf": "nvf",
         "nxchad": "nxchad",
         "sops-nix": "sops-nix",

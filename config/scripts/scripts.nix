@@ -4,8 +4,10 @@
   
   keybinds = pkgs.writeShellScriptBin "keybinds" (builtins.readFile ./keybinds.sh);
   rofibeats = pkgs.writeShellScriptBin "rofibeats" (builtins.readFile ./RofiBeats.sh);
+  screenrecorder = pkgs.writeShellScriptBin "screenrecorder" (builtins.readFile ./screenrecorder);
+  waybar-timer = pkgs.writeShellScriptBin "waybar-timer" (builtins.readFile ./waybar-timer);
   
-
+  
   
 in {
   home.packages = with pkgs; [
@@ -13,5 +15,13 @@ in {
    # wallpaper-picker
     keybinds
     rofibeats
+    screenrecorder
+    waybar-timer
   ];
+
+  # home.file.".config/waybar/scripts/waybar_timer" = {
+  #           source = ./waybar_timer;
+  #           executable = true;
+  #       };
+
 }
