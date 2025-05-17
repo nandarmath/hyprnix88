@@ -17,7 +17,7 @@ in {
     ./kdenlive.nix
     ./kitty.nix
     ./packages.nix
-    ./rofi.nix
+    ./rofiw.nix
     ./starship.nix
     waybarChoice
     ./swappy.nix

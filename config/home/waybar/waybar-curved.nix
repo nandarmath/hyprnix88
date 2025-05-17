@@ -50,7 +50,7 @@ in
           "clock" = {
             format =
               if clock24h == true
-              then '' {:%H:%M:%S}''
+              then '' {:L%H:%M:%S}''
               else '' {:L%I:%M %p}'';
             tooltip = true;
             tooltip-format = "<big>{:%A, %d.%B %Y }</big>\n<tt><small>{calendar}</small></tt>";

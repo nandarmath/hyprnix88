@@ -29,7 +29,7 @@ if [ "$cmd" == "check" ]; then
 
     elif [ "$DATE_TIME_TARGET" == "FINISHED" ]; then
         echo "READY" > "$TFILE"
-        zenity --info --no-wrap --text="Timer expired!"
+        zenity --info --no-wrap --text="Timer Expired!"
         echo '{"text": "'"<span font='$ICON_SIZE' rise='$RISE'>󰔛</span> "'"}'
 
     elif datetest "$DATE_TIME_TARGET" --gt "$DATE_TIME_NOW"; then
