@@ -52,7 +52,7 @@ handle_rofi_kamus() {
         fi
         
         # Jalankan pencarian di sdcv dan format hasilnya
-        local hasil=$(sdcv --data-dir ./stardict -n --utf8-output --color "$kata" 2>&1)
+        local hasil=$(sdcv --data-dir ~/hyprnix/config/scripts/stardict -n --utf8-output --color "$kata" 2>&1)
         
         # Hapus header sdcv yang tidak diperlukan
         hasil=$(echo "$hasil" | sed -e '1,/^$/d')
