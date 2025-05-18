@@ -13,7 +13,7 @@ in {
     @theme "/dev/null"
 
     * {
-      bg: #${palette.base00};
+      bg: #${palette.base00}99;
       background-color: @bg;
     }
     
