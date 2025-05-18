@@ -48,6 +48,7 @@ in
             on-scroll-down = "hyprctl dispatch workspace e-1";
           };
           "clock" = {
+            interval = 1;
             format =
               if clock24h == true
               then '' {:L%H:%M:%S}''

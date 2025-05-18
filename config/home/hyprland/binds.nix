@@ -49,7 +49,7 @@ in {
       "$mod ,V,exec,cliphist list | rofi -dmenu | cliphist decode | wl-copy"
       "$mod ,Space,togglefloating,"
       "$mod SHIFT,P,exec, hyprpicker --autocopy"
-      "$mod SHIFT,C,exec, roficalc"
+      "$mod SHIFT,C,exec, rofi -show rofi-calc"
       "$mod SHIFT,Z,exec, pypr zoom"
       "$mod SHIFT,A,exec, pypr expose"
       "$mod SHIFT,RETURN,exec, pypr toggle term"

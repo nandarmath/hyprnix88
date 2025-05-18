@@ -6,7 +6,7 @@
   palette = config.lib.stylix.colors;
 in {
   programs.rofi = {
-    package = pkgs.rofi.override {plugins = [pkgs.rofi-calc];};
+    package = pkgs.rofi.override {plugins = [pkgs.rofi-calc pkgs.rofi-file-browser];};
     plugins = [ pkgs.rofi-wayland];
   };
   home.file.".config/rofi/config.rasi".text = ''
