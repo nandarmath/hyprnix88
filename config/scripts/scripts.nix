@@ -8,6 +8,7 @@
   waybar-timer = pkgs.writeShellScriptBin "waybar-timer" (builtins.readFile ./waybar-timer);
   rofi-filemanager = pkgs.writeShellScriptBin "rofi-filemanager" (builtins.readFile ./rofi-filemanager.sh);
   rofi-wlstream = pkgs.writeShellScriptBin "rofi-wlstream" (builtins.readFile ./rofi-wlstrem.sh);
+  rofi-dict = pkgs.writeShellScriptBin "rofi-dict" (builtins.readFile ./rofi-dict.sh);
   # book-search = pkgs.writeShellScriptBin "book-search" (builtins.readFile ./books-search.sh);
   
   
@@ -22,6 +23,7 @@ in {
     waybar-timer
     rofi-wlstream
     rofi-filemanager
+    rofi-dict
     (import ./rofi-dict.nix {inherit pkgs;})
     (import ./emopicker9000.nix {inherit pkgs;})
     (import ./task-waybar.nix {inherit pkgs;})
