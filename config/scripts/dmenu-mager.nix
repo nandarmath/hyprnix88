@@ -54,6 +54,7 @@ pkgs.writeShellScriptBin "dmenu-mager" ''
     [ "Portal UNY",             "floorp --new-window --app=https://unity.uny.ac.id/" ],
     [ "Scite Ai",               "zen   --new-window --app=https://scite.ai" ],
     [ "NixOS dan Flake Book",   "zen   --new-window --app=https://nixos-and-flakes.thiscute.world" ],
+    [ "EYD",                    "zen   --new-window --app=https://ejaan.kemdikbud.go.id" ],
     [ "Rstudio-server",         "brave --app=https://localhost:8787/" ],
     [ "Remaker AI",             "brave --app=https://remaker.ai/" ],
     [ "Blackbox AI",            "brave --app=https://blackbox.ai/" ],

@@ -24,7 +24,6 @@ in {
     rofi-wlstream
     rofi-filemanager
     rofi-dict
-    (import ./rofi-dict.nix {inherit pkgs;})
     (import ./emopicker9000.nix {inherit pkgs;})
     (import ./task-waybar.nix {inherit pkgs;})
     (import ./squirtle.nix {inherit pkgs;})
