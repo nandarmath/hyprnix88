@@ -1,5 +1,5 @@
 
-{lib, 
+{ 
 fetchFromGitHub
 , buildGoModule
 , pkg-config
@@ -30,12 +30,5 @@ buildGoModule rec {
   ];
   vendorHash = "sha256-KoDPQHfmYzZ/7wQAq4TKq3bIlnDLoMgH9oc4noNlSb0=";
 
-
-  meta = with lib; {
-    homepage = "https://github.com/lotos-linux/hypr-dock";
-    description = "A dock for Hyprland";
-    license = licenses.asl20;
-    platforms = platforms.linux;
-  };
 
 }

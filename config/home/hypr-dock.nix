@@ -1,15 +1,13 @@
-{ config, pkgs, ... }:
-
-let
-  hypr-dock = import ../pkgs/hypr-dock { inherit pkgs; };
-in {
-  # Konfigurasi lainnya...
-  
-  home.packages = with pkgs; [
+{ config, pkgs,... }:
+{
+  # Tambahkan ke paket home-manager
+  home.packages = 
+  let 
+  hypr-dock = pkgs.callPackage ../pkgs/hypr-dock {};
+  in [
     # Paket lainnya...
     hypr-dock
   ];
-
   home.file.".config/hypr-dock/themes" = { 
             recursive = true;
             source = ../pkgs/hypr-dock/themes;

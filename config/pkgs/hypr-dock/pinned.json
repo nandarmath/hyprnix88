@@ -1,5 +1,13 @@
 {
   "Pinned": [
-    "zen-alpha"
+    "obs",
+    "floorp",
+    "inkscape",
+    "gimp",
+    "rstudio",
+    "kitty",
+    "telegram-desktop",
+    "thunar"
+
   ]
 }

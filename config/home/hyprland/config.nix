@@ -34,6 +34,7 @@ in
           "cloudflared tunnel run moodle"
           "iio-hyprland"
           "hypr-dock"
+          "main"
           # "nwg-dock-hyprland -x -p 'bottom' -l 'top' -i 32 -hd 10 -mt 10 -mb 10 -ml 5 -c 'rofi -show drun' -d"
           "waybar"
           # "hyprpanel &"
