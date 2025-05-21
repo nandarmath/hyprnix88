@@ -29,14 +29,18 @@
            # l (or r) must come before d and u
            hyprgrass-bind = , swipe:3:ld, exec, thunar
 
+           # tap with 4 fingers
+           # NOTE: tap events only trigger for finger count of >= 3
+           hyprgrass-bind = , tap:4, exec, dmenu-mager
+
            # tap with 3 fingers
            # NOTE: tap events only trigger for finger count of >= 3
-           hyprgrass-bind = , tap:3, exec, dmenu-mager
+           hyprgrass-bind = , tap:3, exec, rofi -show drun
 
            # tap with 2 fingers
            # NOTE: tap events only trigger for finger count of >= 3
-           hyprgrass-bind = , tap:2, exec, fuzzel
-
+           hyprgrass-bind = , tap:2, exec, return
+           
            # longpress can trigger mouse binds:
            hyprgrass-bindm = , longpress:2, movewindow
            hyprgrass-bindm = , longpress:3, resizewindow

@@ -16,10 +16,10 @@ programs.walker = {
   };
 
   # If this is not set the default styling is used.
-  style = ''
-    * {
-      color: #dcd7ba;
-    }
-  '';
+  # style = ''
+  #   * {
+  #     color: #dcd7ba;
+  #   }
+  # '';
 };
 }

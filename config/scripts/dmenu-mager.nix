@@ -30,6 +30,7 @@ pkgs.writeShellScriptBin "dmenu-mager" ''
     [ "kill",                   "dmenu_kill" ],
     [ "kill droidcam",          "pkill droidcam-cli" ],
     [ "monitor",                "monitor-projection" ],
+    [ "VOS Viewer",             "java jar ~/App/VOSviewer.jar" ],
     [ "mpdmenu",                "dmenu_mpdmenu" ],
     [ "Stop VPN",               "systemctl stop wg-quick-wg0" ],
     [ "Star VPN",               "systemctl start wg-quick-wg0" ],

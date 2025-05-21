@@ -29,6 +29,9 @@ in {
         display-window:             " Windows";
         display-recursivebrowser:   "󱞊 MoreFiles";
         drun-display-format:        "{name}";
+        hover-select:               true;
+        me-select-entry:            "MousePrimary";
+        me-accept-entry:            "!MousePrimary";     
         window-format:              "{w} · {c} · {t}";
    }
 

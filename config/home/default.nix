@@ -40,6 +40,9 @@ in {
     ./zed.nix
     ./dashboard
     ../scripts/scripts.nix
+    ./walker.nix
+    ./hypr-dock.nix
+
 
   ];
 }

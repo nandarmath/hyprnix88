@@ -148,6 +148,7 @@
     new.rembg
     new.gimp3
     new.gimp3-with-plugins
+    libwacom
   ];
 
   programs.steam.gamescopeSession.enable = true;
@@ -167,6 +168,10 @@
   };
   hardware.sensor.iio.enable = true;
   programs.fuse.userAllowOther = true;
+
+
+
+
 
   programs.mtr.enable = true;
   programs.gnupg.agent = {

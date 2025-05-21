@@ -16,6 +16,7 @@ in {
   imports = [
     # inputs.nix-colors.homeManagerModules.default
     # inputs.hyprland.homeManagerModules.default
+    inputs.walker.homeManagerModules.default
     ./config/home
   ];
 

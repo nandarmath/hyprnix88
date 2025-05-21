@@ -30,16 +30,16 @@ in
           "sleep 1.5 && swww img ${stylixImage}"
           "pypr &"
           "keepassxc"
-          "~/.config/waybar/scripts/waybar_timer serve"
           "wasistlos"
           "cloudflared tunnel run moodle"
           "iio-hyprland"
-          "nwg-dock-hyprland -x -p 'bottom' -l 'top' -i 32 -hd 10 -mt 10 -mb 10 -ml 5 -c 'rofi -show drun' -d"
+          "hypr-dock"
+          # "nwg-dock-hyprland -x -p 'bottom' -l 'top' -i 32 -hd 10 -mt 10 -mb 10 -ml 5 -c 'rofi -show drun' -d"
           "waybar"
-          "~/hyprnix/config/home/hyprland/panel.sh &"
           # "hyprpanel &"
           "sleep 1"
           # "eww daemon"
+          "walker --gapplication-service"
           "wl-paste --type text --watch cliphist store"
           "wl-paste --type image --watch cliphist store"
           "modprobe snd-aloop"
@@ -198,14 +198,14 @@ in
           "workspace 7 silent,class:^(libreoffice-calc)"
           "workspace 6 silent,class:^(libreoffice-writer)"
           "workspace 5 silent,class:^(libreoffice-impress)"
-          "workspace 10 silent,class:^(org.keepassxc.KeePassXC)"
+          "workspace 11 silent,class:^(org.keepassxc.KeePassXC)"
           "pin,title:^(KeePassXC - Browser Access Request)"
           "tile,  class:^(libreoffice.*)$"
           "noshadow, floating:0"
           # "shadow, floating:1"
         ];
         workspace = [
-          "11, rounding:false, decorate:false"
+          "10, rounding:false, decorate:false, monitor:HDM1-A-1"
 
         ];
         env = [

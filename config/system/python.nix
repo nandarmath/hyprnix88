@@ -35,6 +35,10 @@
       google-api-python-client
       google-auth-httplib2
       google-auth-oauthlib
+      pygobject3
+      pycairo
+      configparser
+      dbus-python
     ];
 in
   lib.mkIf (python == true) {
