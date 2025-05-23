@@ -14,6 +14,6 @@
         };
 
   home.file.".config/hypr-dock/config.jsonc".source = ../pkgs/hypr-dock/config.jsonc;
-  home.file.".config/hypr-dock/pinned.json".source = ../pkgs/hypr-dock/pinned.json;
+  # home.file.".config/hypr-dock/pinned.json".source = ../pkgs/hypr-dock/pinned.json;
 
 }

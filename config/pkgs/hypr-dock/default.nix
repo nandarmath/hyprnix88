@@ -30,5 +30,4 @@ buildGoModule rec {
   ];
   vendorHash = "sha256-KoDPQHfmYzZ/7wQAq4TKq3bIlnDLoMgH9oc4noNlSb0=";
 
-
 }

@@ -41,7 +41,7 @@ in {
     ./dashboard
     ../scripts/scripts.nix
     ./walker.nix
-    ./hypr-dock.nix
+    # ./hypr-dock.nix
 
 
   ];
