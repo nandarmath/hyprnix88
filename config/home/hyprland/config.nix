@@ -205,6 +205,7 @@ in
         ];
         workspace = [
           "10, rounding:false, decorate:false, monitor:HDM1-A-1"
+          "9, rounding:false, decorate:false, monitor:HDM1-A-2"
 
         ];
         env = [

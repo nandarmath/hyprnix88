@@ -33,7 +33,10 @@
     # url = "github:MOIS3Y/nvchad4nix";
     # inputs.nixpkgs.follows = "nixpkgs";
     # };
-
+    # anyrun = {
+    #   url = "github:anyrun-org/anyrun";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     # niri = {
     #   url = "github:sodiboo/niri-flake";
@@ -62,6 +65,7 @@
     fmpkgs,
     chaotic,
     nixvim,
+    anyrun,
     nxchad,
     ...
   }: let
@@ -115,15 +119,15 @@
           }: {nixpkgs.overlays = [overlay-r2405 overlay-r2205 overlay-new inputs.hyprpanel.overlay];})
           {nixpkgs.overlays = [inputs.fmpkgs.overlays.default];}
           {inherit (inputs.fmpkgs) nixpkgs;}
-          # {environment.systemPackages = [ anyrun.packages.${system}.anyrun ];}
+          # {environment.systemPackages = [
+          # anyrun.packages.${system}.anyrun-with-all-plugins
+          # ];}
           ./system.nix
           chaotic.nixosModules.default
           # stylix.nixosModules.stylix
           sops-nix.nixosModules.sops
           impermanence.nixosModules.impermanence
           home-manager.nixosModules.home-manager
-          nixvim.nixosModules.nixvim
-          nxchad.nixosModules.nixvim
           {
             home-manager.extraSpecialArgs = {
               inherit username;

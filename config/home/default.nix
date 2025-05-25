@@ -40,7 +40,9 @@ in {
     ./zed.nix
     ./dashboard
     ../scripts/scripts.nix
-    ./walker.nix
+    # ./walker.nix
+    # ./anyrun.nix
+    # ./nxchad.nix
     # ./hypr-dock.nix
 
 

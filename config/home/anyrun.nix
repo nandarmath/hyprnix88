@@ -12,10 +12,6 @@ let
   inherit (import ../../options.nix) bar-number clock24h waybarAnim;
 in with lib; {
 
-  imports = [
-    inputs.anyrun.homeManagerModules.default
-  ];
-
   programs.anyrun = {
     enable = true;
     config = {
@@ -33,8 +29,8 @@ in with lib; {
       plugins = [
         # An array of all the plugins you want, which either can be paths to the .so files, or their packages
         inputs.anyrun.packages.${pkgs.system}.applications
-        ./some_plugin.so
-        "${inputs.anyrun.packages.${pkgs.system}.anyrun-with-all-plugins}/lib/kidex"
+        inputs.anyrun.packages.${pkgs.system}.kidex
+
       ];
     };
     extraConfigFiles = {
@@ -42,9 +38,16 @@ in with lib; {
         Config(
           desktop_actions: true,
           max_entries: 10,
-          terminal: Some("kitty"),
         )
       '';
+      "translate.ron".text = ''
+        Config(
+          prefix: ":",
+          language_delimiter: ">",
+          max_entries: 3,
+        )
+      '';
+
     };
 
     extraCss = /*css */ ''
