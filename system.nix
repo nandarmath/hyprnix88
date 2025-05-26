@@ -92,7 +92,7 @@ in {
       ];
     };
     gc = {
-      automatic = false;
+      automatic = true;
       dates = "weekly";
       options = "--delete-older-than 7d";
     };

@@ -18,8 +18,8 @@ in {
     # inputs.hyprland.homeManagerModules.default
     inputs.nixvim.homeManagerModules.nixvim
     inputs.nxchad.homeManagerModules.nixvim
-    inputs.anyrun.homeManagerModules.default
-    inputs.walker.homeManagerModules.default
+    # inputs.anyrun.homeManagerModules.default
+    # inputs.walker.homeManagerModules.default
     ./config/home
   ];
 

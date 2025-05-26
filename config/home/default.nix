@@ -30,7 +30,7 @@ in {
     ./wlogout
     ./yazi
     ./files.nix
-    ./firefox.nix
+    # ./firefox.nix
     ./fastfetch
     ./cava.nix
     ./mpd.nix

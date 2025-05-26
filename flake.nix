@@ -65,7 +65,7 @@
     fmpkgs,
     chaotic,
     nixvim,
-    anyrun,
+    # anyrun,
     nxchad,
     ...
   }: let

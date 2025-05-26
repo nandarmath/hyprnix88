@@ -94,9 +94,6 @@ in {
     yt-dlp
     # pspp
     okular
-    # anydesk
-    teamviewer
-    # goldendict-ng
     scribus
     handbrake
     zotero
