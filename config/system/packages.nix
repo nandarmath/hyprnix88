@@ -130,7 +130,6 @@
     nix-init
     fzf
     rustdesk-flutter
-    anydesk
 
     wvkbd
     iio-hyprland

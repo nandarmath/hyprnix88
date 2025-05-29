@@ -82,7 +82,7 @@
   
 # Enable thermald for CPU temperature auto handling.
   services.thermald.enable = true;
-
+  virtualisation.waydroid.enable = true;
   # Enable throttled.service for fix Intel CPU throttling.
   services.throttled.enable = true;
 
