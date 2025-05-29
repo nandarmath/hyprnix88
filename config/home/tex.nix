@@ -42,6 +42,7 @@
           scheme-medium
           titlesec
           ulem
+          pdfpages
           wrapfig
           anyfontsize
           xifthen;
