@@ -22,6 +22,7 @@
           enumitem
           cite
           natbib
+          biblatex
           listings
           xcolor
           cleveref
