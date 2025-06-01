@@ -106,7 +106,7 @@ entry {
     background-color:            inherit;
     text-color:                  #${palette.base05};
     cursor:                      text;
-    placeholder:                 "Search...";
+    # placeholder:                 "Search...";
     placeholder-color:           inherit;
 }
 num-filtered-rows {
