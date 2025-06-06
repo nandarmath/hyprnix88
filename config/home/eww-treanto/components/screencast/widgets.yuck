@@ -1,0 +1,23 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Widget Sections
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; Indicator
+(defwidget screencast-indicator []
+	(box	:class "screencast-indicator"
+			:orientation "v"
+		(label :class "${screencast-status-class}"
+			   :text "${screencast-status-icon}")))
+
+; Screencast
+(defwidget screencast []
+	(box	:class "box_screencast"
+			:orientation "v"
+			:space-evenly "false"
+		(screencast-indicator)
+		(eventbox	:cursor "pointer"
+			(button	:class "btn_screencast"
+					:onclick "${screencast-start}" ""))
+		(eventbox	:cursor "pointer"
+			(button	:class "btn_screencast"
+					:onclick "${screencast-stop}" ""))))

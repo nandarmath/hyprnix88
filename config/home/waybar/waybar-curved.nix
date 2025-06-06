@@ -33,8 +33,8 @@ in
             "group/notifmenu"
             "battery"
             "tray"
-            "custom/exit"
             "clock"
+            "custom/exit"
           ];
 
           "hyprland/workspaces" = {
@@ -116,9 +116,9 @@ in
             transition-left-to-right = false;
           };
           modules = [
+            "custom/timer"
             "custom/notification"
             "custom/screenrecorder"
-            "custom/timer"
             "custom/weather"
           ];
           orientation = "inherit";
@@ -270,7 +270,7 @@ in
         ''
           * {
             font-family: JetBrainsMono Nerd Font Mono;
-            font-size: 16px;
+            font-size: 14px;
             border-radius: 0px;
             border: none;
             min-height: 0px;
@@ -329,7 +329,7 @@ in
             padding: 0px 18px;
             background: #${config.lib.stylix.colors.base04};
             color: #${config.lib.stylix.colors.base00};
-            border-radius: 24px 10px 24px 10px;
+            border-radius: 24px 1px 24px 1px;
           }
           #custom-startmenu {
             color: #${config.lib.stylix.colors.base0B};
@@ -340,24 +340,25 @@ in
             border-radius: 0px 0px 40px 0px;
           }
           #custom-hyprbindings, #network, #battery,
-          #custom-notification, #tray, #custom-exit, #custom-weather, #custom-prayer_times, #custom-timer, #custom-screenrecorder {
+          #custom-notification, #tray, #clock, #custom-weather, #custom-prayer_times, #custom-timer, #custom-screenrecorder {
             font-weight: bold;
             background: #${config.lib.stylix.colors.base0F};
             color: #${config.lib.stylix.colors.base00};
             margin: 4px 0px;
             margin-right: 7px;
-            border-radius: 10px 24px 10px 24px;
+            border-radius: 1px 24px 1px 24px;
             padding: 0px 18px;
           }
           #custom-timer.active {
             background-color: #CF2430;
           }
-          #clock {
+          #custom-exit {
             font-weight: bold;
             color: #0D0E15;
             background: linear-gradient(90deg, #${config.lib.stylix.colors.base0E}, #${config.lib.stylix.colors.base0C});
             margin: 0px;
             padding: 0px 15px 0px 30px;
+            font-size: 28px;
             border-radius: 0px 0px 0px 40px;
           }
         ''

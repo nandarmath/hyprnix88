@@ -1,0 +1,37 @@
+(include "components/variables.yuck")
+
+; Panel
+(include "components/panel/widgets.yuck")
+(include "components/panel/windows.yuck")
+
+; Dashboard
+(include "components/dashboard/widgets.yuck")
+(include "components/dashboard/windows.yuck")
+
+; Clipboard
+(include "components/clipboard/widgets.yuck")
+(include "components/clipboard/windows.yuck")
+
+; Screencast
+(include "components/screencast/widgets.yuck")
+(include "components/screencast/windows.yuck")
+
+; Calendar
+(include "components/calendar/widgets.yuck")
+(include "components/calendar/windows.yuck")
+
+; Network
+(include "components/network/widgets.yuck")
+(include "components/network/windows.yuck")
+
+; Battery
+(include "components/battery/widgets.yuck")
+(include "components/battery/windows.yuck")
+
+; Question
+(include "components/question/widgets.yuck")
+(include "components/question/windows.yuck")
+
+; Space
+(include "components/space/widgets.yuck")
+(include "components/space/windows.yuck")

@@ -1,0 +1,13 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Window Sections
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; Battery
+(defwindow battery-window
+	:monitor 0
+	:geometry	(geometry	:x "-10px"
+							:y "20px"
+							:anchor "left bottom")
+	:vexpand "false"
+	:hexpand "false"
+(battery-window))

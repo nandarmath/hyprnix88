@@ -95,6 +95,7 @@ in {
       automatic = true;
       dates = "weekly";
       options = "--delete-older-than 7d";
+      # frequency ="Mon,Fri *-*-* 05:30:00";
     };
   };
 

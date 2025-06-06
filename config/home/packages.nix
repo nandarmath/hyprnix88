@@ -9,6 +9,7 @@ in {
     pkgs."${browser}"
     # discord
     libvirt
+    tty-clock
     swww
     grim
     slurp

@@ -38,8 +38,9 @@ in {
     ./vim.nix
     ./stylix.nix
     ./zed.nix
-    ./dashboard
+    # ./dashboard
     ../scripts/scripts.nix
+    ./eww-treanto
     # ./walker.nix
     # ./anyrun.nix
     # ./nxchad.nix

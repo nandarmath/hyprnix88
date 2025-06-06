@@ -1,0 +1,68 @@
+#!/usr/bin/bash
+
+#initial check for occupied workspaces
+ownum="$(hyprctl workspaces | grep ID | sed 's/()/(1)/g' | awk 'NR>1{print $1}' RS='(' FS=')')"
+for num in $ownum; do 
+  export o"$num"="$num"
+done
+
+#initial check for focused workspace
+ofnum="$(hyprctl monitors | grep active | sed 's/()/(1)/g' | awk 'NR>1{print $1}' RS='(' FS=')')"
+for num in $ofnum; do 
+  export f"$num"="$num"
+  export fnum=f"$num"
+done
+
+workspaces() {
+    if [[ ${1:0:9} == "workspace" ]]; then #set focused workspace
+        unset -v "$fnum"
+        num=${1:11}
+        export f"$num"="$num"
+        export fnum=f"$num"
+
+    elif [[ ${1:0:15} == "createworkspace" ]]; then #set Occupied workspace
+        num=${1:17}
+        export o"$num"="$num"
+        export f"$num"="$num"
+
+    elif [[ ${1:0:16} == "destroyworkspace" ]]; then #unset unoccupied workspace
+        num=${1:18}
+        unset -v o"$num" f"$num"
+    fi
+
+    workspace=("box :class \"panel-workspace\" :orientation \"v\" :space-evenly \"false\" :spacing 5 ")
+    workspace+=("(button :onclick \"hyprctl dispatch workspace 1\" :class \"0$o1$f1\" \"\")")
+    workspace+=("(button :onclick \"hyprctl dispatch workspace 2\" :class \"0$o2$f2\" \"\")")
+    workspace+=("(button :onclick \"hyprctl dispatch workspace 3\" :class \"0$o3$f3\" \"\")")
+    if [[ $f4 == "4" || $o4 == "4" ]]; then
+        workspace+=("(button :onclick \"hyprctl dispatch workspace 4\" :class \"$o4$f4\" \"\")")
+    fi
+    if [[ $f5 == "5" || $o5 == "5" ]]; then
+	    workspace+=("(button :onclick \"hyprctl dispatch workspace 5\" :class \"$o5$f5\" \"\")")
+	fi
+    if [[ $f6 == "6" || $o6 == "6" ]]; then
+        workspace+=("(button :onclick \"hyprctl dispatch workspace 6\" :class \"$o6$f6\" \"\")")
+    fi
+    if [[ $f7 == "7" ||	$o7 == "7" ]]; then
+	    workspace+=("(button :onclick \"hyprctl dispatch workspace 7\" :class \"$o7$f7\" \"\")")
+	fi
+    if [[ $f8 == "8" || $o8 == "8" ]]; then
+	    workspace+=("(button :onclick \"hyprctl dispatch workspace 8\" :class \"$o8$f8\" \"\")")
+    fi
+    if [[ $f9 == "9" ||	$o9 == "9" ]]; then
+        workspace+=("(button :onclick \"hyprctl dispatch workspace 9\" :class \"$o9$f9\" \"\")")
+    fi
+    if [[ $f10 == "10" || $o10 == "10" ]]; then
+        workspace+=("(button :onclick \"hyprctl dispatch workspace 10\" :class \"$o10$f10\" \"\")")
+    fi
+
+    echo "(${workspace[*]})"
+}
+
+workspaces
+monitoring() {
+	socat2 -u UNIX-CONNECT:/tmp/hypr/"$HYPRLAND_INSTANCE_SIGNATURE"/.socket2.sock -
+}
+monitoring | while read -r event; do 
+    workspaces "$event"
+done
