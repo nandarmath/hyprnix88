@@ -43,7 +43,7 @@ in {
     ./eww-treanto
     # ./walker.nix
     # ./anyrun.nix
-    # ./nxchad.nix
+    ./nxchad.nix
     # ./hypr-dock.nix
 
 

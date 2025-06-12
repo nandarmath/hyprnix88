@@ -47,10 +47,6 @@
     inputs.stylix.nixosModules.stylix
     ./syncthing.nix
     ./scheduler2.nix
-    # ./scheduler.nix
-    # ./rustdesk.nix
-    # ./teamviewer.nix
-    # ./tlp-pd.nix
-    # ./script-hook-tlp.nix
+    # ./nixvim/nixvim.nix
   ];
 }

@@ -1122,11 +1122,27 @@
         "type": "github"
       }
     },
+    "nixpkgsbaru": {
+      "locked": {
+        "lastModified": 1749285348,
+        "narHash": "sha256-frdhQvPbmDYaScPFiCnfdh3B/Vh81Uuoo0w5TkWmmjU=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "3e3afe5174c561dee0df6f2c2b2236990146329f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixvim": {
       "inputs": {
         "flake-parts": "flake-parts_2",
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgsbaru"
         ],
         "nuschtosSearch": "nuschtosSearch",
         "systems": "systems_3"
@@ -1261,7 +1277,7 @@
         "flake-parts": "flake-parts_4",
         "fmway-nix": "fmway-nix",
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgsbaru"
         ],
         "nixvim": "nixvim_2",
         "systems": "systems_7"
@@ -1294,6 +1310,7 @@
         "nixpkgs-new": "nixpkgs-new",
         "nixpkgs-r2205": "nixpkgs-r2205",
         "nixpkgs-r2405": "nixpkgs-r2405",
+        "nixpkgsbaru": "nixpkgsbaru",
         "nixvim": "nixvim",
         "nur-ryan4yin": "nur-ryan4yin",
         "nvf": "nvf",

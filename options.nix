@@ -33,6 +33,7 @@ in {
   # animations-dynamic.nix (ml4w project)
   # animations-kaku.nix (kaku project)
   animChoice = ./config/home/hyprland/animations-end4.nix;
+
   # System Settings
   clock24h = true;
   theLocale = "en_US.UTF-8";

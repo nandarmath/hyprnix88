@@ -112,6 +112,7 @@
     new.python312Packages.pymonctl
     new.rofi-network-manager
     new.python312Packages.pywinctl
+    new.air-formatter
     libvirt-glib
 
     # zoom-us
