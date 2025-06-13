@@ -40,7 +40,7 @@ in {
     pairdrop
     rustup
     nix-search-cli
-    microsoft-edge
+    # microsoft-edge
     ghostscript
     gparted
     droidcam
@@ -94,7 +94,7 @@ in {
     lunarvim
     yt-dlp
     # pspp
-    okular
+    kdePackages.okular
     scribus
     handbrake
     zotero
@@ -123,6 +123,7 @@ in {
     hyprshot
     wasistlos
     hyprpanel
+    varia ## download manager
     # planify # taks manager
     # parabolic # front-end yt-dlp / download video and audio
     loupe # image viewer support touchscreen

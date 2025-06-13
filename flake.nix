@@ -25,10 +25,10 @@
       flake = false;
     };
     nixvim.url = "github:nix-community/nixvim";
-    nixvim.inputs.nixpkgs.follows = "nixpkgsbaru";
+    nixvim.inputs.nixpkgs.follows = "nixpkgs";
     nxchad.url = "github:fmway/nxchad";
     # This is important, since nxchad dosn't add nixpkgs repo in dependencies
-    nxchad.inputs.nixpkgs.follows = "nixpkgsbaru";
+    nxchad.inputs.nixpkgs.follows = "nixpkgs";
     # nvchad4nix = {
     # url = "github:MOIS3Y/nvchad4nix";
     # inputs.nixpkgs.follows = "nixpkgs";
@@ -48,8 +48,6 @@
     };
     nixpkgs-r2405.url = "github:NixOs/nixpkgs/nixos-24.05";
     nixpkgs-r2205.url = "github:NixOs/nixpkgs/nixos-22.05";
-    nixpkgs-new.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgsbaru.url = "github:nixos/nixpkgs/nixos-unstable";
     walker.url = "github:abenz1267/walker";
   };
 
@@ -62,8 +60,6 @@
     sops-nix,
     nixpkgs-r2405,
     nixpkgs-r2205,
-    nixpkgs-new,
-    nixpkgsbaru,
     fmpkgs,
     chaotic,
     nixvim,
@@ -83,20 +79,6 @@
       r2205 = import nixpkgs-r2205 {
         inherit system;
         config.allowUnfree = true;
-      };
-    };
-    overlay-new = final: prev: {
-      new = import nixpkgs-new {
-        inherit system;
-        config.allowUnfree = true;
-        config.allowBroken = true;
-      };
-    };
-    overlay-baru = final: prev: {
-      new = import nixpkgsbaru {
-        inherit system;
-        config.allowUnfree = true;
-        config.allowBroken = true;
       };
     };
     inherit (import ./options.nix) username hostname;
@@ -125,9 +107,9 @@
             config,
             pkgs,
             ...
-          }: {nixpkgs.overlays = [overlay-r2405 overlay-r2205 overlay-new overlay-baru inputs.hyprpanel.overlay];})
-          {nixpkgs.overlays = [inputs.fmpkgs.overlays.default];}
-          {inherit (inputs.fmpkgs) nixpkgs;}
+          }: {nixpkgs.overlays = [overlay-r2405 overlay-r2205 inputs.hyprpanel.overlay];})
+          # {nixpkgs.overlays = [inputs.fmpkgs.overlays.default];}
+          # {inherit (inputs.fmpkgs) nixpkgs;}
           # {environment.systemPackages = [
           # anyrun.packages.${system}.anyrun-with-all-plugins
           # ];}
@@ -142,7 +124,6 @@
               inherit username;
               inherit inputs;
               # inherit (inputs.nix-colors.lib-contrib {inherit pkgs;}) gtkThemeFromScheme;
-              inherit overlay-new;
             };
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;

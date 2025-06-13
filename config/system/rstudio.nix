@@ -176,7 +176,7 @@ with pkgs; let
     RCurl
     svSweave
     wordcloud2
-    rtweet
+    # rtweet    ## broken packages
     ggmap
     visNetwork
     fresh

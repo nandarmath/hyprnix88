@@ -10,7 +10,6 @@ environment.plasma6.excludePackages = with pkgs; [
   elisa
   konsole
   dolphin
-  okular
   spectacle
   ark
   orca

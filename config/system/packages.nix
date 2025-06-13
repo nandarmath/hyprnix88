@@ -109,10 +109,9 @@
     # inputs.nvix.packages.${system}.full
     r2405.zoom-us
     r2205.hugo
-    new.python312Packages.pymonctl
-    new.rofi-network-manager
-    new.python312Packages.pywinctl
-    new.air-formatter
+    python312Packages.pymonctl
+    rofi-network-manager
+    python312Packages.pywinctl
     libvirt-glib
 
     # zoom-us
@@ -124,7 +123,7 @@
     hyprnome
     openrefine
     teams-for-linux
-    pkgs.fmpkgs.xdman
+    # pkgs.fmpkgs.xdman
     calcure
     preload
     nix-prefetch-github
@@ -145,9 +144,9 @@
     newsflash
     inputs.zen-browser.packages."${system}".specific
     vim
-    new.rembg
-    new.gimp3
-    new.gimp3-with-plugins
+    rembg
+    gimp3
+    gimp3-with-plugins
     libwacom
   ];
 
