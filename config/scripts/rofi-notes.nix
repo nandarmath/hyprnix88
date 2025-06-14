@@ -8,7 +8,7 @@ pkgs.writeScriptBin "rofi-notes" ''
   # default values
   AUTHOR=$(whoami)
   NOTES_FOLDER="$HOME/.notes"
-  NOTES_EDITOR='kitty --class kitty-floating -e lvim '
+  NOTES_EDITOR='kitty --class kitty-floating -e nvim '
   
   if [[ ! -d "$NOTES_FOLDER" ]]; then
       mkdir -p "$NOTES_FOLDER"

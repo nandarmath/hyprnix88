@@ -25,7 +25,7 @@ in
           "systemctl --user stop xdg-desktop-portal-gtk"
           "xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2"
           "hyprctl setcursor Bibata-Modern-Ice 24"
-          "killall -q swww;sleep .5 && swww init"
+          # "killall -q swww;sleep .5 && swww init"
           "swww-daemon --no-cache"
           "sleep 1.5 && swww img ${stylixImage}"
           "pypr &"

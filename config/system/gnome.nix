@@ -43,7 +43,7 @@ environment.systemPackages = with pkgs.gnomeExtensions; [
 
     # ...
   ];
-  services.xserver.desktopManager.gnome = { 
+  services.desktopManager.gnome = { 
     extraGSettingsOverrides = ''
       [org.gnome.desktop.peripherals.touchpad]
       tap-to-click=true

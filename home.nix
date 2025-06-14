@@ -1,8 +1,8 @@
-{ config, pkgs, inputs, username,
-  gtkThemeFromScheme, ... }:
+{ inputs, username,
+   ... }:
 let 
   inherit (import ./options.nix)
-    gitUsername gitEmail theme ;
+    gitUsername gitEmail ;
 in {
   # Home Manager Settings
   home.username = "${username}";
