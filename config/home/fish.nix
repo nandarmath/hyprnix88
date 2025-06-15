@@ -13,7 +13,6 @@ in
           j = "joshuto";
           n = "nvim";
           #z = "zellij";
-          lv = "lvim";
           cat = "bat";
           nf = "cd ~/hyprnix";
           cp = "cp -rv";

@@ -41,9 +41,6 @@
     (rofi.override {
       plugins = [rofi-file-browser rofi-mpd];
     })
-    # (callPackage ../pkgs/audio2text.nix {})
-    # (callPackage ../pkgs/speech.nix {})
-    # (callPackage ../pkgs/sapulatar.nix {})
     quarto
     inxi
     jasp-desktop
@@ -61,7 +58,6 @@
     meson
     cloudflared
     # protonvpn-cli
-    # hugo
     lazygit
     ripgrep
     bottom
@@ -88,11 +84,6 @@
     xdg-utils
     fprintd
     wofi
-    # rofi-calc
-    # openai-whisper
-    # whitesur-gtk-theme
-    # whitesur-cursors
-    # whitesur-icon-theme
     gnome-tweaks
     gnome-shell-extensions
     # whatsapp-for-linux

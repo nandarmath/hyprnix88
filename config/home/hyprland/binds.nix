@@ -41,7 +41,7 @@ in {
       "$mod SHIFT,E,exec,kitty -e yazi"
       "$mod SHIFT,Y,exec,[ workspace 10 silent ] kitty -e ncmpcpp"
       "$mod ,X,killactive,"
-      "$mod SHIFT,K,exec, kitty -e lvim ~/hyprnix/config/home/hyprland/binds.nix"
+      "$mod SHIFT,K,exec, kitty -e nvim ~/hyprnix/config/home/hyprland/binds.nix"
       "$mod ,P,pseudo,"
       "$mod CONTROL,P,exec,monitor-projection"
       "$mod ,Z,exec,wlogout"

@@ -21,11 +21,11 @@
         combine_preview = 1;
         combine_preview_auto_refresh = 1;
         preview_options = {
-          katex = { };
-          maid = { };
-          flowchart_diagrams = { };
-          toc = { };
-          sequence_diagrams = { };
+          katex = null;
+          maid = null;
+          toc = null;
+          sequence_diagrams = null;
+          mkit = null;
         };
       };
     };

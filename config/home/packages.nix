@@ -91,7 +91,6 @@ in {
     pfetch
     syncthing
     geogebra
-    lunarvim
     yt-dlp
     # pspp
     kdePackages.okular

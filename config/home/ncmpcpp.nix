@@ -27,7 +27,7 @@
         mpd_port = "6600";
         autocenter_mode = "yes";
         centered_cursor = "yes";
-        external_editor = "lvim";
+        external_editor = "nvim";
         header_visibility = "no";
         ignore_leading_the = true;
         main_window_color = "blue";

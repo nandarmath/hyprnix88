@@ -1,5 +1,6 @@
-{pkgs, ...}:
-with pkgs; let
+{ pkgs, ... }:
+with pkgs;
+let
   # name = "nandar";
   list-packages = with rPackages; [
     AER
@@ -200,7 +201,8 @@ with pkgs; let
 
     # citr
   ];
-in {
+in
+{
   services = {
     rstudio-server = {
       enable = true;
@@ -211,20 +213,22 @@ in {
     };
   };
   environment = {
-    systemPackages = let
-      r-with-packages = (
-        rWrapper.override {
-          packages = list-packages;
-        }
-      );
-      rstudio-with-packages = (
-        rstudioWrapper.override {
-          packages = list-packages;
-        }
-      );
-    in [
-      r-with-packages
-      rstudio-with-packages
-    ];
+    systemPackages =
+      let
+        r-with-packages = (
+          rWrapper.override {
+            packages = list-packages;
+          }
+        );
+        rstudio-with-packages = (
+          rstudioWrapper.override {
+            packages = list-packages;
+          }
+        );
+      in
+      [
+        r-with-packages
+        rstudio-with-packages
+      ];
   };
 }
