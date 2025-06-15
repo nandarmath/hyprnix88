@@ -1291,17 +1291,17 @@
         "nixvim": "nixvim_2"
       },
       "locked": {
-        "lastModified": 1749810381,
-        "narHash": "sha256-GJXcFIwWfTVWAYPdKuDFFjt0OAKItWTGP+JdEk1j5SY=",
-        "owner": "nandarmath",
-        "repo": "nxchad",
-        "rev": "a2093dba61bc9da1e7a2ee0d797885db3219b4a0",
-        "type": "github"
+        "lastModified": 1749897088,
+        "narHash": "sha256-wVSwgFDp48RLHcSkDunCtCuDjHtgXv+91a/w+Yvf1sI=",
+        "ref": "refs/heads/master",
+        "rev": "3de2cf77797b88956ab40275d5aea7e500ba184d",
+        "revCount": 4,
+        "type": "git",
+        "url": "file://git:/home/nandar/Documents/NxChad"
       },
       "original": {
-        "owner": "nandarmath",
-        "repo": "nxchad",
-        "type": "github"
+        "type": "git",
+        "url": "file://git:/home/nandar/Documents/NxChad"
       }
     },
     "root": {
