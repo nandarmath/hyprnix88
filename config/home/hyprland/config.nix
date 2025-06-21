@@ -33,7 +33,6 @@ in
           "wasistlos"
           "cloudflared tunnel run moodle"
           "iio-hyprland"
-          # "nwg-dock-hyprland -x -p 'bottom' -l 'top' -i 32 -hd 10 -mt 10 -mb 10 -ml 5 -c 'rofi -show drun' -d"
           "waybar"
           # "hyprpanel &"
           "sleep 1"
@@ -93,6 +92,7 @@ in
           mouse_move_enables_dpms = true;
           key_press_enables_dpms = false;
           disable_hyprland_logo = true;
+          enable_anr_dialog = false;
           # layers_hog_keyboard_focus = true;
           # initial_workspace_tracking = 0;
         };

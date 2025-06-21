@@ -1,11 +1,12 @@
-{lib, ...}: let
-  inherit
-    (import ../../../options.nix)
+{ lib, ... }:
+let
+  inherit (import ../../../options.nix)
     browser
     terminal
     stylixImage
     ;
-in {
+in
+{
   wayland.windowManager.hyprland.settings = {
     bind = [
       "$mod ,Q,exec,${terminal}"
@@ -39,7 +40,7 @@ in {
       "$mod ,E,exec,thunar"
       "$mod ,TAB,exec,rofi -show window -window-thumbnail"
       "$mod SHIFT,E,exec,kitty -e yazi"
-      "$mod SHIFT,Y,exec,[ workspace 10 silent ] kitty -e ncmpcpp"
+      "$mod SHIFT,Y,exec,[ workspace 10 silent ] kitty -e rmpc"
       "$mod ,X,killactive,"
       "$mod SHIFT,K,exec, kitty -e nvim ~/hyprnix/config/home/hyprland/binds.nix"
       "$mod ,P,pseudo,"
@@ -58,7 +59,7 @@ in {
       "$mod CONTROL,A,exec,rofi -show run"
       "$mod CONTROL,K,exec,rofi-dict"
       "$mod ALT,N,exec, rofi-network-manager"
-      "CONTROL, TAB,focuscurrentorlast"
+      "ALT, TAB,focuscurrentorlast"
       "$mod SHIFT,N,exec,dmenu_iptv"
       "$mod SHIFT,space,exec,hyprctl dispatch workspaceopt allfloat"
       "$mod SHIFT,left,movewindow,l"
@@ -162,8 +163,8 @@ in {
       "$mod ALT,left, resizeactive, -30 0"
       "$mod ,SLASH,exec, hyprctl dispatch pin"
       "$mod ALT,SLASH,exec, hyprctl dispatch unset"
-      "ALT,Tab,cyclenext"
-      "ALT,Tab,bringactivetotop"
+      "CONTROL,Tab,cyclenext"
+      "CONTROL,Tab,bringactivetotop"
       ",XF86AudioRaiseVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
       ",XF86AudioLowerVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
       ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"

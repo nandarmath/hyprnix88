@@ -15,6 +15,7 @@
     dejavu_fonts
     unifont
     libertine
+    corefonts
     # (nerd-fonts.override { fonts = [ "FiraCode" "Inconsolata" "Iosevka" "JetBrainsMono" "Meslo" "Noto" "RobotoMono" "Ubuntu" "UbuntuMono" ]; })
     iosevka
     fira-code-symbols

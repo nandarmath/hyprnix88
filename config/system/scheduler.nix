@@ -61,6 +61,5 @@
     ''
       ACTION=="change", \
         SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_STATUS}=="Charging", ENV{SYSTEMD_WANTS}="scx-refresh.service"
-        SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_STATUS}=="Discharging", ENV{SYSTEMD_WANTS}="scx-refresh.service"
     '';
 }

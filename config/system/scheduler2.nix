@@ -12,7 +12,7 @@
 
   # change scheduler to scx_flash when power is on
   systemd.services.scx.serviceConfig = with config.services.scx; let
-    alter = "${lib.getExe' package "scx_flash"} -k";
+    alter = "${lib.getExe' package "scx_rusty"} -k";
     default = lib.concatStringsSep " " ([(lib.getExe' package scheduler)] ++ extraArgs);
   in {
     ExecStart = lib.mkForce (pkgs.writeScript "scx.sh"
@@ -93,9 +93,7 @@
   */
   ''
     # Monitor perubahan status power supply
-    ACTION=="change", SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_STATUS}=="Charging", ENV{SYSTEMD_WANTS}="scx-refresh.service"
     ACTION=="change", SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_STATUS}=="Discharging", ENV{SYSTEMD_WANTS}="scx-refresh.service"
-    ACTION=="change", SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_STATUS}=="Not Charging", ENV{SYSTEMD_WANTS}="scx-refresh.service"
   '';
 
   # Tambahkan tmpfiles rule untuk memastikan log dapat dibuat

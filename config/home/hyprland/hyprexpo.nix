@@ -1,6 +1,7 @@
 {
-...
-}:{
+  ...
+}:
+{
 
   wayland.windowManager.hyprland = {
     extraConfig = ''
@@ -20,4 +21,3 @@
     '';
   };
 }
-

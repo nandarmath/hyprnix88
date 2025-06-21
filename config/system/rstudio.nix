@@ -91,7 +91,7 @@ let
     MCMCpack
     pastecs
     doBy
-    # ICSNP
+    ICSNP
     scales
     gt
     webr

@@ -24,7 +24,7 @@
       settings = {
         mpd_host = "localhost";
         # mpd_music_dir = "/home/nandar/Music";
-        mpd_port = "6600";
+        mpd_port = "6800";
         autocenter_mode = "yes";
         centered_cursor = "yes";
         external_editor = "nvim";

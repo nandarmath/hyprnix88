@@ -34,7 +34,6 @@ in {
     ./fastfetch
     ./cava.nix
     ./mpd.nix
-    ./ncmpcpp.nix
     ./vim.nix
     ./stylix.nix
     ./zed.nix
@@ -44,6 +43,7 @@ in {
     # ./walker.nix
     # ./anyrun.nix
     ./nxchad.nix
+    ./rmpc
     # ./hypr-dock.nix
 
 
