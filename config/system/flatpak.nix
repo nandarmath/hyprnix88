@@ -7,6 +7,7 @@ inherit (import ../../options.nix) flatpak;
   # 1. Declare the Flatpaks you *want* on your system
   desiredFlatpaks = [
    "io.github._0xzer0x.qurancompanion"
+   "org.gnome.NetworkDisplays"
   ];
 
 in

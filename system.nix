@@ -64,7 +64,7 @@ in {
   # Optimization settings and garbage collection automation
   nix = {
     settings = {
-      auto-optimise-store = true;
+      auto-optimise-store = false;
       experimental-features = [ "nix-command" "flakes" "pipe-operators" ];
       substituters = [
       "https://cache.nixos.org?priority=10"

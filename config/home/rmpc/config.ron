@@ -3,7 +3,7 @@
 #![enable(unwrap_variant_newtypes)]
 (
     address: "127.0.0.1:6600",
-    theme: Some("custom"),
+    theme: Some("Macchiato"),
     cache_dir: None,
     lyrics_dir: "/home/nandar/Music/Mp3",
     on_song_change:  ["~/.config/rmpc/notify"],

@@ -10,7 +10,7 @@
 
 pkgs.writeShellScriptBin "wofi-iptv" ''
 DMENU="wofi -dmenu -i"
-OPTIONS=''''
+IPTV=''''
 [
     ["BERITA SATU 480p",  "https://b1news.beritasatumedia.com/Beritasatu/B1News_960x540.m3u8"],
     ["BERITA SATU 720p",  "https://b1news.beritasatumedia.com/Beritasatu/B1News_1280x720.m3u8"],
@@ -20,6 +20,7 @@ OPTIONS=''''
     ["K+",                "http://210.210.155.35/uq2663/h/h08/index.m3u8"],
     ["KIX",               "http://45.126.83.51/uq2663/h/h07/01.m3u8"],
     ["METRO TV",          "https://youtu.be/XZbGxBY-c1o"],
+    ["TVRI SPORT",        "https://ott-balancer.tvri.go.id/live/eds/SportHD/hls/SportHD.m3u8"],
     ["MNCTV",             "https://vcdn2.rctiplus.id/live/eds/mnctv_fta/live_fta/mnctv_fta.m3u8"],
     ["MY KIDS",           "http://210.210.155.35/qwr9ew/s/s30/index2.m3u8"],
     ["NET TV",            "https://youtu.be/e4Tn_VUFpkg"],

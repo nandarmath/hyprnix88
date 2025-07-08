@@ -47,6 +47,8 @@
     inputs.stylix.nixosModules.stylix
     ./syncthing.nix
     ./scheduler2.nix
+    ./virtmanager.nix
+    # ./collabora.nix
     # ./nixvim/nixvim.nix
   ];
 }

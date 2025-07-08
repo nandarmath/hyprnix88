@@ -21,6 +21,7 @@
           "fadeShadow, 1, 5, easeOutCirc" # fade on changing activewindow for shadows
           "fadeDim, 1, 6, fluent_decel" # the easing of the dimming of inactive windows
           "border, 1, 2.7, easeOutCirc" # for animating the border's color switch speed
+          "borderangle, 1, 30, liner, loop"
           "workspaces, 1, 2, fluent_decel, slide" # styles: slide, slidevert, fade, slidefade, slidefadevert
           "specialWorkspace, 1, 3, fluent_decel, slidevert"
         ];

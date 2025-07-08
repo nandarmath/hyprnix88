@@ -1,8 +1,10 @@
-{ ...}: let
-  inherit
-    (import ../../../options.nix) animChoice
+{ ... }:
+let
+  inherit (import ../../../options.nix)
+    animChoice
     ;
-in {
+in
+{
   wayland.windowManager.hyprland.settings = {
     animations = {
       enabled = true;
@@ -18,10 +20,10 @@ in {
         "windowsOut, 0, 5, winOut, slide"
         "windowsMove, 0, 5, wind, slide"
         "border, 0, 1, liner"
+        "borderangle, 1, 30, liner, loop"
         "fade, 0, 10, default"
         "workspaces, 0, 5, wind"
       ];
     };
   };
 }
-

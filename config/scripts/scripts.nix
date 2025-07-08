@@ -10,6 +10,7 @@
   rofi-wlstream = pkgs.writeShellScriptBin "rofi-wlstream" (builtins.readFile ./rofi-wlstrem.sh);
   rofi-dict = pkgs.writeShellScriptBin "rofi-dict" (builtins.readFile ./rofi-dict.sh);
   rofi-calc = pkgs.writeShellScriptBin "rofi-calc" (builtins.readFile ./rofi-calc.sh);
+  rofi-wallpaper = pkgs.writeShellScriptBin "rofi-wallpaper" (builtins.readFile ./wallpaper-picker.sh);
   # book-search = pkgs.writeShellScriptBin "book-search" (builtins.readFile ./books-search.sh);
   
   
@@ -26,6 +27,7 @@ in {
     rofi-filemanager
     rofi-dict
     rofi-calc
+    rofi-wallpaper
     (import ./emopicker9000.nix {inherit pkgs;})
     (import ./task-waybar.nix {inherit pkgs;})
     (import ./squirtle.nix {inherit pkgs;})
@@ -37,7 +39,6 @@ in {
     (import ./dmenu-mager.nix {inherit pkgs;})
     (import ./dmenu_iptv.nix {inherit pkgs;})
     (import ./terjemah.nix {inherit pkgs;})
-    (import ./dmenu_ffmpeg.nix {inherit pkgs;})
     (import ./pdf-extractor.nix {inherit pkgs;})
     (import ./komprespdf.nix {inherit pkgs;})
     (import ./qr-generator.nix {inherit pkgs;})
@@ -62,6 +63,7 @@ in {
     (import ./rofi-notes.nix {inherit pkgs;})
     (import ./prayer_time.nix {inherit pkgs;})
     (import ./wallsetter.nix {inherit pkgs;})
+    (import ./rofi-zotero.nix {inherit pkgs;})
 
   ];
 

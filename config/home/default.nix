@@ -22,6 +22,7 @@ in {
     waybarChoice
     ./swappy.nix
     ./swaync.nix
+    ./swayosd.nix
     ./wezterm.nix
     ./zsh.nix
     ./fish.nix

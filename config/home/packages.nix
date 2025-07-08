@@ -58,6 +58,7 @@ in {
     mpd
     nodejs_22
     jq
+    bc
     drawio
     sticky
     rclone
@@ -121,7 +122,7 @@ in {
     nixfmt-rfc-style
     hyprshot
     wasistlos
-    hyprpanel
+    # hyprpanel
     varia ## download manager
     # planify # taks manager
     # parabolic # front-end yt-dlp / download video and audio
@@ -137,6 +138,7 @@ in {
     libqalculate
     zenity
     sdcv
+    translate-shell
 
     # tvbrowser
     (pkgs.callPackage ../pkgs/amzqr.nix {})

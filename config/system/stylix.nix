@@ -5,6 +5,7 @@ let
 in {
   stylix = {
     enable = true;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/material.yaml";
     image = stylixImage;
     # image = pkgs.fetchurl {
     #   url = "https://www.pixelstalk.net/wp-content/uploads/2016/05/Epic-Anime-Awesome-Wallpapers.jpg";
@@ -28,7 +29,7 @@ in {
     #   base0E = "b45bcf";
     #   base0F = "00f769";
     # };
-    polarity = "dark";
+    # polarity = "dark";
     opacity.terminal = 1.0;
     cursor = {
       package = pkgs.bibata-cursors;

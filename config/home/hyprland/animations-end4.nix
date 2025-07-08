@@ -29,6 +29,7 @@ in {
           "windowsIn, 1, 3, md3_decel, popin 60%"
           "windowsOut, 1, 3, md3_accel, popin 60%"
           "border, 1, 10, default"
+          "borderangle, 1, 30, liner, loop"
           "fade, 1, 3, md3_decel"
           "layersIn, 1, 3, menu_decel, slide"
           "layersOut, 1, 1.6, menu_accel"

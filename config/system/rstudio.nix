@@ -55,6 +55,7 @@ let
     relimp
     rematch
     rematch2
+    RPostgreSQL
     # remote
     plm
     plogr

@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ ... }:
 let
   inherit (import ../../../options.nix)
     browser

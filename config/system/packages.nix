@@ -3,7 +3,8 @@
   config,
   inputs,
   ...
-}: {
+}:
+{
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   # List System Programs
@@ -17,7 +18,6 @@
     lolcat
     htop
     btop
-    libvirt
     polkit_gnome
     winetricks
     wineWowPackages.waylandFull
@@ -39,7 +39,10 @@
     gtk-layer-shell
     rofi-systemd
     (rofi.override {
-      plugins = [rofi-file-browser rofi-mpd];
+      plugins = [
+        rofi-file-browser
+        rofi-mpd
+      ];
     })
     quarto
     inxi
@@ -71,7 +74,6 @@
     material-icons
     brightnessctl
     toybox
-    virt-viewer
     swappy
     appimage-run
     pdftk
@@ -103,7 +105,6 @@
     python312Packages.pymonctl
     rofi-network-manager
     python312Packages.pywinctl
-    libvirt-glib
 
     # zoom-us
     # hyprpanel
@@ -125,7 +126,8 @@
     wvkbd
     iio-hyprland
     iio-sensor-proxy
-    gnome-network-displays
+    # gnome-network-displays
+    miraclecast
     mkcert
     # lmstudio
     ollama
@@ -139,6 +141,7 @@
     gimp3
     gimp3-with-plugins
     libwacom
+    base16-schemes
   ];
 
   programs.steam.gamescopeSession.enable = true;
@@ -159,19 +162,10 @@
   hardware.sensor.iio.enable = true;
   programs.fuse.userAllowOther = true;
 
-
-
-
-
   programs.mtr.enable = true;
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
   };
 
-  # Qemu with virt-manager
-  virtualisation.libvirtd.enable = true;
-  virtualisation.libvirtd.allowedBridges = ["virbr0"];
-  virtualisation.spiceUSBRedirection.enable = true;
-  programs.virt-manager.enable = true;
 }

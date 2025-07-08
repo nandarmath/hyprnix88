@@ -5,13 +5,12 @@
 # Date              : Jumat, 15/05/2020 13:12 WIB
 # Last Modified Date: Minggu, 11/10/2020 12:44 WIB
 # Last Modified By  : M. Nabil Adani <nblid48@gmail.com>
-{pkgs}:
+{ pkgs }:
 pkgs.writeShellScriptBin "dmenu-mager" ''
   DMENU="rofi -dmenu -i -p Mager"
   # OPTIONS = [[label, command]]
   OPTIONS=''''
   [
-    [ "boottester",             "dmenu_boottester" ],
     [ "droidcam",               "droidcam-rofi" ],
     [ "play video0",            "mpv --no-audio --window-scale=0.5 av://v4l2:/dev/video0 --vf=hflip --profile=low-latency --untimed" ],
     [ "play video1",            "mpv --no-audio --window-scale=0.5 av://v4l2:/dev/video1 --vf=hflip --profile=low-latency --untimed" ],
@@ -20,7 +19,7 @@ pkgs.writeShellScriptBin "dmenu-mager" ''
     [ "Wifi Menu",              "rofi-network-manager" ],
     [ "Music",                  "dmenu_mpc" ],
     [ "Change Wallpaper",       "wallsetter" ],
-    [ "Wallpaper",              "swww img /home/nandar/Pictures/Wallpapers/bg08.jpg"],
+    [ "Rofi-Wallpaper",         "rofi-wallpaper"],
     [ "Rofi-music",             "rofibeats" ],
     [ "Rofi-screnshoot",         "rofi-screenshot" ],
     [ "Rofi-Notes",             "rofi-notes" ],
@@ -29,20 +28,17 @@ pkgs.writeShellScriptBin "dmenu-mager" ''
     [ "Rofi-Filemanager",          "rofi-filemanager" ],
     [ "Rofi-dict",              "rofi-dict" ],
     [ "Rofi-calc",              "rofi-calc" ],
+    [ "Rofi-zotero",            "rofi-zotero" ],
     [ "kill",                   "dmenu_kill" ],
     [ "kill droidcam",          "pkill droidcam-cli" ],
     [ "monitor",                "monitor-projection" ],
     [ "VOS Viewer",             "java jar ~/App/VOSviewer.jar" ],
-    [ "mpdmenu",                "dmenu_mpdmenu" ],
     [ "Stop VPN",               "systemctl stop wg-quick-wg0" ],
     [ "Star VPN",               "systemctl start wg-quick-wg0" ],
     [ "Start Screen to Vcam ",  "wl-screenrec --ffmpeg-muxer v4l2 -f /dev/video0" ],
     [ "Stop Screen to Vcam ",   "pkill wl-screenrec" ],
     [ "translate-input",        "dmenu_translate -i" ],
     [ "udiskie",                "dmenu_udiskie -matching regex -dmenu -i -no-custom -multi-select -p FlashDrive" ],
-    [ "window",                 "dmenu_window" ],
-    [ "History Command",        "history | rofi -dmenu | wl-copy" ],
-    [ "youtube",                "ytfzf -fDh" ],
     [ "Start Cloudflared",      "cloudflared tunnel run moodle" ],
     [ "Stop Cloudflared",       "pkill cloudflared" ],
     [ "umount iso",             "dmenu_iso" ],
@@ -58,7 +54,6 @@ pkgs.writeShellScriptBin "dmenu-mager" ''
     [ "Scite Ai",               "zen   --new-window --app=https://scite.ai" ],
     [ "NixOS dan Flake Book",   "zen   --new-window --app=https://nixos-and-flakes.thiscute.world" ],
     [ "EYD",                    "zen   --new-window --app=https://ejaan.kemdikbud.go.id" ],
-    [ "Rstudio-server",         "brave --app=https://localhost:8787/" ],
     [ "Remaker AI",             "brave --app=https://remaker.ai/" ],
     [ "Blackbox AI",            "brave --app=https://blackbox.ai/" ],
     [ "CLaude AI",              "brave --app=https://claude.ai/" ],
@@ -114,7 +109,8 @@ pkgs.writeShellScriptBin "dmenu-mager" ''
     [ "trello",                 "floorp --new-window --app=https://trello.com/" ],
     [ "facebook",               "brave --app=https://m.facebook.com/" ],
     [ "Instagram",              "brave --app=https://instagram.com/" ],
-    [ "E-Learning",             "brave --app=https://localhost" ],
+    [ "Elmim",             "brave --app=https://localhost" ],
+    [ "Rstudio-server",             "brave --app=http://localhost:8787" ],
     [ "Excalidraw",             "brave --app=http://localhost:5000" ],
     [ "ChatPDF",                "brave --app=http://chatpdf.com" ],
     [ "tweetDeck",              "floorp --new-window --app=https://tweetdeck.twitter.com/" ],

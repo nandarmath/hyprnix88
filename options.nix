@@ -32,7 +32,7 @@ in {
   # animations-end4.nix (end-4 project)
   # animations-dynamic.nix (ml4w project)
   # animations-kaku.nix (kaku project)
-  animChoice = ./config/home/hyprland/animations-end4.nix;
+  animChoice = ./config/home/hyprland/animations-dynamic.nix;
 
   # System Settings
   clock24h = true;
