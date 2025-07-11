@@ -139,6 +139,7 @@ in {
     zenity
     sdcv
     translate-shell
+    backgroundremover
 
     # tvbrowser
     (pkgs.callPackage ../pkgs/amzqr.nix {})

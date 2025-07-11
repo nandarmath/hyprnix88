@@ -6,7 +6,7 @@ wallpaper_name="$(ls $wallpapers_folder | rofi -dmenu || pkill rofi)"
 
 if [[ -f $wallpapers_folder/$wallpaper_name ]]; then
     ln -sf "$wallpapers_folder/$wallpaper_name" "$wallpaper_path"
-    wall-change "$wallpaper_path"
+    swww img "$wallpaper_path"
 else
     exit 1
 fi

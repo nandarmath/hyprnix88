@@ -137,7 +137,6 @@
     newsflash
     inputs.zen-browser.packages."${system}".specific
     vim
-    rembg
     gimp3
     gimp3-with-plugins
     libwacom

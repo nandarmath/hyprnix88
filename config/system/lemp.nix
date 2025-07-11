@@ -60,10 +60,6 @@ services.nginx = {
             open_file_cache_valid 45s;
             open_file_cache_min_uses 3;
             open_file_cache_errors on;
-
-            
-            
-
         '';
         locations."/".extraConfig =''
             try_files $uri $uri/ = 404;
