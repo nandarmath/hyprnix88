@@ -48,6 +48,7 @@
     ./syncthing.nix
     ./scheduler2.nix
     ./virtmanager.nix
+    # ./cloudflared.nix
     # ./collabora.nix
     # ./nixvim/nixvim.nix
   ];

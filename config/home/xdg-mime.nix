@@ -3,20 +3,26 @@ with lib;
 let
   defaultApps = {
     browser = [ "zen-beta.desktop" ];
-    text = [ "neovim.desktop" ];
+    text = [ "neovide.desktop" ];
     image = [ "imv-dir.desktop" ];
     audio = [ "mpv.desktop" ];
     video = [ "mpv.desktop" ];
     directory = [ "thunar.desktop" ];
-    office = [ "libreoffice.desktop" ];
-    pdf = [ "org.gnome.Evince.desktop" ];
+    office = [ "libreoffice.desktop" "libreoffice-writer.desktop" "libreoffice-calc.desktop" "libreoffice-impress.desktop" ];
+    pdf = [
+      # "org.gnome.Evince.desktop"
+      "com.microsoft.Edge.desktop"
+    ];
     terminal = [ "kitty.desktop" ];
     archive = [ "org.gnome.FileRoller.desktop" ];
     discord = [ "vesktop.desktop" ];
   };
 
   mimeMap = {
-    text = [ "text/plain" ];
+    text = [
+      "text/plain"
+      "txt"
+    ];
     image = [
       "image/bmp"
       "image/gif"
@@ -66,6 +72,56 @@ let
       "application/vnd.ms-excel"
       "application/vnd.ms-powerpoint"
       "application/rtf"
+      "application/vnd.oasis.opendocument.text-template" 
+      "application/vnd.oasis.opendocument.text-web"
+      "application/vnd.oasis.opendocument.text-master"
+      "application/vnd.sun.xml.writer" 
+      "application/vnd.sun.xml.writer.template"
+      "application/vnd.sun.xml.writer.global" 
+      "application/msword" 
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document" 
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.template" 
+      "application/rtf" 
+      "text/rtf" 
+      "application/x-doc" 
+      "application/vnd.wordperfect" 
+      
+      # LibreOffice Calc - Spreadsheet files
+      "application/vnd.oasis.opendocument.spreadsheet" 
+      "application/vnd.oasis.opendocument.spreadsheet-template" 
+      "application/vnd.sun.xml.calc" 
+      "application/vnd.sun.xml.calc.template" 
+      "application/vnd.ms-excel" 
+      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" 
+      "application/vnd.openxmlformats-officedocument.spreadsheetml.template" 
+      "text/csv" 
+      "application/csv" 
+      "application/x-csv" 
+      
+      # LibreOffice Impress - Presentation files
+      "application/vnd.oasis.opendocument.presentation" 
+      "application/vnd.oasis.opendocument.presentation-template" 
+      "application/vnd.sun.xml.impress" 
+      "application/vnd.sun.xml.impress.template" 
+      "application/vnd.ms-powerpoint" 
+      "application/vnd.openxmlformats-officedocument.presentationml.presentation" 
+      "application/vnd.openxmlformats-officedocument.presentationml.template"
+      "application/vnd.openxmlformats-officedocument.presentationml.slideshow" 
+      
+      # LibreOffice Draw - Drawing files
+      "application/vnd.oasis.opendocument.graphics" 
+      "application/vnd.oasis.opendocument.graphics-template" 
+      "application/vnd.sun.xml.draw" 
+      "application/vnd.sun.xml.draw.template" 
+      
+      # LibreOffice Math - Formula files
+      "application/vnd.oasis.opendocument.formula" 
+      "application/vnd.sun.xml.math" 
+      
+      # LibreOffice Base - Database files
+      "application/vnd.oasis.opendocument.database" 
+      "application/vnd.sun.xml.base" 
+
     ];
     pdf = [ "application/pdf" ];
     terminal = [ "terminal" ];
@@ -81,11 +137,7 @@ let
   associations =
     with lists;
     listToAttrs (
-      flatten (
-        mapAttrsToList (
-          key: map (type: attrsets.nameValuePair type defaultApps."${key}")
-        ) mimeMap
-      )
+      flatten (mapAttrsToList (key: map (type: attrsets.nameValuePair type defaultApps."${key}")) mimeMap)
     );
 in
 {

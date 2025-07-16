@@ -8,6 +8,7 @@ inherit (import ../../options.nix) flatpak;
   desiredFlatpaks = [
    "io.github._0xzer0x.qurancompanion"
    "org.gnome.NetworkDisplays"
+   "com.microsoft.Edge"
   ];
 
 in

@@ -127,7 +127,6 @@ keymap = [
 	{ on = [ "g", "h" ],       run = "cd ~",             desc = "Go home" },
 	{ on = [ "g", "c" ],       run = "cd ~/.config",     desc = "Goto ~/.config" },
 	{ on = [ "g", "d" ],       run = "cd ~/Downloads",   desc = "Goto ~/Downloads" },
-	{ on = [ "g", "m" ],       run = "cd ~/Data/01 My Data",   desc = "Goto ~/Data/01 My Data" },
 	{ on = [ "g", "<Space>" ], run = "cd --interactive", desc = "Jump interactively" },
 
 	# Tabs

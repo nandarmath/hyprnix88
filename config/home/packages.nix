@@ -11,6 +11,7 @@ in {
     libvirt
     tty-clock
     swww
+    kalker
     grim
     slurp
     file-roller
@@ -37,10 +38,9 @@ in {
     blender
     gabutdm
     # varia
-    pairdrop
+    # pairdrop
     rustup
     nix-search-cli
-    # microsoft-edge
     ghostscript
     gparted
     droidcam
@@ -52,6 +52,7 @@ in {
     pdfarranger
     chromium
     floorp-unwrapped
+    brave
     tgpt
     bat
     scrcpy
@@ -72,9 +73,7 @@ in {
     converseen
     satty
     glab
-    # calibre
-    brave
-    kalker
+    calibre
     jdk
     inkscape-with-extensions
     # gimp-with-plugins
@@ -106,7 +105,6 @@ in {
     cliphist
     joplin-desktop
     joplin
-    rofi-wayland
     aria2
     clipmenu
     xsel
@@ -117,7 +115,7 @@ in {
     ddgr
     appflowy
     ocrmypdf
-    fuzzel
+    # fuzzel
     nixd
     nixfmt-rfc-style
     hyprshot

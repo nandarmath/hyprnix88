@@ -199,6 +199,9 @@ let
     ggiraph
     googlesheets4
     randomForest
+    npmv
+    vegan
+    modeest
 
     # citr
   ];

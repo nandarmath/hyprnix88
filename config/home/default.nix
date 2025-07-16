@@ -17,7 +17,7 @@ in {
     ./kdenlive.nix
     ./kitty.nix
     ./packages.nix
-    ./rofiw.nix
+    ./rofiwf.nix
     ./starship.nix
     waybarChoice
     ./swappy.nix
@@ -29,23 +29,20 @@ in {
     ./tex.nix
     ./fonts.nix
     ./wlogout
-    ./yazi
     ./files.nix
-    # ./firefox.nix
     ./fastfetch
     ./cava.nix
     ./mpd.nix
     ./vim.nix
     ./stylix.nix
     ./zed.nix
-    # ./dashboard
     ../scripts/scripts.nix
     ./eww-treanto
-    # ./walker.nix
-    # ./anyrun.nix
     ./nxchad.nix
     ./rmpc
-    # ./hypr-dock.nix
+    ./yazi
+    ./xdg-mime.nix
+    ./yazinix.nix
 
 
   ];
