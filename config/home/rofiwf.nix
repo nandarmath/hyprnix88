@@ -3,25 +3,32 @@
   config,
   ...
 }:
+with pkgs;
 let
   palette = config.lib.stylix.colors;
 in
 {
+  home.packages =[
+      rofi-file-browser
+      rofi-pass-wayland
+      rofi-pulse-select
+      rofi-systemd
+  ];
   programs.rofi = {
     enable = true;
     font = "JetBrains Nerd Font 16";
     package = pkgs.rofi-wayland;
     plugins = [
-      pkgs.rofi-file-browser
-      pkgs.rofi-pass-wayland
-      pkgs.rofi-pulse-select
-      pkgs.rofi-systemd
+      rofi-file-browser
+      rofi-pass-wayland
+      rofi-pulse-select
+      rofi-systemd
 
     ];
     pass = {
       enable = true;
       package = pkgs.rofi-pass-wayland;
-      stores = [ "home/nandar/.pass" ];
+      stores = [ "/home/nandar/.pass" ];
     };
     extraConfig = {
       case-sensitive = false;
@@ -30,6 +37,10 @@ in
       display-filebrowser = " Files ";
       display-window = " Windows ";
       display-recursivebrowser = "󱞊 MoreFiles ";
+      hover-select =true;
+      me-select-entry="MousePrimary";
+      me-accept-entry="!MousePrimary";     
+      scroll-method=0;
       modi = [
         "drun"
         "run"
@@ -37,6 +48,7 @@ in
         "window"
         "recursivebrowser"
       ];
+
       show-icons = true;
     };
     theme =
@@ -55,7 +67,7 @@ in
           background-color = mkLiteral "@bg";
           location = mkLiteral "center";
           width = mkLiteral "30%";
-          border-radius = "10px";
+          border-radius = mkLiteral "10px";
 
         };
 

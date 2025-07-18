@@ -1,6 +1,8 @@
 { pkgs, ... }:
 {
-
+  programs.nixvim = {
+    defaultEditor = true;
+  };
   programs.nixvim = {
     enable = true;
     plugins.cmp-path.enable = true;

@@ -40,9 +40,8 @@ in {
     ./eww-treanto
     ./nxchad.nix
     ./rmpc
-    ./yazi
     ./xdg-mime.nix
-    ./yazinix.nix
+    ./yazi.nix
 
 
   ];

@@ -38,12 +38,6 @@
     gtk3
     gtk-layer-shell
     rofi-systemd
-    (rofi.override {
-      plugins = [
-        rofi-file-browser
-        rofi-mpd
-      ];
-    })
     quarto
     inxi
     jasp-desktop

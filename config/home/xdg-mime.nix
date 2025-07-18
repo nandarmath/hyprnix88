@@ -3,7 +3,7 @@ with lib;
 let
   defaultApps = {
     browser = [ "zen-beta.desktop" ];
-    text = [ "neovide.desktop" ];
+    text = [ "neovide.desktop" "nvim"];
     image = [ "imv-dir.desktop" ];
     audio = [ "mpv.desktop" ];
     video = [ "mpv.desktop" ];
@@ -22,6 +22,13 @@ let
     text = [
       "text/plain"
       "txt"
+      "text/nix"
+      "text/txt"
+      "text/sh"
+      "text/py"
+      "text/qmd"
+      "text/R"
+      "text/md"
     ];
     image = [
       "image/bmp"

@@ -29,7 +29,6 @@ in {
     imv
     transmission_3-gtk
     mpv
-    rofi-pulse-select
     gitg
     vlc
     xournalpp

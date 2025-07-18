@@ -12,6 +12,7 @@
   rofi-calc = pkgs.writeShellScriptBin "rofi-calc" (builtins.readFile ./rofi-calc.sh);
   rofi-wallpaper = pkgs.writeShellScriptBin "rofi-wallpaper" (builtins.readFile ./wallpaper-picker.sh);
   # book-search = pkgs.writeShellScriptBin "book-search" (builtins.readFile ./books-search.sh);
+ portalhyprland = pkgs.writeShellScriptBin "portalhyprland" (builtins.readFile ./portalhyprland.sh);
   
   
   
@@ -28,6 +29,7 @@ in {
     rofi-dict
     rofi-calc
     rofi-wallpaper
+    portalhyprland
     (import ./emopicker9000.nix {inherit pkgs;})
     (import ./task-waybar.nix {inherit pkgs;})
     (import ./squirtle.nix {inherit pkgs;})

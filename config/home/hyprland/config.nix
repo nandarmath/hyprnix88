@@ -19,10 +19,12 @@ in
       settings = {
         exec-once = [
           "$POLKIT_BIN"
-          "xdg_sh"
-          "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+          # "xdg_sh"
           "systemctl --user import-environment QT_QPA_PLATFORMTHEME WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-          "systemctl --user stop xdg-desktop-portal-gtk"
+          "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+          "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+          "portalhyprland"
+          # "systemctl --user stop xdg-desktop-portal-gtk"
           "xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2"
           "hyprctl setcursor Bibata-Modern-Ice 24"
           # "killall -q swww;sleep .5 && swww init"
