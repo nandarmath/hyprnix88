@@ -101,6 +101,10 @@
     enable = true;
     freeMemThreshold = 5;
   };
+  services.smartd = {
+    enable = true;
+    autodetect = true;
+  };
   services.preload = {
     enable = true;
     package = pkgs.preload;

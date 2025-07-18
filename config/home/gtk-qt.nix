@@ -1,14 +1,14 @@
-{ pkgs, config, gtkThemeFromScheme, ... }:
+{ pkgs,lib, config, gtkThemeFromScheme, ... }:
 
 {
   # Configure Cursor Theme
-  home.pointerCursor = {
-    gtk.enable = true;
-    x11.enable = true;
-    # package = pkgs.bibata-cursors;
-    # name = "Bibata-Modern-Ice";
-    # size = 24;
-  };
+  # home.pointerCursor = {
+  #   gtk.enable = true;
+  #   x11.enable = true;
+  #   # package = pkgs.bibata-cursors;
+  #   # name = "Bibata-Modern-Ice";
+  #   # size = 24;
+  # };
 
   # Theme GTK
   gtk = {
@@ -38,7 +38,7 @@
   qt = {
     enable = true;
     #platformTheme = "gtk";
-    # platformTheme.name = "gtk";
+    platformTheme.name = lib.mkForce "qtct";
     # style = {
     #     name = "adwaita-dark";
     #     package = pkgs.adwaita-qt;
