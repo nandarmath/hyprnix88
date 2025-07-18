@@ -48,8 +48,16 @@ in
         "window"
         "recursivebrowser"
       ];
-
       show-icons = true;
+      kb-select-1="Control+1";
+      kb-select-2="Control+2";
+      kb-select-3="Control+3";
+      kb-select-4="Control+4";
+      kb-select-5="Control+5";
+      kb-select-6="Control+6";
+      kb-select-7="Control+7";
+      kb-select-8="Control+8";
+      kb-select-9="Control+9";
     };
     theme =
       let

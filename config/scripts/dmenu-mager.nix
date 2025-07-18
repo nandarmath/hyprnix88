@@ -7,7 +7,7 @@
 # Last Modified By  : M. Nabil Adani <nblid48@gmail.com>
 { pkgs }:
 pkgs.writeShellScriptBin "dmenu-mager" ''
-  DMENU="rofi -dmenu -i -p Mager"
+  DMENU="rofi -dmenu -i -p Mager "
   # OPTIONS = [[label, command]]
   OPTIONS=''''
   [

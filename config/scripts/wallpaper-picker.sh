@@ -2,7 +2,7 @@
 
 wallpapers_folder=$HOME/Pictures/Wallpapers
     
-selected=$(for a in $wallpapers_folder/*.*; do echo -en "${a##*/}\0icon\x1f$a\n" ; done | rofi -dmenu -theme-str 'element-icon { size: 4em; }')
+selected=$(for a in $wallpapers_folder/*.*; do echo -en "${a##*/}\0icon\x1f$a\n" ; done | rofi -dmenu -p "Pilih Wallpaper " -theme-str 'element-icon { size: 4em; }')
 
 # Gabungkan dengan path
 if [ -n "$selected" ]; then

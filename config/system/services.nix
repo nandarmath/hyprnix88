@@ -9,18 +9,18 @@
   # List services that you want to enable:
   services.openssh.enable = true;
   services.fstrim.enable = true;
-  xdg.portal = {
-    enable = true;
-    extraPortals = [
-      # pkgs.xdg-desktop-portal-gtk
-      pkgs.xdg-desktop-portal
-    ];
-    configPackages = [
-      pkgs.xdg-desktop-portal-gtk
-      pkgs.xdg-desktop-portal-hyprland
-      pkgs.xdg-desktop-portal
-    ];
-  };
+  # xdg.portal = {
+  #   enable = true;
+  #   extraPortals = [
+  #     # pkgs.xdg-desktop-portal-gtk
+  #     pkgs.xdg-desktop-portal
+  #   ];
+  #   configPackages = [
+  #     pkgs.xdg-desktop-portal-gtk
+  #     pkgs.xdg-desktop-portal-hyprland
+  #     pkgs.xdg-desktop-portal
+  #   ];
+  # };
   services.pipewire = {
     enable = true;
     alsa.enable = true;

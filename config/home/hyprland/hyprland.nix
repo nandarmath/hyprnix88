@@ -45,31 +45,26 @@ in
         "systemctl --user start hyprpolkitagent"
         "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-        "portalhyprland"
+        # "portalhyprland"
         # "systemctl --user stop xdg-desktop-portal-gtk"
         "xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2"
         "hyprctl setcursor Bibata-Modern-Ice 24"
         # "killall -q swww;sleep .5 && swww init"
         "swww-daemon"
-        "swww img ${stylixImage}"
         "pypr &"
+        "sleep 1.5 && swww img ${stylixImage}"
         "keepassxc"
         # "wasistlos"
         "cloudflared tunnel run moodle"
         "iio-hyprland"
-        "waybar"
+        "killall -q waybar;sleep .5 && waybar"
+        "killall -q swaync;sleep .5 && swaync"
         # "hyprpanel &"
         "sleep 1"
-        # "eww daemon"
-        # "eww open bar &"
-        # "walker --gapplication-service"
         "wl-paste --type text --watch cliphist store"
         "wl-paste --type image --watch cliphist store"
         "modprobe snd-aloop"
-        "swaync"
-        # "wallsetter"
         "nm-applet --indicator"
-        # "swayidle -w timeout 720 'swaylock -f' timeout 800 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on' before-sleep 'swaylock -f -c 000000'"
       ];
 
       input = {
@@ -92,6 +87,8 @@ in
 
       master = {
         new_status = true;
+        new_on_top = 1;
+        mfact = 0.5;
       };
 
       general = {
@@ -118,13 +115,22 @@ in
         key_press_enables_dpms = false;
         disable_hyprland_logo = true;
         enable_anr_dialog = false;
-        # layers_hog_keyboard_focus = true;
-        # initial_workspace_tracking = 0;
+        layers_hog_keyboard_focus = true;
+        initial_workspace_tracking = 0;
+        enable_swallow = false;
+        vfr = true;
+        vrr = 2;
       };
 
       dwindle = {
         pseudotile = true;
         preserve_split = true;
+        force_split = 2;
+      };
+      render = {
+        explicit_sync = 1; # Change to 1 to disable
+        explicit_sync_kms = 1;
+        direct_scanout = 0;
       };
 
       decoration = {
