@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
 
 wallpapers_folder=$HOME/Pictures/Wallpapers
-wallpaper_name="$(ls $wallpapers_folder | rofi -dmenu || pkill rofi)"
-
-if [[ -f $wallpapers_folder/$wallpaper_name ]]; then
-    swww img "$wallpaper_folder/$wallpaper_name"
     
-else
-    exit 1
+selected=$(for a in $wallpapers_folder/*.*; do echo -en "${a##*/}\0icon\x1f$a\n" ; done | rofi -dmenu -theme-str 'element-icon { size: 4em; }')
+
+# Gabungkan dengan path
+if [ -n "$selected" ]; then
+    full_path="$wallpapers_folder/$selected"
+    echo "File yang dipilih: $full_path"
 fi
+swww img $full_path
+
