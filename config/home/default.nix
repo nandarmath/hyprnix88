@@ -41,6 +41,7 @@ in {
     ./nxchad.nix
     ./rmpc
     ./xdg-mime.nix
+    ./xdg.nix
     ./yazi.nix
 
 
