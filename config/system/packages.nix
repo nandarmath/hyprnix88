@@ -32,7 +32,6 @@
     qt6.qtwayland
     qt5.qtwayland
     v4l-utils
-    ydotool
     nh
     dateutils
     gtk3
@@ -45,7 +44,6 @@
     distrobox
     nix-output-monitor
     kdePackages.qt6ct
-    wl-clipboard
     socat
     cowsay
     lsd
@@ -68,7 +66,6 @@
     material-icons
     brightnessctl
     toybox
-    swappy
     appimage-run
     pdftk
     poppler_utils
@@ -135,16 +132,17 @@
     gimp3-with-plugins
     libwacom
     base16-schemes
+    uwsm
   ];
 
   programs.steam.gamescopeSession.enable = true;
   programs.dconf.enable = true;
   programs.hyprland = {
     enable = true;
-    # package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     package = pkgs.hyprland;
-    xwayland.enable = true;
-    systemd.setPath.enable = true;
+    withUWSM = true;
+    # xwayland.enable = true;
+    # systemd.setPath.enable = true;
   };
 
   # For Autorotate on tablet mode with x390 yoga

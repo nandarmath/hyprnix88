@@ -10,10 +10,7 @@ in {
     # discord
     libvirt
     tty-clock
-    swww
     kalker
-    grim
-    slurp
     file-roller
     ffmpeg
     wf-recorder
