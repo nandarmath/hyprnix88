@@ -1,6 +1,7 @@
 {
   pkgs,
   config,
+  lib,
   ...
 }: {
   programs.zed-editor = {
@@ -71,7 +72,7 @@
       vim_mode = true;
       load_direnv = "shell_hook";
       theme = "Dracula";
-      buffer_font_family = "FiraCode Nerd Font";
+      buffer_font_family = lib.mkForce "FiraCode Nerd Font";
       ui_font_size = 16;
       buffer_font_size = 16;
       show_edit_predictions = true;

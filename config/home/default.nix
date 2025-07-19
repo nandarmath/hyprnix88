@@ -42,7 +42,8 @@ in {
     ./rmpc
     ./xdg-mime.nix
     ./xdg.nix
-    ./yazi.nix
+    ./yazi
+    # ./yazi.nix
 
 
   ];
