@@ -9,6 +9,8 @@ services.desktopManager.gnome.enable = true;
     # for packages that are pkgs.*
     gnome-tour
     gnome-connections
+    gnome-calculator
+    gnome-text-editor
 
   ]) ++ (with pkgs; [
     # for packages that are pkgs.gnome.*

@@ -71,10 +71,10 @@
       format_on_save = "on";
       vim_mode = true;
       load_direnv = "shell_hook";
-      theme = "Dracula";
+      theme = lib.mkForce "Dracula";
       buffer_font_family = lib.mkForce "FiraCode Nerd Font";
-      ui_font_size = 16;
-      buffer_font_size = 16;
+      ui_font_size = lib.mkForce 16;
+      buffer_font_size =lib.mkForce 16;
       show_edit_predictions = true;
     };
   };

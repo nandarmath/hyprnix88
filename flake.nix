@@ -7,7 +7,10 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     # nix-colors.url = "github:misterio77/nix-colors";
     flake-parts.url = "github:hercules-ci/flake-parts";
-    stylix.url = "github:danth/stylix/release-25.05";
+    stylix = {
+      url = "github:danth/stylix/release-25.05";
+      # inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     # zen zen-browser
@@ -53,90 +56,102 @@
     walker.url = "github:abenz1267/walker";
   };
 
-  outputs = inputs @ {
-    self,
-    nixpkgs,
-    stylix,
-    nix-flatpak,
-    home-manager,
-    impermanence,
-    sops-nix,
-    nixpkgs-r2405,
-    nixpkgs-r2205,
-    fmpkgs,
-    chaotic,
-    # anyrun,
-    ...
-  }: let
-    system = "x86_64-linux";
-    overlay-r2405 = final: prev: {
-      r2405 = import nixpkgs-r2405 {
-        inherit system;
-        config.allowUnfree = true;
-      };
-    };
-
-    overlay-r2205 = final: prev: {
-      r2205 = import nixpkgs-r2205 {
-        inherit system;
-        config.allowUnfree = true;
-      };
-    };
-    inherit (import ./options.nix) username hostname;
-
-    pkgs = import nixpkgs {
-      inherit system;
-      config = {
-        allowUnfree = true;
-      };
-      overlays = [
-        inputs.hyprpanel.overlay
-      ];
-    };
-  in {
-    nixosConfigurations = {
-      "${hostname}" = nixpkgs.lib.nixosSystem {
-        specialArgs = {
+  outputs =
+    inputs@{
+      self,
+      nixpkgs,
+      stylix,
+      nix-flatpak,
+      home-manager,
+      impermanence,
+      sops-nix,
+      nixpkgs-r2405,
+      nixpkgs-r2205,
+      fmpkgs,
+      chaotic,
+      # anyrun,
+      ...
+    }:
+    let
+      system = "x86_64-linux";
+      overlay-r2405 = final: prev: {
+        r2405 = import nixpkgs-r2405 {
           inherit system;
-          inherit inputs;
-          inherit username;
-          inherit hostname;
+          config.allowUnfree = true;
         };
+      };
 
-        modules = [
-          ({
-            config,
-            pkgs,
-            ...
-          }: {nixpkgs.overlays = [overlay-r2405 overlay-r2205 inputs.hyprpanel.overlay];})
-          # {nixpkgs.overlays = [inputs.fmpkgs.overlays.default];}
-          # {inherit (inputs.fmpkgs) nixpkgs;}
-          # {environment.systemPackages = [
-          # anyrun.packages.${system}.anyrun-with-all-plugins
-          # ];}
-          ./system.nix
-          chaotic.nixosModules.default
-          # stylix.nixosModules.stylix
-          sops-nix.nixosModules.sops
-          impermanence.nixosModules.impermanence
-          home-manager.nixosModules.home-manager
-          nix-flatpak.nixosModules.nix-flatpak
-          {
-            home-manager.extraSpecialArgs = {
-              inherit username;
-              inherit inputs;
-              # inherit (inputs.nix-colors.lib-contrib {inherit pkgs;}) gtkThemeFromScheme;
-            };
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.backupFileExtension = "backup";
-            home-manager.users.${username} = import ./home.nix;
-            # home-manager.users.${username}.initialPassword = "1988";
-          }
-          # nixvim.nixosModules.nixvim
-          # nxchad.nixosModules.nixvim
+      overlay-r2205 = final: prev: {
+        r2205 = import nixpkgs-r2205 {
+          inherit system;
+          config.allowUnfree = true;
+        };
+      };
+      inherit (import ./options.nix) username hostname;
+
+      pkgs = import nixpkgs {
+        inherit system;
+        config = {
+          allowUnfree = true;
+        };
+        overlays = [
+          inputs.hyprpanel.overlay
         ];
       };
+    in
+    {
+      nixosConfigurations = {
+        "${hostname}" = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit system;
+            inherit inputs;
+            inherit username;
+            inherit hostname;
+          };
+
+          modules = [
+            (
+              {
+                config,
+                pkgs,
+                ...
+              }:
+              {
+                nixpkgs.overlays = [
+                  overlay-r2405
+                  overlay-r2205
+                  inputs.hyprpanel.overlay
+                ];
+              }
+            )
+            # {nixpkgs.overlays = [inputs.fmpkgs.overlays.default];}
+            # {inherit (inputs.fmpkgs) nixpkgs;}
+            # {environment.systemPackages = [
+            # anyrun.packages.${system}.anyrun-with-all-plugins
+            # ];}
+            ./system.nix
+            chaotic.nixosModules.default
+            # stylix.nixosModules.stylix
+            sops-nix.nixosModules.sops
+            impermanence.nixosModules.impermanence
+            home-manager.nixosModules.home-manager
+            nix-flatpak.nixosModules.nix-flatpak
+            {
+              home-manager.extraSpecialArgs = {
+                inherit username;
+                inherit inputs;
+                # inherit (inputs.nix-colors.lib-contrib {inherit pkgs;}) gtkThemeFromScheme;
+              };
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.backupFileExtension = "backup";
+              home-manager.users.${username} = import ./home.nix;
+              # home-manager.users.${username}.initialPassword = "1988";
+            }
+            # nixvim.nixosModules.nixvim
+            # nxchad.nixosModules.nixvim
+          ];
+        };
+      };
     };
-  };
 }

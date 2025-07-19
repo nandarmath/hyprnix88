@@ -65,6 +65,8 @@ in
         "wl-paste --type image --watch cliphist store"
         "modprobe snd-aloop"
         "nm-applet --indicator"
+        "nwg-dock-hyprland -i 32 -w 10 -hl top -hd 0 -mb 10 -ml 10 -mr 10 -x -c '
+rofi -show drun' -lp start -d -l top"
       ];
 
       input = {
