@@ -10,7 +10,7 @@
     ./autorun.nix
     ./boot.nix
     ./displaymanager.nix
-    ./flatpak.nix
+    ./flatpakNew.nix
     ./hwclock.nix
     ./intel-amd.nix
     ./intel-gpu.nix

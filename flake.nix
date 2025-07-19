@@ -7,7 +7,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     # nix-colors.url = "github:misterio77/nix-colors";
     flake-parts.url = "github:hercules-ci/flake-parts";
-    stylix.url = "github:danth/stylix/release-24.11";
+    stylix.url = "github:danth/stylix/release-25.05";
 
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     # zen zen-browser
@@ -15,6 +15,7 @@
     # neovim in nix
     nvf.url = "github:notashelf/nvf";
     # repo xdman
+    nix-flatpak.url = "github:gmodena/nix-flatpak?ref=latest";
     fmpkgs.url = "github:fmway/fmpkgs";
     impermanence.url = "github:nix-community/impermanence";
     ags.url = "github:Aylur/ags";
@@ -56,6 +57,7 @@
     self,
     nixpkgs,
     stylix,
+    nix-flatpak,
     home-manager,
     impermanence,
     sops-nix,
@@ -63,9 +65,7 @@
     nixpkgs-r2205,
     fmpkgs,
     chaotic,
-    nixvim,
     # anyrun,
-    nxchad,
     ...
   }: let
     system = "x86_64-linux";
@@ -120,6 +120,7 @@
           sops-nix.nixosModules.sops
           impermanence.nixosModules.impermanence
           home-manager.nixosModules.home-manager
+          nix-flatpak.nixosModules.nix-flatpak
           {
             home-manager.extraSpecialArgs = {
               inherit username;
