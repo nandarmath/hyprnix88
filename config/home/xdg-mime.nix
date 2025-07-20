@@ -8,7 +8,7 @@ let
     audio = [ "mpv.desktop" ];
     video = [ "mpv.desktop" ];
     directory = [ "thunar.desktop" ];
-    office = [ "libreoffice.desktop" "libreoffice-writer.desktop" "libreoffice-calc.desktop" "libreoffice-impress.desktop" ];
+    office = ["writer.desktop" "calc.desktop" "impress.desktop" "math.desktop" ];
     pdf = [
       # "org.gnome.Evince.desktop"
       "com.microsoft.Edge.desktop"
