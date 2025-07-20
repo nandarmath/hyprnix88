@@ -9,7 +9,7 @@
   rofi-filemanager = pkgs.writeShellScriptBin "rofi-filemanager" (builtins.readFile ./rofi-filemanager.sh);
   rofi-wlstream = pkgs.writeShellScriptBin "rofi-wlstream" (builtins.readFile ./rofi-wlstrem.sh);
   rofi-dict = pkgs.writeShellScriptBin "rofi-dict" (builtins.readFile ./rofi-dict.sh);
-  rofi-calc = pkgs.writeShellScriptBin "rofi-calc" (builtins.readFile ./rofi-calc.sh);
+  rofi_calc = pkgs.writeShellScriptBin "rofi_calc" (builtins.readFile ./rofi-calc.sh);
   rofi-wallpaper = pkgs.writeShellScriptBin "rofi-wallpaper" (builtins.readFile ./wallpaper-picker.sh);
   # book-search = pkgs.writeShellScriptBin "book-search" (builtins.readFile ./books-search.sh);
  portalhyprland = pkgs.writeShellScriptBin "portalhyprland" (builtins.readFile ./portalhyprland.sh);
@@ -27,7 +27,7 @@ in {
     rofi-wlstream
     rofi-filemanager
     rofi-dict
-    rofi-calc
+    rofi_calc
     rofi-wallpaper
     portalhyprland
     (import ./emopicker9000.nix {inherit pkgs;})

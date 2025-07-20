@@ -33,7 +33,6 @@ in {
     # openboard
     blender
     gabutdm
-    # varia
     # pairdrop
     rustup
     nix-search-cli

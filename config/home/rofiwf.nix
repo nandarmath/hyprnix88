@@ -13,6 +13,7 @@ in
       rofi-pass-wayland
       rofi-pulse-select
       rofi-systemd
+      rofi-calc
   ];
   programs.rofi = {
     enable = true;
@@ -23,6 +24,7 @@ in
       rofi-pass-wayland
       rofi-pulse-select
       rofi-systemd
+      rofi-calc
 
     ];
     pass = {

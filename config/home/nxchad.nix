@@ -1,9 +1,6 @@
 { pkgs, ... }:
 {
   programs.nixvim = {
-    defaultEditor = true;
-  };
-  programs.nixvim = {
     enable = true;
     plugins.cmp-path.enable = true;
     plugins.cmp-path.autoLoad = true;
@@ -40,7 +37,10 @@
         codeRunner.default_method = "molten";
         lspFeatures.completion.enabled = true;
         lspFeatures.chunks = "curly";
-        lspFeatures.languages = ["r" "python"];
+        lspFeatures.languages = [
+          "r"
+          "python"
+        ];
         lspFeatures.diagnostics.enabled = true;
       };
     };

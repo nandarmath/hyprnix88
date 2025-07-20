@@ -65,7 +65,7 @@ in
         "wl-paste --type image --watch cliphist store"
         "modprobe snd-aloop"
         "nm-applet --indicator"
-        "nwg-dock-hyprland -i 32 -w 10 -hl top -hd 0 -mb 10 -ml 10 -mr 10 -x -c 'rofi -show drun' -lp start -d -l top"
+        # "nwg-dock-hyprland -i 32 -w 10 -hl top -hd 0 -mb 10 -ml 10 -mr 10 -x -c 'rofi -show drun' -lp start -d -l top"
       ];
 
       input = {
@@ -119,8 +119,8 @@ in
         layers_hog_keyboard_focus = true;
         initial_workspace_tracking = 0;
         enable_swallow = false;
-        vfr = true;
-        vrr = 2;
+        # vfr = true;
+        # vrr = 2;
       };
 
       dwindle = {
