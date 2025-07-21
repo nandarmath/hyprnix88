@@ -29,6 +29,7 @@ pkgs.writeShellScriptBin "dmenu-mager" ''
     [ "Rofi-dict",              "rofi-dict" ],
     [ "Rofi-calc",              "rofi_calc" ],
     [ "Rofi-zotero",            "rofi-zotero" ],
+    [ "Rofi-systemd",           "rofi-systemd" ],
     [ "kill",                   "dmenu_kill" ],
     [ "kill droidcam",          "pkill droidcam-cli" ],
     [ "monitor",                "monitor-projection" ],

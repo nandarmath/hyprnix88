@@ -11,7 +11,7 @@
       url = "github:danth/stylix/release-25.05";
       # inputs.nixpkgs.follows = "nixpkgs";
     };
-
+    inputs.nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     # zen zen-browser
     zen-browser.url = "github:MarceColl/zen-browser-flake";
@@ -70,6 +70,7 @@
       fmpkgs,
       chaotic,
       # anyrun,
+      nixos-hardware,
       ...
     }:
     let
@@ -136,6 +137,7 @@
             impermanence.nixosModules.impermanence
             home-manager.nixosModules.home-manager
             nix-flatpak.nixosModules.nix-flatpak
+            nixos-hardware.nixosModules.lenovo-thinkpad-x390
             {
               home-manager.extraSpecialArgs = {
                 inherit username;

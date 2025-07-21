@@ -65,13 +65,14 @@ in
         "wl-paste --type image --watch cliphist store"
         "modprobe snd-aloop"
         "nm-applet --indicator"
-        # "nwg-dock-hyprland -i 32 -w 10 -hl top -hd 0 -mb 10 -ml 10 -mr 10 -x -c 'rofi -show drun' -lp start -d -l top"
+        "nwg-dock-hyprland -i 32 -w 10 -hl top -hd 0 -mb 10 -ml 10 -mr 10 -x -c 'rofi -show drun' -lp start -d -l top"
       ];
 
       input = {
         kb_layout = "${theKBDLayout}, ${theSecondKBDLayout}";
         kb_options = [
           "grp:alt_shift_toggle"
+          "page_up:shift_up"
         ];
         #kb_options=caps:super
         follow_mouse = 1;
