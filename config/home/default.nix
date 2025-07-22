@@ -43,6 +43,7 @@ in {
     ./xdg-mime.nix
     ./xdg.nix
     ./yazi
+    ./keepasxc.nix
     # ./yazi.nix
 
 

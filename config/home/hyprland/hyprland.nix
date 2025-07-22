@@ -169,6 +169,7 @@ in
         "QT_QPA_PLATFORMTHEME,qt6ct"
         "MOZ_DRM_DEVICE,/dev/dri/renderD128"
         "ELECTRON_OZONE_PLATFORM_HINT,wayland"
+        "EDITOR,nvim"
       ];
     };
     extraConfig = "

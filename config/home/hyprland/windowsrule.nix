@@ -48,6 +48,7 @@ _: {
         "float, initialTitle:(Add Folder to Workspace)"
         "float, initialTitle:(Open Files)"
         "float, initialTitle:(wants to save)"
+        "float, initialTitle:(Yazi)"
         "float, class:^('Quick Format Citation')$"
         "float, class:^(file-roller)$"
         "float, class:^(Alacritty)$"
@@ -63,6 +64,8 @@ _: {
         "size 60% 70%, class:^([Ff]erdium)$"
         "size 446 1020, tag:notes"
         "float, tag:notes"
+        "float, tag:file-manager"
+        "size 70% 60%, tag:file-manager"
         "move 11 49, tag:notes"
         "opacity 1.0 1.0, tag:browser*"
         "opacity 0.9 0.8, tag:projects*"
@@ -95,7 +98,6 @@ _: {
         "center,class:^(Zotero)$,title:^(Quick Format Citation|Progress)$"
         "noanim,class:^(Zotero)$,title:^(Quick Format Citation|Progress)$"
         "maxsize 400 100,class:^(Zotero)$,title:^(Quick Format Citation|Progress)$"
-        "noborder,class:^(Zotero)$,title:^(Quick Format Citation|Progress)$"
 
       ];
       workspace = [

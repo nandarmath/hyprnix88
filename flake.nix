@@ -11,7 +11,7 @@
       url = "github:danth/stylix/release-25.05";
       # inputs.nixpkgs.follows = "nixpkgs";
     };
-    inputs.nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     # zen zen-browser
     zen-browser.url = "github:MarceColl/zen-browser-flake";
@@ -23,7 +23,6 @@
     impermanence.url = "github:nix-community/impermanence";
     ags.url = "github:Aylur/ags";
     sops-nix.url = "github:Mic92/sops-nix";
-    hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
     fine-cmdline = {
       url = "github:VonHeikemen/fine-cmdline.nvim";
       flake = false;
@@ -95,9 +94,6 @@
         config = {
           allowUnfree = true;
         };
-        overlays = [
-          inputs.hyprpanel.overlay
-        ];
       };
     in
     {
@@ -121,7 +117,6 @@
                 nixpkgs.overlays = [
                   overlay-r2405
                   overlay-r2205
-                  inputs.hyprpanel.overlay
                 ];
               }
             )

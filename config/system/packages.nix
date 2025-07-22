@@ -124,7 +124,7 @@
     ollama
     open-webui
     # ferdium
-    keepassxc
+    # keepassxc
     newsflash
     inputs.zen-browser.packages."${system}".specific
     vim
