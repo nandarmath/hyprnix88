@@ -21,6 +21,7 @@
   #     pkgs.xdg-desktop-portal
   #   ];
   # };
+  programs.noisetorch.enable = true;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -38,6 +39,7 @@
   networking.firewall.allowedUDPPorts = [
     49152
     53317
+    5900
     8181
     8787
     7236
@@ -54,6 +56,7 @@
     80
     85
     443
+    5900
     53317
     8181
     7236

@@ -66,6 +66,7 @@ in {
     (import ./prayer_time.nix {inherit pkgs;})
     (import ./wallsetter.nix {inherit pkgs;})
     (import ./rofi-zotero.nix {inherit pkgs;})
+    (import ./displaymon.nix {inherit pkgs;})
 
   ];
 

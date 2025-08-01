@@ -15,6 +15,8 @@ in {
     ffmpeg
     wf-recorder
     wl-screenrec
+    noisetorch
+    wayvnc
     tree
     zoxide
     android-tools
@@ -85,7 +87,7 @@ in {
     rnote
     pfetch
     syncthing
-    geogebra
+    geogebra6
     yt-dlp
     # pspp
     kdePackages.okular
@@ -132,6 +134,7 @@ in {
     zenity
     sdcv
     translate-shell
+    # google-chrome
     backgroundremover
 
     # tvbrowser
