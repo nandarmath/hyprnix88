@@ -97,7 +97,7 @@ in
         "$mod" = "SUPER";
         gaps_in = 4;
         gaps_out = 6;
-        border_size = 5;
+        border_size = 3;
         # "col.active_border" = lib.mkForce "rgb(${theme.base08}) rgb(${theme.base0C}) 45deg";
         # "col.inactive_border" = lib.mkForce "rgb(${theme.base01})";
         "col.active_border" =
@@ -173,8 +173,9 @@ in
       ];
     };
     extraConfig = "
-      monitor=eDP-1,preferred,auto,1,transform,0
-      monitor=HEADLESS-1,1920x1080@60,1920x0,1
+      # monitor=eDP-1,preferred,auto,1,transform,0
+      monitor=eDP-1,1920x1080@60,0x0,1,transform,0
+      monitor=HEADLESS-66,1920x1080@60,1920x0,1
     ";
 
   };

@@ -20,7 +20,7 @@ for MON in $(hyprctl monitors | grep HEADLESS | awk '{print $2}'); do
 done
 
 # === YOU SHOULD EDIT THESE ===
-VIRTUAL_MONITOR="HEADLESS-1"
+VIRTUAL_MONITOR="HEADLESS-66"
 VIRTUAL_WORKSPACE=0
 REAL_MONITOR="eDP-1"
 

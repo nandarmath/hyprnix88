@@ -73,6 +73,8 @@ in
     (import ./wallsetter.nix { inherit pkgs; })
     (import ./rofi-zotero.nix { inherit pkgs; })
     (import ./displaymon.nix { inherit pkgs; })
+    (import ./screenshootin-satty.nix { inherit pkgs; })
+    (import ./hyprland-dock.nix { inherit pkgs; })
 
   ];
 
