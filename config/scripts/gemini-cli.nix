@@ -1,9 +1,9 @@
-{ config, pkgs, ... }:
+{config, pkgs, ... }:
 
 let
   gemini-launcher = pkgs.writeShellScriptBin "gemini-launcher" ''
     #!${pkgs.bash}/bin/bash
-    
+
     # Define the path to your API key file
     KEY_FILE="${config.home.homeDirectory}/gem.key"
 
@@ -34,6 +34,9 @@ in
     exec = "gemini-launcher";
     terminal = false;
     type = "Application";
-    categories = [ "Development" "Utility" ];
+    categories = [
+      "Development"
+      "Utility"
+    ];
   };
 }

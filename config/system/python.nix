@@ -39,6 +39,8 @@
       pycairo
       configparser
       dbus-python
+      python-dotenv
+
     ];
 in
   lib.mkIf (python == true) {

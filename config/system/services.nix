@@ -109,7 +109,7 @@
     autodetect = true;
   };
   services.preload = {
-    enable = true;
+    enable = false;
     package = pkgs.preload;
   };
   services.gnome.gnome-keyring.enable = true;

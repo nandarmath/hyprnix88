@@ -9,6 +9,7 @@ let
     video = [ "mpv.desktop" ];
     directory = [ "thunar.desktop" ];
     office = ["writer.desktop" "calc.desktop" "impress.desktop" "math.desktop" ];
+    spreadsheet = [ "calc.desktop"];
     pdf = [
       # "org.gnome.Evince.desktop"
       "com.microsoft.Edge.desktop"
@@ -93,17 +94,6 @@ let
       "application/x-doc" 
       "application/vnd.wordperfect" 
       
-      # LibreOffice Calc - Spreadsheet files
-      "application/vnd.oasis.opendocument.spreadsheet" 
-      "application/vnd.oasis.opendocument.spreadsheet-template" 
-      "application/vnd.sun.xml.calc" 
-      "application/vnd.sun.xml.calc.template" 
-      "application/vnd.ms-excel" 
-      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" 
-      "application/vnd.openxmlformats-officedocument.spreadsheetml.template" 
-      "text/csv" 
-      "application/csv" 
-      "application/x-csv" 
       
       # LibreOffice Impress - Presentation files
       "application/vnd.oasis.opendocument.presentation" 
@@ -129,6 +119,19 @@ let
       "application/vnd.oasis.opendocument.database" 
       "application/vnd.sun.xml.base" 
 
+    ];
+    spreadsheet =[
+      # LibreOffice Calc - Spreadsheet files
+      "application/vnd.oasis.opendocument.spreadsheet" 
+      "application/vnd.oasis.opendocument.spreadsheet-template" 
+      "application/vnd.sun.xml.calc" 
+      "application/vnd.sun.xml.calc.template" 
+      "application/vnd.ms-excel" 
+      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" 
+      "application/vnd.openxmlformats-officedocument.spreadsheetml.template" 
+      "text/csv" 
+      "application/csv" 
+      "application/x-csv" 
     ];
     pdf = [ "application/pdf" ];
     terminal = [ "terminal" ];

@@ -15,8 +15,8 @@ pkgs.writeShellScriptBin "prayer_time" ''
   # Fungsi untuk mendapatkan data waktu sholat
   get_prayer_times() {
       # Koordinat untuk Kabupaten Sleman
-      latitude="-7.7167"
-      longitude="110.3500"
+      latitude="1.042"
+      longitude="121.565"
 
       # Parameter untuk API
       method=11  # Method 11 - Kementerian Agama RI, Indonesia

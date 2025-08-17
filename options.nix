@@ -41,7 +41,7 @@ in {
   theSecondKBDLayout = "us";
   theKBDVariant = "";
   theLCVariables = "id_ID.UTF-8";
-  theTimezone = "Asia/Jakarta";
+  theTimezone = "Asia/Makassar";
   theShell = "fish"; # Possible options: bash, zsh
   theKernel = "cachyos"; # Possible options: default, latest, lqx, xanmod, zen
   # This is for running NixOS
