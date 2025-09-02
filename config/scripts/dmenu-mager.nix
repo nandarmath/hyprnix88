@@ -107,6 +107,7 @@ pkgs.writeShellScriptBin "dmenu-mager" ''
     [ "BeSmart UNY",            "uwsm app -- floorp --new-window --app=https://besmart.uny.ac.id/" ],
     [ "E-Service UNY",          "uwsm app -- floorp --new-window --app=https://eservice.uny.ac.id/" ],
     [ "YouTube",                "uwsm app -- brave --app=https://youtube.com/" ],
+    [ "Invidious",                "uwsm app -- brave --app=https://inv.nadeko.net" ],
     [ "Pusdapendik",            "uwsm app -- floorp --new-window --app=https://pusdapendik.disdik.kailinusantara.com/" ],
     [ "Gitlab",                 "uwsm app -- floorp --new-window --app=https://gitlab.com/" ],
     [ "trello",                 "uwsm app -- floorp --new-window --app=https://trello.com/" ],

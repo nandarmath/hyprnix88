@@ -31,7 +31,7 @@ in {
     gitg
     vlc
     xournalpp
-    # positron-bin
+    positron-bin
     # openboard
     blender
     gabutdm
@@ -136,6 +136,9 @@ in {
     translate-shell
     # google-chrome
     backgroundremover
+    onlyoffice-desktopeditors
+    # wpsoffice-cn
+
 
     # tvbrowser
     (pkgs.callPackage ../pkgs/amzqr.nix {})
