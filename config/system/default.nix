@@ -17,13 +17,14 @@
     ./intel-nvidia.nix
     ./kernel.nix
     ./logitech.nix
+    ./dhcp.nix
     # ./neovim.nix
     ./nfs.nix
     ./fonts.nix
     ./ntp.nix
     ./nvidia.nix
     ./packages.nix
-    ./persistence.nix
+    # ./persistence.nix
     ./polkit.nix
     ./python.nix
     ./printer.nix

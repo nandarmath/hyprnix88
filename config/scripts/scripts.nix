@@ -19,12 +19,14 @@ let
   # book-search = pkgs.writeShellScriptBin "book-search" (builtins.readFile ./books-search.sh);
   portalhyprland = pkgs.writeShellScriptBin "portalhyprland" (builtins.readFile ./portalhyprland.sh);
   virtmon = pkgs.writeShellScriptBin "virtmon" (builtins.readFile ./virtmon.sh);
+  custom-ss = pkgs.writeShellScriptBin "custom-ss" (builtins.readFile ./custom-ss.sh);
 
 in
 {
   home.packages = with pkgs; [
     # wall-change
     # wallpaper-picker
+    custom-ss
     keybinds
     rofibeats
     screenrecorder

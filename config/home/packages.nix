@@ -31,7 +31,7 @@ in {
     gitg
     vlc
     xournalpp
-    positron-bin
+    # positron-bin
     # openboard
     blender
     gabutdm

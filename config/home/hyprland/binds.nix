@@ -90,6 +90,8 @@ in
       "$mod ,U,exec,rofi -show recursivebrowser -theme-str 'window {width: 80%; height: 60%;}'"
       ",Print,exec,hyprshot -m output"
       "$mod ,print,exec, sattyss"
+      "CONTROL ,print,exec,custom-ss"
+      "ALT ,print,exec,custom-ss | satty"
       "$mod ALT,print,exec, hyprshot -m window"
       "$mod SHIFT,O,exec, ocr-screenshot"
       "$mod SHIFT,T,exec, ocr-indonesia"

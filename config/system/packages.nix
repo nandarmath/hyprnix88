@@ -93,6 +93,7 @@
     # inputs.nvix.packages.${system}.full
     r2405.zoom-us
     r2205.hugo
+    # rnew.positron-bin
     python312Packages.pymonctl
     rofi-network-manager
     python312Packages.pywinctl

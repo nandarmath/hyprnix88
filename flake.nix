@@ -20,7 +20,6 @@
     # repo xdman
     nix-flatpak.url = "github:gmodena/nix-flatpak?ref=latest";
     fmpkgs.url = "github:fmway/fmpkgs";
-    impermanence.url = "github:nix-community/impermanence";
     ags.url = "github:Aylur/ags";
     sops-nix.url = "github:Mic92/sops-nix";
     fine-cmdline = {
@@ -52,6 +51,7 @@
     };
     nixpkgs-r2405.url = "github:NixOs/nixpkgs/nixos-24.05";
     nixpkgs-r2205.url = "github:NixOs/nixpkgs/nixos-22.05";
+    nixpkgs-rnew.url = "github:NixOs/nixpkgs/nixos-unstable";
     walker.url = "github:abenz1267/walker";
   };
 
@@ -62,10 +62,10 @@
       stylix,
       nix-flatpak,
       home-manager,
-      impermanence,
       sops-nix,
       nixpkgs-r2405,
       nixpkgs-r2205,
+      nixpkgs-rnew,
       fmpkgs,
       chaotic,
       # anyrun,
@@ -83,6 +83,12 @@
 
       overlay-r2205 = final: prev: {
         r2205 = import nixpkgs-r2205 {
+          inherit system;
+          config.allowUnfree = true;
+        };
+      };
+      overlay-rnew = final: prev: {
+        rnew = import nixpkgs-rnew {
           inherit system;
           config.allowUnfree = true;
         };
@@ -117,6 +123,7 @@
                 nixpkgs.overlays = [
                   overlay-r2405
                   overlay-r2205
+                  overlay-rnew
                 ];
               }
             )
@@ -129,7 +136,6 @@
             chaotic.nixosModules.default
             # stylix.nixosModules.stylix
             sops-nix.nixosModules.sops
-            impermanence.nixosModules.impermanence
             home-manager.nixosModules.home-manager
             nix-flatpak.nixosModules.nix-flatpak
             nixos-hardware.nixosModules.lenovo-thinkpad-x390
