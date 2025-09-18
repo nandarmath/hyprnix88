@@ -126,12 +126,12 @@ in
           #".."="cd ..";
         };
         shellInit = ''
-          set fish_greeting ""
-          if test "$TERM_PROGRAM" = "kitty"; or test -n "$KITTY_WINDOW_ID"; or test -n "$KITTY_PID"
-            fastfetch
-          else if test "$TERM_PROGRAM" = "alacritty"; or string match -q "*alacritty*" $TERM
-            pfetch
-          end
+          set fish_greeting "Welcome $USER"
+          # if test "$TERM_PROGRAM" = "kitty"; or test -n "$KITTY_WINDOW_ID"; or test -n "$KITTY_PID"
+          #   fastfetch
+          # else if test "$TERM_PROGRAM" = "alacritty"; or string match -q "*alacritty*" $TERM
+          #   pfetch
+          # end
           export STARSHIP_LOG="error"
           eval "$(starship init fish)"
 

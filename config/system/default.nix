@@ -17,7 +17,7 @@
     ./intel-nvidia.nix
     ./kernel.nix
     ./logitech.nix
-    ./dhcp.nix
+    # ./dhcp.nix
     # ./neovim.nix
     ./nfs.nix
     ./fonts.nix
@@ -49,6 +49,7 @@
     ./syncthing.nix
     ./scheduler2.nix
     ./virtmanager.nix
+    ./tlp.nix
     # ./cloudflared.nix
     # ./collabora.nix
     # ./nixvim/nixvim.nix

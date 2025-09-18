@@ -133,7 +133,7 @@
     gimp3-with-plugins
     libwacom
     base16-schemes
-    uwsm
+    # uwsm
   ];
 
   programs.steam.gamescopeSession.enable = true;
@@ -141,7 +141,7 @@
   programs.hyprland = {
     enable = true;
     package = pkgs.hyprland;
-    withUWSM = true;
+    withUWSM = false;
     # xwayland.enable = true;
     # systemd.setPath.enable = true;
   };

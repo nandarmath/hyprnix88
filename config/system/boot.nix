@@ -30,7 +30,7 @@
       "exfat"
       "vfat"
       ];
-     plymouth.enable = false;
+     plymouth.enable = true;
      
         # This is for OBS Virtual Cam Support - v4l2loopback setup
      kernelModules = [ "v4l2loopback" ];

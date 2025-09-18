@@ -79,16 +79,16 @@ services.nginx = {
 
 ## Mariadb
   services.mysql = {
-    enable = false;
+    enable = true;
     package = pkgs.mariadb;
 #    settings = { "mysqld" = { "port" = 3308; }; };
     initialScript =
       pkgs.writeText "initial-script" ''
         CREATE USER IF NOT EXISTS 'root'@'localhost' IDENTIFIED BY 'root';
-        CREATE DATABASE IF NOT EXISTS wordpress;
-        GRANT ALL PRIVILEGES ON wordpress.* TO 'root'@'localhost';
+        CREATE DATABASE IF NOT EXISTS db_absensi;
+        GRANT ALL PRIVILEGES ON db_absensi.* TO 'root'@'localhost';
       '';
-    ensureDatabases = [ "wordpress" ];
+    ensureDatabases = ["db_absensi" ];
     ensureUsers = [
       {
         name = "root";
@@ -135,7 +135,7 @@ services.postgresql = {
 services.redis = {
   package = pkgs.redis;
   servers."nandar" = {
-    enable = true;
+    enable = false;
     # port = 6379;
     # bind = "127.0.0.1";
     requirePass = "@Nandar88";

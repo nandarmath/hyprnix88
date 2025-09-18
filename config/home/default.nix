@@ -44,6 +44,7 @@ in {
     ./xdg.nix
     ./yazi
     ./keepasxc.nix
+    ./espanso
     # ./yazi.nix
 
 
