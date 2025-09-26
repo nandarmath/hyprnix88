@@ -7,7 +7,7 @@
 # Last Modified By  : M. Nabil Adani <nblid48@gmail.com>
 { pkgs }:
 pkgs.writeShellScriptBin "dmenu-mager" ''
-  DMENU="rofi -dmenu -i -p Mager "
+  DMENU="rofi -dmenu -i -p Mager_"
   # OPTIONS = [[label, command]]
   OPTIONS=''''
   [
@@ -33,9 +33,10 @@ pkgs.writeShellScriptBin "dmenu-mager" ''
     [ "kill",                   "dmenu_kill" ],
     [ "kill droidcam",          "pkill droidcam-cli" ],
     [ "monitor",                "monitor-projection" ],
-    [ "Display monitor",        "hyprDC" ],
+    [ "Display monitor",        "python3 /home/nandar/hyprnix/config/scripts/monitor_display.py" ],
+    [ "Lumi Education",        "appimage-run /home/nandar/App/Lumi-0.10.0.AppImage" ],
     [ "Virtual Monitor",        "virtmon" ],
-    [ "VOS Viewer",             "java jar ~/App/VOSviewer.jar" ],
+    [ "VOS Viewer",             "java jar /home/nandar/App/VOSviewer.jar" ],
     [ "Stop VPN",               "systemctl stop wg-quick-wg0" ],
     [ "Star VPN",               "systemctl start wg-quick-wg0" ],
     [ "Start Screen to Vcam ",  "wl-screenrec --ffmpeg-muxer v4l2 -f /dev/video0" ],

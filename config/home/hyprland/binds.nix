@@ -20,7 +20,7 @@ in
       "$mod , minus, movetoworkspace,special"
       "$mod , equal, togglespecialworkspace"
       "$mod SHIFT,M,exec,emopicker9000"
-      "$mod ,N,exec,[workspace 1 silent]  joplin-desktop"
+      "$mod ,N,exec,rofi-notes"
       "$mod CONTROL,N,exec,  kitty -e joplin --profile ~/.config/joplin-desktop"
       "$mod ,S,exec,screenshootin"
       "$mod ,D,exec, vesktop"

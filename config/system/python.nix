@@ -45,7 +45,7 @@
 in
   lib.mkIf (python == true) {
     environment.systemPackages = [
-      #jetbrains.pycharm-community-bin
+      # jetbrains.pycharm-community-bin
       (pkgs.python3.withPackages my-python-packages)
     ];
   }

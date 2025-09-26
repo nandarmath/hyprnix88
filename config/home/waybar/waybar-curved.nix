@@ -330,6 +330,8 @@ in
             background: #${config.lib.stylix.colors.base04};
             color: #${config.lib.stylix.colors.base00};
             border-radius: 24px 1px 24px 1px;
+            border-bottom: 2px solid #${config.lib.stylix.colors.base0F};
+            border-right: 2px solid #${config.lib.stylix.colors.base0F};
           }
           #custom-startmenu {
             color: #${config.lib.stylix.colors.base0B};
@@ -348,6 +350,8 @@ in
             margin-right: 7px;
             border-radius: 1px 24px 1px 24px;
             padding: 0px 18px;
+            border-bottom: 2px solid #${config.lib.stylix.colors.base00};
+            border-left: 2px solid #${config.lib.stylix.colors.base00};
           }
           #custom-timer.active {
             background-color: #CF2430;

@@ -3,13 +3,12 @@
 {
   boot = {
      loader = {
-          grub.enable = true;
-          # systemd-boot.enable = true;
           efi.canTouchEfiVariables = true;
-          grub.device = "nodev";
-          efi.efiSysMountPoint = "/boot";
-          grub.useOSProber = true;
+          grub.enable = true;
+          grub.devices = ["nodev"];
+          # efi.efiSysMountPoint = "/boot";
           grub.efiSupport = true;
+          grub.useOSProber = true;
         };      
        #boot.loader.grub.theme = pkgs.nixos-grub2-theme;
        # boot.loader.grub.theme = pkgs.stdenv.mkDerivation {

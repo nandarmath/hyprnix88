@@ -14,3 +14,11 @@ matches:
 
   - trigger: ":rhs"
     replace: "Risnandar H. Sahido"
+
+  - trigger: ":localip"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "ip a | grep 'inet 192' | awk '{ print $2 }'"

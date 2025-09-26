@@ -52,7 +52,7 @@
     nixpkgs-r2405.url = "github:NixOs/nixpkgs/nixos-24.05";
     nixpkgs-r2205.url = "github:NixOs/nixpkgs/nixos-22.05";
     nixpkgs-rnew.url = "github:NixOs/nixpkgs/nixos-unstable";
-    walker.url = "github:abenz1267/walker";
+    # walker.url = "github:abenz1267/walker";
   };
 
   outputs =
@@ -145,11 +145,13 @@
                 inherit inputs;
                 # inherit (inputs.nix-colors.lib-contrib {inherit pkgs;}) gtkThemeFromScheme;
               };
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.backupFileExtension = "backup";
-              home-manager.users.${username} = import ./home.nix;
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                backupFileExtension = "backup";
+                users.${username} = import ./home.nix;
               # home-manager.users.${username}.initialPassword = "1988";
+              };
             }
             # nixvim.nixosModules.nixvim
             # nxchad.nixosModules.nixvim

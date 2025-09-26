@@ -5,7 +5,7 @@ let
 in {
   stylix = {
     enable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/material.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-terminal-dark.yaml";
     image = stylixImage;
     enableReleaseChecks = false;
     # image = pkgs.fetchurl {

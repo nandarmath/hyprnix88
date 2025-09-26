@@ -135,6 +135,9 @@ let
     # mapview
     tidyselect
     ggvenn
+    ggvis
+    rpivotTable
+    highcharter
     CTT
     ltm
     psychometric
@@ -202,6 +205,7 @@ let
     npmv
     vegan
     modeest
+    flexdashboard
 
     # citr
   ];

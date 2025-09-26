@@ -14,7 +14,7 @@ SHADOW_OFFSET=5
 BORDER_COLOR="#FFFFFF"
 # WHITE_COLOR="#FF8C00"
 SHADOW_COLOR="#00000040"
-STAMP_TEXT=" R-nandar  "
+STAMP_TEXT="  R-nandar  "
 
 # Create directories
 mkdir -p "$SCREENSHOTS_DIR" "$POLAROID_DIR"
@@ -41,7 +41,7 @@ create_polaroid() {
         -bordercolor "$BORDER_COLOR" \
         -border "0x$((BOTTOM_BORDER - BORDER_WIDTH))" \
         -background transparent \
-        -font "MesloLGSDZ-Nerd-Font-Mono-Italic" -pointsize 20 -fill orange -annotate +30+28 "$STAMP_TEXT" \
+        -font "MesloLGSDZ-Nerd-Font-Mono-Italic" -pointsize 25 -fill orange -annotate +30+28 "$STAMP_TEXT" \
         \( +clone -background "$SHADOW_COLOR" -shadow "${SHADOW_BLUR}x${SHADOW_OFFSET}+${SHADOW_OFFSET}+${SHADOW_OFFSET}" \) \
         +swap -background transparent -layers merge +repage \
         "$output_file"
