@@ -6,7 +6,7 @@
           efi.canTouchEfiVariables = true;
           grub.enable = true;
           grub.devices = ["nodev"];
-          # efi.efiSysMountPoint = "/boot";
+          efi.efiSysMountPoint = "/boot";
           grub.efiSupport = true;
           grub.useOSProber = true;
         };      

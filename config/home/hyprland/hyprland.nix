@@ -140,7 +140,7 @@ in
         rounding = 10;
         blur = {
           enabled = true;
-          size = 3;
+          size =2;
           passes = 3;
           new_optimizations = true;
           ignore_opacity = true;
@@ -174,8 +174,8 @@ in
       ];
     };
     extraConfig = "
-      # monitor=eDP-1,preferred,auto,1,transform,0
-      monitor=eDP-1,1920x1080@60,0x0,1,transform,0
+      monitor=eDP-1,preferred,auto,1,transform,0
+      # monitor=eDP-1,1920x1080@60,0x0,1,transform,0
       monitor=HEADLESS-66,1920x1080@60,1920x0,1
     ";
 

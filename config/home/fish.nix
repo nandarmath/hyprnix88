@@ -10,7 +10,6 @@ in
           d = "doas";
           g = "git";
           h = "hx";
-          j = "joshuto";
           n = "nvim";
           #z = "zellij";
           cat = "bat";
@@ -46,6 +45,9 @@ in
           nrd = "sudo nixos-rebuild dry-build";
           ngc = "sudo nix-store --gc";
           ngd = "sudo nix-collect-garbage -d";
+
+          pg = "ping 8.8.8.8";
+          pc = "ping 1.1.1.1";
 
           ga = "git add";
           gaa = "git add --all";
@@ -107,6 +109,7 @@ in
           gusm = "git pull gs main";
           gunm = "git pull gn main";
           gulm = "git pull gl main";
+          cbat = "upower -i $(upower -e | grep BAT)";
         };
         shellAliases = {
           sv = "sudo vim";
@@ -116,6 +119,8 @@ in
           fu = "nh os switch --hostname $hostname --update";
           gcCleanup = "nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
           jop = "joplin --profile ~/.config/joplin-desktop";
+          ff="fastfetch";
+          pf="pfetch";
           # ydlmp4='yt-dlp -f "bestvideo&#91;ext=mp4]+bestaudio&#91;ext=m4a]/best&#91;ext=mp4]/best"';
           # ydlmkv="yt-dlp -f "bestvideo&#91;ext=mkv]+bestaudio&#91;ext=mka]/best&#91;ext=mkv]/best"";
           #v="nvim";
