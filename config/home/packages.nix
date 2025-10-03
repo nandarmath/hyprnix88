@@ -138,6 +138,10 @@ in {
     backgroundremover
     onlyoffice-desktopeditors
     # wpsoffice-cn
+    dmenu
+    htmlq
+    didyoumean
+    dig
 
 
     # tvbrowser

@@ -12,7 +12,7 @@ stdenv.mkDerivation rec {
     owner = "nandarmath";
     repo = "elforkane";
     rev = "master";
-    sha256 = fakesh256;
+    sha256 = "sha256-QQSn0wbNR/ttZho8EtoQ3IRqyL0akqhVu2JnCAMQDxE=";
     # sha256 = "sha256-1u78RuukpNH2xP4rTk95iJ8nR1QqNo0k0LYdsqf3lK0=";
   };
 

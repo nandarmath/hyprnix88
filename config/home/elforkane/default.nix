@@ -5,10 +5,7 @@ let
 in
 
 {
-  # ... konfigurasi lainnya ...
-
-  environment.systemPackages = with pkgs; [
-    # package lainnya
+  home.packages = [
     elforkane
   ];
 }

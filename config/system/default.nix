@@ -41,7 +41,6 @@
     ./network.nix
     ./nh.nix
     ./virtualbox.nix
-    ./elforkane
     # ./espanso.nix
     ./open-webui.nix
     ./mpv.nix

@@ -45,6 +45,7 @@ in {
     ./yazi
     ./keepasxc.nix
     ./espanso
+    ./elforkane
     # ./yazi.nix
 
 

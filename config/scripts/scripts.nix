@@ -20,6 +20,13 @@ let
   portalhyprland = pkgs.writeShellScriptBin "portalhyprland" (builtins.readFile ./portalhyprland.sh);
   virtmon = pkgs.writeShellScriptBin "virtmon" (builtins.readFile ./virtmon.sh);
   custom-ss = pkgs.writeShellScriptBin "custom-ss" (builtins.readFile ./custom-ss.sh);
+  dm-dictionary = pkgs.writeShellScriptBin "dm-dictionary" (builtins.readFile ./dm-dictionary);
+  dm-helper = pkgs.writeShellScriptBin "dm-helper" (builtins.readFile ./dm-pipewire-out-switcher);
+  dm-ip = pkgs.writeShellScriptBin "dm-ip" (builtins.readFile ./dm-ip);
+  dm-pipewire-switch= pkgs.writeShellScriptBin "dm-pipewire-switch" (builtins.readFile ./dm-pipewire-out-switcher);
+  dm-usbmount = pkgs.writeShellScriptBin "dm-usbmount" (builtins.readFile ./dm-usbmount);
+  dm-weather= pkgs.writeShellScriptBin "dm-weather" (builtins.readFile ./dm-weather);
+  dm-kill= pkgs.writeShellScriptBin "dm-kill" (builtins.readFile ./dm-kill);
 
 in
 {
@@ -38,6 +45,13 @@ in
     rofi-wallpaper
     portalhyprland
     virtmon
+    dm-dictionary
+    dm-helper
+    dm-ip
+    dm-pipewire-switch
+    dm-usbmount
+    dm-weather
+    dm-kill
     (import ./emopicker9000.nix { inherit pkgs; })
     (import ./task-waybar.nix { inherit pkgs; })
     (import ./squirtle.nix { inherit pkgs; })
