@@ -142,6 +142,7 @@ in {
     htmlq
     didyoumean
     dig
+    speedtest-cli
 
 
     # tvbrowser

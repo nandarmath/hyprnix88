@@ -15,7 +15,7 @@ notify() {
 # Fungsi untuk copy ke clipboard
 copy_to_clipboard() {
     if command -v wl-copy &> /dev/null; then
-        echo -n "$1" | wl-copy -selection clipboard
+        echo -n "$1" | wl-copy
         notify "Disalin ke clipboard: $1"
     elif command -v xsel &> /dev/null; then
         echo -n "$1" | xsel --clipboard

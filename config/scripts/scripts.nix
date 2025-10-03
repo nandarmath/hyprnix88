@@ -13,6 +13,7 @@ let
   rofi-wlstream = pkgs.writeShellScriptBin "rofi-wlstream" (builtins.readFile ./rofi-wlstrem.sh);
   rofi-dict = pkgs.writeShellScriptBin "rofi-dict" (builtins.readFile ./rofi-dict.sh);
   rofi_calc = pkgs.writeShellScriptBin "rofi_calc" (builtins.readFile ./rofi-calc.sh);
+  rofi_net = pkgs.writeShellScriptBin "rofi_net" (builtins.readFile ./rofi-net.sh);
   rofi-wallpaper = pkgs.writeShellScriptBin "rofi-wallpaper" (
     builtins.readFile ./wallpaper-picker.sh
   );
@@ -43,6 +44,7 @@ in
     rofi-dict
     rofi_calc
     rofi-wallpaper
+    rofi_net
     portalhyprland
     virtmon
     dm-dictionary
