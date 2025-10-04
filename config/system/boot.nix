@@ -3,9 +3,9 @@
 {
   boot = {
      loader = {
-          efi.canTouchEfiVariables = true;
           grub.enable = true;
-          grub.devices = ["nodev"];
+          grub.devices = "nodev";
+          efi.canTouchEfiVariables = true;
           efi.efiSysMountPoint = "/boot";
           grub.efiSupport = true;
           grub.useOSProber = true;

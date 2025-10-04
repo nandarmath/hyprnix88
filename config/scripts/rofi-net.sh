@@ -62,7 +62,7 @@ speedtest_cli_test() {
     fi
     
     # Terminal untuk menampilkan progress
-    terminal_cmd="kitty"
+    terminal_cmd="alacritty"
     
     # Deteksi terminal yang tersedia
     for term in kitty alacritty termite urxvt xterm gnome-terminal; do
