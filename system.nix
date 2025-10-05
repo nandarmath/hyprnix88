@@ -106,6 +106,7 @@ in
         "https://nixpkgs-wayland.cachix.org"
         "https://fmcachix.cachix.org"
         "https://chaotic-nyx.cachix.org"
+        "https://vicinae.cachix.org"
         # "https://walker.cachix.org"
         # "https://walker-git.cachix.org"
       ];
@@ -120,6 +121,7 @@ in
         "chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8="
         # "walker.cachix.org-1:fG8q+uAaMqhsMxWjwvk0IMb4mFPFLqHjuvfwQxE4oJM="
         # "walker-git.cachix.org-1:vmC0ocfPWh0S/vRAQGtChuiZBTAe4wiKDeyyXM0/7pM="
+        "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc="
       ];
     };
     gc = {

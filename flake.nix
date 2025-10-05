@@ -49,6 +49,7 @@
       url = "github:ryan4yin/nur-packages";
       #inputs.nixpkgs.follows = "nixpkgs";
     };
+    vicinae.url = "github:vicinaehq/vicinae";
     nixpkgs-r2405.url = "github:NixOs/nixpkgs/nixos-24.05";
     nixpkgs-r2205.url = "github:NixOs/nixpkgs/nixos-22.05";
     nixpkgs-rnew.url = "github:NixOs/nixpkgs/nixos-unstable";
@@ -150,7 +151,7 @@
                 useUserPackages = true;
                 backupFileExtension = "backup";
                 users.${username} = import ./home.nix;
-              # home-manager.users.${username}.initialPassword = "1988";
+                # home-manager.users.${username}.initialPassword = "1988";
               };
             }
             # nixvim.nixosModules.nixvim

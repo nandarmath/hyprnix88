@@ -46,6 +46,7 @@ in {
     ./keepasxc.nix
     ./espanso
     ./elforkane
+    ./vicinae/vicinae.nix
     # ./yazi.nix
 
 

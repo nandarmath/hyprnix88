@@ -42,6 +42,7 @@ pkgs.writeShellScriptBin "dmenu-mager" ''
     [ "monitor",                "monitor-projection" ],
     [ "Display monitor",        "python3 /home/nandar/hyprnix/config/scripts/monitor_display.py" ],
     [ "Lumi Education",        "appimage-run /home/nandar/App/Lumi-0.10.0.AppImage" ],
+    [ "Fet Scheduler",        "appimage-run /home/nandar/App/fet-6.25.0-x86_64.AppImage" ],
     [ "Virtual Monitor",        "virtmon" ],
     [ "VOS Viewer",             "java -jar /home/nandar/App/VOSviewer.jar" ],
     [ "Stop VPN",               "systemctl stop wg-quick-wg0" ],
