@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # dmenu_hyprland_stream
 # Script untuk streaming rekaman layar di Wayland dengan Hyprland
 # Terinspirasi dari dmenu_ffmpeg

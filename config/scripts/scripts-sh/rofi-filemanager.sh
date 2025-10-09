@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # rofi-filemanager.sh - Simple file manager using Rofi
 # Author: Claude

@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/usr/bin/env bash
 
 # VirtMon script v1.0
 # Script created by Linux Renaissance

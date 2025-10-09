@@ -1,5 +1,4 @@
-#!/bin/bash
-
+#!/usr/bin/env bash
 # Rofi Calculator dengan Kalker Backend
 # Pastikan kalker sudah terinstall: cargo install kalker
 

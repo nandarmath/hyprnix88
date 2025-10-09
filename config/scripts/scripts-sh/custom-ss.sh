@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Simple Polaroid Screenshot Script for Hyprland
 # Uses grim + slurp only (most reliable)

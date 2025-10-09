@@ -9,8 +9,7 @@
 # ============================================
 # KONFIGURASI
 # ============================================
-theme="-theme-str 'window {width: 80%; height: 60%;}'"
-ROFI="rofi -dmenu -i $theme"
+ROFI="rofi -dmenu -i"
 MPV="mpv"
 YT_DLP="yt-dlp"
 HISTORY_FILE="$HOME/.cache/yt-watch/history"
