@@ -40,6 +40,7 @@
       configparser
       dbus-python
       python-dotenv
+      aria2p
 
     ];
 in

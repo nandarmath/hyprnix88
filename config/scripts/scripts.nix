@@ -1,59 +1,8 @@
 { pkgs, ... }:
-let
-  #wall-change = pkgs.writeShellScriptBin "wall-change" (builtins.readFile ./scripts/wall-change.sh);
-  #wallpaper-picker = pkgs.writeShellScriptBin "wallpaper-picker" (builtins.readFile ./scripts/wallpaper-picker.sh);
 
-  keybinds = pkgs.writeShellScriptBin "keybinds" (builtins.readFile ./keybinds.sh);
-  rofibeats = pkgs.writeShellScriptBin "rofibeats" (builtins.readFile ./RofiBeats.sh);
-  screenrecorder = pkgs.writeShellScriptBin "screenrecorder" (builtins.readFile ./screenrecorder);
-  waybar-timer = pkgs.writeShellScriptBin "waybar-timer" (builtins.readFile ./waybar-timer);
-  rofi-filemanager = pkgs.writeShellScriptBin "rofi-filemanager" (
-    builtins.readFile ./rofi-filemanager.sh
-  );
-  rofi-wlstream = pkgs.writeShellScriptBin "rofi-wlstream" (builtins.readFile ./rofi-wlstrem.sh);
-  rofi-dict = pkgs.writeShellScriptBin "rofi-dict" (builtins.readFile ./rofi-dict.sh);
-  rofi_calc = pkgs.writeShellScriptBin "rofi_calc" (builtins.readFile ./rofi-calc.sh);
-  rofi_net = pkgs.writeShellScriptBin "rofi_net" (builtins.readFile ./rofi-net.sh);
-  rofi-wallpaper = pkgs.writeShellScriptBin "rofi-wallpaper" (
-    builtins.readFile ./wallpaper-picker.sh
-  );
-  # book-search = pkgs.writeShellScriptBin "book-search" (builtins.readFile ./books-search.sh);
-  portalhyprland = pkgs.writeShellScriptBin "portalhyprland" (builtins.readFile ./portalhyprland.sh);
-  virtmon = pkgs.writeShellScriptBin "virtmon" (builtins.readFile ./virtmon.sh);
-  custom-ss = pkgs.writeShellScriptBin "custom-ss" (builtins.readFile ./custom-ss.sh);
-  dm-dictionary = pkgs.writeShellScriptBin "dm-dictionary" (builtins.readFile ./dm-dictionary);
-  dm-helper = pkgs.writeShellScriptBin "dm-helper" (builtins.readFile ./dm-pipewire-out-switcher);
-  dm-ip = pkgs.writeShellScriptBin "dm-ip" (builtins.readFile ./dm-ip);
-  dm-pipewire-switch= pkgs.writeShellScriptBin "dm-pipewire-switch" (builtins.readFile ./dm-pipewire-out-switcher);
-  dm-usbmount = pkgs.writeShellScriptBin "dm-usbmount" (builtins.readFile ./dm-usbmount);
-  dm-weather= pkgs.writeShellScriptBin "dm-weather" (builtins.readFile ./dm-weather);
-  dm-kill= pkgs.writeShellScriptBin "dm-kill" (builtins.readFile ./dm-kill);
 
-in
 {
   home.packages = with pkgs; [
-    # wall-change
-    # wallpaper-picker
-    custom-ss
-    keybinds
-    rofibeats
-    screenrecorder
-    waybar-timer
-    rofi-wlstream
-    rofi-filemanager
-    rofi-dict
-    rofi_calc
-    rofi-wallpaper
-    rofi_net
-    portalhyprland
-    virtmon
-    dm-dictionary
-    dm-helper
-    dm-ip
-    dm-pipewire-switch
-    dm-usbmount
-    dm-weather
-    dm-kill
     (import ./emopicker9000.nix { inherit pkgs; })
     (import ./task-waybar.nix { inherit pkgs; })
     (import ./squirtle.nix { inherit pkgs; })
@@ -91,6 +40,7 @@ in
     (import ./wallsetter.nix { inherit pkgs; })
     (import ./rofi-zotero.nix { inherit pkgs; })
     (import ./hyprland-dock.nix { inherit pkgs; })
+    (import ./rofi-aria2.nix { inherit pkgs; })
 
   ];
 

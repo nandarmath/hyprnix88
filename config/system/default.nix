@@ -50,7 +50,8 @@
     ./scheduler2.nix
     ./virtmanager.nix
     ./tlp.nix
-    ./espanso
+    # ./espanso
+    ./aira2-daemon.nix
     # ./cloudflared.nix
     # ./collabora.nix
     # ./nixvim/nixvim.nix

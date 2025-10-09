@@ -37,6 +37,7 @@ in {
     ./stylix.nix
     ./zed.nix
     ../scripts/scripts.nix
+    ../scripts/scripts-sh.nix
     ./eww-treanto
     ./nxchad.nix
     ./rmpc
