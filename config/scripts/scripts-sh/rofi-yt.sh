@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 # ============================================
 # YouTube Search & Watch with MPV
 # ============================================
@@ -9,11 +9,15 @@
 # ============================================
 # KONFIGURASI
 # ============================================
-ROFI="rofi -dmenu -i"
 MPV="mpv"
 YT_DLP="yt-dlp"
 HISTORY_FILE="$HOME/.cache/yt-watch/history"
 CACHE_DIR="$HOME/.cache/yt-watch"
+
+# Fungsi rofi dengan width 60%
+rofi_menu() {
+    rofi -dmenu -i -theme-str 'window {width: 60%;}' "$@"
+}
 
 # Warna untuk output
 RED='\033[0;31m'
@@ -73,19 +77,19 @@ success_msg() {
     echo -e "${GREEN}[SUCCESS]${NC} $1"
 }
 
-# Fungsi untuk search YouTube menggunakan yt-dlp
+# Fungsi untuk search YouTube menggunakan yt-dlp dengan info lengkap
 format_search_results() {
     local query="$1"
     local max_results="${2:-20}"
     
     notify "Searching YouTube: $query" "normal" 2000
     
-    # Search menggunakan yt-dlp dengan format JSON
+    # Search menggunakan yt-dlp dengan format JSON lengkap
     $YT_DLP "ytsearch${max_results}:$query" \
         --flat-playlist \
         --skip-download \
         --dump-json 2>/dev/null | \
-        jq -r '"\(.id)|\(.title)|\(.duration_string // "LIVE")"' 2>/dev/null
+        jq -r '"\(.id)|\(.title)|\(.duration_string // "LIVE")|\(.upload_date // "null")"' 2>/dev/null
 }
 
 # Ambil URL dari video ID
@@ -120,7 +124,7 @@ get_clipboard() {
 # Mode: Search & Watch
 search_and_watch() {
     # Input search query
-    local query=$(echo "" | $ROFI -p "🔍 Search YouTube")
+    local query=$(echo "" | rofi_menu -p "🔍 Search YouTube")
     [[ -z "$query" ]] && return
     
     notify "Searching: $query" "normal" 2000
@@ -133,10 +137,26 @@ search_and_watch() {
         return
     fi
     
-    # Tampilkan hasil di rofi dengan format yang lebih baik
+    # Tampilkan hasil di rofi dengan format: Durasi | Tanggal Upload | Judul
     local selection=$(echo "$results" | \
-        awk -F'|' '{printf "%-12s | %s\n", $3, $2}' | \
-        $ROFI -p "📺 Select Video" -format "i" -mesg "Use ↑↓ to navigate, Enter to select")
+        awk -F'|' '{
+            duration = $3
+            upload_date = $4
+            title = $2
+            
+            # Format tanggal
+            if (upload_date == "null" || upload_date == "") {
+                formatted_date = "Unknown   "
+            } else {
+                year = substr(upload_date, 1, 4)
+                month = substr(upload_date, 5, 2)
+                day = substr(upload_date, 7, 2)
+                formatted_date = day "/" month "/" year
+            }
+            
+            printf "%-10s | %-12s | %s\n", duration, formatted_date, title
+        }' | \
+        rofi_menu -p "📺 Select Video" -format "i" -mesg "Durasi | Tanggal Upload | Judul")
     
     [[ -z "$selection" ]] && return
     
@@ -161,7 +181,7 @@ watch_from_clipboard() {
     
     # Jika tidak ada di clipboard, tanya user
     if [[ -z "$url" ]]; then
-        url=$(echo "" | $ROFI -p "📺 YouTube URL")
+        url=$(echo "" | rofi_menu -p "📺 YouTube URL")
     fi
     
     [[ -z "$url" ]] && return
@@ -193,7 +213,7 @@ view_history() {
     local selection=$(tail -30 "$HISTORY_FILE" | \
         tac | \
         awk -F'|' '{printf "%-20s | %s\n", $1, $3}' | \
-        $ROFI -p "📜 Watch History" -format "i")
+        rofi_menu -p "📜 Watch History" -format "i")
     
     [[ -z "$selection" ]] && return
     
@@ -212,7 +232,7 @@ watch_trending() {
         --flat-playlist \
         --playlist-end 20 \
         --dump-json 2>/dev/null | \
-        jq -r '"\(.id)|\(.title)|\(.duration_string // "LIVE")"')
+        jq -r '"\(.id)|\(.title)|\(.duration_string // "LIVE")|\(.upload_date // "null")"')
     
     if [[ -z "$results" ]]; then
         error_msg "Failed to fetch trending videos"
@@ -220,8 +240,24 @@ watch_trending() {
     fi
     
     local selection=$(echo "$results" | \
-        awk -F'|' '{printf "%-12s | %s\n", $3, $2}' | \
-        $ROFI -p "🔥 Trending Videos" -format "i")
+        awk -F'|' '{
+            duration = $3
+            upload_date = $4
+            title = $2
+            
+            # Format tanggal
+            if (upload_date == "null" || upload_date == "") {
+                formatted_date = "Unknown   "
+            } else {
+                year = substr(upload_date, 1, 4)
+                month = substr(upload_date, 5, 2)
+                day = substr(upload_date, 7, 2)
+                formatted_date = day "/" month "/" year
+            }
+            
+            printf "%-10s | %-12s | %s\n", duration, formatted_date, title
+        }' | \
+        rofi_menu -p "🔥 Trending Videos" -format "i" -mesg "Durasi | Tanggal Upload | Judul")
     
     [[ -z "$selection" ]] && return
     
@@ -239,7 +275,7 @@ select_quality_and_play() {
     
     # Pilihan kualitas dengan emoji
     local quality=$(echo -e "🎬 Best (Auto)\n📺 1080p\n📺 720p\n📱 480p\n📱 360p\n🎵 Audio Only" | \
-        $ROFI -p "🎥 Select Quality" | cut -d' ' -f2-)
+        rofi_menu -p "🎥 Select Quality" | cut -d' ' -f2-)
     
     case "$quality" in
         "Best (Auto)")
@@ -293,7 +329,7 @@ play_video() {
 
 # Mode: Download Video
 download_video() {
-    local query=$(echo "" | $ROFI -p "🔍 Search to Download")
+    local query=$(echo "" | rofi_menu -p "🔍 Search to Download")
     [[ -z "$query" ]] && return
     
     notify "Searching: $query" "normal" 2000
@@ -306,8 +342,23 @@ download_video() {
     fi
     
     local selection=$(echo "$results" | \
-        awk -F'|' '{printf "%-12s | %s\n", $3, $2}' | \
-        $ROFI -p "⬇️ Select to Download" -format "i")
+        awk -F'|' '{
+            duration = $3
+            upload_date = $4
+            title = $2
+            
+            if (upload_date == "null" || upload_date == "") {
+                formatted_date = "Unknown   "
+            } else {
+                year = substr(upload_date, 1, 4)
+                month = substr(upload_date, 5, 2)
+                day = substr(upload_date, 7, 2)
+                formatted_date = day "/" month "/" year
+            }
+            
+            printf "%-10s | %-12s | %s\n", duration, formatted_date, title
+        }' | \
+        rofi_menu -p "⬇️ Select to Download" -format "i" -mesg "Durasi | Tanggal Upload | Judul")
     
     [[ -z "$selection" ]] && return
     
@@ -317,7 +368,7 @@ download_video() {
     
     # Pilih format download
     local format=$(echo -e "🎬 Best Video+Audio (MP4)\n📺 1080p (MP4)\n📺 720p (MP4)\n🎵 Audio (MP3)\n🎵 Audio (M4A)" | \
-        $ROFI -p "📥 Download Format" | cut -d' ' -f2-)
+        rofi_menu -p "📥 Download Format" | cut -d' ' -f2-)
     
     local output_dir="$HOME/Videos/YouTube"
     mkdir -p "$output_dir"
@@ -371,8 +422,23 @@ quick_play() {
     
     # Tampilkan hasil
     local selection=$(echo "$results" | \
-        awk -F'|' '{printf "%-12s | %s\n", $3, $2}' | \
-        $ROFI -p "📺 Select Video" -format "i")
+        awk -F'|' '{
+            duration = $3
+            upload_date = $4
+            title = $2
+            
+            if (upload_date == "null" || upload_date == "") {
+                formatted_date = "Unknown   "
+            } else {
+                year = substr(upload_date, 1, 4)
+                month = substr(upload_date, 5, 2)
+                day = substr(upload_date, 7, 2)
+                formatted_date = day "/" month "/" year
+            }
+            
+            printf "%-10s | %-12s | %s\n", duration, formatted_date, title
+        }' | \
+        rofi_menu -p "📺 Select Video" -format "i" -mesg "Durasi | Tanggal Upload | Judul")
     
     [[ -z "$selection" ]] && return
     
@@ -388,7 +454,7 @@ quick_play() {
 
 main_menu() {
     local choice=$(echo -e "🔍 Search & Watch\n📺 Watch from URL\n📜 Watch History\n🔥 Trending Videos\n⬇️  Download Video\n🗑️  Clear History\n❌ Exit" | \
-        $ROFI -p "🎬 YouTube Watch" -mesg "Select an option")
+        rofi_menu -p "🎬 YouTube Watch" -mesg "Select an option")
     
     case "$choice" in
         "🔍 Search & Watch")
@@ -457,10 +523,12 @@ ${YELLOW}Dependencies:${NC}
 ${YELLOW}Install:${NC}
   sudo pacman -S mpv yt-dlp rofi jq libnotify wl-clipboard
   # or
-  sudo apt install mpv yt-dlp rofi jq libnotify wl-clipboard
+  sudo apt install mpv yt-dlp rofi jq libnotify-bin wl-clipboard
 
 ${YELLOW}Features:${NC}
   ✅ Search YouTube videos
+  ✅ Display duration, upload date, and title
+  ✅ Rofi window width 60% of screen
   ✅ Watch from URL/clipboard
   ✅ View watch history
   ✅ Trending videos
