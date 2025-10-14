@@ -20,7 +20,7 @@ in
           mv = "mv -v";
           rm = "rm -rfv";
           lsf = "lsblk -o name,fstype,fsavail,fsused,size,mountpoint";
-          ns = "nix-search";
+          nis = "nix-search";
           yt = "yt-dlp";
           f = "fzf";
           scs = "sudo systemctl start";

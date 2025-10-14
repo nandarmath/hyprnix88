@@ -52,6 +52,7 @@
     ./tlp.nix
     # ./espanso
     ./aira2-daemon.nix
+    ./samba.nix
     # ./cloudflared.nix
     # ./collabora.nix
     # ./nixvim/nixvim.nix
