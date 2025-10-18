@@ -3,7 +3,17 @@
 
   services.samba = {
     enable = true;
+    openFirewall = true;
+    securityType = "user";
+    package = pkgs.samba4Full;
     settings = {
+      "global" = {
+        "workgroup" = "WORKGROUP";
+        "server string" = "NIXLAPTOP";
+        "netbios name" = "NIXLAPTOP";
+        "client min protocol" = "SMB2";
+        "server min protocol" = "SMB3";
+      };
       "public" = {
         "path" = "/home/nandar/share";
         "read only" = "no";
@@ -11,10 +21,12 @@
         "guest ok" = "yes";
         "comment" = "Public samba share.";
       };
-      "global" = {
-        "server min protocol" = "NT1";
-      };
     };
   };
-
+  services.samba-wsdd = {
+    enable = true;
+    openFirewall = true;
+  };
+  networking.firewall.allowedTCPPorts = [139 445];
+  networking.firewall.allowedUDPPorts = [137 138];
 }

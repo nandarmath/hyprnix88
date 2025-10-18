@@ -45,6 +45,7 @@
     7236
     7250
     443
+    445
     53
     11434
     3000
@@ -56,6 +57,7 @@
     80
     85
     443
+    445
     5900
     53317
     8181
@@ -82,6 +84,7 @@
     ];
   };
   services.gvfs.enable = true;
+  programs.ydotool.enable = true;
   services.tumbler.enable = true;
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot

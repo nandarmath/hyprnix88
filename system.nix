@@ -74,6 +74,7 @@ in
         "audio"
         "pipewire"
         "mpd"
+        "ydotool"
       ];
       shell = pkgs.${theShell};
       ignoreShellProgramCheck = true;

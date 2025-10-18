@@ -42,7 +42,7 @@ IPTV=''''
 ]
 ''''
 
-channel=$(echo $IPTV | jq -r "sort | .[][0]" | $DMENU -p "癩 IPTV")
+channel=$(echo $IPTV | jq -r "sort | .[][0]" | $DMENU -p "󱩛  IPTV")
 url=$(echo $IPTV | jq -r ".[] | select(.[0] == \"$channel\") | .[1]")
 
 if [[ $channel != "" ]]; then

@@ -16,6 +16,7 @@
     # zen zen-browser
     zen-browser.url = "github:MarceColl/zen-browser-flake";
     # neovim in nix
+    rofi-2-0-0.url = "github:NixOs/nixpkgs/bce5fe2bb998488d8e7e7856315f90496723793c";
     nvf.url = "github:notashelf/nvf";
     # repo xdman
     nix-flatpak.url = "github:gmodena/nix-flatpak?ref=latest";
@@ -67,6 +68,7 @@
       nixpkgs-r2405,
       nixpkgs-r2205,
       nixpkgs-rnew,
+      rofi-2-0-0,
       fmpkgs,
       chaotic,
       # anyrun,
@@ -90,6 +92,12 @@
       };
       overlay-rnew = final: prev: {
         rnew = import nixpkgs-rnew {
+          inherit system;
+          config.allowUnfree = true;
+        };
+      };
+      overlay-rofi = final: prev: {
+        n-rofi = import rofi-2-0-0 {
           inherit system;
           config.allowUnfree = true;
         };
@@ -125,6 +133,7 @@
                   overlay-r2405
                   overlay-r2205
                   overlay-rnew
+                  overlay-rofi
                 ];
               }
             )

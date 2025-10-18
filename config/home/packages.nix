@@ -143,6 +143,7 @@ in {
     didyoumean
     dig
     speedtest-cli
+    keepmenu
 
 
     # tvbrowser

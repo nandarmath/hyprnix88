@@ -10,7 +10,7 @@ in
   programs.rofi = {
     # package = pkgs.rofi.override {plugins = [pkgs.rofi-calc pkgs.rofi-file-browser];};
     package = pkgs.rofi-wayland;
-    plugins = [ pkgs.rofi-file-browser ];
+    plugins = [ pkgs.rofi-file-browser  pkgs.rofi-pass-wayland];
   };
   home.file.".config/rofi/config.rasi".text = ''
         @theme "/dev/null"

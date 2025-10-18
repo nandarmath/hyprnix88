@@ -48,7 +48,7 @@ in {
     ./espanso
     ./elforkane
     ./vicinae/vicinae.nix
-    ./nstv.nix
+    # ./nstv.nix
     # ./yazi.nix
 
 

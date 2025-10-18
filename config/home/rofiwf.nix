@@ -18,7 +18,7 @@ in
   programs.rofi = {
     enable = true;
     font = "JetBrains Nerd Font 16";
-    package = pkgs.rofi-wayland;
+    package = n-rofi.rofi;
     plugins = [
       rofi-file-browser
       rofi-pass-wayland
@@ -34,7 +34,7 @@ in
     };
     extraConfig = {
       case-sensitive = false;
-      display-drun = "❄️Apps ";
+      display-drun = "  Apps ";
       display-run = " Run ";
       display-filebrowser = " Files ";
       display-window = " Windows ";

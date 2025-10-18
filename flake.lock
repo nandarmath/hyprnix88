@@ -1193,6 +1193,22 @@
         "url": "file://git:/home/nandar/Documents/NxChad"
       }
     },
+    "rofi-2-0-0": {
+      "locked": {
+        "lastModified": 1759826507,
+        "narHash": "sha256-vwXL9H5zDHEQA0oFpww2one0/hkwnPAjc47LRph6d0I=",
+        "owner": "NixOs",
+        "repo": "nixpkgs",
+        "rev": "bce5fe2bb998488d8e7e7856315f90496723793c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOs",
+        "repo": "nixpkgs",
+        "rev": "bce5fe2bb998488d8e7e7856315f90496723793c",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "ags": "ags",
@@ -1211,6 +1227,7 @@
         "nur-ryan4yin": "nur-ryan4yin",
         "nvf": "nvf",
         "nxchad": "nxchad",
+        "rofi-2-0-0": "rofi-2-0-0",
         "sops-nix": "sops-nix",
         "stylix": "stylix",
         "vicinae": "vicinae",
