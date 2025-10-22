@@ -144,6 +144,8 @@ in {
     dig
     speedtest-cli
     keepmenu
+    pinentry-gtk2
+    walker
 
 
     # tvbrowser

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Rofi DuckDuckGo Web Search Script
 # Meminta input dari user menggunakan rofi dan membuka hasil pencarian di browser

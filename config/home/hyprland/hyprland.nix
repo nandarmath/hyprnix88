@@ -164,6 +164,7 @@ in
         "QT_WAYLAND_DISABLE_WINDOWDECORATION, 1"
         "QT_AUTO_SCREEN_SCALE_FACTOR, 1"
         "SDL_VIDEODRIVER, x11"
+        # "SDL_VIDEODRIVER,wayland"
         "MOZ_ENABLE_WAYLAND, 1"
         "SDL_VIDEODRIVER,${sdl-videodriver}"
         "XCURSOR_SIZE, 24"

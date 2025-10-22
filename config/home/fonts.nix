@@ -23,6 +23,7 @@
     icomoon-feather
     ubuntu_font_family
     helvetica-neue-lt-std
+    amiri
   ];
 
 
