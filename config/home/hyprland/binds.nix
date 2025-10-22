@@ -46,7 +46,7 @@ in
       "$mod ,Z,exec,wlogout"
       "$mod SHIFT,I,togglesplit,"
       "$mod ,F,fullscreen,"
-      "$mod ,V,exec,cliphist list | rofi -dmenu -p Emoji | cliphist decode | wl-copy"
+      "$mod ,V,exec,cliphist list | rofi -dmenu -p Clipboard | cliphist decode | wl-copy"
       "$mod ,Space,togglefloating,"
       "$mod SHIFT,P,exec, hyprpicker --autocopy"
       "$mod SHIFT,C,exec, rofi -show calc -modi calc -no-show-match -no-sort -automatic-save-to-history"
