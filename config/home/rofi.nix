@@ -67,7 +67,7 @@ in
       in
       {
         "*" = {
-          bg0 = mkLiteral "#${palette.base00}99";
+          bg0 = mkLiteral "#${palette.base00}";
           bg1 = mkLiteral "#${palette.base01}";
           bg2 = mkLiteral "#${palette.base02}";
           bg3 = mkLiteral "#${palette.base03}";
@@ -76,7 +76,10 @@ in
           fg2 = mkLiteral "#${palette.base06}";
           fg3 = mkLiteral "#${palette.base09}";
           background-color = mkLiteral "transparent";
-          text-color = mkLiteral "@fg0";
+          text-color = mkLiteral "@fg2";
+          margin = mkLiteral "0px";
+          padding = mkLiteral "0px";
+          spacing = mkLiteral "0px";
         };
 
         "#window" = {
@@ -95,7 +98,7 @@ in
         };
 
         "#entry" = {
-          placeholder = mkLiteral "Search";
+          placeholder = mkLiteral "'Search'";
           placeholder-color = mkLiteral "@fg3";
         };
         "#message" = {
@@ -109,7 +112,7 @@ in
           padding = mkLiteral "8px 16px";
           spacing = mkLiteral "8px";
           background-color = mkLiteral "@bg1";
-          border-color = mkLiteral "@bg3";
+          border-color = mkLiteral "@fg3";
           border = mkLiteral "2px";
           border-radius = mkLiteral "16px";
         };
@@ -135,7 +138,7 @@ in
           text-color = mkLiteral "@bg3";
         };
         "#element selected normal, element selected active" = {
-          background-color = mkLiteral "@bg3";
+          background-color = mkLiteral "@fg3";
         };
 
         "#element-icon" = {

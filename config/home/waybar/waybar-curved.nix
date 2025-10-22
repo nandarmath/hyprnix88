@@ -330,8 +330,8 @@ in
             background: #${config.lib.stylix.colors.base04};
             color: #${config.lib.stylix.colors.base00};
             border-radius: 24px 1px 24px 1px;
-            border-bottom: 2px solid #${config.lib.stylix.colors.base0F};
-            border-right: 2px solid #${config.lib.stylix.colors.base0F};
+            border-bottom: 2px solid #${config.lib.stylix.colors.base09};
+            border-right: 2px solid #${config.lib.stylix.colors.base09};
           }
           #custom-startmenu {
             color: #${config.lib.stylix.colors.base0B};
@@ -344,7 +344,7 @@ in
           #custom-hyprbindings, #network, #battery,
           #custom-notification, #tray, #clock, #custom-weather, #custom-prayer_times, #custom-timer, #custom-screenrecorder {
             font-weight: bold;
-            background: #${config.lib.stylix.colors.base0F};
+            background: #${config.lib.stylix.colors.base09};
             color: #${config.lib.stylix.colors.base00};
             margin: 4px 0px;
             margin-right: 7px;

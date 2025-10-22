@@ -133,7 +133,6 @@
     gimp3-with-plugins
     libwacom
     base16-schemes
-    rnew.gemini-cli-bin
     # uwsm
   ];
 
