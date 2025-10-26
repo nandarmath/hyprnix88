@@ -18,8 +18,12 @@
         };
       };
       folders = {
-        "KeepassDb" = {
-          path = "~/Documents/KeepPassdb";
+        "password" = {
+          path = "~/KeepPassdb/password/password.kdbx";
+          devices = ["note30"];
+        };
+        "TOTP" = {
+          path = "~/KeepPassdb/TOTP/TOTP.kdbx";
           devices = ["note30"];
         };
         "Sync" = {

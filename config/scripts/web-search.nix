@@ -27,7 +27,7 @@ pkgs.writeShellScriptBin "web-search" ''
 
   main() {
     # Pass the list to rofi
-    platform=$( (gen_list) | ${pkgs.rofi-wayland}/bin/rofi -dmenu -p "󰜏 Cari " )
+    platform=$( (gen_list) | ${pkgs.rofi-wayland}/bin/rofi -dmenu -p "󰜏 " )
 
     if [[ -n "$platform" ]]; then
       query=$( (echo ) | ${pkgs.rofi-wayland}/bin/rofi -dmenu -p "󰜏 Cari ")

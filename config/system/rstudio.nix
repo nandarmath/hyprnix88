@@ -11,6 +11,7 @@ let
     BH
     BatchJobs
     gtExtras
+    gtsummary
     BiasedUrn
     janitor
     BoolNet
@@ -163,6 +164,7 @@ let
     shinylive
     shinyquiz
     bslib
+    bsicons
     quarto
     bibliometrix
     naniar

@@ -327,14 +327,14 @@ in
             margin: 4px 0px;
             margin-left: 7px;
             padding: 0px 18px;
-            background: #${config.lib.stylix.colors.base04};
+            background: #${config.lib.stylix.colors.base06};
             color: #${config.lib.stylix.colors.base00};
             border-radius: 24px 1px 24px 1px;
             border-bottom: 2px solid #${config.lib.stylix.colors.base09};
             border-right: 2px solid #${config.lib.stylix.colors.base09};
           }
           #custom-startmenu {
-            color: #${config.lib.stylix.colors.base0B};
+            color: #${config.lib.stylix.colors.base09};
             background: #${config.lib.stylix.colors.base02};
             font-size: 28px;
             margin: 0px;

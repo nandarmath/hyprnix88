@@ -5,10 +5,10 @@
 
 # Konfigurasi
 BROWSER="${BROWSER:-xdg-open}"  # Default browser, bisa diganti dengan firefox, chromium, dll
-SEARCH_ENGINE="https://duckduckgo.com/?q="
+SEARCH_ENGINE="https://search.brave.com/search?q="
 
 # Prompt untuk input pencarian
-query=$(rofi -dmenu -p " 󰜏 " -theme-str 'window {width: 35%; height:5%;}')
+query=$(rofi -dmenu -p " 󰜏 " )
 
 # Cek apakah user memasukkan query
 if [ -z "$query" ]; then
