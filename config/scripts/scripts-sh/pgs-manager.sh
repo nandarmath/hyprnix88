@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # PostgreSQL Backup & Restore Manager dengan Rofi
 # Pastikan rofi dan postgresql-client sudah terinstall

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Script untuk copy file/folder antara lokal dan cloud menggunakan rclone dengan rofi
 # Pastikan rclone sudah dikonfigurasi dengan 'rclone config'
