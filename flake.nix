@@ -124,8 +124,6 @@
           modules = [
             (
               {
-                config,
-                pkgs,
                 ...
               }:
               {

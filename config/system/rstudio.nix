@@ -208,7 +208,8 @@ let
     vegan
     modeest
     flexdashboard
-
+    hflights
+    nycflights13
     # citr
   ];
 in

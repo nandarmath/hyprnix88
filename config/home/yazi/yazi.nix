@@ -1,7 +1,7 @@
 {
   settings = {
     manager = {
-      ratio = [ 1 4 3 ];
+      ratio = [ 1 3 4 ];
       sort_by = "alphabetical";
       sort_sensitive = false;
       sort_reverse = false;

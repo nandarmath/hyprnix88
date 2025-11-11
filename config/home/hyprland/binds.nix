@@ -97,7 +97,7 @@ in
       "$mod ALT,print,exec, hyprshot -m window"
       "$mod SHIFT,O,exec, ocr-screenshot"
       "$mod SHIFT,T,exec, ocr-indonesia"
-      "$mod ALT, T, exec,terjemah"
+      "$mod ALT, T, exec,hyprctl dispatch setfloating && hyprctl dispatch resizeactive exact 40% 40% && hyprctl dispatch pin"
       "$mod ,BACKSLASH,exec, hyprctl dispatch splitratio 0.3"
       "$mod SHIFT, G, togglegroup # toggle group"
       "$mod SHIFT, H, changegroupactive  # change focus to another window"
