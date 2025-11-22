@@ -12,6 +12,7 @@
       jupyter
       numpy
       scipy
+      lxml
       spyder
       matplotlib
       statsmodels
@@ -32,6 +33,8 @@
       whisper
       srt
       tqdm
+      deep-translator
+      
       google-api-python-client
       google-auth-httplib2
       google-auth-oauthlib

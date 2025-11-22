@@ -53,6 +53,7 @@
     # ./espanso
     ./aira2-daemon.nix
     ./samba.nix
+    ./pena
     # ./cloudflared.nix
     # ./collabora.nix
     # ./nixvim/nixvim.nix

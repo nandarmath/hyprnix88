@@ -210,6 +210,8 @@ let
     flexdashboard
     hflights
     nycflights13
+    broom_helpers
+    cardx
     # citr
   ];
 in
@@ -221,6 +223,7 @@ in
       package = rstudioServerWrapper.override {
         packages = list-packages;
       };
+      rsessionExtraConfig = "copilot-enabled=1";
     };
   };
   environment = {
@@ -240,6 +243,7 @@ in
       [
         r-with-packages
         rstudio-with-packages
+        rnew.positron-bin
       ];
   };
 }

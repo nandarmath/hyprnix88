@@ -28,6 +28,26 @@
         };
       };
     };
+    plugins.hlchunk = {
+      enable= true;
+      autoLoad = true;
+      settings={
+        chunk = {
+          enable= true;
+         chars = {
+           horizontal_line = "─";
+           left_bottom = "╰";
+           left_top = "╭";
+           right_arrow = "─";
+           vertical_line = "│";
+        };
+         style = "#91bef0";
+         line_num = {
+            style = "#91bef0";
+         };
+      };
+
+    };
 
     plugins.quarto = {
       enable = true;
