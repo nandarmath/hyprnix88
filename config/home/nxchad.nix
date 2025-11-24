@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
   programs.nixvim = {
     enable = true;
@@ -29,24 +29,45 @@
       };
     };
     plugins.hlchunk = {
-      enable= true;
+      enable = true;
       autoLoad = true;
-      settings={
+      settings = {
         chunk = {
-          enable= true;
-         chars = {
-           horizontal_line = "─";
-           left_bottom = "╰";
-           left_top = "╭";
-           right_arrow = "─";
-           vertical_line = "│";
-        };
-         style = "#91bef0";
-         line_num = {
+          enable = true;
+          chars = {
+            horizontal_line = "─";
+            left_bottom = "╰";
+            left_top = "╭";
+            right_arrow = "─";
+            vertical_line = "│";
+          };
+          style = "#91bef0";
+          line_num = {
             style = "#91bef0";
-         };
-      };
+          };
+        };
 
+      };
+    };
+
+    plugins.supermaven = {
+      enable = true;
+      autoLoad = true;
+      settings = {
+        keymaps = {
+          accept_suggestion = "<Tab>";
+          clear_suggestions = "<C-]>";
+          accept_word = "<C-j>";
+        };
+        ignore_filetypes = [ "cpp" ];
+        color = {
+          suggestion_color = "#ffffff";
+          cterm = 244;
+        };
+        log_level = "info";
+        disable_inline_completion = false;
+        disable_keymaps = false;
+      };
     };
 
     plugins.quarto = {
@@ -54,7 +75,7 @@
       autoLoad = true;
       settings = {
         codeRunner.enabled = true;
-        codeRunner.default_method = "molten";
+        codeRunner.default_method = "vim-slime";
         lspFeatures.completion.enabled = true;
         lspFeatures.chunks = "curly";
         lspFeatures.languages = [

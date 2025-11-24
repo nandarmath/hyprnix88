@@ -29,9 +29,7 @@
     };
     nixvim.url = "github:nix-community/nixvim";
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
-    # nxchad.url = "github:nandarmath/nxchad";
-    nxchad.url = "git:/home/nandar/Documents/NxChad";
-    # This is important, since nxchad dosn't add nixpkgs repo in dependencies
+    nxchad.url = "github:fmway/nxchad/29d6a5474256e24612e1ff255d6c0ae815710318";
     nxchad.inputs.nixpkgs.follows = "nixpkgs";
     # nvchad4nix = {
     # url = "github:MOIS3Y/nvchad4nix";
