@@ -76,7 +76,7 @@ let
     # Tamabahan
     r2spss
     MultivariateAnalysis
-    # RVAideMemoire
+    RVAideMemoire
     mvnormtest
     BART
     factoextra
