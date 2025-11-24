@@ -29,26 +29,25 @@
       };
     };
     plugins.hlchunk = {
-      enable= true;
+      enable = true;
       autoLoad = true;
-      settings={
+      settings = {
         chunk = {
-          enable= true;
-         chars = {
-           horizontal_line = "─";
-           left_bottom = "╰";
-           left_top = "╭";
-           right_arrow = "─";
-           vertical_line = "│";
-        };
-         style = "#91bef0";
-         line_num = {
+          enable = true;
+          chars = {
+            horizontal_line = "─";
+            left_bottom = "╰";
+            left_top = "╭";
+            right_arrow = "─";
+            vertical_line = "│";
+          };
+          style = "#91bef0";
+          line_num = {
             style = "#91bef0";
-         };
+          };
+        };
       };
-
     };
-
     plugins.quarto = {
       enable = true;
       autoLoad = true;
@@ -64,10 +63,9 @@
         lspFeatures.diagnostics.enabled = true;
       };
     };
+    programs.nixvim = {
+      # change theme nvchad
+      nvchad.config.base46.theme = "starlight";
+    };
   };
-  programs.nixvim = {
-    # change theme nvchad
-    nvchad.config.base46.theme = "starlight";
-  };
-
 }
