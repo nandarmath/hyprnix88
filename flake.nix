@@ -16,11 +16,13 @@
     # zen zen-browser
     zen-browser.url = "github:MarceColl/zen-browser-flake";
     # neovim in nix
-    rofi-2-0-0.url = "github:NixOs/nixpkgs/bce5fe2bb998488d8e7e7856315f90496723793c";
     nvf.url = "github:notashelf/nvf";
+    # rofi 2.0.0
+    rofi-2-0-0.url = "github:NixOs/nixpkgs/bce5fe2bb998488d8e7e7856315f90496723793c";
     # repo xdman
     nix-flatpak.url = "github:gmodena/nix-flatpak?ref=latest";
     fmpkgs.url = "github:fmway/fmpkgs";
+    # ags
     ags.url = "github:Aylur/ags";
     sops-nix.url = "github:Mic92/sops-nix";
     fine-cmdline = {
@@ -161,8 +163,6 @@
                 # home-manager.users.${username}.initialPassword = "1988";
               };
             }
-            # nixvim.nixosModules.nixvim
-            # nxchad.nixosModules.nixvim
           ];
         };
       };
