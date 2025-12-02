@@ -321,7 +321,7 @@ play_video() {
         --title="$title" \
         --force-window=immediate \
         --keep-open=yes \
-        --ytdl-raw-options=cookies-from-browser=firefox \
+        --ytdl-raw-options=cookies-from-browser=brave \
         "$url" 2>/dev/null
     
     success_msg "Finished playing: $title"

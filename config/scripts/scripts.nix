@@ -41,6 +41,8 @@
     (import ./rofi-zotero.nix { inherit pkgs; })
     (import ./hyprland-dock.nix { inherit pkgs; })
     (import ./rofi-aria2.nix { inherit pkgs; })
+    (import ./note-from-clipboard.nix { inherit pkgs; })
+    (import ./note.nix { inherit pkgs; })
 
   ];
 

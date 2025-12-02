@@ -63,9 +63,9 @@
         lspFeatures.diagnostics.enabled = true;
       };
     };
-    programs.nixvim = {
-      # change theme nvchad
-      nvchad.config.base46.theme = "starlight";
-    };
+    # programs.nixvim = {
+    #   # change theme nvchad
+    #   nvchad.config.base46.theme = "starlight";
+    # };
   };
 }
