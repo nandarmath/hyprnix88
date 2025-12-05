@@ -212,6 +212,8 @@ let
     nycflights13
     broom_helpers
     cardx
+    pacman
+
     # citr
   ];
 in

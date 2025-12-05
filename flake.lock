@@ -1180,17 +1180,17 @@
         "nixvim": "nixvim_2"
       },
       "locked": {
-        "lastModified": 1749897088,
-        "narHash": "sha256-wVSwgFDp48RLHcSkDunCtCuDjHtgXv+91a/w+Yvf1sI=",
-        "ref": "refs/heads/master",
-        "rev": "3de2cf77797b88956ab40275d5aea7e500ba184d",
-        "revCount": 4,
-        "type": "git",
-        "url": "file://git:/home/nandar/Documents/NxChad"
+        "lastModified": 1749939151,
+        "narHash": "sha256-+ILnlirQivqQhYFS7zvEUGnr45uoVjZW4McF/Telu34=",
+        "owner": "nandarmath",
+        "repo": "nxchad",
+        "rev": "210b62c1bcff120482bf066a55178793549bad2f",
+        "type": "github"
       },
       "original": {
-        "type": "git",
-        "url": "file://git:/home/nandar/Documents/NxChad"
+        "owner": "nandarmath",
+        "repo": "nxchad",
+        "type": "github"
       }
     },
     "rofi-2-0-0": {

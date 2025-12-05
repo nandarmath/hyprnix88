@@ -45,7 +45,7 @@ in {
     ./xdg.nix
     ./yazi
     ./keepasxc.nix
-    ./espanso
+    # ./espanso
     ./elforkane
     ./vicinae/vicinae.nix
     # ./nstv.nix
