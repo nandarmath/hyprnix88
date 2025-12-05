@@ -1,0 +1,225 @@
+#!/usr/env/bin/sh
+
+# Use system menu or rofi -dmenu for file selection and exit if none of them is installed
+if [ -n "$MENU" ]; then
+    menu="$MENU --input-color=f9f9f4ff -p"
+elif command -v rofi -dmenu >/dev/null 2>&1; then
+    menu="rofi -dmenu -p"
+else
+    notify-send "File Transfer" "Neither fuzzel nor rofi -dmenu is installed. Please install one of them."
+    exit 1
+fi
+
+# check if adb is installed and also run adb if it's not running
+! (adb devices | grep -q "List of devices attached") && notify-send "ADB IS NOT INSTALLED" "You should install Android Debug Bridge before running the script" && exit 1
+
+# choose a device if multiple devices are connected
+choose_device() {
+    device="$(printf '%s' "$devices" | grep -shoP ".*model.*? " | $menu "Which phone do you want to use? " | cut -d" " -f1)"
+    echo "$device"
+}
+
+# set up device wirelessly
+setup_wireless() {
+    # when using wireless debugging the function get the phone address as a variable
+    if [ -n "$1" ]; then
+        phone_address="$1"
+    else
+        # getting phone ip for the device that is connected via USB
+        phone_ip="$(adb shell ip route | awk 'END{print $9}')"
+        adb tcpip 5555
+        phone_address="$phone_ip":5555
+    fi
+    adb connect "$phone_address"
+    if adb devices | grep -q "$phone_address"; then
+        notify-send "TCP/IP connection succeeded" "$(adb devices -l | grep "$phone_address") \nnow disconnect the usb cable"
+        device="$phone_address"
+        type="TCP"
+    else
+        notify-send "TCP/IP connection failed"
+        exit 1
+    fi
+}
+
+usb_device() {
+    device="$(choose_device)"
+    # check if device is connected with USB
+    if ! (adb connect "$device" | grep -q "connected to"); then
+        # if the device is connected with USB ask if the user prefer to connect the device wirelessly
+        wireless_connection="$( printf "Yes\\nNo" | $menu "Do you want to connect your device wirelessly? ")"
+        case "$wireless_connection" in
+            Yes)
+                setup_wireless
+                ;;
+            No)
+                type="USB"
+                ;;
+            *)
+                notify-send "Invalid choice. Exiting."
+                exit 1
+                ;;
+        esac
+    else
+        type="TCP"
+    fi
+}
+
+# run a phone application
+run_application(){
+    apps="$(scrcpy "$connection_type" --list-apps)"
+    application="$(printf '%s' "$apps" | grep -shoP "[-*] .*   " | cut -c 3- |  $menu "Select an app: ")"
+    application="$(printf '%s' "$apps" | grep "$application" | sed 's/.*   //')"
+    scrcpy "$connection_type" "$connection_audio" --new-display=1920x1080 --start-app "$application"
+}
+
+take_screenshot() {
+    filename="$HOME/screenshot-$(date '+%Y%m%d-%H%M%S').png"
+    adb -s "$device" exec-out screencap -p > "$filename"
+    notify-send "Screenshot Saved" "Screenshot saved to $filename."
+}
+
+record_screen() {
+    file_name="$HOME/phone-screen-$(date '+%y%m%d-%H%M-%S').mkv"
+    notify-send "Screen Recorder" "Recording the phone screen to $file_name"
+    scrcpy "$connection_type" "$connection_audio" --record "$file_name"
+}
+
+file_transfer() {
+    transfer_action=$(printf "push file\npull file" | $menu "Select file transfer action: " | cut -d " " -f1)
+    case "$transfer_action" in
+        "push")
+            source_file=$(find ~/Downloads -type f,d \( -name "*" -o -name ".*" \) | $menu "Select a file to push: ")
+            dest_file="/sdcard/Download/"
+            ;;
+        "pull")
+            source_file=$(adb -s "$device" shell find /sdcard/Download/ -type f,d | $menu "Select a file to pull: ")
+            dest_file="$HOME/Downloads"
+            ;;
+        *)
+            notify-send "Invalid choice. Exiting."
+            exit 1
+            ;;
+    esac
+    file_name=$(echo "$source_file" | grep -o '[^/]*$')
+    if [ -n "$source_file" ]; then
+        # ADB uses isatty to check whether its output is connected to a terminal.
+        # If the output is piped to another command or redirected it will disable progress output
+        # hanling the special control characters (moving to the beginning of the line, carriage return and scape sequence) with script
+        progress_model=$(printf "Terminal\nNotification\nDon't Show" | $menu "How do you like to see your download progress? ")
+        case "$progress_model" in
+            "Terminal")
+                exec-terminal adb -s "$device" "$transfer_action" "$source_file" "$dest_file"
+                ;;
+            "Notification")
+                script -q -c "adb -s $device $transfer_action $source_file $dest_file" /dev/null | while read -r -d $'\x1B' line; do
+                    progress=$(echo "$line" | grep -oP "[0-9]*(?=%])")
+                    currentfile=$(echo "$line" | grep -o "[^/]*$")
+                    notify-send -r 3339 -h int:value:"$progress%" "ADB file transfer ($file_name $progress%)" "Transferring $currentfile"
+                done
+                ;;
+            *)
+                adb -s "$device" "$transfer_action" "$source_file" "$dest_file"
+                ;;
+        esac
+        notify-send -r 3339 "File Transfer" "File transfered to $dest_file directory."
+    fi
+}
+
+main() {
+    case "$type" in
+        USB)
+            extra_options="OTG"
+            connection_type="--serial=$device"
+            ;;
+        TCP)
+            extra_options="keyboard and mouse
+disconnect"
+            connection_type="--tcpip=$device"
+            ;;
+    esac
+    audio="$(printf "No Audio\\nWith Audio" | $menu "Do you want to connect the device with audio? ")"
+    case "$audio" in
+        "No Audio")
+            connection_audio="--no-audio-playback"
+            ;;
+        "With Audio")
+            audio_sorce="$( printf "playback\\noutput\\nmic" | $menu "Select the audio source: ")"
+            connection_audio="--audio-source=$audio_sorce"
+            ;;
+    esac
+    action="$(printf 'start scrcpy\nscrcpy (Low Resolution)\nscrcpy (High FPS)\nnew display\nfront camera\nback camera\nrecord screen\ntake screenshot\nturn off screen\nshow touches\nstay awake\nalways on top\nfullscreen\nfile transfer\nrun an application\n%s' "$extra_options" | $menu "What do you want to do? ")"
+    case "$action" in
+        "start scrcpy")
+            scrcpy "$connection_type" "$connection_audio"
+            ;;
+        "scrcpy (Low Resolution)")
+            scrcpy "$connection_type" "$connection_audio" --max-size 800
+            ;;
+        "scrcpy (Max FPS)")
+             scrcpy "$connection_type" "$connection_audio" --max-fps 60
+             ;;
+        "new display")
+            scrcpy "$connection_type" "$connection_audio" --new-display=1920x1080
+            ;;
+        "front camera")
+            scrcpy "$connection_type" "$connection_audio" --video-source camera --camera-facing front
+            ;;
+        "back camera")
+            scrcpy "$connection_type" "$connection_audio" --video-source camera --camera-facing back
+            ;;
+        "record screen")
+            record_screen
+            ;;
+        "take screenshot")
+            take_screenshot
+            ;;
+        "turn off screen")
+            scrcpy "$connection_type" "$connection_audio" -S
+            ;;
+        "show touches")
+            scrcpy "$connection_type" "$connection_audio" -t
+            ;;
+        "stay awake")
+            scrcpy "$connection_type" "$connection_audio" -W
+            ;;
+        "always on top")
+            scrcpy "$connection_type" "$connection_audio" --always-on-top
+            ;;
+        "fullscreen")
+            scrcpy "$connection_type" "$connection_audio" -f
+            ;;
+        "file transfer")
+            file_transfer
+            ;;
+        "run an application")
+            run_application
+            ;;
+        "disconnect")
+            adb disconnect "$phone_address"
+            notify-send "ADB Disconnect" "$phone_address is now disconnected."
+            ;;
+    esac
+}
+
+devices="$(adb devices -l | sed '1d;$d')"
+
+if [ "$devices" ]; then
+    usb_device
+else
+    what_to_do="$(printf "Yes\\nNo" | $menu "Use wireless debugging to connect your phone? ")"
+    case $what_to_do in
+        Yes)
+            phone_ip="$($menu "Insert phone address from your phone: " --search="$(ip route get 1 | awk '{print $3}' | cut -d"." -f1-3).")"
+            setup_wireless "$phone_ip"
+            ;;
+        No)
+            notify-send "No Device Detected" "Connect your phone with a USB cable.\nCheck USB debugging in your phone settings"
+            exit 1
+            ;;
+        *)
+            exit 1
+            ;;
+    esac
+fi
+
+main
