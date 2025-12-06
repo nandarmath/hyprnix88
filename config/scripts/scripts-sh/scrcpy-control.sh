@@ -1,4 +1,4 @@
-#!/usr/env/bin/sh
+#!/usr/bin/env bash
 
 # Use system menu or rofi -dmenu for file selection and exit if none of them is installed
 if [ -n "$MENU" ]; then
