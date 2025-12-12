@@ -87,9 +87,9 @@
     # typst-lsp
     typstfmt
     typst-live
-    vscodium
+    # vscodium
     tinymist
-    vscode-extensions.myriad-dreamin.tinymist
+    # vscode-extensions.myriad-dreamin.tinymist
     # inputs.nvix.packages.${system}.full
     r2405.zoom-us
     r2205.hugo

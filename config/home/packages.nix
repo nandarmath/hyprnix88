@@ -33,7 +33,7 @@ in {
     xournalpp
     # positron-bin
     # openboard
-    blender
+    # blender
     gabutdm
     # pairdrop
     rustup
@@ -76,7 +76,7 @@ in {
     # gimp-with-plugins
     ytfzf
     kitty
-    ueberzugpp
+    # ueberzugpp
     gImageReader
     tesseract
     hunspell

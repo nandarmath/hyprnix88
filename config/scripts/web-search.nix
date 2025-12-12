@@ -14,7 +14,7 @@ pkgs.writeShellScriptBin "web-search" ''
     ["󰣇  Arch Wiki"]="https://wiki.archlinux.org/title/"
     ["  Gentoo Wiki"]="https://wiki.gentoo.org/index.php?title="
     ["󰊤  Github Search"]="https://github.com/search?q="
-    ["󰛖  Nerdfont Cheat seat"]="https://www.nerdfonts.com/cheat-sheet"
+    ["󰛖  Nerdfont Cheat seat"]="https://www.nerdfonts.com/cheat-sheet?="
   )
 
   # List for rofi
